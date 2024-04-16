@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.slide-fade-enter-active {
+    transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateX(-20px);
+    opacity: 0;
+}
+
+/** fade transition **/
+
+.slidedown-enter-active {
+    transition: all 0.3s ease-out;
+}
+
+.slidedown-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slidedown-enter-from,
+.slidedown-leave-to {
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+/** Page transition **/
+.page-enter-active {
+    transition: all 0.3s ease-out;
+}
+
+.page-leave-active {
+    transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.page-enter-from
+ {
+    transform: translateX(500px);
+    opacity: 1;
+}
+
+.page-leave-to {
+    transform: translateX(-500px);
+    opacity: 0;
+}
+
+/** Modal transition **/
+
+
+.modal-enter-active {
+    transition: all 0.3s ease-out;
+}
+
+.modal-leave-active {
+    transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.modal-enter-from,
+.modal-leave-to {
+    transform: translateX(-200px);
+    opacity: 0.8;
+}
+
+.loader {
+    width: 60px;
+    aspect-ratio: 1;
+    background: linear-gradient(#dc1818 0 0) bottom/100% 0% no-repeat #ccc;
+    -webkit-mask: 
+      radial-gradient(circle at 60% 65%, #000 62%, #0000 65%) top left, 
+      radial-gradient(circle at 40% 65%, #000 62%, #0000 65%) top right, 
+      linear-gradient(to bottom left, #000 42%,#0000 43%) bottom left , 
+      linear-gradient(to bottom right,#000 42%,#0000 43%) bottom right;
+    -webkit-mask-size: 50% 50%;
+    -webkit-mask-repeat: no-repeat;
+    animation: l19 2s infinite linear;
+  }
+  @keyframes l19 {
+      90%,100% {background-size:100% 100%}
+  }
+
+.herotransit{
+    background-image: url(./images/veehero.jpg);
+    animation: changebg 30s infinite ease-in-out;
+   
+}
+
+  @keyframes changebg{
+    0%
+    {
+        background-image: url(./images/1.jpg);
+    }
+    20%
+    {
+        background-image: url(./images/veehero.jpg);
+    }
+    40%
+    {
+        background-image: url(./images/5.jpg);
+    }
+    60%
+    {
+        background-image: url(./images/2.jpg);
+    }
+    80%
+    {
+        background-image: url(./images/3.jpg);
+    }
+    100%
+    {
+        background-image: url(./images/4.jpg);
+    }
+
+}
