@@ -9,13 +9,11 @@ import MobileNav from "./components/MobileNav.vue";
 </script>
 <template>
     <Header />
-
     <router-view v-slot="{ Component }">
         <transition name="page">
             <component :is="Component" />
         </transition>
     </router-view>
-
     <MobileNav />
     <Footer />
 </template>
