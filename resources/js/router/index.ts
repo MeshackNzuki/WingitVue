@@ -9,7 +9,6 @@ const router = createRouter({
             name: "Login",
             component: () => import("../views/Auth/Login.vue"),
         },
-
         {
             path: "/signup",
             name: "Register",
@@ -62,9 +61,9 @@ const router = createRouter({
             ],
         },
         {
-            path: "/finance",
-            name: "Finance",
-            component: () => import("../views/finance/Dashboard.vue"),
+            path: "/fees",
+            name: "Fees",
+            component: () => import("../views/fees/Dashboard.vue"),
             children: [
                 {
                     path: "/finance/dashboard",
@@ -75,11 +74,11 @@ const router = createRouter({
                     component: Settings,
                 },
                 {
-                    path: "/finance/tables",
+                    path: "/finance/collection",
                     component: Tables,
                 },
                 {
-                    path: "/finance/maps",
+                    path: "/finance/balances",
                     component: Maps,
                 },
             ],
@@ -90,19 +89,19 @@ const router = createRouter({
             component: () => import("../views/guardian/Dashboard.vue"),
             children: [
                 {
-                    path: "/guardian/dashboard",
+                    path: "/guardian/fees",
                     component: Dashboard,
                 },
                 {
-                    path: "/guardian/settings",
+                    path: "/guardian/exams",
                     component: Settings,
                 },
                 {
-                    path: "/guardian/tables",
+                    path: "/guardian/appointmets",
                     component: Tables,
                 },
                 {
-                    path: "/guardian/maps",
+                    path: "/guardian/activity",
                     component: Maps,
                 },
             ],
@@ -113,19 +112,19 @@ const router = createRouter({
             component: () => import("../views/student/Dashboard.vue"),
             children: [
                 {
-                    path: "/student/dashboard",
+                    path: "/student/timetable",
                     component: Dashboard,
                 },
                 {
-                    path: "/student/settings",
+                    path: "/student/exams",
                     component: Settings,
                 },
                 {
-                    path: "/student/tables",
+                    path: "/student/fees",
                     component: Tables,
                 },
                 {
-                    path: "/student/maps",
+                    path: "/student/attendance",
                     component: Maps,
                 },
             ],
@@ -136,19 +135,19 @@ const router = createRouter({
             component: () => import("../views/student/instructor.vue"),
             children: [
                 {
-                    path: "/instractor/dashboard",
+                    path: "/instractor/timetable",
                     component: Dashboard,
                 },
                 {
-                    path: "/instractor/settings",
+                    path: "/instractor/calendar",
                     component: Settings,
                 },
                 {
-                    path: "/instractor/tables",
+                    path: "/instractor/classes",
                     component: Tables,
                 },
                 {
-                    path: "/instractor/maps",
+                    path: "/instractor/planner",
                     component: Maps,
                 },
             ],
