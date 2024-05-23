@@ -15,5 +15,4 @@ import MobileNav from "./components/MobileNav.vue";
         </transition>
     </router-view>
     <MobileNav />
-    <Footer />
 </template>

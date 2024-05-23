@@ -18,22 +18,23 @@ const router = createRouter({
             path: "/admin",
             name: "Admin",
             component: () => import("../views/admin/Dashboard.vue"),
+            meta: { role: "admin" },
             children: [
                 {
                     path: "/admin/dashboard",
-                    component: Dashboard,
+                    component: () => import("../views/library/Dashboard.vue"),
                 },
                 {
                     path: "/admin/settings",
-                    component: Settings,
+                    component: () => import("../views/library/Dashboard.vue"),
                 },
                 {
                     path: "/admin/tables",
-                    component: Tables,
+                    component: () => import("../views/library/Dashboard.vue"),
                 },
                 {
                     path: "/admin/maps",
-                    component: Maps,
+                    component: () => import("../views/library/Dashboard.vue"),
                 },
             ],
         },
@@ -41,22 +42,23 @@ const router = createRouter({
             path: "/lib",
             name: "Library",
             component: () => import("../views/library/Dashboard.vue"),
+            meta: { role: "library" },
             children: [
                 {
                     path: "/admin/dashboard",
-                    component: Dashboard,
+                    component: () => import("../views/library/Dashboard.vue"),
                 },
                 {
                     path: "/admin/settings",
-                    component: Settings,
+                    component: () => import("../views/library/Dashboard.vue"),
                 },
                 {
                     path: "/admin/tables",
-                    component: Tables,
+                    component: () => import("../views/library/Dashboard.vue"),
                 },
                 {
                     path: "/admin/maps",
-                    component: Maps,
+                    component: () => import("../views/library/Dashboard.vue"),
                 },
             ],
         },
@@ -64,45 +66,47 @@ const router = createRouter({
             path: "/fees",
             name: "Fees",
             component: () => import("../views/fees/Dashboard.vue"),
+            meta: { role: "finance" },
             children: [
                 {
                     path: "/finance/dashboard",
-                    component: Dashboard,
+                    component: () => import("../views/fees/Dashboard.vue"),
                 },
                 {
-                    path: "/finance/settings",
-                    component: Settings,
+                    path: "/finance/dashboard",
+                    component: () => import("../views/fees/Settings.vue"),
                 },
                 {
                     path: "/finance/collection",
-                    component: Tables,
+                    component: () => import("../views/fees/Tables.vue"),
                 },
-                {
-                    path: "/finance/balances",
-                    component: Maps,
-                },
+                // {
+                //     path: "/finance/collection",
+                //     component: () => import("../views/fees/collection.vue"),
+                // },
             ],
         },
         {
             path: "/guardian",
             name: "Guardian",
             component: () => import("../views/guardian/Dashboard.vue"),
+            meta: { role: "guardian" },
             children: [
                 {
                     path: "/guardian/fees",
-                    component: Dashboard,
+                    component: () => import("../views/guardian/Dashboard.vue"),
                 },
                 {
                     path: "/guardian/exams",
-                    component: Settings,
+                    component: () => import("../views/guardian/Settings.vue"),
                 },
                 {
-                    path: "/guardian/appointmets",
-                    component: Tables,
+                    path: "/guardian/exams",
+                    component: () => import("../views/guardian/Settings.vue"),
                 },
                 {
                     path: "/guardian/activity",
-                    component: Maps,
+                    component: () => import("../views/guardian/Settings.vue"),
                 },
             ],
         },
@@ -110,48 +114,59 @@ const router = createRouter({
             path: "/student",
             name: "Student",
             component: () => import("../views/student/Dashboard.vue"),
+            meta: { role: "student" },
             children: [
                 {
                     path: "/student/timetable",
-                    component: Dashboard,
+                    component: () => import("../views/student/Dashboard.vue"),
                 },
                 {
                     path: "/student/exams",
-                    component: Settings,
+                    component: () => import("../views/student/Dashboard.vue"),
                 },
                 {
                     path: "/student/fees",
-                    component: Tables,
+                    component: () => import("../views/student/Dashboard.vue"),
                 },
                 {
                     path: "/student/attendance",
-                    component: Maps,
+                    component: () => import("../views/student/Dashboard.vue"),
                 },
             ],
         },
         {
             path: "/instructor",
             name: "Instructor",
-            component: () => import("../views/student/instructor.vue"),
+            meta: { role: "instructor" },
+            component: () => import("../views/instructor/Dashboard.vue"),
             children: [
                 {
                     path: "/instractor/timetable",
-                    component: Dashboard,
+                    component: () =>
+                        import("../views/instructor/Timetable.vue"),
                 },
                 {
                     path: "/instractor/calendar",
-                    component: Settings,
+                    component: () =>
+                        import("../views/instructor/Timetable.vue"),
                 },
                 {
                     path: "/instractor/classes",
-                    component: Tables,
+                    component: () =>
+                        import("../views/instructor/Timetable.vue"),
                 },
                 {
                     path: "/instractor/planner",
-                    component: Maps,
+                    component: () =>
+                        import("../views/instructor/Timetable.vue"),
                 },
             ],
         },
+        {
+            path: "/unauthorized",
+            component: () => import("../views/Unauthorized.vue"),
+        },
+
         { path: "/:pathMatch(.*)*", redirect: "/" },
         // {
         //     path: "/shop/cart",
@@ -174,6 +189,14 @@ const router = createRouter({
         //     component: () => import("../views.vue"),
         // },
     ],
+});
+
+router.beforeEach((to, from, next) => {
+    const userRole = store.state.user.role; // from pinia
+    if (to.meta.role && userRole !== to.meta.role) {
+        return next({ path: "/unauthorized" });
+    }
+    next();
 });
 
 export default router;

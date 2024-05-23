@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-gray-50 dark:bg-gray-900 flex flex-wrap h-100 w-full items-center justify-center overflow-hidden"
+        class="bg-gray-50 dark:bg-gray-900 h-screen flex flex-wrap h-100 w-full items-center justify-center overflow-hidden"
     >
         <div class="lg:w-1/2">
             <section class="dark:bg-gray-900">
@@ -32,7 +32,7 @@
                                     <label
                                         for="email"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                        >Your email/ User name</label
+                                        >Your email / User name</label
                                     >
                                     <input
                                         type="email"
@@ -83,18 +83,18 @@
                                 </div>
                                 <button
                                     type="submit"
-                                    class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                    class="w-full dark:gray-400 text-white bg-emerald-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                                 >
-                                    Create an account
+                                    LOGIN
                                 </button>
                                 <p
                                     class="text-sm font-light text-gray-500 dark:text-gray-400"
                                 >
-                                    Already have an account?
+                                    Forgit your password?
                                     <a
                                         href="#"
                                         class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                                        >Login here</a
+                                        >Request Reset</a
                                     >
                                 </p>
                             </form>
