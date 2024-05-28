@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from "daisyui";
 export default {
     purge: [
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
@@ -34,4 +35,7 @@ export default {
         },
     },
     plugins: [require("daisyui")],
+    daisyui: {
+        darkTheme: false,
+    },
 };

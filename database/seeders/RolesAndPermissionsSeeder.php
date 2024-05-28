@@ -24,6 +24,7 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'edit own profile']);
         Permission::create(['name' => 'manage grading']);
         Permission::create(['name' => 'view grading']);
+        Permission::create(['name' => 'manage orders']);
 
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());
