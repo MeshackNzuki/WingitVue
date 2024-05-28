@@ -4,27 +4,26 @@ Welcome to Ultra School Manager, your all-in-one solution for managing every asp
 
 ## Overview
 
-Ultra School Manager is a feature-rich web application built with Laravel, Vue.js, and Bootstrap, providing a modern and intuitive user experience. Whether you're an administrator, teacher, student, or parent, this platform offers tailored functionalities to meet your specific needs.
+Ultra School Manager is a feature-rich web application built with Laravel, Vue.js, and Tailwind, providing a modern and intuitive user experience. Whether you're an administrator, Tutor, student, or parent, this platform offers tailored functionalities to meet your specific needs.
 
 ## Features
 
-- **User Roles**: Ultra School Manager supports multiple user roles, including administrators, teachers, students, and parents. Each role has access to relevant features and functionalities.
-  
-- **Dashboard**: Get a quick overview of key metrics, upcoming events, and recent activities right from the dashboard. Administrators can customize the dashboard to display relevant information.
+-   **User Roles**: Ultra School Manager supports multiple user roles, including administrators, Tutors, students, and parents. Each role has access to relevant features and functionalities.
+-   **Dashboard**: Get a quick overview of key metrics, upcoming events, and recent activities right from the dashboard. Administrators can customize the dashboard to display relevant information.
 
-- **Student Management**: Easily manage student profiles, including personal information, academic records, attendance, and behavior tracking. Stay organized with class rosters and student enrollment management.
+-   **Student Management**: Easily manage student profiles, including personal information, academic records, attendance, and behavior tracking. Stay organized with class rosters and student enrollment management.
 
-- **Teacher Tools**: Empower teachers with tools for lesson planning, gradebook management, communication with students and parents, and access to educational resources.
+-   **Tutor Tools**: Empower Tutors with tools for lesson planning, gradebook management, communication with students and parents, and access to educational resources.
 
-- **Parent Portal**: Provide parents with real-time access to their child's academic progress, attendance, upcoming assignments, and school announcements. Foster parent-teacher communication through messaging features.
+-   **Parent Portal**: Provide parents with real-time access to their child's academic progress, attendance, upcoming assignments, and school announcements. Foster parent-Tutor communication through messaging features.
 
-- **Attendance Tracking**: Simplify attendance tracking with intuitive interfaces for both teachers and administrators. Generate attendance reports and identify trends for proactive intervention.
+-   **Attendance Tracking**: Simplify attendance tracking with intuitive interfaces for both Tutors and administrators. Generate attendance reports and identify trends for proactive intervention.
 
-- **Gradebook**: Efficiently manage grades, assignments, and assessments with customizable gradebooks. Teachers can easily record grades, calculate averages, and provide feedback to students.
+-   **Gradebook**: Efficiently manage grades, assignments, and assessments with customizable gradebooks. Tutors can easily record grades, calculate averages, and provide feedback to students.
 
-- **Communication**: Facilitate communication between all stakeholders with built-in messaging systems, announcements, and event calendars. Keep everyone informed about important updates and upcoming events.
+-   **Communication**: Facilitate communication between all stakeholders with built-in messaging systems, announcements, and event calendars. Keep everyone informed about important updates and upcoming events.
 
-- **Library Management**: Manage library resources, including books, journals, and multimedia materials. Track book loans, reservations, and overdue items to ensure efficient library operations.
+-   **Library Management**: Manage library resources, including books, journals, and multimedia materials. Track book loans, reservations, and overdue items to ensure efficient library operations.
 
 ## Installation
 
@@ -45,7 +44,7 @@ We welcome contributions from the community to make Ultra School Manager even be
 
 ## License
 
-Ultra School Manager is open-source software licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute this software for any purpose, subject to the terms of the license.
+Ultra School Manager is a private application and its source code is not publicly available. All rights reserved.
 
 ## Support
 
