@@ -48,4 +48,4 @@ Ultra School Manager is a private application and its source code is not publicl
 
 ## Support
 
-If you encounter any issues, have questions, or would like to request new features, please [submit an issue](https://github.com/your/repository/issues) on GitHub. Our team is here to assist you and ensure you have a positive experience with Ultra School Manager.
+If you encounter any issues, have questions, or would like to request new features, please [submit an issue](https://github.com/SchoolManagementSystem/issues) on GitHub. Our team is here to assist you and ensure you have a positive experience with Ultra School Manager.
