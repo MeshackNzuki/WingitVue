@@ -1,47 +1,58 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Create the initial roles and permissions.
+     */
+    public function run(): void
     {
-        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+        // Reset cached roles and permissions
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        Permission::create(['name' => 'view students']);
-        Permission::create(['name' => 'manage students']);
-        Permission::create(['name' => 'view instructors']);
-        Permission::create(['name' => 'manage instructors']);
-        Permission::create(['name' => 'view finance']);
-        Permission::create(['name' => 'manage finance']);
-        Permission::create(['name' => 'view library']);
-        Permission::create(['name' => 'manage library']);
-        Permission::create(['name' => 'view parents']);
-        Permission::create(['name' => 'manage parents']);
-        Permission::create(['name' => 'view own profile']);
-        Permission::create(['name' => 'edit own profile']);
-        Permission::create(['name' => 'manage grading']);
-        Permission::create(['name' => 'view grading']);
-        Permission::create(['name' => 'manage orders']);
+        // Create permissions
+        $permissions = [
+            'view students',
+            'manage students',
+            'view instructors',
+            'manage instructors',
+            'view finance',
+            'manage finance',
+            'view library',
+            'manage library',
+            'view parents',
+            'manage parents',
+            'view own profile',
+            'edit own profile',
+            'manage grading',
+            'view grading',
+            'manage orders',
+        ];
 
-        $role = Role::create(['name' => 'admin']);
-        $role->givePermissionTo(Permission::all());
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
+        }
 
-        $role = Role::create(['name' => 'student']);
-        $role->givePermissionTo(['view own profile', 'edit own profile']);
+        // Create roles and assign permissions
+        $roles_permissions = [
+            'admin' => Permission::all(),
+            'student' => ['view own profile', 'edit own profile'],
+            'instructor' => ['view students', 'view own profile', 'edit own profile', 'view grading', 'manage grading'],
+            'finance' => ['view finance', 'manage finance', 'view own profile'],
+            'library' => ['view library', 'manage library', 'view own profile'],
+            'guardian' => ['view own profile', 'edit own profile'],
+        ];
 
-        $role = Role::create(['name' => 'instructor']);
-        $role->givePermissionTo(['view students', 'view own profile', 'edit own profile' ,'view grading' ,'manage grading' ]);
-
-        $role = Role::create(['name' => 'finance']);
-        $role->givePermissionTo(['view finance', 'manage finance' ,'view own profile']);
-
-        $role = Role::create(['name' => 'library']);
-        $role->givePermissionTo(['view library', 'manage library' ,'view own profile']);
-
-        $role = Role::create(['name' => 'guardian']);
-        $role->givePermissionTo(['view own profile', 'edit own profile']);
+        foreach ($roles_permissions as $role_name => $permissions) {
+            $role = Role::create(['name' => $role_name]);
+            $role->givePermissionTo($permissions);
+        }
     }
 }

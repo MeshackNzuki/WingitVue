@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { authStore } from "../stores/authStore";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
 
     routes: [
         {
-            path: "/",
+            path: "/login",
             name: "Login",
             component: () => import("../views/Auth/Login.vue"),
         },
@@ -168,34 +169,24 @@ const router = createRouter({
         },
 
         { path: "/:pathMatch(.*)*", redirect: "/" },
-        // {
-        //     path: "/shop/cart",
-        //     name: "cart",
-        //     component: () => import("../views/.vue"),
-        // },
-        // {
-        //     path: "/shop/all",
-        //     name: "all",
-        //     component: () => import("../views/.vue"),
-        // },
-        // {
-        //     path: "/shop/order-tracker",
-        //     name: "tracker",
-        //     component: () => import("../views/.vue"),
-        // },
-        // {
-        //     path: "/shop/find/:id?",
-        //     name: "about",
-        //     component: () => import("../views.vue"),
-        // },
     ],
 });
 
 router.beforeEach((to, from, next) => {
-    const userRole = store.state.user.role; // from pinia
-    if (to.meta.role && userRole !== to.meta.role) {
-        return next({ path: "/unauthorized" });
+    const { user, is_authenticated } = authStore();
+    alert(is_authenticated);
+    if (to.path !== "/login" && !is_authenticated) {
+        return next({ path: "/login" });
     }
+
+    if (is_authenticated) {
+        const userRole = user.roles[0];
+        console.log("allowed...");
+        if (to.meta.role && userRole !== to.meta.role) {
+            return next({ path: "/unauthorized" });
+        }
+    }
+
     next();
 });
 

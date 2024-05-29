@@ -8,5 +8,7 @@ Route::fallback(function () {
 });
 
     Route::get('/{any?}', function () {
+        
         return view('VueEntry');
+
     })->where('any', '.*');

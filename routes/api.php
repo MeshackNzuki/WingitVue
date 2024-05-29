@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// Auth
+use App\Http\Controllers\Auth\LoginController;
+
 // Import the necessary controllers
 
 //student
