@@ -8,7 +8,6 @@ import Footer from "./components/Footer.vue";
 import MobileNav from "./components/MobileNav.vue";
 </script>
 <template>
-    <Header />
     <router-view v-slot="{ Component }">
         <transition name="page">
             <component :is="Component" />

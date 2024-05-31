@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-white dark:bg-gray-900">
+    <footer class="bg-white dark:bg-gray-900 overflow-hidden px-4">
         <hr class="my-6 border-gray-200 md:my-8 dark:border-gray-700" />
 
         <div class="flex items-center justify-between">
@@ -77,6 +77,10 @@
                 </a>
             </div>
         </div>
+        <div class="flex justify-center items-center">
+            Powered by Ultra Systems Inc @ {{ date }} |
+            <a href="https://www.ultrateq.com"> ultrateq.com</a>
+        </div>
     </footer>
 </template>
 
@@ -87,6 +91,7 @@ import { useShoppingStore } from "../stores";
 
 const productData = useShoppingStore();
 
+const date = new Date().getFullYear();
 const logo = Logo;
 const whatsAapp = WhatsAapp;
 const phoneNumber = productData.phoneNumber;

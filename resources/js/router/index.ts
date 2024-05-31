@@ -11,6 +11,11 @@ const router = createRouter({
             component: () => import("../views/Auth/Login.vue"),
         },
         {
+            path: "/404",
+            name: "404",
+            component: () => import("../views/404.vue"),
+        },
+        {
             path: "/signup",
             name: "Register",
             component: () => import("../views/Auth/Register.vue"),
@@ -64,22 +69,22 @@ const router = createRouter({
             ],
         },
         {
-            path: "/fees",
-            name: "Fees",
-            component: () => import("../views/fees/Dashboard.vue"),
+            path: "/finance",
+            name: "Finance",
+            component: () => import("../views/finance/Dashboard.vue"),
             meta: { role: "finance" },
             children: [
                 {
                     path: "/finance/dashboard",
-                    component: () => import("../views/fees/Dashboard.vue"),
+                    component: () => import("../views/finance/Dashboard.vue"),
                 },
                 {
                     path: "/finance/dashboard",
-                    component: () => import("../views/fees/Settings.vue"),
+                    component: () => import("../views/finance/Settings.vue"),
                 },
                 {
                     path: "/finance/collection",
-                    component: () => import("../views/fees/Tables.vue"),
+                    component: () => import("../views/finance/Tables.vue"),
                 },
                 // {
                 //     path: "/finance/collection",
@@ -168,26 +173,37 @@ const router = createRouter({
             component: () => import("../views/Unauthorized.vue"),
         },
 
-        { path: "/:pathMatch(.*)*", redirect: "/" },
+        { path: "/:pathMatch(.*)*", redirect: "/404" },
     ],
 });
 
 router.beforeEach((to, from, next) => {
     const { user, is_authenticated } = authStore();
-    alert(is_authenticated);
-    if (to.path !== "/login" && !is_authenticated) {
-        return next({ path: "/login" });
-    }
+    console.log("allowed...");
 
     if (is_authenticated) {
-        const userRole = user.roles[0];
-        console.log("allowed...");
-        if (to.meta.role && userRole !== to.meta.role) {
-            return next({ path: "/unauthorized" });
-        }
-    }
+        const userRole = user?.roles[0];
 
-    next();
+        if (userRole === "admin") {
+            return next();
+        }
+
+        if (to.meta.role) {
+            const requiredRoles = Array.isArray(to.meta.role)
+                ? to.meta.role
+                : [to.meta.role];
+
+            if (requiredRoles.includes(userRole)) {
+                return next();
+            } else {
+                return next({ path: "/unauthorized" });
+            }
+        } else {
+            return next();
+        }
+    } else {
+        return next({ path: "/login" });
+    }
 });
 
 export default router;

@@ -1,4 +1,5 @@
 <template>
+    <Header />
     <div
         class="bg-gray-50 dark:bg-gray-900 h-screen flex flex-wrap h-100 w-full items-center justify-center overflow-hidden"
     >
@@ -98,33 +99,41 @@
             />
         </div>
     </div>
+    <Footer />
 </template>
 
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
 import { authStore } from "../../stores/authStore";
+import Header from "../../components/Header.vue";
+import Footer from "../../components/Footer.vue";
+import { useRouter } from "vue-router";
 
 const { login } = authStore();
 
 const email = ref("");
 const password = ref("");
-const isLoading = ref(false); // Loader state
+const isLoading = ref(false);
+const router = useRouter();
 
 const handleLogin = async () => {
-    isLoading.value = true; // Start loader
+    isLoading.value = true;
     try {
-        // Make API call to login
         const response = await axios.post("/login", {
             email: email.value,
             password: password.value,
         });
-        console.log(response.data); // Handle response data
+        console.log(response.data);
         login(response.data.data);
+        if (response.data.data.roles && response.data.data.token) {
+            console.log("first", response.data.data.roles);
+            router.push("/" + response.data.data.roles);
+        }
     } catch (error) {
-        console.error(error); // Handle error
+        console.error(error);
     } finally {
-        isLoading.value = false; // Stop loader
+        isLoading.value = false;
     }
 };
 </script>
