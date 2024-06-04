@@ -16,11 +16,6 @@ const router = createRouter({
             component: () => import("../views/404.vue"),
         },
         {
-            path: "/signup",
-            name: "Register",
-            component: () => import("../views/Auth/Register.vue"),
-        },
-        {
             path: "/admin",
             name: "Admin",
             component: () => import("../views/admin/Dashboard.vue"),
@@ -179,7 +174,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const { user, is_authenticated } = authStore();
-    console.log("allowed...");
+    console.log("Checking access...");
 
     if (is_authenticated) {
         const userRole = user?.roles[0];
@@ -202,7 +197,7 @@ router.beforeEach((to, from, next) => {
             return next();
         }
     } else {
-        return next({ path: "/login" });
+        return next();
     }
 });
 
