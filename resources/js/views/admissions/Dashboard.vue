@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex flex-wrap">
-            <h1>hi admin</h1>
+            <h1>hi admissions Manager</h1>
             <!-- <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
                 <card-line-chart />
             </div> -->
