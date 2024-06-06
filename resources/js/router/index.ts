@@ -49,11 +49,11 @@ const routes = [
         path: "/admissions",
         name: "Admissions",
         component: () => import("../views/admissions/Layout.vue"),
-        meta: { role: "admin" },
+        meta: { role: "admissions" },
         children: [
             {
                 path: "",
-                name: "AdminDashboard",
+                name: "AdmissionsDashboard",
                 component: () => import("../views/admissions/Dashboard.vue"),
             },
             {

@@ -125,3 +125,6 @@
     background-color: rgba(60, 58, 58, 0.7); /* Change color on hover */
     height: 50px
   }
+   * {
+    @apply transition-colors duration-500;
+}

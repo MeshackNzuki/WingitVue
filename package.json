@@ -27,6 +27,8 @@
         "laravel-vite-plugin": "^1.0.2",
         "pinia": "^2.1.7",
         "pinia-plugin-persistedstate": "^3.2.1",
+        "primeicons": "^7.0.0",
+        "primevue": "^3.52.0",
         "save": "^2.9.0",
         "sweetalert2": "^11.10.6",
         "vue": "^3.4.21",
