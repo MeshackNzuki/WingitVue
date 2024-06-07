@@ -10,11 +10,6 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    resolve: {
-        alias: {
-            "@components": path.resolve(__dirname, "resources/js/components"),
-        },
-    },
     define: {
         "process.env": {},
     },

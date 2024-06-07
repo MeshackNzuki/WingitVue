@@ -57,23 +57,24 @@ const routes = [
                 component: () => import("../views/admissions/Dashboard.vue"),
             },
             {
-                path: "users",
-                name: "AdminUsers",
-                component: () => import("../views/admissions/Users.vue"),
+                path: "all",
+                name: "AdmissionsAllStudents",
+                component: () => import("../views/admissions/AllStudents.vue"),
+            },
+            {
+                path: "alumni",
+                name: "AdmissionsAlumniStudents",
+                component: () => import("../views/admissions/Alumni.vue"),
             },
             {
                 path: "settings",
-                name: "AdminSettings",
+                name: "AdmissionsSettings",
                 component: () => import("../views/admissions/Settings.vue"),
             },
-            {
-                path: "tables",
-                name: "AdminTables",
-                component: () => import("../views/admissions/Tables.vue"),
-            },
+
             {
                 path: "profile",
-                name: "AdminProfile",
+                name: "AdmissionsProfile",
                 component: () => import("../views/admissions/Profile.vue"),
             },
         ],

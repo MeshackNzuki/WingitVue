@@ -26,7 +26,7 @@ watch(
 );
 </script>
 <template>
-    <div class="min-h-screen bg-slate-50 dark:bg-slate-300">
+    <div class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden">
         <div :class="login ? '' : 'ms-64 p-4'">
             <Sidebar />
             <TopBar />

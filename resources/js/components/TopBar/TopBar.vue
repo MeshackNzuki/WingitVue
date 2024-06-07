@@ -3,15 +3,7 @@
         class="flex flex-row justify-between bg-slate-100 dark:bg-slate-800 dark:text-slate-300 mb-2 rounded-lg p-1 mt-1 h-10"
     >
         <div class="flex">one</div>
-        <div class="flex">
-            <div class="form-control">
-                <input
-                    type="text"
-                    placeholder="Search"
-                    class="input input-bordered w-24 md:w-auto"
-                />
-            </div>
-        </div>
+
         <div class="flex px-4 space-x-2">
             <button class="p-1">
                 <i class="pi pi-search"></i>
