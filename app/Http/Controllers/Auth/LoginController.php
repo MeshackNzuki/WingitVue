@@ -29,7 +29,9 @@ class LoginController extends Controller
             $token = $user->createToken('authToken')->plainTextToken;
             return $this->ResSuccess([
                 'token' => $token,
-                'roles' => $user->getRoleNames()
+                'roles' => $user->getRoleNames(),
+                'name' => $user->name,
+                'email' => $user->email
             ]);
         }
 
@@ -39,7 +41,9 @@ class LoginController extends Controller
             $token = $student->createToken('authToken')->plainTextToken;
             return $this->ResSuccess([
                 'token' => $token,
-                'roles' => $student->getRoleNames()
+                'roles' => $student->getRoleNames(),
+                'name' => $student->name,
+                'email' => $student->email
             ]);
         }
 
@@ -49,7 +53,9 @@ class LoginController extends Controller
             $token = $guardian->createToken('authToken')->plainTextToken;
             return $this->ResSuccess([
                 'token' => $token,
-                'roles' => $guardian->getRoleNames()
+                'roles' => $guardian->getRoleNames(),
+                'name' => $guardian->name,
+                'email' => $guardian->email
             ]);
         }
 

@@ -2,7 +2,11 @@
     <div
         class="flex flex-row justify-between bg-slate-100 dark:bg-slate-800 dark:text-slate-300 mb-2 rounded-lg p-1 mt-1 h-10"
     >
-        <div class="flex">one</div>
+        <div class="flex">
+            <span class="font-semibold" v-if="user.name"
+                >Hello ,{{ user.name }}!</span
+            >
+        </div>
 
         <div class="flex px-4 space-x-2">
             <button class="p-1">
@@ -62,10 +66,9 @@
 </template>
 <script setup>
 import { ref, onMounted, watch } from "vue";
-import NotificationDropdown from "@/components/Dropdowns/NotificationDropdown.vue";
-import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
 import { useRoute } from "vue-router";
 import { useDark, useToggle } from "@vueuse/core";
+import { authStore } from "../../stores/authStore";
 
 const isDark = useDark({ disableTransition: false });
 const toggleDark = useToggle(isDark);
@@ -74,6 +77,8 @@ const collapseShow = ref("hidden");
 const toggleCollapseShow = (classes) => {
     collapseShow.value = classes;
 };
+
+const { user } = authStore();
 
 const route = useRoute();
 const login = ref(false);

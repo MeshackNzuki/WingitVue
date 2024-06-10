@@ -17,14 +17,19 @@
                 >
                     Sorry, it seems there is no such destination here.
                 </p>
-                <cbutton buttonText="Back to Homepage"></cbutton>
+                <cbutton buttonText="Take Me Back" :action="router.back"></cbutton>
             </div>
         </div>
     </section>
 </template>
 <script setup>
 import commonButton from '../components/commonButton.vue';
+import {useRouter} from 'vue-router'
 
 const cbutton  = commonButton;
+
+const router = useRouter()
+
+
 
 </script>

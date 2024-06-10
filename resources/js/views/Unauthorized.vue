@@ -17,14 +17,19 @@
                 >
                     Sorry, You are not allowed to view this pages..
                 </p>
-                <cbutton buttonText="Back to Homepage"></cbutton>
+                <cbutton buttonText="Take Me Back" :action="router.back"></cbutton>
             </div>
         </div>
     </section>
 </template>
 <script setup>
 import commonButton from '../components/commonButton.vue';
+import {useRouter} from 'vue-router'
 
 const cbutton  = commonButton;
+
+const router = useRouter()
+
+
 
 </script>

@@ -1,6 +1,6 @@
 <template>
     <button
-        class="bg-gradient-to-r from-yellow-200 to font-semibold bg-emerald-500 px-4 py-1 text-gray-100 rounded-full hover:translate-x-1 hover:scale-110 transition duration-200 ease-out"
+        class="bg-emerald-500 px-4 py-1 text-gray-100 rounded-full hover:translate-x-1 hover:scale-110 transition duration-200 ease-out"
         @click="handleClick"
     >
         {{ buttonText }}
@@ -10,7 +10,7 @@
 <script setup>
 // Props
 const props = defineProps({
-    buttonText: { type: String, default: "Button" },
+    buttonText: { type: String, default: "Button Comp" },
     action: { type: Function, default: () => {} },
 });
 

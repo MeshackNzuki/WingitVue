@@ -3,13 +3,13 @@
         :class="
             'flex flex-row justify-between shadow-lg px-4 py-2 w-64 rounded-3xl ' +
             (isDark
-                ? 'bg-gradient-to-r from-slate-800 via-sky-950 to-purple-950'
+                ? 'bg-gradient-to-r from-slate-800 via-sky-950 to-sky-900'
                 : 'bg-gradient-to-r from-white via-blue-50 to-sky-50')
         "
     >
         <div class="space-y-1">
             <div
-                class="flex items-center space-x- text-sm font-medium text-slate-500 dark:text-slate-400"
+                class="flex items-center space-x- text-sm font-medium text-slate-500 dark:text-slate-300"
             >
                 <span>Revenue</span>
             </div>
@@ -19,9 +19,8 @@
                 class="flex items-center space-x-1 text-sm font-medium text-emerald-500 dark:text-emerald-300"
             >
                 <span class="text-sm font-light">32k increase</span>
-
                 <svg
-                    class="w-4 h-4"
+                    class="w-4 h-4 text-yellow"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
