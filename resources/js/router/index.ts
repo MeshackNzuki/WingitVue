@@ -90,11 +90,7 @@ const routes = [
                 name: "LibraryDashboard",
                 component: () => import("../views/library/Dashboard.vue"),
             },
-            {
-                path: "dashboard",
-                name: "LibraryDashboard",
-                component: () => import("../views/library/Dashboard.vue"),
-            },
+
             {
                 path: "settings",
                 name: "LibrarySettings",
@@ -219,6 +215,127 @@ const routes = [
             },
         ],
     },
+    {
+        path: "/instructor",
+        name: "Instructor",
+        meta: { role: "instructor" },
+        component: () => import("../views/instructor/Layout.vue"),
+        children: [
+            {
+                path: "",
+                name: "InstructorDashboard",
+                component: () => import("../views/instructor/Dashboard.vue"),
+            },
+            {
+                path: "timetable",
+                name: "InstructorTimetable",
+                component: () => import("../views/instructor/Timetable.vue"),
+            },
+            {
+                path: "calendar",
+                name: "InstructorCalendar",
+                component: () => import("../views/instructor/Calendar.vue"),
+            },
+            {
+                path: "classes",
+                name: "InstructorClasses",
+                component: () => import("../views/instructor/Classes.vue"),
+            },
+            {
+                path: "planner",
+                name: "InstructorPlanner",
+                component: () => import("../views/instructor/Planner.vue"),
+            },
+        ],
+    },
+    {
+        path: "/inventory",
+        name: "Inventory",
+        meta: { role: "inventory-manager" },
+        component: () => import("../views/inventory/Layout.vue"),
+        children: [
+            {
+                path: "",
+                name: "InventoryDashboard",
+                component: () => import("../views/inventory/Dashboard.vue"),
+            },
+            {
+                path: "items",
+                name: "InventoryItems",
+                component: () => import("../views/inventory/Items.vue"),
+            },
+            {
+                path: "suppliers",
+                name: "InventorySuppliers",
+                component: () => import("../views/inventory/Suppliers.vue"),
+            },
+            {
+                path: "orders",
+                name: "InventoryOrders",
+                component: () => import("../views/inventory/Orders.vue"),
+            },
+            {
+                path: "reports",
+                name: "InventoryReports",
+                component: () => import("../views/inventory/Reports.vue"),
+            },
+            {
+                path: "transport",
+                name: "InventoryTransport",
+                component: () => import("../views/inventory/Transport.vue"),
+            },
+            {
+                path: "routes",
+                name: "TransportRoutes",
+                component: () => import("../views/inventory/Routes.vue"),
+            },
+            {
+                path: "vehicles",
+                name: "TransportVehicles",
+                component: () => import("../views/inventory/Vehicles.vue"),
+            },
+            {
+                path: "drivers",
+                name: "TransportDrivers",
+                component: () => import("../views/inventory/Drivers.vue"),
+            },
+        ],
+    },
+
+    {
+        path: "/hostels",
+        name: "Hostels",
+        meta: { role: "hostel-manager" },
+        component: () => import("../views/hostels/Layout.vue"),
+        children: [
+            {
+                path: "",
+                name: "HostelsDashboard",
+                component: () => import("../views/hostels/Dashboard.vue"),
+            },
+            {
+                path: "rooms",
+                name: "HostelRooms",
+                component: () => import("../views/hostels/Rooms.vue"),
+            },
+            {
+                path: "students",
+                name: "HostelStudents",
+                component: () => import("../views/hostels/Students.vue"),
+            },
+            {
+                path: "staff",
+                name: "HostelStaff",
+                component: () => import("../views/hostels/Staff.vue"),
+            },
+            {
+                path: "maintenance",
+                name: "HostelMaintenance",
+                component: () => import("../views/hostels/Maintenance.vue"),
+            },
+        ],
+    },
+
     {
         path: "/unauthorized",
         name: "Unauthorized",

@@ -1,11 +1,29 @@
 <template>
     <div
-        class="flex flex-row justify-between bg-slate-100 dark:bg-slate-800 dark:text-slate-300 mb-2 rounded-lg p-1 mt-1 h-10"
+        :class="[
+            'flex flex-row justify-between items-center mb-2 rounded-lg p-1 mt-1 h-10 dark:text-slate-300 px-4',
+            isDark
+                ? ' bg-gradient-to-r from-slate-800 via-sky-950 to-blue-950'
+                : 'bg-slate-100',
+        ]"
     >
         <div class="flex">
             <span class="font-semibold" v-if="user.name"
                 >Hello ,{{ user.name }}!</span
             >
+        </div>
+        <div class="flex">
+            <span
+                class="font-semibold uppercase text-sm"
+                v-if="location != '404' && location != 'unauthorized'"
+                >{{ location }} Module</span
+            >
+            <span
+                class="cursor-pointer font-semibold animate animate-pulse text-red-500"
+                v-else
+            >
+                Sorry!
+            </span>
         </div>
 
         <div class="flex px-4 space-x-2">
@@ -16,7 +34,7 @@
                 <div class="indicator">
                     <i class="pi pi-bell"></i>
                     <span
-                        class="badge badge-xs bg-emerald-500 indicator-item"
+                        class="badge badge-xs bg-red-500 indicator-item animate-pulse"
                     ></span>
                 </div>
             </button>
@@ -69,6 +87,7 @@ import { ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useDark, useToggle } from "@vueuse/core";
 import { authStore } from "../../stores/authStore";
+import commonButton from "../commonButton.vue";
 
 const isDark = useDark({ disableTransition: false });
 const toggleDark = useToggle(isDark);
@@ -82,12 +101,14 @@ const { user } = authStore();
 
 const route = useRoute();
 const login = ref(false);
+const location = ref(null);
 
 onMounted(() => {
     // Access current route properties directly on route object
     if (route.path === "/login") {
         login.value = true;
     }
+    location.value = route.path;
 });
 
 // Watch for changes in the current route path
@@ -95,6 +116,7 @@ watch(
     () => route.path,
     (newPath) => {
         login.value = newPath === "/login";
+        location.value = route.path.split("/")[1];
     },
 );
 </script>

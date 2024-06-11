@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-white h-full dark:bg-gray-900">
+    <section class="bg-white h-full dark:bg-gray-900 min-h-screen">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div class="mx-auto max-w-screen-sm text-center">
                 <h1
@@ -15,7 +15,7 @@
                 <p
                     class="mb-4 text-lg font-light text-gray-500 dark:text-gray-400"
                 >
-                    Sorry, You are not allowed to view this pages..
+                    Sorry, You are not allowed to view these pages..
                 </p>
                 <cbutton buttonText="Take Me Back" :action="router.back"></cbutton>
             </div>
