@@ -1,20 +1,52 @@
 <template>
-    <div class="bg-slate-100 dark:bg-transparent min-h-screen">
+    <div class="bg-slate-100 dark:bg-sky-950 min-h-screen rounded-md">
         <div class="flex flex-wrap justify-around my-6 py-12 w-full gap-4">
             <StatCard /> <StatCard /> <StatCard /> <StatCard /><StatCard />
         </div>
         <div class="flex mt-4">
             <div
-                class="w-full flex flex-col md:flex-row justify-around items-center"
+                class="w-full flex flex-col md:flex-row justify-evenly items-center"
             >
-                <div class="w-full md:w-1/4 flex justify-center h-[40vh]">
-                    <DoughnutChart />
+                <div
+                    class="w-full flex flex-col justify-center items-center h-[30vh]"
+                >
+                    <div class="flex flex-col gap-4 mb-4">
+                        <div class="flex flex-row gap-4">
+                            <SmallStatCard /><SmallStatCard />
+                        </div>
+                        <div class="flex flex-row gap-4">
+                            <SmallStatCard /><SmallStatCard />
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <div
+                            class="radial-progress bg-white text-orange-500"
+                            style="--value: 89"
+                            role="progressbar"
+                        >
+                            89%
+                        </div>
+                        <div
+                            class="radial-progress bg-white text-emerald-500"
+                            style="--value: 70"
+                            role="progressbar"
+                        >
+                            70%
+                        </div>
+                        <div
+                            class="radial-progress bg-white text-lime-500"
+                            style="--value: 40"
+                            role="progressbar"
+                        >
+                            40%
+                        </div>
+                    </div>
                 </div>
-                <div class="w-full md:w-1/4 flex justify-center h-[40vh]">
+                <div class="w-full flex justify-center h-[30vh]">
                     <LineChart />
                 </div>
-                <div class="w-full md:w-2/4 flex justify-center h-[40vh]">
-                    <BarChart />
+                <div class="w-full flex justify-center h-[30vh]">
+                    <DoughnutChart />
                 </div>
             </div>
         </div>
@@ -70,23 +102,13 @@
                             </details>
                         </li>
                     </ul>
-                    <commonButton button-text="View All ..."></commonButton>
+                    <router-link to="/admin/users">
+                        <commonButton button-text="View All ..." />
+                    </router-link>
                 </CardMain>
-                <CardMain title="Upcoming Events">
-                    <ul class="menu rounded-box w-full">
-                        <li>Event 1</li>
-                        <li>Event 2</li>
-                        <li>Event 1</li>
-                        <li>Event 1</li>
-                        <li>Event 1</li>
-                        <li>Event 1</li>
-                        <li>Event 1</li>
-                        <li>Event 1</li>
-                        <li>Event 1</li>
-                    </ul>
-
-                    <commonButton button-text="View All ..."></commonButton>
-                </CardMain>
+                <div class="flex-1 h-full">
+                    <BarChart />
+                </div>
 
                 <Calendar class="shadow-lg" inline showWeek />
             </div>
@@ -95,6 +117,7 @@
 </template>
 <script setup>
 import StatCard from "../../components/Stats/Primary.vue";
+import SmallStatCard from "../../components/Stats/Small.vue";
 import Calendar from "primevue/calendar";
 import BarChart from "../../components/Charts/BarChart.vue";
 import LineChart from "../../components/Charts/LineChart.vue";

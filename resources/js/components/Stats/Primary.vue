@@ -3,7 +3,7 @@
         :class="
             'flex flex-row justify-between shadow-lg px-4 py-2 w-64 rounded-3xl ' +
             (isDark
-                ? 'bg-gradient-to-r from-slate-800 via-sky-950 to-sky-900'
+                ? 'bg-gradient-to-r from-slate-800 via-sky-950 to-sky-900 shadow-sky-700'
                 : 'bg-gradient-to-r from-white via-blue-50 to-sky-50')
         "
     >

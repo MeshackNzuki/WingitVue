@@ -187,12 +187,20 @@
                             </div>
                         </router-link>
                     </nav>
-                    <router-link to="admin/users">
+                    <div
+                        class="flex border border-dashed rounded-2xl justify-center items-center"
+                    >
                         <common-button
                             class="mt-10 shadow-sm"
                             button-text="Add New User"
                         ></common-button>
-                    </router-link>
+                        <SpeedDial
+                            :model="items"
+                            :radius="120"
+                            type="quarter-circle"
+                            direction="up-left"
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -678,6 +686,11 @@
                             class="mt-10 shadow-sm"
                             button-text="Add New User"
                         ></common-button>
+                        <SpeedDial
+                            :model="items"
+                            direction="right"
+                            :style="{ top: 'calc(50% - 2rem)', left: 0 }"
+                        />
                     </router-link>
                 </div>
             </div>
@@ -1501,6 +1514,7 @@ import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
 import { useRoute } from "vue-router";
 import { useDark } from "@vueuse/core";
 import CommonButton from "../commonButton.vue";
+import SpeedDial from "primevue/speeddial";
 
 const collapseShow = ref("hidden");
 const toggleCollapseShow = (classes) => {

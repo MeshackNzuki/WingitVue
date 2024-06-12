@@ -52,8 +52,8 @@ export default {
                 ],
                 datasets: [
                     {
-                        label: "Data One",
-                        backgroundColor: "#f87979",
+                        label: "Students",
+                        backgroundColor: "#0ea5e9",
                         data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
                     },
                 ],
