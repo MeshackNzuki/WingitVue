@@ -123,5 +123,5 @@ import BarChart from "../../components/Charts/BarChart.vue";
 import LineChart from "../../components/Charts/LineChart.vue";
 import DoughnutChart from "../../components/Charts/DoughnutChart.vue";
 import CardMain from "../../components/Card/CardMain.vue";
-import commonButton from "../../components/commonButton.vue";
+import commonButton from "../../components/CommonButton.vue";
 </script>

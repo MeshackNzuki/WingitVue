@@ -23,7 +23,7 @@
     </section>
 </template>
 <script setup>
-import commonButton from '../components/commonButton.vue';
+import commonButton from '../components/CommonButton.vue';
 import {useRouter} from 'vue-router'
 
 const cbutton  = commonButton;

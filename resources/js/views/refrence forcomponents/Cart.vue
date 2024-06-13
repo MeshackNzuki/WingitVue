@@ -364,7 +364,7 @@
 
 <script setup>
 import { useShoppingStore } from "../stores";
-import commonButton from "../components/commonButton.vue";
+import commonButton from "../components/CommonButton.vue";
 import { ref } from "vue";
 import axios from "axios";
 import { toast } from "vue3-toastify";

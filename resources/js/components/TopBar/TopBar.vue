@@ -87,7 +87,7 @@ import { ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useDark, useToggle } from "@vueuse/core";
 import { authStore } from "../../stores/authStore";
-import commonButton from "../commonButton.vue";
+import commonButton from "../CommonButton.vue";
 
 const isDark = useDark({ disableTransition: false });
 const toggleDark = useToggle(isDark);

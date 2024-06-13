@@ -67,6 +67,11 @@ const routes = [
                 component: () => import("../views/admissions/Alumni.vue"),
             },
             {
+                path: "continuing",
+                name: "AdmissionsContinuingStudents",
+                component: () => import("../views/admissions/Alumni.vue"),
+            },
+            {
                 path: "settings",
                 name: "AdmissionsSettings",
                 component: () => import("../views/admissions/Settings.vue"),

@@ -708,7 +708,7 @@
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                     >
-                        <router-link to="/admin/">
+                        <router-link to="/admissions/">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -720,7 +720,7 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="users">
+                        <router-link to="all">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -729,7 +729,31 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-users"></i>
                                 </div>
-                                Manage Users
+                                All Students
+                            </div>
+                        </router-link>
+                        <router-link to="continuing">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-users"></i>
+                                </div>
+                                Continuing
+                            </div>
+                        </router-link>
+                        <router-link to="alumni">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-users"></i>
+                                </div>
+                                Alumni
                             </div>
                         </router-link>
 
@@ -1513,7 +1537,7 @@ import { ref, onMounted, watch } from "vue";
 import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
 import { useRoute } from "vue-router";
 import { useDark } from "@vueuse/core";
-import CommonButton from "../commonButton.vue";
+import CommonButton from "../CommonButton.vue";
 import SpeedDial from "primevue/speeddial";
 
 const collapseShow = ref("hidden");
