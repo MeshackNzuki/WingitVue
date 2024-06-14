@@ -516,11 +516,11 @@
 import Table from "../../components/Tables/MainTable.vue";
 import CommonButton from "../../components/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const showModalFunc = (modalId) => {
-    const modalElement = document.getElementById(modalId).showModal();
+    document.getElementById(modalId).showModal();
 };
 
 const student = ref({
@@ -552,10 +552,15 @@ const onFileChange = (event) => {
     student.value.photo = event.target.files[0];
 };
 
+onMounted(async () => {
+    const response = await axios.get("students/");
+
+    console.log("students", response.data.data);
+});
+
 const submitForm = async () => {
     try {
         // validateForm();
-
         // Prepare form data
         const formData = new FormData();
         formData.append("firstName", student.value.firstName);

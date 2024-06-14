@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class Student extends Model
+class ClassModel extends Model
 {
     use HasFactory, HasRoles, HasApiTokens;
 
@@ -19,11 +19,6 @@ class Student extends Model
     public function courses()
     {
         return $this->hasMany(Course::class);
-    }
-
-    public function class()
-    {
-        return $this->belongsTo(ClassModel::class);
     }
 
    // Example of accessor or mutator:

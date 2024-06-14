@@ -132,10 +132,10 @@ class StudentController extends Controller
             'guardianEmail'      => 'required|email|max:255',
             'phone'              => 'required|string|max:255',
             'dormitory'          => 'required|string|max:255',
-            'photo'              => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'gender'             => 'required|string|in:Male,Female',
+            'photo'              => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gender'             => 'required|string',
             'dateofbirth'        => 'required|date',
-            'class'              => 'required|string|max:255',
+            'class_id'              => 'required|',
             'admission'          => 'required|string|max:255',
         ]);
 
@@ -146,9 +146,10 @@ class StudentController extends Controller
             'guardian_email'=> $request->input('guardianEmail'),
             'phone'         => $request->input('phone'),
             'dormitory'     => $request->input('dormitory'),
+            'photo'         => $photo,
             'gender'        => $request->input('gender'),
             'date_of_birth' => $request->input('dateofbirth'),
-            'class'         => $request->input('class'),
+            'class_id'         => $request->input('class_id'),
             'admission'     => $request->input('admission'),
         ]);
 
