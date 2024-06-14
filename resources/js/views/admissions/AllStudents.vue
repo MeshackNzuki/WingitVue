@@ -1,6 +1,6 @@
 <template>
     <Table
-        :headers="['ADM', 'NAME', 'CLASS', 'GUARDIAN', 'ACTION']"
+        :headers="['NAME', 'ADM', 'CLASS', 'GUARDIAN', 'ACTION']"
         title="All Students"
     >
         <template v-slot:actions>
@@ -13,7 +13,7 @@
             <Button icon="pi pi-upload" severity="secondary"
         /></template>
         <template v-slot:content>
-            <tr>
+            <tr v-for="(student, index) in studentData" :key="index">
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
                         <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
@@ -25,229 +25,312 @@
                                 alt="Alex Shatov"
                             />
                         </div>
-                        <div class="font-medium">Alex Shatov</div>
-                    </div>
-                </td>
-                <td class="p-2 whitespace-nowrap">
-                    <div class="text-left">alexshatov@gmail.com</div>
-                </td>
-                <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
-                        $2,890.66
-                    </div>
-                </td>
-                <td class="p-2 whitespace-nowrap">
-                    <div class="text-lg text-center">🇺🇸</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="p-2 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                            <img
-                                class="rounded-full"
-                                src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-06.jpg"
-                                width="40"
-                                height="40"
-                                alt="Philip Harbach"
-                            />
+                        <div class="font-medium">
+                            {{ student.first_name }}
+                            {{ student.second_name }}
                         </div>
-                        <div class="font-medium">Philip Harbach</div>
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left">philip.h@gmail.com</div>
+                    <div class="text-left">{{ student.admission }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-left font-medium text-green-500">
-                        $2,767.04
+                        {{ student.class?.level }}-
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-lg text-center">🇩🇪</div>
+                    <div class="text-lg text-center">
+                        {{ student.guardian_email }}
+                    </div>
                 </td>
-                <td>
-                    <!-- edit row -->
-                    <!-- Open the modal using ID.showModal() method -->
-
-                    <SmallButton
-                        classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
-                        :action="() => showModalFunc('my_modal_5')"
-                    />
-
-                    <button @click="() => showModalFunc('my_modal_5')">
-                        try
-                    </button>
-
-                    <dialog
-                        id="my_modal_5"
-                        class="modal modal-bottom sm:modal-middle"
-                    >
-                        <div
-                            class="modal-box dark:text-slate-400 dark:bg-sky-950"
-                        >
-                            <h3 class="font-bold text-lg">
-                                Edit Student ( Student name - Admission)
-                            </h3>
-                            <p class="py-4">
-                                Press ESC key or click the button below to close
-                            </p>
-                            <div class="modal-action">
-                                <form
-                                    class="flex flex-col gap-2"
-                                    @submit.prevent="submitForm"
-                                >
-                                    <span>Basic Student information </span>
+                <td class="p-2 whitespace-nowrap">
+                    <div class="text-lg text-center">
+                        <SmallButton
+                            classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
+                            button-text="Edit"
+                            :action="() => showModalFunc(student.id)"
+                        />
+                    </div>
+                </td>
+                <dialog
+                    :id="student.id"
+                    class="modal modal-bottom sm:modal-middle"
+                >
+                    <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
+                        <h3 class="font-bold text-lg">
+                            Edit Student Information
+                        </h3>
+                        <p class="py-4">
+                            Press ESC key or click the button below to close
+                        </p>
+                        <div class="modal-action">
+                            <form
+                                @submit.prevent="submitForm(student.id)"
+                                class="flex flex-col gap-2"
+                            >
+                                <span>Basic Student Information</span>
+                                <div class="flex flex-col w-full lg:flex-row">
                                     <div
-                                        class="flex flex-col w-full lg:flex-row"
+                                        class="grid flex-grow card rounded-sm p-1 place-items-center"
                                     >
-                                        <div
-                                            class="grid flex-grow card rounded-sm p-1 place-items-center"
-                                        >
-                                            <div>
-                                                <div class="col-span-2">
-                                                    <label
-                                                        for="firstName"
-                                                        class="block text-sm font-medium"
-                                                        >First Name</label
-                                                    >
-                                                    <input
-                                                        type="text"
-                                                        id="firstName"
-                                                        name="firstName"
-                                                        required
-                                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                        placeholder="Enter first name"
-                                                    />
-                                                </div>
-                                                <div class="col-span-2">
-                                                    <label
-                                                        for="secondName"
-                                                        class="block text-sm font-medium"
-                                                        >Second Name</label
-                                                    >
-                                                    <input
-                                                        type="text"
-                                                        id="secondName"
-                                                        name="secondName"
-                                                        required
-                                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                        placeholder="Enter second name"
-                                                    />
-                                                </div>
-                                                <div class="col-span-2">
-                                                    <label
-                                                        for="admission"
-                                                        class="block text-sm font-medium"
-                                                        >Admission Number</label
-                                                    >
-                                                    <input
-                                                        type="text"
-                                                        id="admission"
-                                                        name="admission"
-                                                        required
-                                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                        placeholder="Enter admission number"
-                                                    />
-                                                </div>
+                                        <div>
+                                            <div class="col-span-2">
+                                                <label
+                                                    for="first_name"
+                                                    class="block text-sm font-medium"
+                                                    >First Name</label
+                                                >
+                                                <input
+                                                    v-model="student.first_name"
+                                                    type="text"
+                                                    id="first_name"
+                                                    name="first_name"
+                                                    required
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                                    placeholder="Enter first name"
+                                                />
+                                                <span
+                                                    v-if="errors.first_name"
+                                                    class="text-red-500 text-sm"
+                                                    >{{
+                                                        errors.first_name
+                                                    }}</span
+                                                >
                                             </div>
-                                        </div>
-                                        <div
-                                            class="divider lg:divider-horizontal divider-info"
-                                        >
-                                            >
-                                        </div>
-                                        <div
-                                            class="grid flex-grow card p-1 rounded-sm place-items-center"
-                                        >
-                                            <div>
-                                                <div class="col-span-2">
-                                                    <label
-                                                        for="class"
-                                                        class="block text-sm font-medium"
-                                                        >Class</label
-                                                    >
-                                                    <input
-                                                        type="text"
-                                                        id="class"
-                                                        name="class"
-                                                        required
-                                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                        placeholder="Enter class"
-                                                    />
-                                                </div>
-                                                <div class="col-span-2">
-                                                    <label
-                                                        for="guardianEmail"
-                                                        class="block text-sm font-medium"
-                                                        >Guardian Email</label
-                                                    >
-                                                    <input
-                                                        type="email"
-                                                        id="guardianEmail"
-                                                        name="guardianEmail"
-                                                        required
-                                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                        placeholder="Enter guardian's email"
-                                                    />
-                                                </div>
-                                                <div class="col-span-2">
-                                                    <label
-                                                        for="phone"
-                                                        class="block text-sm font-medium"
-                                                        >Phone Number</label
-                                                    >
-                                                    <input
-                                                        type="tel"
-                                                        id="phone"
-                                                        name="phone"
-                                                        required
-                                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                        placeholder="Enter phone number"
-                                                    />
-                                                </div>
+                                            <div class="col-span-2">
+                                                <label
+                                                    for="second_name"
+                                                    class="block text-sm font-medium"
+                                                    >Second Name</label
+                                                >
+                                                <input
+                                                    v-model="
+                                                        student.second_name
+                                                    "
+                                                    type="text"
+                                                    id="second_name"
+                                                    name="second_name"
+                                                    required
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                                    placeholder="Enter second name"
+                                                />
+                                                <span
+                                                    v-if="errors.second_name"
+                                                    class="text-red-500 text-sm"
+                                                    >{{
+                                                        errors.second_name
+                                                    }}</span
+                                                >
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label
+                                                    for="dob"
+                                                    class="block text-sm font-medium"
+                                                    >Date of Birth</label
+                                                >
+                                                <input
+                                                    v-model="student.dob"
+                                                    type="date"
+                                                    id="dob"
+                                                    name="dob"
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                                />
+                                                <span
+                                                    v-if="errors.dob"
+                                                    class="text-red-500 text-sm"
+                                                    >{{ errors.dob }}</span
+                                                >
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label
+                                                    for="admission"
+                                                    class="block text-sm font-medium"
+                                                    >Admission Number</label
+                                                >
+                                                <input
+                                                    v-model="student.admission"
+                                                    type="text"
+                                                    id="admission"
+                                                    name="admission"
+                                                    required
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                                    placeholder="Enter admission number"
+                                                />
+                                                <span
+                                                    v-if="errors.admission"
+                                                    class="text-red-500 text-sm"
+                                                    >{{
+                                                        errors.admission
+                                                    }}</span
+                                                >
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="w-full">
-                                        <label
-                                            for="guardianEmail"
-                                            class="block text-sm font-medium"
-                                            >Select Hostel/Dormitory</label
-                                        >
-                                        <input
-                                            type="email"
-                                            id="Dormitory /Hostel"
-                                            name="D"
-                                            required
-                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                            placeholder="Enter guardian's email"
-                                        />
+                                    <div
+                                        class="divider lg:divider-horizontal divider-info"
+                                    ></div>
+                                    <div
+                                        class="grid flex-grow card p-1 rounded-sm place-items-center"
+                                    >
+                                        <div>
+                                            <!-- Gender -->
+                                            <div class="col-span-2">
+                                                <label
+                                                    for="gender"
+                                                    class="block text-sm font-medium"
+                                                    >Gender</label
+                                                >
+                                                <select
+                                                    v-model="student.gender"
+                                                    id="gender"
+                                                    name="gender"
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                                >
+                                                    <option value="">
+                                                        Select Gender
+                                                    </option>
+                                                    <option value="male">
+                                                        Male
+                                                    </option>
+                                                    <option value="female">
+                                                        Female
+                                                    </option>
+                                                    <option value="other">
+                                                        Other
+                                                    </option>
+                                                </select>
+                                                <span
+                                                    v-if="errors.gender"
+                                                    class="text-red-500 text-sm"
+                                                    >{{ errors.gender }}</span
+                                                >
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label
+                                                    for="class"
+                                                    class="block text-sm font-medium"
+                                                    >Class</label
+                                                >
+                                                <input
+                                                    v-model="student.class_id"
+                                                    type="text"
+                                                    id="class"
+                                                    name="class"
+                                                    required
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                                    placeholder="Enter class"
+                                                />
+                                                <span
+                                                    v-if="errors.class_id"
+                                                    class="text-red-500 text-sm"
+                                                    >{{ errors.class_id }}</span
+                                                >
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label
+                                                    for="guardian_email"
+                                                    class="block text-sm font-medium"
+                                                    >Guardian Email</label
+                                                >
+                                                <input
+                                                    v-model="
+                                                        student.guardian_email
+                                                    "
+                                                    type="email"
+                                                    id="guardian_email"
+                                                    name="guardian_email"
+                                                    required
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                                    placeholder="Enter guardian's email"
+                                                />
+                                                <span
+                                                    v-if="errors.guardian_email"
+                                                    class="text-red-500 text-sm"
+                                                    >{{
+                                                        errors.guardian_email
+                                                    }}</span
+                                                >
+                                            </div>
+                                            <div class="col-span-2">
+                                                <label
+                                                    for="phone"
+                                                    class="block text-sm font-medium"
+                                                    >Phone Number</label
+                                                >
+                                                <input
+                                                    v-model="student.phone"
+                                                    type="tel"
+                                                    id="phone"
+                                                    name="phone"
+                                                    required
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                                    placeholder="Enter phone number"
+                                                />
+                                                <span
+                                                    v-if="errors.phone"
+                                                    class="text-red-500 text-sm"
+                                                    >{{ errors.phone }}</span
+                                                >
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="w-full">
-                                        <label
-                                            for="photo"
-                                            class="block text-sm font-medium"
-                                            >Student Photo (Drag drop)</label
-                                        >
-                                        <input
-                                            type="file"
-                                            id="photo"
-                                            name="photo"
-                                            accept="image/*"
-                                            class="mt-1 block w-full px-6 py-6 border border-dashed border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                        />
-                                    </div>
-                                    <div class="col-span-2 flex justify-end">
-                                        <CommonButton />
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+
+                                <div class="w-full">
+                                    <label
+                                        for="dormitory"
+                                        class="block text-sm font-medium"
+                                        >Select Hostel/Dormitory</label
+                                    >
+                                    <input
+                                        v-model="student.dormitory"
+                                        type="text"
+                                        id="dormitory"
+                                        name="dormitory"
+                                        required
+                                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                        placeholder="Enter dormitory/hostel name"
+                                    />
+                                    <span
+                                        v-if="errors.dormitory"
+                                        class="text-red-500 text-sm"
+                                        >{{ errors.dormitory }}</span
+                                    >
+                                </div>
+                                <div class="w-full">
+                                    <label
+                                        for="photo"
+                                        class="block text-sm font-medium"
+                                        >Student Photo (Drag drop)</label
+                                    >
+                                    <input
+                                        ref="photoInput"
+                                        type="file"
+                                        id="photo"
+                                        name="photo"
+                                        accept="image/*"
+                                        @change="onFileChange"
+                                        class="mt-1 block w-full px-6 py-6 border border-dashed border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                    />
+                                    <span
+                                        v-if="errors.photo"
+                                        class="text-red-500 text-sm"
+                                        >{{ errors.photo }}</span
+                                    >
+                                </div>
+                                <div class="col-span-2 flex justify-end">
+                                    <CommonButton
+                                        button-text="Submit"
+                                        :action="() => submitForm(student.id)"
+                                    />
+                                </div>
+                            </form>
                         </div>
-                    </dialog>
-                    <!-- end edit row -->
-                </td>
+                    </div>
+                </dialog>
             </tr>
+
             <!-- create student -->
 
             <dialog id="addstudent" class="modal modal-bottom sm:modal-middle">
@@ -266,44 +349,44 @@
                                     <div>
                                         <div class="col-span-2">
                                             <label
-                                                for="firstName"
+                                                for="first_name"
                                                 class="block text-sm font-medium"
                                                 >First Name</label
                                             >
                                             <input
-                                                v-model="student.firstName"
+                                                v-model="student.first_name"
                                                 type="text"
-                                                id="firstName"
-                                                name="firstName"
+                                                id="first_name"
+                                                name="first_name"
                                                 required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
                                                 placeholder="Enter first name"
                                             />
                                             <span
-                                                v-if="errors.firstName"
+                                                v-if="errors.first_name"
                                                 class="text-red-500 text-sm"
-                                                >{{ errors.firstName }}</span
+                                                >{{ errors.first_name }}</span
                                             >
                                         </div>
                                         <div class="col-span-2">
                                             <label
-                                                for="secondName"
+                                                for="second_name"
                                                 class="block text-sm font-medium"
                                                 >Second Name</label
                                             >
                                             <input
-                                                v-model="student.secondName"
+                                                v-model="student.second_name"
                                                 type="text"
-                                                id="secondName"
-                                                name="secondName"
+                                                id="second_name"
+                                                name="second_name"
                                                 required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
                                                 placeholder="Enter second name"
                                             />
                                             <span
-                                                v-if="errors.secondName"
+                                                v-if="errors.second_name"
                                                 class="text-red-500 text-sm"
-                                                >{{ errors.secondName }}</span
+                                                >{{ errors.second_name }}</span
                                             >
                                         </div>
                                         <div class="col-span-2">
@@ -410,24 +493,24 @@
                                         </div>
                                         <div class="col-span-2">
                                             <label
-                                                for="guardianEmail"
+                                                for="guardian_email"
                                                 class="block text-sm font-medium"
                                                 >Guardian Email</label
                                             >
                                             <input
-                                                v-model="student.guardianEmail"
+                                                v-model="student.guardian_email"
                                                 type="email"
-                                                id="guardianEmail"
-                                                name="guardianEmail"
+                                                id="guardian_email"
+                                                name="guardian_email"
                                                 required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
                                                 placeholder="Enter guardian's email"
                                             />
                                             <span
-                                                v-if="errors.guardianEmail"
+                                                v-if="errors.guardian_email"
                                                 class="text-red-500 text-sm"
                                                 >{{
-                                                    errors.guardianEmail
+                                                    errors.guardian_email
                                                 }}</span
                                             >
                                         </div>
@@ -523,12 +606,13 @@ const showModalFunc = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 
+const studentData = ref();
 const student = ref({
-    firstName: "",
-    secondName: "",
+    first_name: "",
+    second_name: "",
     admission: "",
     class_id: "",
-    guardianEmail: "",
+    guardian_email: "",
     phone: "",
     dormitory: "",
     photo: null,
@@ -536,11 +620,11 @@ const student = ref({
 });
 
 const errors = ref({
-    firstName: "",
-    secondName: "",
+    first_name: "",
+    second_name: "",
     admission: "",
     class_id: "",
-    guardianEmail: "",
+    guardian_email: "",
     phone: "",
     dormitory: "",
     photo: "",
@@ -554,8 +638,7 @@ const onFileChange = (event) => {
 
 onMounted(async () => {
     const response = await axios.get("students/");
-
-    console.log("students", response.data.data);
+    studentData.value = response.data.data.data;
 });
 
 const submitForm = async () => {
@@ -563,11 +646,11 @@ const submitForm = async () => {
         // validateForm();
         // Prepare form data
         const formData = new FormData();
-        formData.append("firstName", student.value.firstName);
-        formData.append("secondName", student.value.secondName);
+        formData.append("first_name", student.value.first_name);
+        formData.append("second_name", student.value.second_name);
         formData.append("admission", student.value.admission);
         formData.append("class_id", student.value.class_id);
-        formData.append("guardianEmail", student.value.guardianEmail);
+        formData.append("guardian_email", student.value.guardian_email);
         formData.append("phone", student.value.phone);
         formData.append("dormitory", student.value.dormitory);
         formData.append("photo", student.value.photo);
@@ -595,13 +678,13 @@ const validateForm = () => {
     });
 
     // Validate first name
-    if (!student.value.firstName) {
-        errors.value.firstName = "First name is required";
+    if (!student.value.first_name) {
+        errors.value.first_name = "First name is required";
     }
 
     // Validate second name
-    if (!student.value.secondName) {
-        errors.value.secondName = "Second name is required";
+    if (!student.value.second_name) {
+        errors.value.second_name = "Second name is required";
     }
 
     // Validate admission number
@@ -615,10 +698,10 @@ const validateForm = () => {
     }
 
     // Validate guardian email
-    if (!student.value.guardianEmail) {
-        errors.value.guardianEmail = "Guardian email is required";
-    } else if (!validateEmail(student.value.guardianEmail)) {
-        errors.value.guardianEmail = "Invalid email format";
+    if (!student.value.guardian_email) {
+        errors.value.guardian_email = "Guardian email is required";
+    } else if (!validateEmail(student.value.guardian_email)) {
+        errors.value.guardian_email = "Invalid email format";
     }
 
     // Validate phone number

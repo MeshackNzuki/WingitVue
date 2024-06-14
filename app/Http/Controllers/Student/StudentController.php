@@ -52,9 +52,9 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'firstName'          => 'required|string|max:255',
-            'secondName'         => 'required|string|max:255',
-            'guardianEmail'      => 'required|email|max:255',
+            'first_name'          => 'required|string|max:255',
+            'second_name'         => 'required|string|max:255',
+            'guardian_email'      => 'required|email|max:255',
             'phone'              => 'required|string|max:255',
             'dormitory'          => 'required|string|max:255',
             'photo'              => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -73,9 +73,9 @@ class StudentController extends Controller
 
         // Create student record
         $student = Student::create([
-            'first_name'    => $request->input('firstName'),
-            'second_name'   => $request->input('secondName'),
-            'guardian_email'=> $request->input('guardianEmail'),
+            'first_name'    => $request->input('first_name'),
+            'second_name'   => $request->input('second_name'),
+            'guardian_email'=> $request->input('guardian_email'),
             'phone'         => $request->input('phone'),
             'dormitory'     => $request->input('dormitory'),
             'photo'         => $photo,
@@ -127,9 +127,9 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         $request->validate([
-            'firstName'          => 'required|string|max:255',
-            'secondName'         => 'required|string|max:255',
-            'guardianEmail'      => 'required|email|max:255',
+            'first_name'          => 'required|string|max:255',
+            'second_name'         => 'required|string|max:255',
+            'guardian_email'      => 'required|email|max:255',
             'phone'              => 'required|string|max:255',
             'dormitory'          => 'required|string|max:255',
             'photo'              => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -141,9 +141,9 @@ class StudentController extends Controller
 
         // Update student record
         $student->update([
-            'first_name'    => $request->input('firstName'),
-            'second_name'   => $request->input('secondName'),
-            'guardian_email'=> $request->input('guardianEmail'),
+            'first_name'    => $request->input('first_name'),
+            'second_name'   => $request->input('second_name'),
+            'guardian_email'=> $request->input('guardian_email'),
             'phone'         => $request->input('phone'),
             'dormitory'     => $request->input('dormitory'),
             'photo'         => $photo,

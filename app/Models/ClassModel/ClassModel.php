@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Student;
+namespace App\Models\ClassModel;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,25 +11,8 @@ class ClassModel extends Model
 {
     use HasFactory, HasRoles, HasApiTokens;
 
+    public $table = 'classes';
+
     protected $guarded = [];
 
-   // Define relationships and other methods as needed
-
-   // Example of relationships:
-    public function courses()
-    {
-        return $this->hasMany(Course::class);
-    }
-
-   // Example of accessor or mutator:
-    public function getFullNameAttribute()
-    {
-        return "{$this->first_name} {$this->last_name}";
-    }
-
-    //Example of scope:
-    public function scopeActive($query)
-    {
-        return $query->where('active', true);
-    }
 }
