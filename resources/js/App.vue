@@ -7,7 +7,6 @@ import Sidebar from "./components/Sidebar/Sidebar.vue";
 import TopBar from "./components/TopBar/TopBar.vue";
 import MobileNav from "./components/MobileNav.vue";
 import { ref, onMounted, watch } from "vue";
-import Bg from "./assets/images/shoe.jpg";
 
 const route = useRoute();
 const login = ref(false);
@@ -26,6 +25,13 @@ watch(
 );
 </script>
 <template>
+    <div>
+        <div
+            id="loader"
+            class="hidden bg-black bg-opacity-25 absolute z-50 top-0 bottom-0 right-0 left-0"
+        ></div>
+    </div>
+
     <div class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden">
         <div :class="login ? '' : 'ms-64 p-4'">
             <Sidebar />

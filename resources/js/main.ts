@@ -7,14 +7,10 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import PrimeVue from "primevue/config";
 import ConfirmationService from "primevue/confirmationservice";
 import Button from "primevue/button";
-
 import ConfirmDialog from "primevue/confirmdialog";
-
 import "primeicons/primeicons.css";
-
 import "vue-final-modal/style.css";
-
-import "./AxiosConfig.js";
+import "./AxiosConfig";
 import "primevue/resources/themes/aura-light-green/theme.css";
 
 import App from "./App.vue";

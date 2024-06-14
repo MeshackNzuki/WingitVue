@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Instructor;
 
 use App\User;
 use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
 class InstructorController extends Controller

@@ -358,7 +358,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const { user, is_authenticated } = authStore();
-    console.log("Checking access...");
+    console.log("Checking access...", user.token);
 
     if (is_authenticated) {
         const userRole = user?.roles[0];

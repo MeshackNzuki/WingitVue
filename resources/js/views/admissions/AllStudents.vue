@@ -257,10 +257,7 @@
                         Press ESC key or click the button below to close
                     </p>
                     <div class="modal-action">
-                        <form
-                            class="flex flex-col gap-2"
-                            @submit.prevent="submitForm"
-                        >
+                        <form method="dialog" class="flex flex-col gap-2">
                             <span>Basic Student Information</span>
                             <div class="flex flex-col w-full lg:flex-row">
                                 <div
@@ -311,6 +308,25 @@
                                         </div>
                                         <div class="col-span-2">
                                             <label
+                                                for="dob"
+                                                class="block text-sm font-medium"
+                                                >Date of Birth</label
+                                            >
+                                            <input
+                                                v-model="student.dob"
+                                                type="date"
+                                                id="dob"
+                                                name="dob"
+                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                            />
+                                            <span
+                                                v-if="errors.dob"
+                                                class="text-red-500 text-sm"
+                                                >{{ errors.dob }}</span
+                                            >
+                                        </div>
+                                        <div class="col-span-2">
+                                            <label
                                                 for="admission"
                                                 class="block text-sm font-medium"
                                                 >Admission Number</label
@@ -339,6 +355,38 @@
                                     class="grid flex-grow card p-1 rounded-sm place-items-center"
                                 >
                                     <div>
+                                        <!-- Gender -->
+                                        <div class="col-span-2">
+                                            <label
+                                                for="gender"
+                                                class="block text-sm font-medium"
+                                                >Gender</label
+                                            >
+                                            <select
+                                                v-model="student.gender"
+                                                id="gender"
+                                                name="gender"
+                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                            >
+                                                <option value="">
+                                                    Select Gender
+                                                </option>
+                                                <option value="male">
+                                                    Male
+                                                </option>
+                                                <option value="female">
+                                                    Female
+                                                </option>
+                                                <option value="other">
+                                                    Other
+                                                </option>
+                                            </select>
+                                            <span
+                                                v-if="errors.gender"
+                                                class="text-red-500 text-sm"
+                                                >{{ errors.gender }}</span
+                                            >
+                                        </div>
                                         <div class="col-span-2">
                                             <label
                                                 for="class"
@@ -346,7 +394,7 @@
                                                 >Class</label
                                             >
                                             <input
-                                                v-model="student.class"
+                                                v-model="student.class_id"
                                                 type="text"
                                                 id="class"
                                                 name="class"
@@ -355,9 +403,9 @@
                                                 placeholder="Enter class"
                                             />
                                             <span
-                                                v-if="errors.class"
+                                                v-if="errors.class_id"
                                                 class="text-red-500 text-sm"
-                                                >{{ errors.class }}</span
+                                                >{{ errors.class_id }}</span
                                             >
                                         </div>
                                         <div class="col-span-2">
@@ -407,6 +455,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="w-full">
                                 <label
                                     for="dormitory"
@@ -440,6 +489,7 @@
                                     id="photo"
                                     name="photo"
                                     accept="image/*"
+                                    @change="onFileChange"
                                     class="mt-1 block w-full px-6 py-6 border border-dashed border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
                                 />
                                 <span
@@ -449,9 +499,10 @@
                                 >
                             </div>
                             <div class="col-span-2 flex justify-end">
-                                <CommonButton @click="submitForm"
-                                    >Submit</CommonButton
-                                >
+                                <CommonButton
+                                    button-text="Submit"
+                                    :action="() => submitForm()"
+                                />
                             </div>
                         </form>
                     </div>
@@ -465,8 +516,8 @@
 import Table from "../../components/Tables/MainTable.vue";
 import CommonButton from "../../components/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
-
-import { useConfirm } from "primevue/useconfirm";
+import { ref } from "vue";
+import axios from "axios";
 
 const showModalFunc = (modalId) => {
     const modalElement = document.getElementById(modalId).showModal();
@@ -476,41 +527,49 @@ const student = ref({
     firstName: "",
     secondName: "",
     admission: "",
-    class: "",
+    class_id: "",
     guardianEmail: "",
     phone: "",
     dormitory: "",
-    photo: null, // Assuming you'll handle photo upload separately
+    photo: null,
+    gender: "",
 });
 
 const errors = ref({
     firstName: "",
     secondName: "",
     admission: "",
-    class: "",
+    class_id: "",
     guardianEmail: "",
     phone: "",
     dormitory: "",
     photo: "",
+    dob: "",
+    gender: "",
 });
+//handle file
+const onFileChange = (event) => {
+    student.value.photo = event.target.files[0];
+};
 
 const submitForm = async () => {
     try {
-        // Validate form inputs before submitting (you can implement this part)
-        validateForm();
+        // validateForm();
 
         // Prepare form data
         const formData = new FormData();
         formData.append("firstName", student.value.firstName);
         formData.append("secondName", student.value.secondName);
         formData.append("admission", student.value.admission);
-        formData.append("class", student.value.class);
+        formData.append("class_id", student.value.class_id);
         formData.append("guardianEmail", student.value.guardianEmail);
         formData.append("phone", student.value.phone);
         formData.append("dormitory", student.value.dormitory);
-        formData.append("photo", student.value.photo); // Handle photo upload
+        formData.append("photo", student.value.photo);
+        formData.append("dateofbirth", student.value.dob);
+        formData.append("gender", student.value.gender);
 
-        const response = await axios.post("/api/addStudent", formData, {
+        const response = await axios.post("students/", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
@@ -520,26 +579,77 @@ const submitForm = async () => {
 
         clearForm();
     } catch (error) {
-        if (error.response) {
-            if (error.response.status === 422) {
-                const { errors: validationErrors } = error.response.data;
-                handleValidationErrors(validationErrors);
-            } else {
-                console.error("Error:", error.response.data.message);
-            }
-        } else if (error.request) {
-            console.error("No response received:", error.request);
-        } else {
-            console.error("Request setup error:", error.message);
-        }
+        console.log("first", error);
     }
 };
 
 const validateForm = () => {
+    // Reset all error messages
+    Object.keys(errors.value).forEach((key) => {
+        errors.value[key] = "";
+    });
+
+    // Validate first name
     if (!student.value.firstName) {
         errors.value.firstName = "First name is required";
-    } else {
-        errors.value.firstName = "";
     }
+
+    // Validate second name
+    if (!student.value.secondName) {
+        errors.value.secondName = "Second name is required";
+    }
+
+    // Validate admission number
+    if (!student.value.admission) {
+        errors.value.admission = "Admission number is required";
+    }
+
+    // Validate class
+    if (!student.value.class_id) {
+        errors.value.class_id = "Class is required";
+    }
+
+    // Validate guardian email
+    if (!student.value.guardianEmail) {
+        errors.value.guardianEmail = "Guardian email is required";
+    } else if (!validateEmail(student.value.guardianEmail)) {
+        errors.value.guardianEmail = "Invalid email format";
+    }
+
+    // Validate phone number
+    if (!student.value.phone) {
+        errors.value.phone = "Phone number is required";
+    } else if (!validatePhone(student.value.phone)) {
+        errors.value.phone = "Invalid phone number format";
+    }
+
+    // Validate dormitory
+    if (!student.value.dormitory) {
+        errors.value.dormitory = "Dormitory is required";
+    }
+
+    // Validate photo
+    if (!student.value.photo) {
+        errors.value.photo = "Student photo is required";
+    }
+    if (!student.value.dob) {
+        errors.value.dob = "Date of Birth is required";
+    }
+    if (!student.value.gender) {
+        errors.value.gender = "Gender is required";
+    }
+};
+
+const validateEmail = (email) => {
+    // Simple email validation regex
+    const re =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
+    return re.test(email);
+};
+
+const validatePhone = (phone) => {
+    // Kenyan phone number validation regex
+    const re = /^(?:\+254|0)?(7|1)\d{8}$/;
+    return re.test(phone);
 };
 </script>
