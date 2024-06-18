@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\UserManagementController;
 
 // admin
 use App\Http\Controllers\Admin\AdminController;
+
 //student
 use App\Http\Controllers\Student\StudentController;
 //end student
@@ -55,9 +57,16 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
-        // Add more admin routes here
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'dashboard']);
+    
+        // User Management Routes
+        Route::get('/users', [UserManagementController::class, 'index']);
+        Route::post('/users', [UserManagementController::class, 'store']);
+        Route::get('/users/{id}', [UserManagementController::class, 'show']);
+        Route::put('/users/{id}', [UserManagementController::class, 'update']);
+        Route::delete('/users/{id}', [UserManagementController::class, 'destroy']);
     });
 
     // Routes for managing students
@@ -178,5 +187,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', [GradingController::class, 'store']);
         // Add more routes as needed
     });
+
+
 
 });
