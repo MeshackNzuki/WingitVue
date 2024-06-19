@@ -8,8 +8,8 @@
         ]"
     >
         <div class="flex">
-            <span class="font-semibold" v-if="user.name"
-                >Hello ,{{ user.name }}!</span
+            <span class="font-semibold" v-if="user?.name"
+                >Hello ,{{ user?.name }}!</span
             >
         </div>
         <div class="flex">

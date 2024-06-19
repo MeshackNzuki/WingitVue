@@ -25,11 +25,11 @@ watch(
 );
 </script>
 <template>
-    <div>
-        <div
-            id="loader"
-            class="hidden bg-black bg-opacity-25 absolute z-50 top-0 bottom-0 right-0 left-0"
-        ></div>
+    <div
+        id="loader"
+        class="fixed hidden inset-0 flex justify-center items-center bg-sky-900 bg-opacity-10 z-50"
+    >
+        <div class="axiosspinner"></div>
     </div>
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden">
@@ -45,3 +45,36 @@ watch(
         </div>
     </div>
 </template>
+<style>
+.axiosspinner {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    border-color: #0c4a6e #0000;
+    animation: l16 1s infinite linear;
+}
+.axiosspinner::before,
+.axiosspinner::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    border-radius: 50%;
+}
+.axiosspinner::before {
+    border-color: #f03355 #0000;
+    animation: inherit;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+}
+.axiosspinner::after {
+    margin: 8px;
+}
+@keyframes l16 {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+</style>

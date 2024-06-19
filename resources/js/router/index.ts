@@ -95,6 +95,26 @@ const routes = [
                 name: "LibraryDashboard",
                 component: () => import("../views/library/Dashboard.vue"),
             },
+            {
+                path: "all_books",
+                name: "LibraryAllBooks",
+                component: () => import("../views/library/All_books.vue"),
+            },
+            {
+                path: "lost",
+                name: "LibraryLostBooks",
+                component: () => import("../views/library/Lost.vue"),
+            },
+            {
+                path: "count_subject",
+                name: "LibraryCountSubject",
+                component: () => import("../views/library/Count_subject.vue"),
+            },
+            {
+                path: "count_title",
+                name: "LibraryCountTitle",
+                component: () => import("../views/library/Count_title.vue"),
+            },
 
             {
                 path: "settings",
@@ -102,9 +122,24 @@ const routes = [
                 component: () => import("../views/library/Settings.vue"),
             },
             {
-                path: "tables",
-                name: "LibraryTables",
-                component: () => import("../views/library/Tables.vue"),
+                path: "daily_reports",
+                name: "Daily_reports",
+                component: () => import("../views/library/Daily_reports.vue"),
+            },
+            {
+                path: "weekly_reports",
+                name: "Weekly_reports",
+                component: () => import("../views/library/Weekly_reports.vue"),
+            },
+            {
+                path: "alumni",
+                name: "LibraryAlumni",
+                component: () => import("../views/library/Alumni.vue"),
+            },
+            {
+                path: "/all_students",
+                name: "LibraryStudents",
+                component: () => import("../views/library/All_students.vue"),
             },
             {
                 path: "profile",
@@ -358,7 +393,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const { user, is_authenticated } = authStore();
-    console.log("Checking access...", user.token);
+    console.log("Checking access...", user?.token);
 
     if (is_authenticated) {
         const userRole = user?.roles[0];

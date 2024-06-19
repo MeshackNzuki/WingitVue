@@ -215,7 +215,7 @@
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                     >
-                        <router-link to="/admin/">
+                        <router-link to="/library/">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -227,44 +227,114 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="users">
+                        <router-link to="library/all_books">
                             <div
                                 role="button"
                                 tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-book"></i>
+                                </div>
+                                All Books
+                            </div>
+                        </router-link>
+
+                        <router-link to="library/all_students">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
                                     <i class="pi pi-users"></i>
                                 </div>
-                                Manage Users
+                                All Students
                             </div>
                         </router-link>
-
-                        <router-link to="profile">
+                        <router-link to="library/issued">
                             <div
                                 role="button"
                                 tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-user"></i>
+                                    <i class="pi pi-file-export"></i>
                                 </div>
-                                Profile
+                                Borrowed Books
                             </div>
                         </router-link>
-
-                        <router-link to="settings">
+                        <router-link to="library/lost">
                             <div
                                 role="button"
                                 tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-exclamation-circle"></i>
                                 </div>
-                                Settings
+                                Lost Books
                             </div>
                         </router-link>
+
+                        <div
+                            class="dropdown dropdown-bottom leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-address-book"></i>
+                                </div>
+                                Book Count <i class="pi pi-angle-down mt-1"></i>
+                            </div>
+                            <ul
+                                tabindex="0"
+                                class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                            >
+                                <li>
+                                    <router-link to="library/count_subject"
+                                        >Count /Subject</router-link
+                                    >
+                                </li>
+                                <li>
+                                    <router-link to="library/count_title">
+                                        Count /Title</router-link
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            class="dropdown dropdown-bottom leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-file-excel"></i>
+                                </div>
+                                Reports <i class="pi pi-angle-down mt-1"></i>
+                            </div>
+                            <ul
+                                tabindex="0"
+                                class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                            >
+                                <li>
+                                    <router-link to="library/daily_reports"
+                                        >Daily</router-link
+                                    >
+                                </li>
+                                <li>
+                                    <router-link to="library/monthly_reports"
+                                        >Monthly
+                                    </router-link>
+                                </li>
+                            </ul>
+                        </div>
 
                         <router-link to="logout">
                             <div
