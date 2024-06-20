@@ -57,7 +57,7 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="users">
+                        <router-link to="/admin/users">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -70,7 +70,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="profile">
+                        <router-link to="/admin/profile">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -83,7 +83,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="settings">
+                        <router-link to="/admin/settings">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -227,7 +227,7 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="library/all_books">
+                        <router-link to="/library/all_books">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -240,7 +240,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="library/all_students">
+                        <router-link to="/library/all_students">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -252,7 +252,7 @@
                                 All Students
                             </div>
                         </router-link>
-                        <router-link to="library/issued">
+                        <router-link to="/library/issued">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -264,7 +264,7 @@
                                 Borrowed Books
                             </div>
                         </router-link>
-                        <router-link to="library/lost">
+                        <router-link to="/library/lost">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -295,12 +295,12 @@
                                 class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                             >
                                 <li>
-                                    <router-link to="library/count_subject"
+                                    <router-link to="/library/count_subject"
                                         >Count /Subject</router-link
                                     >
                                 </li>
                                 <li>
-                                    <router-link to="library/count_title">
+                                    <router-link to="/library/count_title">
                                         Count /Title</router-link
                                     >
                                 </li>
@@ -324,12 +324,12 @@
                                 class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                             >
                                 <li>
-                                    <router-link to="library/daily_reports"
+                                    <router-link to="/library/daily_reports"
                                         >Daily</router-link
                                     >
                                 </li>
                                 <li>
-                                    <router-link to="library/monthly_reports"
+                                    <router-link to="/library/monthly_reports"
                                         >Monthly
                                     </router-link>
                                 </li>

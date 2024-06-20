@@ -101,6 +101,11 @@ const routes = [
                 component: () => import("../views/library/All_books.vue"),
             },
             {
+                path: "issued",
+                name: "LibraryIssued",
+                component: () => import("../views/library/Borrowed.vue"),
+            },
+            {
                 path: "lost",
                 name: "LibraryLostBooks",
                 component: () => import("../views/library/Lost.vue"),
@@ -137,7 +142,7 @@ const routes = [
                 component: () => import("../views/library/Alumni.vue"),
             },
             {
-                path: "/all_students",
+                path: "all_students",
                 name: "LibraryStudents",
                 component: () => import("../views/library/All_students.vue"),
             },

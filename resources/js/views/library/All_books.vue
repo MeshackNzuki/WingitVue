@@ -1,7 +1,15 @@
 <template>
     <Table
-        :headers="['NAME', 'ADM', 'CLASS', 'GUARDIAN', 'ACTION']"
-        title="All Students"
+        :headers="[
+            'BOOK NAME',
+            'BOOK NUMBER',
+            "CATEGORY",
+            'AUTHOR',
+             "ISBN",
+            'STATUS',
+            'ACTION',
+        ]"
+        title="All Books"
     >
         <template v-slot:actions>
             <SmallButton
@@ -595,149 +603,185 @@
         <!-- end create student -->
     </Table>
 </template>
-<script setup>
-import Table from "../../components/Tables/MainTable.vue";
-import CommonButton from "../../components/CommonButton.vue";
-import SmallButton from "../../components/Buttons/Small.vue";
-import { ref, onMounted } from "vue";
-import axios from "axios";
+<script>
+import { ref, onMounted, watch } from 'vue';
+import axios from 'axios';
 
-const showModalFunc = (modalId) => {
-    document.getElementById(modalId).showModal();
-};
+    const books = ref([]);
+    const pagination = ref({});
+    const links = ref([]);
+    const query = ref('');
+    const reload = ref(false);
 
-const studentData = ref();
-const student = ref({
-    first_name: "",
-    second_name: "",
-    admission: "",
-    class_id: "",
-    guardian_email: "",
-    phone: "",
-    dormitory: "",
-    photo: null,
-    gender: "",
-});
 
-const errors = ref({
-    first_name: "",
-    second_name: "",
-    admission: "",
-    class_id: "",
-    guardian_email: "",
-    phone: "",
-    dormitory: "",
-    photo: "",
-    dob: "",
-    gender: "",
-});
-//handle file
-const onFileChange = (event) => {
-    student.value.photo = event.target.files[0];
-};
-
-onMounted(async () => {
-    const response = await axios.get("students/");
-    studentData.value = response.data.data.data;
-});
-
-const submitForm = async () => {
-    try {
-        // validateForm();
-        // Prepare form data
-        const formData = new FormData();
-        formData.append("first_name", student.value.first_name);
-        formData.append("second_name", student.value.second_name);
-        formData.append("admission", student.value.admission);
-        formData.append("class_id", student.value.class_id);
-        formData.append("guardian_email", student.value.guardian_email);
-        formData.append("phone", student.value.phone);
-        formData.append("dormitory", student.value.dormitory);
-        formData.append("photo", student.value.photo);
-        formData.append("dateofbirth", student.value.dob);
-        formData.append("gender", student.value.gender);
-
-        const response = await axios.post("students/", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
+    const fetchData = () => {
+      console.log("the query is", query.value);
+      axios.get(`/books/${query.value}`)
+        .then(response => {
+          console.log(response.data.data);
+          pagination.value = response.data;
+          links.value = response.data.links;
+          books.value = response.data.data;
+        })
+        .catch(error => {
+          console.log(error);
         });
+    };
 
-        console.log("Student added successfully:", response.data);
 
-        clearForm();
-    } catch (error) {
-        console.log("first", error);
-    }
-};
 
-const validateForm = () => {
-    // Reset all error messages
-    Object.keys(errors.value).forEach((key) => {
-        errors.value[key] = "";
+    onMounted(() => {
+      handleLoadOptions();
+      fetchData();
     });
 
-    // Validate first name
-    if (!student.value.first_name) {
-        errors.value.first_name = "First name is required";
+    watch([query, reload], () => {
+      fetchData();
+    });
+
+
+
+    const issueBookStaff = (book_id) => {
+    axios
+      .post("/book-issue-staff/create", {
+        id_number: book_issue_identity,
+        book_id: book_id,
+      })
+      .then((response) => {
+        console.log(response);
+        toast.info(response.data);
+        reload ? setReload(false) : setReload(true);
+      });
+    setShowModal4(false);
+  };
+
+  const issueBook = (book_id) => {
+    axios
+      .post("/book-issue/create", {
+        adm: book_issue_identity,
+        book_id: book_id,
+      })
+      .then((response) => {
+        console.log(response);
+        toast.info(response.data);
+        reload ? setReload(false) : setReload(true);
+      });
+    setShowModal3(false);
+  };
+
+  const handleBookEdit = (bookname, book_id) => {
+    setShowModal5(true);
+    setBook_edit_id(book_id);
+    setBook_edit_name(bookname);
+    axios.get("book_issue_staff/view/").then((response) => {});
+  };
+
+  const handleIssue = (bookname, book_id) => {
+    setShowModal3(true);
+    setBook_issue_id(book_id);
+    setBook_issue_name(bookname);
+    setShowModal3(true);
+    axios.get("book_issue/view/").then((response) => {});
+  };
+  
+//edit book
+  const handleSubmitEdit = () => {
+    console.log(createInputs);
+
+    axios
+      .post("book/update/" + book_edit_id, createInputs)
+      .then((response) => {
+        console.log(response);
+        setShowModal(false);
+        toast.success("success");
+        reload ? setReload(false) : setReload(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
+
+ //create book
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setCreateInputs((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = () => {
+    if (
+      !createInputs.category_id ||
+      !createInputs.name ||
+      !createInputs.cost ||
+      !createInputs.isbn ||
+      !createInputs.number ||
+      !createInputs.auther_id ||
+      !createInputs.publisher_id
+    ) {
+      console.log(createInputs);
+      toast.error("Please fill all the fields");
+      return 0;
     }
 
-    // Validate second name
-    if (!student.value.second_name) {
-        errors.value.second_name = "Second name is required";
-    }
+    console.log(createInputs);
+    axios
+      .post("book/create", createInputs)
+      .then((response) => {
+        console.log(response);
+        setShowModal(false);
+        toast.success("success");
+        reload ? setReload(false) : setReload(true);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+    setCreateInputs([]);
+  };
 
-    // Validate admission number
-    if (!student.value.admission) {
-        errors.value.admission = "Admission number is required";
-    }
 
-    // Validate class
-    if (!student.value.class_id) {
-        errors.value.class_id = "Class is required";
-    }
+  //dropdown options 
+  const handleLoadOptions = () => {
+    axios.get("categories").then((response) => {
+      setCategoryData(response.data);
+    });
+    axios.get("authors").then((response) => {
+      setAuthorData(response.data);
+    });
 
-    // Validate guardian email
-    if (!student.value.guardian_email) {
-        errors.value.guardian_email = "Guardian email is required";
-    } else if (!validateEmail(student.value.guardian_email)) {
-        errors.value.guardian_email = "Invalid email format";
-    }
+    axios.get("publishers").then((response) => {
+      setPublisherData(response.data);
+    });
+  };
 
-    // Validate phone number
-    if (!student.value.phone) {
-        errors.value.phone = "Phone number is required";
-    } else if (!validatePhone(student.value.phone)) {
-        errors.value.phone = "Invalid phone number format";
-    }
 
-    // Validate dormitory
-    if (!student.value.dormitory) {
-        errors.value.dormitory = "Dormitory is required";
-    }
+  //delete book
+  const handleDelete = (id) => {
+    confirmAlert({
+      title: "Confirm to Delete item",
+      message: "Action is irreversible",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            axios
+              .post("/book/delete/" + id)
+              .then((response) => {
+                console.log(response);
+                toast.success("Done");
+              })
+              .catch((err) => {
+                console.log(err);
+                toast.error("seems this data is in use");
+              });
+            reload ? setReload(false) : setReload(true);
+          },
+        },
+        {
+          label: "No",
+        },
+      ],
+    });
+  };
 
-    // Validate photo
-    if (!student.value.photo) {
-        errors.value.photo = "Student photo is required";
-    }
-    if (!student.value.dob) {
-        errors.value.dob = "Date of Birth is required";
-    }
-    if (!student.value.gender) {
-        errors.value.gender = "Gender is required";
-    }
-};
-
-const validateEmail = (email) => {
-    // Simple email validation regex
-    const re =
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
-    return re.test(email);
-};
-
-const validatePhone = (phone) => {
-    // Kenyan phone number validation regex
-    const re = /^(?:\+254|0)?(7|1)\d{8}$/;
-    return re.test(phone);
-};
 </script>

@@ -94,6 +94,8 @@
     </div>
 </template>
 <script setup>
+import { ref, onMounted, watch } from "vue";
+import axios from "axios";
 import StatCard from "../../components/Stats/Primary.vue";
 import Calendar from "primevue/calendar";
 import BarChart from "../../components/Charts/BarChart.vue";
@@ -101,4 +103,48 @@ import LineChart from "../../components/Charts/LineChart.vue";
 import DoughnutChart from "../../components/Charts/DoughnutChart.vue";
 import CardMain from "../../components/Card/CardMain.vue";
 import commonButton from "../../components/CommonButton.vue";
+
+const Dashdata = ref();
+
+onMounted(() => {
+    fetchDashData();
+});
+
+const fetchDashData = () => {
+    try {
+        axios
+            .get("/dashboard")
+            .then((response) => {
+                console.log("loading dash data");
+                setDashdata(response.data); // use ref and any other place
+
+                if (response.status === 401) {
+                    window.location.reload();
+                    console.log("reloaded to authenticate");
+                }
+            })
+            .catch((error) => {
+                console.log("failed to load");
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                    console.log("needs to reloaded to authenticate");
+                }
+                window.location.reload();
+                console.log("error", error);
+            });
+    } catch (error) {
+        console.log("failed to load");
+        if (error.response)
+
+
+            console.log("needs to reloaded to authenticate");
+        }
+        window.location.reload();
+        console.log("error", error);
+    }
+};
 </script>

@@ -3,12 +3,13 @@
         :headers="[
             'ADM',
             'STUDENT NAME',
-            'BOOK NAME',
-            'ISBN',
+            'BOOK TITLE',
+            'NUMBER',
             'ISSUED DATE',
             'RETURN DATE',
+            'RECEIVE',
         ]"
-        title="All Books"
+        title="All Students"
     >
         <template v-slot:actions>
             <SmallButton
@@ -602,3 +603,60 @@
         <!-- end create student -->
     </Table>
 </template>
+<script setup>
+import { ref, onMounted, watch } from "vue";
+import axios from "axios";
+
+onMounted(() => {
+    fetchData();
+});
+
+watch([query, reload], () => {
+    fetchData();
+});
+
+const fetchData = (id) => {
+    axios.get("/book_issue/" + query).then((response) => {
+        setIssued_book(response.data.data);
+        setPagination(response.data);
+        setLinks(response.data.links);
+    });
+};
+
+const handleView = (id) => {
+    axios
+        .get("book-issue/edit/" + id)
+        .then((response) => {
+            console.log(response.data);
+            setViewBook(response.data);
+            reload ? setReload(false) : setReload(true);
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+    setShowModal(true);
+};
+const handleReceive = (id) => {
+    axios
+        .post("book-issue/update/" + id)
+        .then((response) => {
+            console.log(response);
+            axios
+                .post("book-issue/delete/" + id)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
+    toast.success("Received & cleared");
+    setShowModal(false);
+    setQuery("");
+    reload ? setReload(false) : setReload(true);
+};
+</script>
