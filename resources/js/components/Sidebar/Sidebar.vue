@@ -161,7 +161,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -170,7 +170,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 
@@ -401,7 +401,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -410,7 +410,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 
@@ -563,7 +563,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -572,7 +572,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 
@@ -725,7 +725,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -734,7 +734,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 
@@ -918,7 +918,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -927,7 +927,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 
@@ -1080,7 +1080,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -1089,7 +1089,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 
@@ -1245,7 +1245,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -1254,7 +1254,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 
@@ -1405,7 +1405,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -1414,7 +1414,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 
@@ -1439,7 +1439,7 @@
                     </router-link>
                 </div>
             </div>
-            <div v-if="route.path.includes('/hostels')" class="min-h-96 mt-0">
+            <div v-if="route.path.includes('/hostel')" class="min-h-96 mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -1449,7 +1449,7 @@
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                     >
-                        <router-link to="/admin/">
+                        <router-link to="/hostel/">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -1461,7 +1461,7 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="users">
+                        <router-link to="/hostel/all">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -1470,7 +1470,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-users"></i>
                                 </div>
-                                Manage Users
+                                All hostel
                             </div>
                         </router-link>
 
@@ -1487,7 +1487,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="settings">
+                        <router-link to="/hostel/settings">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -1565,7 +1565,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/hostels">
+                        <router-link to="/hostel">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -1574,7 +1574,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-warehouse"></i>
                                 </div>
-                                hostels
+                                hostel
                             </div>
                         </router-link>
 

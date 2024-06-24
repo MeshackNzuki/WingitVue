@@ -18,6 +18,10 @@ use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Instructor\InstructorController;
 //end instructor
 
+//hostel
+use App\Http\Controllers\Hostel\HostelController;
+//end hostel
+
 //finance
 use App\Http\Controllers\Finance\FinanceController;
 //end finance
@@ -91,8 +95,22 @@ Route::middleware('auth:sanctum')->group(function () {
         // Add more routes as needed
     });
 
+    //hostel routes
+    
+        Route::prefix('hostel')->group(function () {
+            Route::get('/hostels', [HostelController::class, 'index']);
+            Route::post('/hostels', [HostelController::class, 'store']);
+            Route::get('/hostels/{hostel}', [HostelController::class, 'show']);
+            Route::put('/hostels/{hostel}', [HostelController::class, 'update']);
+            Route::delete('/hostels/{hostel}', [HostelController::class, 'destroy']);
+        });
+
+
+     //end hostel routes
+
+
     // Routes for managing library
-    Route::middleware('can:manage library')->prefix('library')->group(function () {
+    Route::prefix('library')->group(function () {
         Route::post('/login', [LoginController::class, 'login']);
         Route::post('/register', [RegisterController::class, 'store']);
         Route::post('/reset/{useremail}', [LoginController::class, 'reset']);

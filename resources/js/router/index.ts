@@ -348,35 +348,40 @@ const routes = [
     },
 
     {
-        path: "/hostels",
+        path: "/hostel",
         name: "Hostels",
         meta: { role: "hostel-manager" },
-        component: () => import("../views/hostels/Layout.vue"),
+        component: () => import("../views/hostel/Layout.vue"),
         children: [
             {
                 path: "",
                 name: "HostelsDashboard",
-                component: () => import("../views/hostels/Dashboard.vue"),
+                component: () => import("../views/hostel/Dashboard.vue"),
+            },
+            {
+                path: "all",
+                name: "HostelAll",
+                component: () => import("../views/hostel/Hostels.vue"),
             },
             {
                 path: "rooms",
                 name: "HostelRooms",
-                component: () => import("../views/hostels/Rooms.vue"),
+                component: () => import("../views/hostel/Rooms.vue"),
             },
             {
                 path: "students",
                 name: "HostelStudents",
-                component: () => import("../views/hostels/Students.vue"),
+                component: () => import("../views/hostel/Students.vue"),
             },
             {
                 path: "staff",
                 name: "HostelStaff",
-                component: () => import("../views/hostels/Staff.vue"),
+                component: () => import("../views/hostel/Staff.vue"),
             },
             {
                 path: "maintenance",
                 name: "HostelMaintenance",
-                component: () => import("../views/hostels/Maintenance.vue"),
+                component: () => import("../views/hostel/Maintenance.vue"),
             },
         ],
     },
