@@ -16,7 +16,7 @@ class GradeController extends Controller
      */
     public function index()
     {
-        $classes = Grade::withCount('students')->latest()->paginate(10);
+        $classes = Grade::withCount('students')->latest()->paginate(20);
 
         return view('backend.classes.index', compact('classes'));
     }

@@ -8,6 +8,11 @@ const routes = [
         component: () => import("../views/Auth/Login.vue"),
     },
     {
+        path: "/",
+        name: "Usher",
+        component: () => import("../views/Usher.vue"),
+    },
+    {
         path: "/404",
         name: "404",
         component: () => import("../views/404.vue"),
@@ -37,11 +42,6 @@ const routes = [
                 path: "tables",
                 name: "AdminTables",
                 component: () => import("../views/admin/Tables.vue"),
-            },
-            {
-                path: "profile",
-                name: "AdminProfile",
-                component: () => import("../views/admin/Profile.vue"),
             },
         ],
     },
@@ -75,12 +75,6 @@ const routes = [
                 path: "settings",
                 name: "AdmissionsSettings",
                 component: () => import("../views/admissions/Settings.vue"),
-            },
-
-            {
-                path: "profile",
-                name: "AdmissionsProfile",
-                component: () => import("../views/admissions/Profile.vue"),
             },
         ],
     },
@@ -146,11 +140,6 @@ const routes = [
                 name: "LibraryStudents",
                 component: () => import("../views/library/All_students.vue"),
             },
-            {
-                path: "profile",
-                name: "LibraryProfile",
-                component: () => import("../views/library/Profile.vue"),
-            },
         ],
     },
     {
@@ -191,11 +180,6 @@ const routes = [
                 path: "exams",
                 name: "GuardianExams",
                 component: () => import("../views/guardian/Exams.vue"),
-            },
-            {
-                path: "profile",
-                name: "GuardianProfile",
-                component: () => import("../views/guardian/Profile.vue"),
             },
         ],
     },
@@ -384,6 +368,11 @@ const routes = [
                 component: () => import("../views/hostel/Maintenance.vue"),
             },
         ],
+    },
+    {
+        path: "/user/profile",
+        name: "Profile",
+        component: () => import("../views/Profile.vue"),
     },
 
     {

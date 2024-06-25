@@ -279,7 +279,7 @@ const closeModal = (modalId) => {
 };
 
 const destroy = async (id) => {
-    const response = await axios.delete(`hostel/hostels/${id}`, hostel.value);
+    const response = await axios.delete(`hostel/hostels/${id}`);
 
     console.log("response", response.data.success);
     if (response.data.success) {
@@ -296,8 +296,6 @@ const hostel = ref({
 const errors = ref({
     name: "",
     number_of_rooms: "",
-    edit_name: "",
-    edit_number_of_rooms: "",
 });
 
 onMounted(async () => {
@@ -311,26 +309,23 @@ const loadHostelData = async () => {
 
 const submitForm = async (modalId, hostelId) => {
     validateForm();
+    const formData = new FormData();
+    formData.append("name", hostel.value.name);
+    formData.append("photo", hostel.value?.photo);
+    formData.append("number_of_rooms", hostel.value.number_of_rooms);
     if (Object.values(errors.value).every((val) => val === "")) {
         try {
             if (modalId === "editHostelModal") {
                 const response = await axios.put(
                     `hostel/hostels/${hostelId}`,
-                    hostel.value,
+                    formData,
                 );
-                console.log("Hostel edited successfully:", response.data);
-                const index = hostelData.value.findIndex(
-                    (h) => h.id === hostel.value.id,
-                );
-                if (index !== -1) {
-                    hostelData.value[index] = response.data;
-                }
-                closeModal(modalId);
             } else {
-                const response = await axios.post("hostels/", hostel.value);
-                console.log("Hostel added successfully:", response.data);
-                hostelData.value.push(response.data);
-                closeModal(modalId);
+                console.log("hostel", hostel.value);
+                const response = await axios.post("hostel/hostels/", formData);
+                if (response.data.success) {
+                    loadHostelData();
+                }
             }
         } catch (error) {
             console.log("Error:", error);

@@ -11,7 +11,7 @@ class HostelController extends Controller
 {
     public function index()
     {
-        $hostels = Hostel::latest()->paginate(10);
+        $hostels = Hostel::latest()->paginate(20);
         return $this->ResSuccess($hostels);
     }
 
@@ -20,11 +20,11 @@ class HostelController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'number_of_rooms' => 'required|integer',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'photo' => 'nullable|max:2048',
         ]);
 
-        // Handle file upload (photo)
-        $photoPath = $request->file('photo')->store('hostels', 'public');
+      
+        $photoPath = $request->hasFile('photo') ? $request->file('photo')->store('hostels', 'public') : null;
 
         $hostel = Hostel::create([
             'name' => $request->input('name'),
@@ -32,7 +32,7 @@ class HostelController extends Controller
             'photo' => $photoPath,
         ]);
    
-        return $this->ResSuccess($hostels ,201);
+        return $this->ResSuccess(201);
     }
 
     public function show(Hostel $hostel)
@@ -45,7 +45,7 @@ class HostelController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'number_of_rooms' => 'required|integer',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'photo' => 'nullable|max:2048',
         ]);
 
         // Update hostel record
@@ -67,8 +67,9 @@ class HostelController extends Controller
     public function destroy(Hostel $hostel)
     {
         // Delete hostel photo from storage
-        Storage::disk('public')->delete($hostel->photo);
-
+        if ($hostel->photo) {
+            Storage::disk('public')->delete($hostel->photo);
+        }
         // Delete hostel record
         $hostel->delete();
 

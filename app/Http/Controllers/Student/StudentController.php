@@ -22,7 +22,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::with('class')->latest()->paginate(10);
+        $students = Student::with('class')->latest()->paginate(20);
 
         return $this->ResSuccess($students);
     }

@@ -10,7 +10,7 @@ axios.defaults.headers.common["withCredentials"] = true;
 axios.interceptors.request.use(
     async function (config) {
         const { user } = authStore(); // Get user info from authStore
-        const token = user.token;
+        const token = user?.token;
 
         var loader = document.getElementById("loader");
         loader.classList.remove("hidden");
