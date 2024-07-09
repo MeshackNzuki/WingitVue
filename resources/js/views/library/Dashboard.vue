@@ -1,7 +1,29 @@
 <template>
     <div class="bg-slate-100 dark:bg-transparent min-h-screen">
         <div class="flex flex-wrap justify-around my-6 py-12 w-full gap-4">
-            <StatCard /> <StatCard /> <StatCard /> <StatCard /><StatCard />
+            <StatCard
+                label="All Books"
+                up="up"
+                quantity="565"
+                description="32 issued today"
+            />
+            <StatCard
+                label="Borrowed Books"
+                up="down"
+                quantity="565"
+                description="22 Returned today"
+            />
+            <StatCard label="Students With Books" :up="0" quantity="565/800" />
+            <StatCard
+                label="Staff With Books"
+                quantity="565/800"
+                description="20% of total students"
+            />
+            <StatCard
+                label="Subjects"
+                quantity="565/800"
+                description="Covers All subjects"
+            />
         </div>
         <div class="flex mt-4">
             <div
@@ -133,18 +155,10 @@ const fetchDashData = () => {
                     console.log(error.response.headers);
                     console.log("needs to reloaded to authenticate");
                 }
-                window.location.reload();
-                console.log("error", error);
             });
     } catch (error) {
         console.log("failed to load");
-        if (error.response)
-
-
-            console.log("needs to reloaded to authenticate");
-        }
-        window.location.reload();
-        console.log("error", error);
+        if (error.response) console.log("needs to reloaded to authenticate");
     }
 };
 </script>

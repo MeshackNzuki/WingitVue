@@ -20,21 +20,21 @@
                     </div>
                     <div class="flex flex-wrap gap-4">
                         <div
-                            class="radial-progress bg-white text-orange-500"
+                            class="radial-progress opacity-90 bg-white text-orange-500"
                             style="--value: 89"
                             role="progressbar"
                         >
                             89%
                         </div>
                         <div
-                            class="radial-progress bg-white text-emerald-500"
+                            class="radial-progress opacity-90 bg-white text-emerald-500"
                             style="--value: 70"
                             role="progressbar"
                         >
                             70%
                         </div>
                         <div
-                            class="radial-progress bg-white text-lime-500"
+                            class="radial-progress opacity-90 bg-white text-lime-500"
                             style="--value: 40"
                             role="progressbar"
                         >
@@ -124,4 +124,17 @@ import LineChart from "../../components/Charts/LineChart.vue";
 import DoughnutChart from "../../components/Charts/DoughnutChart.vue";
 import CardMain from "../../components/Card/CardMain.vue";
 import commonButton from "../../components/CommonButton.vue";
+import axios from "axios";
+
+axios
+    .post("/login", {
+        username: "mesh",
+        password: "12345678",
+    })
+    .then((res) => {
+        console.log("res", res);
+    })
+    .catch((err) => {
+        console.log("err", err);
+    });
 </script>
