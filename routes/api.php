@@ -27,10 +27,6 @@ use App\Http\Controllers\Finance\FinanceController;
 //end finance
 
 
-//subject
-use App\Http\Controllers\Subject\SubjectController;
-//end subject
-
 
 //guardian
 use App\Http\Controllers\Guardian\GuardianController;
@@ -42,16 +38,16 @@ use App\Http\Controllers\Grading\GradingController;
 //end grading
 
 //library
-use App\Http\Controllers\Libray\StaffController;
-use App\Http\Controllers\Libray\BookController;
-use App\Http\Controllers\Libray\BookIssueStaffController;
-use App\Http\Controllers\Libray\BookIssueController;
-use App\Http\Controllers\Libray\CategoryController;
-use App\Http\Controllers\Libray\dashboardController;
-use App\Http\Controllers\Libray\PublisherController;
-use App\Http\Controllers\Libray\ReportsController;
-use App\Http\Controllers\Libray\SettingsController;
-use App\Http\Controllers\Libray\UserController;
+use App\Http\Controllers\Library\StaffController;
+use App\Http\Controllers\Library\BookController;
+use App\Http\Controllers\Library\BookIssueStaffController;
+use App\Http\Controllers\Library\BookIssueController;
+use App\Http\Controllers\Library\SubjectController;
+use App\Http\Controllers\Library\dashboardController;
+use App\Http\Controllers\Library\PublisherController;
+use App\Http\Controllers\Library\ReportsController;
+use App\Http\Controllers\Library\SettingsController;
+use App\Http\Controllers\Library\UserController;
 //end library
 
 use App\Http\Controllers\ProfileController;
@@ -75,7 +71,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Routes for managing students
     Route::middleware('can:manage students')->prefix('students')->group(function () {
-        Route::get('/', [StudentController::class, 'index']);
+        Route::get('/{query?}', [StudentController::class, 'index']);
         Route::post('/', [StudentController::class, 'store']);
         // Add more routes as needed
     });
@@ -111,10 +107,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Routes for managing library
     Route::prefix('library')->group(function () {
-        Route::post('/login', [LoginController::class, 'login']);
-        Route::post('/register', [RegisterController::class, 'store']);
-        Route::post('/reset/{useremail}', [LoginController::class, 'reset']);
-
         Route::get('/count_cat', [ReportsController::class, 'count_cat']);
         Route::get('/count_name/{query?}', [ReportsController::class, 'count_name']);
 
@@ -141,10 +133,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/publisher/delete/{id}', [PublisherController::class, 'destroy']);
         Route::post('/publisher/create', [PublisherController::class, 'store']);
 
-        Route::get('/categories', [CategoryController::class, 'index']);
-        Route::post('/category/update/{id}', [CategoryController::class, 'update']);
-        Route::post('/category/delete/{id}', [CategoryController::class, 'destroy']);
-        Route::post('/category/create', [CategoryController::class, 'store']);
+        Route::get('/categories', [SubjectController::class, 'index']);
+        Route::post('/category/update/{id}', [SubjectController::class, 'update']);
+        Route::post('/category/delete/{id}', [SubjectController::class, 'destroy']);
+        Route::post('/category/create', [SubjectController::class, 'store']);
 
         Route::get('/books/{query?}', [BookController::class, 'index']);
         Route::get('/book/create', [BookController::class, 'create']);

@@ -1,16 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Library;
 
-use App\Models\book;
-use App\Http\Requests\StorebookRequest;
-use App\Http\Requests\UpdatebookRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Library\Book;
+use App\Http\Requests\Library\StoreBookRequest;
+use App\Http\Requests\Library\UpdateBookRequest;
 use Illuminate\Http\Request;
-use App\Models\auther;
-use App\Models\category;
-use App\Models\publisher;
+use App\Models\Library\Auther;
+use App\Models\Library\Subject;
+use App\Models\Library\Publisher;
+
 class BookController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -18,14 +21,13 @@ class BookController extends Controller
      */
     public function index(Request $request, $query = '')
     {
-        if($query != ''){
-        $books = book::where('number', '=',$query)
-        ->with('auther', 'publisher','category')->paginate(80);       
+        if ($query != '') {
+            $books = Book::where('number', '=', $query)
+                ->with('auther', 'publisher', 'subject')->paginate(80);
+        } else {
+            $books = Book::with('auther', 'publisher', 'subject')->paginate(80);
         }
-        else{
-            $books = book::with('auther', 'publisher','category')->paginate(80); 
-        }
-        return response()->json($books);
+        return $this->ResSuccess($books);
     }
 
     /**
@@ -35,41 +37,39 @@ class BookController extends Controller
      */
     public function create()
     {
-        return response()->json([
-            'authors' => auther::latest()->get(),
-            'publishers' => publisher::latest()->get(),
-            'categories' => category::latest()->get(),
+        return $this->ResSuccess([
+            'authors' => Auther::latest()->get(),
+            'publishers' => Publisher::latest()->get(),
+            'categories' => subject::latest()->get(),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorebookRequest  $request
+     * @param  \App\Http\Requests\Library\StoreBookRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorebookRequest $request)
+    public function store(StoreBookRequest $request)
     {
-        book::create($request->validated() + [
+        $book = Book::create($request->validated() + [
             'status' => 'Y'
         ]);
-
-        return response("success",200);
+        return $this->ResSuccess($book, 201);
     }
-
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\book  $book
+     * @param  \App\Models\Library\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(book $book)
+    public function edit(Book $book)
     {
-        return response()->json([
-            'authors' => auther::latest()->get(),
-            'publishers' => publisher::latest()->get(),
-            'categories' => category::latest()->get(),
+        return $this->ResSuccess([
+            'authors' => Auther::latest()->get(),
+            'publishers' => Publisher::latest()->get(),
+            'categories' => subject::latest()->get(),
             'book' => $book
         ]);
     }
@@ -77,26 +77,32 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatebookRequest  $request
-     * @param  \App\Models\book  $book
+     * @param  \App\Http\Requests\Library\UpdateBookRequest  $request
+     * @param  \App\Models\Library\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBookRequest $request, $id)
     {
-        $book = book::find($id);
-        $book->fill($request->input())->save();
-        return response("success",200);
+        $book = Book::find($id);
+
+        if (!$book) {
+            return $this->ResError('Book not found', 404);
+        }
+
+        $book->update($request->validated());
+        return $this->ResSuccess($book, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\book  $book
+     * @param  \App\Models\Library\Book  $book
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        book::find($id)->delete();
-        return redirect()->route('books');
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return $this->ResSuccess(['message' => 'Book deleted successfully.'], 200);
     }
 }

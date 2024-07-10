@@ -1,6 +1,7 @@
 import axios from "axios";
 import { authStore } from "./stores/authStore";
-axios.defaults.baseURL = "localhost:8000/api";
+
+axios.defaults.baseURL = "http://localhost:8000/api";
 axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
 axios.defaults.headers.common["Accept"] = "application/json";
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
@@ -12,8 +13,11 @@ axios.interceptors.request.use(
         const { user } = authStore(); // Get user info from authStore
         const token = user?.token;
 
-        var loader = document.getElementById("loader");
-        loader.classList.remove("hidden");
+        // Show loader only if config.showLoader is not explicitly set to false
+        if (config.showLoader !== false) {
+            var loader = document.getElementById("loader");
+            if (loader) loader.classList.remove("hidden");
+        }
 
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
@@ -22,8 +26,9 @@ axios.interceptors.request.use(
         return config;
     },
     function (error) {
-        // Do something with request error
-        loader.classList.add("hidden");
+        // Hide loader in case of request error
+        var loader = document.getElementById("loader");
+        if (loader) loader.classList.add("hidden");
         return Promise.reject(error);
     },
 );
@@ -31,15 +36,19 @@ axios.interceptors.request.use(
 // Add a response interceptor
 axios.interceptors.response.use(
     function (response) {
-        // Any status code that lie within the range of 2xx cause this function to trigger
-        // Do something with response data
-        loader.classList.add("hidden");
+        // Hide loader only if config.showLoader is not explicitly set to false
+        if (response.config.showLoader !== false) {
+            var loader = document.getElementById("loader");
+            if (loader) loader.classList.add("hidden");
+        }
         return response;
     },
     function (error) {
-        // Any status codes that falls outside the range of 2xx cause this function to trigger
-        // Do something with response error
-        loader.classList.add("hidden");
+        // Hide loader in case of response error
+        if (error.config.showLoader !== false) {
+            var loader = document.getElementById("loader");
+            if (loader) loader.classList.add("hidden");
+        }
         return Promise.reject(error);
     },
 );

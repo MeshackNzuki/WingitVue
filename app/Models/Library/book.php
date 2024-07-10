@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Library;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,13 +23,13 @@ class book extends Model
     }
 
     /**
-     * Get the category that owns the book
+     * Get the subject that owns the book
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category(): BelongsTo
+    public function subject(): BelongsTo
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(subject::class);
     }
 
     /**

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Student;
-use App\Models\Guardian;
+use App\Models\Student\Student;
+use App\Models\Guardian\Guardian;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 
@@ -36,8 +36,8 @@ class LoginController extends Controller
         }
 
         // Check Student
-        $student = Student::where('email', $request->email)->first();
-        if ($student && Auth::attempt(['email' => $student->email, 'password' => $request->password])) {
+        $student = Student::where('guardian_email', $request->email)->first();
+        if ($student && Auth::attempt(['guardian_email' => $student->email, 'password' => $request->password])) {
             $token = $student->createToken('authToken')->plainTextToken;
             return $this->ResSuccess([
                 'token' => $token,

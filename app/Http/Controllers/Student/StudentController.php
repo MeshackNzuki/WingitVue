@@ -20,11 +20,21 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index($query='')
     {
-        $students = Student::with('class')->latest()->paginate(20);
+        $studentData = Student::with('class');
 
-        return $this->ResSuccess($students);
+        if ($query != '') {
+            $students =  $studentData
+            ->where('admission', 'like', "%{$query}%")
+            ->paginate(20);
+
+            return $this->ResSuccess($students);
+           
+        } else {
+             $students =  $studentData->latest()->paginate(20);
+             return $this->ResSuccess($students);
+        }
     }
 
     /**

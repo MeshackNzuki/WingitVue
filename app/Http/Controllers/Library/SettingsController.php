@@ -1,10 +1,10 @@
 <?php
+namespace App\Http\Controllers\Library;
 
-namespace App\Http\Controllers;
-
-use App\Models\settings;
-use App\Http\Requests\StoresettingsRequest;
-use App\Http\Requests\UpdatesettingsRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Library\settings;
+use App\Http\Requests\Library\StoresettingsRequest;
+use App\Http\Requests\Library\UpdatesettingsRequest;
 
 class SettingsController extends Controller
 {
@@ -23,8 +23,8 @@ class SettingsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatesettingsRequest  $request
-     * @param  \App\Models\settings  $settings
+     * @param  \App\Http\Requests\Library\UpdatesettingsRequest  $request
+     * @param  \App\Models\Library\settings  $settings
      * @return \Illuminate\Http\Response
      */
     public function update(UpdatesettingsRequest $request)

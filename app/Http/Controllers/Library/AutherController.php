@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Library;
 
-use App\Models\auther;
-use App\Http\Requests\StoreautherRequest;
-use App\Http\Requests\UpdateautherRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Library\Auther;
+use App\Http\Requests\Library\StoreAutherRequest;
+use App\Http\Requests\Library\UpdateAutherRequest;
+use App\Http\Traits\JsonResponseTrait;
 
 class AutherController extends Controller
 {
+    use JsonResponseTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,8 @@ class AutherController extends Controller
      */
     public function index()
     {
-        return response()->json(auther::get());
+        $authors = Auther::all();
+        return $this->ResSuccess($authors);
     }
 
     /**
@@ -25,30 +30,31 @@ class AutherController extends Controller
      */
     public function create()
     {
-        return response()->json('auther.create');
+        return $this->ResSuccess('auther.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreautherRequest  $request
+     * @param  \App\Http\Requests\Library\StoreAutherRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreautherRequest $request)
+    public function store(StoreAutherRequest $request)
     {
-        auther::create($request->validated());
-
-        return response("success", 200);
+        $auther = Auther::create($request->validated());
+        return $this->ResSuccess($auther, 201);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\auther  $auther
+     * @param  \App\Models\Library\Auther  $auther
      * @return \Illuminate\Http\Response
      */
-    public function edit(auther $auther)
+    public function edit(Auther $auther)
     {
-        return response()->json('auther.edit', [
+        return $this->ResSuccess([
+            'view' => 'auther.edit',
             'auther' => $auther
         ]);
     }
@@ -56,17 +62,20 @@ class AutherController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateautherRequest  $request
-     * @param  \App\Models\auther  $auther
+     * @param  \App\Http\Requests\Library\UpdateAutherRequest  $request
+     * @param  \App\Models\Library\Auther  $auther
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateautherRequest $request, $id)
+    public function update(UpdateAutherRequest $request, $id)
     {
-        $auther = auther::find($id);
-        $auther->name = $request->name;
-        $auther->save();
+        $auther = Auther::find($id);
 
-        return response("success", 200);
+        if (!$auther) {
+            return $this->ResError('Author not found', 404);
+        }
+
+        $auther->update($request->validated());
+        return $this->ResSuccess($auther, 200);
     }
 
     /**
@@ -76,7 +85,8 @@ class AutherController extends Controller
      */
     public function destroy($id)
     {
-        auther::findorfail($id)->delete();
-        return response("success", 200);
+        $auther = Auther::findOrFail($id);
+        $auther->delete();
+        return $this->ResSuccess(['message' => 'Author deleted successfully.'], 200);
     }
 }

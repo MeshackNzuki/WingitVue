@@ -2,6 +2,7 @@
     <Table
         :headers="['NAME', 'ADM', 'CLASS', 'GUARDIAN', 'ACTION']"
         title="All Students"
+        v-model:query="searchQuery"
     >
         <template v-slot:actions>
             <SmallButton
@@ -599,7 +600,7 @@
 import Table from "../../components/Tables/MainTable.vue";
 import CommonButton from "../../components/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import axios from "axios";
 
 const showModalFunc = (modalId) => {
@@ -607,6 +608,10 @@ const showModalFunc = (modalId) => {
 };
 
 const studentData = ref();
+const reload = ref();
+const pagination = ref({});
+const links = ref([]);
+const searchQuery = ref("");
 const student = ref({
     first_name: "",
     second_name: "",
@@ -636,9 +641,28 @@ const onFileChange = (event) => {
     student.value.photo = event.target.files[0];
 };
 
+const fetchData = () => {
+    const showLoader = searchQuery.value.trim() === "";
+    console.log("the query is", searchQuery.value);
+
+    axios
+        .get(`/students/${searchQuery.value}`, { showLoader: showLoader })
+        .then((response) => {
+            console.log("res", response.data.data.data);
+            pagination.value = response.data;
+            links.value = response.data.links;
+            studentData.value = response.data.data.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 onMounted(async () => {
-    const response = await axios.get("students/");
-    studentData.value = response.data.data.data;
+    fetchData();
+});
+
+watch([searchQuery, reload], () => {
+    fetchData();
 });
 
 const submitForm = async () => {

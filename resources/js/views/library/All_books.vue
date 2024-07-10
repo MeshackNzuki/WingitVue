@@ -9,6 +9,7 @@
             'STATUS',
         ]"
         title="All books"
+        v-model:query="searchQuery"
     >
         <template v-slot:actions>
             <SmallButton
@@ -46,6 +47,16 @@
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
+                    <div class="text-left font-medium text-green-500">
+                        {{ book.author?.name }}-
+                    </div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                    <div class="text-left font-medium text-green-500">
+                        {{ book.isbn }}-
+                    </div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
                     <div class="text-lg text-center">
                         <p class="text-center">
                             <i
@@ -59,6 +70,7 @@
                         </p>
                     </div>
                 </td>
+
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-lg text-center">
                         <SmallButton
@@ -95,6 +107,7 @@
         <!-- end create book -->
     </Table>
 </template>
+
 <script setup>
 import Table from "../../components/Tables/MainTable.vue";
 import CommonButton from "../../components/CommonButton.vue";
@@ -105,18 +118,35 @@ import { ref, onMounted, watch } from "vue";
 const books = ref([]);
 const pagination = ref({});
 const links = ref([]);
-const query = ref("");
+const searchQuery = ref("");
 const reload = ref(false);
+const subject = ref([]);
+const book_issue_identity = ref("");
+const book_edit_id = ref(null);
+const book_edit_name = ref("");
+const book_issue_id = ref(null);
+const book_issue_name = ref("");
+const createInputs = ref({
+    category_id: "",
+    name: "",
+    cost: "",
+    isbn: "",
+    number: "",
+    auther_id: "",
+    publisher_id: "",
+});
+const authorData = ref([]);
+const publisherData = ref([]);
 
 const fetchData = () => {
-    console.log("the query is", query.value);
+    const showLoader = searchQuery.value.trim() === "";
+
     axios
-        .get(`/books/${query.value}`)
+        .get(`/library/books/${searchQuery.value}`, { showLoader: showLoader })
         .then((response) => {
-            console.log(response.data.data);
             pagination.value = response.data;
             links.value = response.data.links;
-            books.value = response.data.data;
+            books.value = response.data.data.data;
         })
         .catch((error) => {
             console.log(error);
@@ -128,64 +158,62 @@ onMounted(() => {
     fetchData();
 });
 
-watch([query, reload], () => {
+watch([searchQuery, reload], () => {
     fetchData();
 });
 
 const issueBookStaff = (book_id) => {
     axios
-        .post("/book-issue-staff/create", {
-            id_number: book_issue_identity,
+        .post("library/book-issue-staff/create", {
+            id_number: book_issue_identity.value,
             book_id: book_id,
         })
         .then((response) => {
             console.log(response);
             toast.info(response.data);
-            reload ? setReload(false) : setReload(true);
+            reload.value = !reload.value;
         });
-    setShowModal4(false);
+    showModal4.value = false;
 };
 
 const issueBook = (book_id) => {
     axios
-        .post("/book-issue/create", {
-            adm: book_issue_identity,
+        .post("library/book-issue/create", {
+            adm: book_issue_identity.value,
             book_id: book_id,
         })
         .then((response) => {
             console.log(response);
             toast.info(response.data);
-            reload ? setReload(false) : setReload(true);
+            reload.value = !reload.value;
         });
-    setShowModal3(false);
+    showModal3.value = false;
 };
 
 const handleBookEdit = (bookname, book_id) => {
-    setShowModal5(true);
-    setBook_edit_id(book_id);
-    setBook_edit_name(bookname);
+    showModal5.value = true;
+    book_edit_id.value = book_id;
+    book_edit_name.value = bookname;
     axios.get("book_issue_staff/view/").then((response) => {});
 };
 
 const handleIssue = (bookname, book_id) => {
-    setShowModal3(true);
-    setBook_issue_id(book_id);
-    setBook_issue_name(bookname);
-    setShowModal3(true);
+    showModal3.value = true;
+    book_issue_id.value = book_id;
+    book_issue_name.value = bookname;
+    showModal3.value = true;
     axios.get("book_issue/view/").then((response) => {});
 };
 
-//edit book
 const handleSubmitEdit = () => {
-    console.log(createInputs);
-
+    console.log(createInputs.value);
     axios
-        .post("book/update/" + book_edit_id, createInputs)
+        .post("library/book/update/" + book_edit_id.value, createInputs.value)
         .then((response) => {
             console.log(response);
-            setShowModal(false);
+            showModal5.value = false;
             toast.success("success");
-            reload ? setReload(false) : setReload(true);
+            reload.value = !reload.value;
         })
         .catch((error) => {
             console.log(error);
@@ -193,58 +221,60 @@ const handleSubmitEdit = () => {
         });
 };
 
-//create book
 const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setCreateInputs((values) => ({ ...values, [name]: value }));
+    createInputs.value[name] = value;
 };
 
 const handleSubmit = () => {
     if (
-        !createInputs.category_id ||
-        !createInputs.name ||
-        !createInputs.cost ||
-        !createInputs.isbn ||
-        !createInputs.number ||
-        !createInputs.auther_id ||
-        !createInputs.publisher_id
+        !createInputs.value.category_id ||
+        !createInputs.value.name ||
+        !createInputs.value.cost ||
+        !createInputs.value.isbn ||
+        !createInputs.value.number ||
+        !createInputs.value.auther_id ||
+        !createInputs.value.publisher_id
     ) {
-        console.log(createInputs);
+        console.log(createInputs.value);
         toast.error("Please fill all the fields");
-        return 0;
+        return;
     }
-
-    console.log(createInputs);
+    console.log(createInputs.value);
     axios
-        .post("book/create", createInputs)
+        .post("library/book/create", createInputs.value)
         .then((response) => {
-            console.log(response);
-            setShowModal(false);
             toast.success("success");
-            reload ? setReload(false) : setReload(true);
+            reload.value = !reload.value;
         })
         .catch((error) => {
             toast.error(error.message);
         });
-    setCreateInputs([]);
+    createInputs.value = {
+        category_id: "",
+        name: "",
+        cost: "",
+        isbn: "",
+        number: "",
+        auther_id: "",
+        publisher_id: "",
+    };
 };
 
-//dropdown options
 const handleLoadOptions = () => {
-    axios.get("categories").then((response) => {
-        setCategoryData(response.data);
+    axios.get("library/categories").then((response) => {
+        subject.value = response.data;
     });
-    axios.get("authors").then((response) => {
-        setAuthorData(response.data);
+    axios.get("library/uthors").then((response) => {
+        authorData.value = response.data;
     });
 
-    axios.get("publishers").then((response) => {
-        setPublisherData(response.data);
+    axios.get("library/publishers").then((response) => {
+        publisherData.value = response.data;
     });
 };
 
-//delete book
 const handleDelete = (id) => {
     confirmAlert({
         title: "Confirm to Delete item",
@@ -254,16 +284,16 @@ const handleDelete = (id) => {
                 label: "Yes",
                 onClick: () => {
                     axios
-                        .post("/book/delete/" + id)
+                        .post("library//book/delete/" + id)
                         .then((response) => {
                             console.log(response);
                             toast.success("Done");
+                            reload.value = !reload.value;
                         })
                         .catch((err) => {
                             console.log(err);
                             toast.error("seems this data is in use");
                         });
-                    reload ? setReload(false) : setReload(true);
                 },
             },
             {

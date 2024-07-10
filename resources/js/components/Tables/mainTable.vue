@@ -4,16 +4,19 @@
             <div
                 class="bg-lime-200 h-10 p-1 flex flex-row justify-between px-4 items-center"
             >
-                <span class="font-bold"> {{ title }}</span>
+                <span class="font-bold">{{ title }}</span>
                 <span class="font-light">Rows : 249</span>
                 <span>
                     <div class="form-control">
                         <input
+                            :value="query"
+                            @input="updateValue"
                             type="text"
                             placeholder="Search this table"
-                            class="input input-sm input-bordered w-24 md:w-auto"
-                        /></div
-                ></span>
+                            class="input-bordered md:w-auto mx-1 w-full rounded-full px-2 text-base font-light"
+                        />
+                    </div>
+                </span>
                 <span class="flex flex-row gap-2">
                     <slot name="actions"></slot>
                 </span>
@@ -44,8 +47,11 @@
         </div>
     </div>
 </template>
+
 <script setup>
-import Button from "primevue/button";
+import { defineProps, defineEmits } from "vue";
+
+// Define props
 const props = defineProps({
     tableTitle: {
         type: String,
@@ -59,5 +65,17 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    query: {
+        type: String,
+        default: "",
+    },
 });
+
+// Define emits
+const emit = defineEmits(["update:query"]);
+
+// Update value and emit change event
+const updateValue = (event) => {
+    emit("update:query", event.target.value);
+};
 </script>

@@ -20,21 +20,21 @@
                     </div>
                     <div class="flex flex-wrap gap-4">
                         <div
-                            class="radial-progress opacity-90 bg-white text-orange-500"
+                            class="radial-progress shadow-lg opacity-90 bg-white text-orange-500"
                             style="--value: 89"
                             role="progressbar"
                         >
                             89%
                         </div>
                         <div
-                            class="radial-progress opacity-90 bg-white text-emerald-500"
+                            class="radial-progress shadow-lg opacity-90 bg-white text-emerald-500"
                             style="--value: 70"
                             role="progressbar"
                         >
                             70%
                         </div>
                         <div
-                            class="radial-progress opacity-90 bg-white text-lime-500"
+                            class="radial-progress shadow-lg opacity-90 bg-white text-lime-500"
                             style="--value: 40"
                             role="progressbar"
                         >
