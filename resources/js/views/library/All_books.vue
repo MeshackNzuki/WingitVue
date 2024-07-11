@@ -7,9 +7,11 @@
             'AUTHOR',
             'ISBN',
             'STATUS',
+            'ACTION',
         ]"
         title="All books"
         v-model:query="searchQuery"
+        :rows="books?.length"
     >
         <template v-slot:actions>
             <SmallButton
@@ -24,15 +26,6 @@
             <tr v-for="(book, index) in books" :key="index">
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
-                        <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                            <img
-                                class="rounded-full"
-                                src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-05.jpg"
-                                width="40"
-                                height="40"
-                                alt="Alex Shatov"
-                            />
-                        </div>
                         <div class="font-medium">
                             {{ book.title }}
                         </div>
@@ -71,11 +64,25 @@
                     </div>
                 </td>
 
-                <td class="p-2 whitespace-nowrap">
+                <td class="p-2 whitespace-nowrap flex flex-row gap-1">
+                    <div class="text-lg text-center">
+                        <SmallButton
+                            classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500"
+                            button-text="Issue"
+                            :action="() => showModalFunc(book.id)"
+                        />
+                    </div>
+                    <div class="text-lg text-center">
+                        <SmallButton
+                            classes="border border-blue-500 border-dotted px-2 text-sm bg-yellow"
+                            button-text="Edit"
+                            :action="() => showModalFunc(book.id)"
+                        />
+                    </div>
                     <div class="text-lg text-center">
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
-                            button-text="Edit"
+                            button-text="Del"
                             :action="() => showModalFunc(book.id)"
                         />
                     </div>

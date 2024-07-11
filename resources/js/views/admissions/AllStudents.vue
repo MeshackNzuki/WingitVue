@@ -3,6 +3,7 @@
         :headers="['NAME', 'ADM', 'CLASS', 'GUARDIAN', 'ACTION']"
         title="All Students"
         v-model:query="searchQuery"
+        :rows="studentData?.length"
     >
         <template v-slot:actions>
             <SmallButton
@@ -41,12 +42,12 @@
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-lg text-center">
+                    <div class="text-center">
                         {{ student.guardian_email }}
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-lg text-center">
+                    <div class="text-center">
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
                             button-text="Edit"
@@ -59,9 +60,7 @@
                     class="modal modal-bottom sm:modal-middle"
                 >
                     <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
-                        <h3 class="font-bold text-lg">
-                            Edit Student Information
-                        </h3>
+                        <h3 class="font-bold">Edit Student Information</h3>
                         <p class="py-4">
                             Press ESC key or click the button below to close
                         </p>
@@ -336,7 +335,7 @@
 
             <dialog id="addstudent" class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
-                    <h3 class="font-bold text-lg">Admit Student (Add new)</h3>
+                    <h3 class="font-bold">Admit Student (Add new)</h3>
                     <p class="py-4">
                         Press ESC key or click the button below to close
                     </p>
