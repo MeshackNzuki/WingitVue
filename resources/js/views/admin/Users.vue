@@ -309,7 +309,7 @@
 </template>
 <script setup>
 import Table from "../../components/Tables/MainTable.vue";
-import CommonButton from "../../components/CommonButton.vue";
+import CommonButton from "../../components/Buttons/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
 import { ref, onMounted } from "vue";
 import axios from "axios";

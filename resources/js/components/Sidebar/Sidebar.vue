@@ -1429,7 +1429,7 @@ import { ref, onMounted, watch } from "vue";
 import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
 import { useRoute } from "vue-router";
 import { useDark } from "@vueuse/core";
-import CommonButton from "../CommonButton.vue";
+import CommonButton from "../../components/Buttons/CommonButton.vue";
 import SpeedDial from "primevue/speeddial";
 
 const collapseShow = ref("hidden");

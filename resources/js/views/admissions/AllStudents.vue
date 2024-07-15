@@ -62,6 +62,11 @@
                     <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                         <h3 class="font-bold">Edit Student Information</h3>
                         <p class="py-4">
+                            <button
+                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-800"
+                            >
+                                ✕
+                            </button>
                             Press ESC key or click the button below to close
                         </p>
                         <div class="modal-action">
@@ -597,7 +602,7 @@
 </template>
 <script setup>
 import Table from "../../components/Tables/MainTable.vue";
-import CommonButton from "../../components/CommonButton.vue";
+import CommonButton from "../../components/Buttons/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
 import { ref, onMounted, watch } from "vue";
 import axios from "axios";

@@ -63,7 +63,6 @@
                         </p>
                     </div>
                 </td>
-
                 <td class="p-2 whitespace-nowrap flex flex-row gap-1">
                     <div class="text-lg text-center">
                         <SmallButton
@@ -87,15 +86,118 @@
                         />
                     </div>
                 </td>
-                <dialog
-                    :id="book.id"
-                    class="modal modal-bottom sm:modal-middle"
-                >
-                    <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
-                        <h3 class="font-bold text-lg">Edit book Information</h3>
+
+                <dialog :id="book.id" class="modal">
+                    <div class="modal-box dark:bg-slate-800">
+                        <form method="dialog">
+                            <button
+                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                            >
+                                ✕
+                            </button>
+                        </form>
+                        <h3 class="text-lg font-bold">Issue Book</h3>
                         <p class="py-4">
-                            Press ESC key or click the button below to close
+                            <span
+                                >Book Title : {{ book.title }} / Number
+                                {{ book.number }}</span
+                            >
                         </p>
+                        <hr />
+                        <div class="flex gap-4 mt-2">
+                            <label
+                                class="flex items-center gap-2 cursor-pointer"
+                            >
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="student"
+                                    class="hidden peer"
+                                    v-model="status"
+                                />
+                                <div
+                                    class="w-4 h-4 border-2 border-gray-400 rounded-full peer-checked:bg-blue-500 peer-checked:border-transparent"
+                                ></div>
+                                <span
+                                    :class="
+                                        status === 'student'
+                                            ? 'bg-green-300 px-2 text-gray-900 rounded-full'
+                                            : ''
+                                    "
+                                    >Student</span
+                                >
+                            </label>
+                            <label
+                                class="flex items-center gap-2 cursor-pointer"
+                            >
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="other"
+                                    class="hidden peer"
+                                    v-model="status"
+                                />
+                                <div
+                                    class="w-4 h-4 border-2 border-gray-400 rounded-full peer-checked:bg-blue-500 peer-checked:border-transparent"
+                                ></div>
+                                <span
+                                    :class="
+                                        status === 'other'
+                                            ? 'bg-green-300 px-2 text-gray-900 rounded-full'
+                                            : ''
+                                    "
+                                    >Other</span
+                                >
+                            </label>
+                        </div>
+                        <div class="modal-action mb-2">
+                            <div class="flex flex-col w-full lg:flex-row">
+                                <div>
+                                    <div v-if="status === 'student'">
+                                        <label
+                                            for="student_number"
+                                            class="block text-sm font-medium"
+                                            >Student Admission Number</label
+                                        >
+                                        <input
+                                            v-model="student_issue_admission"
+                                            type="text"
+                                            id="student_number"
+                                            name="student_number"
+                                            required
+                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                            placeholder="Enter student admission number"
+                                        />
+                                    </div>
+                                    <div v-if="status === 'other'">
+                                        <label
+                                            for="employee_number"
+                                            class="block text-sm font-medium"
+                                            >Staff/Employee Number</label
+                                        >
+                                        <input
+                                            v-model="staff_issue_admission"
+                                            type="text"
+                                            id="employee_number"
+                                            name="employee_number"
+                                            required
+                                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
+                                            placeholder="Enter staff/employee number"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <CommonButton
+                            button-text="Issue Book"
+                            :action="
+                                () => {
+                                    student = !null
+                                        ? issueBook(book.id)
+                                        : issueBookStaff(book.id);
+                                }
+                            "
+                        />
                     </div>
                 </dialog>
             </tr>
@@ -117,10 +219,18 @@
 
 <script setup>
 import Table from "../../components/Tables/MainTable.vue";
-import CommonButton from "../../components/CommonButton.vue";
+import CommonButton from "../../components/Buttons/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
 import axios from "axios";
 import { ref, onMounted, watch } from "vue";
+//start issue selector
+const status = ref("student");
+//end issue selector
+
+//issue ID
+const student_issue_admission = ref();
+const staff_issue_admission = ref();
+//end Issue ID
 
 const books = ref([]);
 const pagination = ref({});
@@ -144,6 +254,10 @@ const createInputs = ref({
 });
 const authorData = ref([]);
 const publisherData = ref([]);
+
+const showModalFunc = (modalId) => {
+    document.getElementById(modalId).showModal();
+};
 
 const fetchData = () => {
     const showLoader = searchQuery.value.trim() === "";
@@ -194,7 +308,6 @@ const issueBook = (book_id) => {
             toast.info(response.data);
             reload.value = !reload.value;
         });
-    showModal3.value = false;
 };
 
 const handleBookEdit = (bookname, book_id) => {
@@ -279,34 +392,6 @@ const handleLoadOptions = () => {
 
     axios.get("library/publishers").then((response) => {
         publisherData.value = response.data;
-    });
-};
-
-const handleDelete = (id) => {
-    confirmAlert({
-        title: "Confirm to Delete item",
-        message: "Action is irreversible",
-        buttons: [
-            {
-                label: "Yes",
-                onClick: () => {
-                    axios
-                        .post("library//book/delete/" + id)
-                        .then((response) => {
-                            console.log(response);
-                            toast.success("Done");
-                            reload.value = !reload.value;
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                            toast.error("seems this data is in use");
-                        });
-                },
-            },
-            {
-                label: "No",
-            },
-        ],
     });
 };
 </script>
