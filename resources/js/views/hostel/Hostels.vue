@@ -47,9 +47,7 @@
                             <h3 class="font-bold text-lg">
                                 Edit Hostel Information
                             </h3>
-                            <p class="py-4">
-                                Press ESC key or click the button below to close
-                            </p>
+                            <p class="py-4 text-xs">Press ESC key to close</p>
                             <div class="">
                                 <form
                                     @submit.prevent="submitForm"
@@ -167,9 +165,7 @@
         <dialog id="addHostelModal" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                 <h3 class="font-bold text-lg">Add Hostel</h3>
-                <p class="py-4">
-                    Press ESC key or click the button below to close
-                </p>
+                <p class="py-4 text-xs">Press ESC key to close</p>
                 <div class="">
                     <form
                         @submit.prevent="submitForm"

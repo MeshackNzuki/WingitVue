@@ -159,9 +159,24 @@ const routes = [
                 component: () => import("../views/finance/Settings.vue"),
             },
             {
-                path: "fees",
-                name: "Fees",
-                component: () => import("../views/finance/Fees.vue"),
+                path: "fee-manager",
+                name: "FeeManager",
+                component: () => import("../views/finance/FeeManager.vue"),
+            },
+            {
+                path: "student-fees",
+                name: "StudentsFees",
+                component: () => import("../views/finance/StudentsFees.vue"),
+            },
+            {
+                path: "fee-payments",
+                name: "FeePayments",
+                component: () => import("../views/finance/FeePayments.vue"),
+            },
+            {
+                path: "payments-report",
+                name: "PaymentsReport",
+                component: () => import("../views/finance/PaymentsReport.vue"),
             },
         ],
     },

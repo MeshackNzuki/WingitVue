@@ -1,7 +1,7 @@
 <template>
     <Table
-        :headers="['NAME', 'ADM', 'CLASS', 'GUARDIAN', 'ACTION']"
-        title="All Students"
+        :headers="['NAME', 'ADM', 'CLASS', 'FEE', 'PAID', 'BALANCE', 'ACTION']"
+        title="Student Fees"
         v-model:query="searchQuery"
         :rows="studentData?.length"
     >
@@ -42,9 +42,13 @@
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-center">
-                        {{ student.guardian_email }}
-                    </div>
+                    <div class="text-center">-</div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                    <div class="text-center">-</div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                    <div class="text-center">-</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-center">

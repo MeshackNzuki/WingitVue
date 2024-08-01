@@ -61,9 +61,7 @@
                         <h3 class="font-bold text-lg">
                             Edit Student Information
                         </h3>
-                        <p class="py-4">
-                            Press ESC key or click the button below to close
-                        </p>
+                        <p class="py-4 text-xs">Press ESC key to close</p>
                         <div class="modal-action">
                             <form
                                 @submit.prevent="submitForm(student.id)"
@@ -336,11 +334,14 @@
             <dialog id="addstudent" class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                     <h3 class="font-bold text-lg">Admit Student (Add new)</h3>
-                    <p class="py-4">
-                        Press ESC key or click the button below to close
-                    </p>
+                    <p class="py-4 text-xs">Press ESC key to close</p>
                     <div class="modal-action">
                         <form method="dialog" class="flex flex-col gap-2">
+                            <button
+                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                            >
+                                ✕
+                            </button>
                             <span>Basic Student Information</span>
                             <div class="flex flex-col w-full lg:flex-row">
                                 <div

@@ -74,9 +74,7 @@
                 >
                     <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                         <h3 class="font-bold text-lg">Edit book Information</h3>
-                        <p class="py-4">
-                            Press ESC key or click the button below to close
-                        </p>
+                        <p class="py-4 text-xs">Press ESC key to close</p>
                     </div>
                 </dialog>
             </tr>
@@ -84,9 +82,7 @@
             <dialog id="addbook" class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                     <h3 class="font-bold text-lg">Admit book (Add new)</h3>
-                    <p class="py-4">
-                        Press ESC key or click the button below to close
-                    </p>
+                    <p class="py-4 text-xs">Press ESC key to close</p>
                 </div>
             </dialog>
         </template>

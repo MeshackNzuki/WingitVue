@@ -71,9 +71,7 @@
                             class="modal-box dark:text-slate-400 dark:bg-sky-950"
                         >
                             <h3 class="font-bold text-lg">Edit User</h3>
-                            <p class="py-4">
-                                Press ESC key or click the button below to close
-                            </p>
+                            <p class="py-4 text-xs">Press ESC key to close</p>
                             <div class="modal-action">
                                 <form
                                     @submit.prevent="editUser(editingUserId)"
@@ -197,9 +195,7 @@
         <dialog id="addUser" class="modal modal-bottom sm:modal-middle">
             <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                 <h3 class="font-bold text-lg">Add New User</h3>
-                <p class="py-4">
-                    Press ESC key or click the button below to close
-                </p>
+                <p class="py-4 text-xs">Press ESC key to close</p>
                 <div class="modal-action">
                     <form
                         @submit.prevent="addUser"

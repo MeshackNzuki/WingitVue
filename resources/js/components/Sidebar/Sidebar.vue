@@ -399,7 +399,7 @@
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                     >
-                        <router-link to="/admin/">
+                        <router-link to="/finance/">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -411,16 +411,54 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="users">
+                        <router-link to="/finance/fee-manager">
                             <div
                                 role="button"
                                 tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-users"></i>
+                                    <i class="pi pi-dollar"></i>
                                 </div>
-                                Manage Users
+                                Fee Manager
+                            </div>
+                        </router-link>
+
+                        <router-link to="/finance/student-fees">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-dollar"></i>
+                                </div>
+                                Student Fees
+                            </div>
+                        </router-link>
+                        <router-link to="/finance/fee-payments">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-dollar"></i>
+                                </div>
+                                Fee Payment
+                            </div>
+                        </router-link>
+
+                        <router-link to="/finance/payments-report">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-dollar"></i>
+                                </div>
+                                Payment Report
                             </div>
                         </router-link>
 
