@@ -22,12 +22,12 @@ class StudentController extends Controller
      */
     public function index($query='')
     {
-        $studentData = Student::with('class');
+        $studentData = Student::with('level','studentFee');
 
         if ($query != '') {
             $students =  $studentData
             ->where('admission', 'like', "%{$query}%")
-            ->paginate(20);
+            ->with('level','feeDetails')->paginate(20);
 
             return $this->ResSuccess($students);
            
@@ -70,7 +70,7 @@ class StudentController extends Controller
             'photo'              => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'gender'             => 'required|string',
             'dateofbirth'        => 'required|date',
-            'class_id'              => 'required|',
+            'level_id'              => 'required|',
             'admission'          => 'required|string|max:255',
         ]);
 
@@ -91,7 +91,7 @@ class StudentController extends Controller
             'photo'         => $photo,
             'gender'        => $request->input('gender'),
             'date_of_birth' => $request->input('dateofbirth'),
-            'class_id'         => $request->input('class_id'),
+            'level_id'         => $request->input('level_id'),
             'admission'     => $request->input('admission'),
         ]);
 
@@ -145,7 +145,7 @@ class StudentController extends Controller
             'photo'              => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'gender'             => 'required|string',
             'dateofbirth'        => 'required|date',
-            'class_id'              => 'required|',
+            'level_id'              => 'required|',
             'admission'          => 'required|string|max:255',
         ]);
 
@@ -159,7 +159,7 @@ class StudentController extends Controller
             'photo'         => $photo,
             'gender'        => $request->input('gender'),
             'date_of_birth' => $request->input('dateofbirth'),
-            'class_id'         => $request->input('class_id'),
+            'level_id'         => $request->input('level_id'),
             'admission'     => $request->input('admission'),
         ]);
 

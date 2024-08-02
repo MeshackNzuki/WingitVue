@@ -4,7 +4,8 @@ namespace App\Models\Student;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ClassModel\ClassModel;
+use App\Models\Level\Level;
+use App\Models\Finance\StudentFee;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -22,9 +23,9 @@ class Student extends Model
         return $this->hasMany(Course::class);
     }
 
-    public function class()
+    public function level()
     {
-        return $this->belongsTo(ClassModel::class);
+        return $this->belongsTo(Level::class);
     }
 
    // Example of accessor or mutator:
@@ -37,5 +38,15 @@ class Student extends Model
     public function scopeActive($query)
     {
         return $query->where('active', true);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function studentFee()
+    {
+        return $this->hasOne(StudentFee::class);
     }
 }

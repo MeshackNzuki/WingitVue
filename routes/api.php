@@ -26,6 +26,10 @@ use App\Http\Controllers\Hostel\HostelController;
 use App\Http\Controllers\Finance\FinanceController;
 //end finance
 
+//feees
+use App\Http\Controllers\Finance\FeeController;
+//end feees
+
 
 
 //guardian
@@ -86,8 +90,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Routes for managing finance
     Route::middleware('can:manage finance')->prefix('finance')->group(function () {
-        Route::get('/', [FinanceController::class, 'index']);
-        Route::post('/', [FinanceController::class, 'store']);
+        Route::get('fee-structure/{level_id}', [FeeController::class, 'viewFeeStructure']);
+        Route::get('balance/{student_id}', [FeeController::class, 'viewBalance']);
+        Route::post('make-payment/{student_id}', [FeeController::class, 'makePayment']);
+        Route::get('payment-history/{student_id?}', [FeeController::class, 'viewPaymentHistory']);
         // Add more routes as needed
     });
 
