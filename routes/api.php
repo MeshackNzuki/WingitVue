@@ -18,6 +18,10 @@ use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Instructor\InstructorController;
 //end instructor
 
+//Level stream
+use App\Http\Controllers\Level\LevelStreamController;
+//and Level stream
+
 //hostel
 use App\Http\Controllers\Hostel\HostelController;
 //end hostel
@@ -75,8 +79,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Routes for managing students
     Route::middleware('can:manage students')->prefix('students')->group(function () {
-        Route::get('/{query?}', [StudentController::class, 'index']);
-        Route::post('/', [StudentController::class, 'store']);
+
         // Add more routes as needed
     });
 
@@ -97,8 +100,7 @@ Route::middleware('auth:sanctum')->group(function () {
         // Add more routes as needed
     });
 
-    //hostel routes
-    
+    //hostel routes    
         Route::prefix('hostel')->group(function () {
             Route::get('/hostels', [HostelController::class, 'index']);
             Route::post('/hostels', [HostelController::class, 'store']);
@@ -106,10 +108,23 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::put('/hostels/{hostel}', [HostelController::class, 'update']);
             Route::delete('/hostels/{hostel}', [HostelController::class, 'destroy']);
         });
-
-
      //end hostel routes
 
+     //admission routes 
+     Route::prefix('admisions')->group(function () {
+        //classes and streams
+        Route::get('/levels', [LevelStreamController::class, 'getLevels']);
+        Route::get('/streams', [LevelStreamController::class, 'getStreams']);
+        Route::post('/levels', [LevelStreamController::class, 'addLevel']);
+        Route::post('/streams', [LevelStreamController::class, 'addStream']);
+        //end class streams
+
+        //student management
+        Route::get('/{query?}', [StudentController::class, 'index']);
+        Route::post('/', [StudentController::class, 'store']);
+         // end student management
+      });
+     //end admission routes 
 
     // Routes for managing library
     Route::prefix('library')->group(function () {
@@ -151,13 +166,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/book/delete/{id}', [BookController::class, 'destroy']);
         Route::post('/book/create', [BookController::class, 'store']);
 
-        Route::get('/students/{query?}', [StudentController::class, 'index']);
-        Route::get('/student/edit/{student}', [StudentController::class, 'edit']);
-        Route::post('/student/update/{id}', [StudentController::class, 'update']);
-        Route::post('/student/delete/{id}', [StudentController::class, 'destroy']);
-        Route::post('/student/create', [StudentController::class, 'store']);
-        Route::get('/student/show/{id}', [StudentController::class, 'show']);
-        Route::get('/alumni/{query?}', [StudentController::class, 'alumni']);
 
         Route::get('/book_issue/{query?}', [BookIssueController::class, 'index']);
         Route::get('/book_issue/view/{id}', [BookIssueController::class, 'view']);

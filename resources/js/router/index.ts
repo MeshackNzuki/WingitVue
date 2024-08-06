@@ -76,6 +76,11 @@ const routes = [
                 name: "AdmissionsSettings",
                 component: () => import("../views/admissions/Settings.vue"),
             },
+            {
+                path: "levels",
+                name: "AdmissionsLevels",
+                component: () => import("../views/admissions/Levels.vue"),
+            },
         ],
     },
     {

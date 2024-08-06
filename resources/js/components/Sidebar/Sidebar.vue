@@ -379,10 +379,10 @@
                             </div>
                         </router-link>
                     </nav>
-                    <router-link to="admin/users">
+                    <router-link to="admin/">
                         <common-button
                             class="mt-10 shadow-sm"
-                            button-text="Add New User"
+                            button-text="Administration"
                         ></common-button>
                     </router-link>
                 </div>
@@ -489,76 +489,11 @@
                         </router-link>
 
                         <hr />
-
-                        <router-link to="/admissions">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
-                                </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
-                            </div>
-                        </router-link>
                     </nav>
-                    <router-link to="admin/users">
+                    <router-link to="admin/">
                         <common-button
                             class="mt-10 shadow-sm"
-                            button-text="Add New User"
+                            button-text="Administration"
                         ></common-button>
                     </router-link>
                 </div>
@@ -627,71 +562,6 @@
                         </router-link>
 
                         <hr />
-
-                        <router-link to="/admissions">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
-                                </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
-                            </div>
-                        </router-link>
                     </nav>
                     <router-link to="admin/users">
                         <common-button
@@ -769,6 +639,19 @@
                             </div>
                         </router-link>
 
+                        <router-link to="levels">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-users"></i>
+                                </div>
+                                Level Management
+                            </div>
+                        </router-link>
+
                         <router-link to="/user/profile">
                             <div
                                 role="button"
@@ -796,81 +679,15 @@
                         </router-link>
 
                         <hr />
-
-                        <router-link to="/admissions">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
-                                </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
-                            </div>
-                        </router-link>
                     </nav>
-                    <router-link to="admin/users">
+                    <router-link to="admin/">
                         <common-button
                             class="mt-10 shadow-sm"
-                            button-text="Add New User"
+                            button-text="Administration"
                         ></common-button>
                     </router-link>
                 </div>
             </div>
-
             <!-- Student -->
             <div v-if="route.path.includes('/student')" class="min-h-96 mt-0">
                 <span
@@ -934,76 +751,11 @@
                         </router-link>
 
                         <hr />
-
-                        <router-link to="/admissions">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
-                                </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
-                            </div>
-                        </router-link>
                     </nav>
-                    <router-link to="admin/users">
+                    <router-link to="admin/">
                         <common-button
                             class="mt-10 shadow-sm"
-                            button-text="Add New User"
+                            button-text="Administration"
                         ></common-button>
                     </router-link>
                 </div>
@@ -1075,76 +827,11 @@
                         </router-link>
 
                         <hr />
-
-                        <router-link to="/admissions">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
-                                </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
-                            </div>
-                        </router-link>
                     </nav>
-                    <router-link to="admin/users">
+                    <router-link to="admin/">
                         <common-button
                             class="mt-10 shadow-sm"
-                            button-text="Add New User"
+                            button-text="Administration"
                         ></common-button>
                     </router-link>
                 </div>
@@ -1211,76 +898,11 @@
                         </router-link>
 
                         <hr />
-
-                        <router-link to="/admissions">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
-                                </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
-                            </div>
-                        </router-link>
                     </nav>
-                    <router-link to="admin/users">
+                    <router-link to="admin/">
                         <common-button
                             class="mt-10 shadow-sm"
-                            button-text="Add New User"
+                            button-text="Administration"
                         ></common-button>
                     </router-link>
                 </div>
@@ -1347,76 +969,11 @@
                         </router-link>
 
                         <hr />
-
-                        <router-link to="/admissions">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
-                                </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
-                            </div>
-                        </router-link>
                     </nav>
-                    <router-link to="admin/users">
+                    <router-link to="admin/">
                         <common-button
                             class="mt-10 shadow-sm"
-                            button-text="Add New User"
+                            button-text="Administration"
                         ></common-button>
                     </router-link>
                 </div>

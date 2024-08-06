@@ -653,7 +653,7 @@ const fetchData = () => {
     console.log("the query is", searchQuery.value);
 
     axios
-        .get(`/students/${searchQuery.value}`, { showLoader: showLoader })
+        .get(`/admissions/${searchQuery.value}`, { showLoader: showLoader })
         .then((response) => {
             console.log("res", response.data.data.data);
             pagination.value = response.data;
@@ -688,7 +688,7 @@ const submitForm = async () => {
         formData.append("dateofbirth", student.value.dob);
         formData.append("gender", student.value.gender);
 
-        const response = await axios.post("students/", formData, {
+        const response = await axios.post("admissions/", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },

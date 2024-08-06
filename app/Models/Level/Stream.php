@@ -7,22 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class Level extends Model
+class Stream extends Model
 {
     use HasFactory, HasRoles, HasApiTokens;
 
-    public $table = 'classes';
+    public $table = 'streams';
 
     protected $guarded = [];
 
-    public function feeStructures()
+    public function level()
     {
-        return $this->hasMany(FeeStructure::class);
-    }
-
-    public function streams()
-    {
-        return $this->hasMany(Stream::class);
+        return $this->belongsTo(Level::class);
     }
 
 }

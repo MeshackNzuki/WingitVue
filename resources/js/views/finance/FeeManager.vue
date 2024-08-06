@@ -129,7 +129,6 @@
                                     <span class="mb-2 font-bold"
                                         >Fee Details</span
                                     >
-
                                     <div
                                         class="col-span-2"
                                         v-for="(
