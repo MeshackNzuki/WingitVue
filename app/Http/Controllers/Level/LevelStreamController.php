@@ -9,8 +9,6 @@ use App\Models\Level\Stream;
 
 class LevelStreamController extends Controller
 {
-    use ResSuccess;
-
     public function getLevels()
     {
         $levels = Level::all();
@@ -31,7 +29,7 @@ class LevelStreamController extends Controller
         ]);
 
         $level = Level::create($validated);
-        return $this->ResSuccess($level, 'Level added successfully', 201);
+        return $this->ResSuccess('Level added successfully', 201);
     }
 
     public function addStream(Request $request)
@@ -42,6 +40,6 @@ class LevelStreamController extends Controller
         ]);
 
         $stream = Stream::create($validated);
-        return $this->ResSuccess($stream, 'Stream added successfully', 201);
+        return $this->ResSuccess('Stream added successfully', 201);
     }
 }

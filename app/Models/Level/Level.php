@@ -11,7 +11,7 @@ class Level extends Model
 {
     use HasFactory, HasRoles, HasApiTokens;
 
-    public $table = 'classes';
+    public $table = 'levels';
 
     protected $guarded = [];
 

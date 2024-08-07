@@ -650,10 +650,10 @@ const onFileChange = (event) => {
 
 const fetchData = () => {
     const showLoader = searchQuery.value.trim() === "";
-    console.log("the query is", searchQuery.value);
-
     axios
-        .get(`/admissions/${searchQuery.value}`, { showLoader: showLoader })
+        .get(`/admissions/students/${searchQuery.value}`, {
+            showLoader: showLoader,
+        })
         .then((response) => {
             console.log("res", response.data.data.data);
             pagination.value = response.data;
@@ -688,7 +688,7 @@ const submitForm = async () => {
         formData.append("dateofbirth", student.value.dob);
         formData.append("gender", student.value.gender);
 
-        const response = await axios.post("admissions/", formData, {
+        const response = await axios.post("admissions/students", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },

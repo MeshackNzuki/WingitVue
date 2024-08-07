@@ -111,7 +111,7 @@ Route::middleware('auth:sanctum')->group(function () {
      //end hostel routes
 
      //admission routes 
-     Route::prefix('admisions')->group(function () {
+     Route::prefix('admissions')->group(function () {
         //classes and streams
         Route::get('/levels', [LevelStreamController::class, 'getLevels']);
         Route::get('/streams', [LevelStreamController::class, 'getStreams']);
@@ -120,8 +120,8 @@ Route::middleware('auth:sanctum')->group(function () {
         //end class streams
 
         //student management
-        Route::get('/{query?}', [StudentController::class, 'index']);
-        Route::post('/', [StudentController::class, 'store']);
+        Route::get('students/{query?}', [StudentController::class, 'index']);
+        Route::post('students/', [StudentController::class, 'store']);
          // end student management
       });
      //end admission routes 

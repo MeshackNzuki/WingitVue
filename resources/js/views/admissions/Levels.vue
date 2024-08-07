@@ -91,7 +91,7 @@
                                         >Level/Class Information</span
                                     >
                                     <div>
-                                        <div class="col-span-2">
+                                        <div class="">
                                             <label
                                                 for="class"
                                                 class="block text-sm font-medium"
@@ -101,7 +101,7 @@
                                                 v-model="newClass.level"
                                                 type="number"
                                                 id="class"
-                                                name="class"
+                                                name="level"
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
                                                 placeholder="Enter class"
                                             />
@@ -111,7 +111,7 @@
                                                 >{{ errors.level }}</span
                                             >
                                         </div>
-                                        <div class="col-span-2">
+                                        <div class="">
                                             <label
                                                 for="description"
                                                 class="block text-sm font-medium"
@@ -133,11 +133,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="divider lg:divider-horizontal divider-info"
-                                ></div>
                             </div>
-
                             <div class="col-span-2 flex justify-end">
                                 <CommonButton
                                     button-text="Save Class"
@@ -235,7 +231,7 @@
                                         >Stream Information</span
                                     >
                                     <div>
-                                        <div class="col-span-2">
+                                        <div class="">
                                             <label
                                                 for="class"
                                                 class="block text-sm font-medium"
@@ -258,7 +254,7 @@
                                             >
                                         </div>
 
-                                        <div class="col-span-2">
+                                        <div class="">
                                             <label
                                                 for="description"
                                                 class="block text-sm font-medium"
@@ -284,9 +280,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="divider lg:divider-horizontal divider-info"
-                                ></div>
                             </div>
 
                             <div class="col-span-2 flex justify-end">
@@ -329,7 +322,6 @@ const errors = ref({});
 const searchQuery = ref("");
 
 const submitStreamForm = async () => {
-    console.log("first", newClass.value);
     try {
         await axios.post("admissions/streams", newStream.value);
         // handle success (e.g., show a success message or reload data)
@@ -341,7 +333,7 @@ const submitStreamForm = async () => {
 
 const submitClassForm = async () => {
     try {
-        await axios.post("admissions/levels", newStream.value);
+        await axios.post("admissions/levels", newClass.value);
 
         // handle success (e.g., show a success message or reload data)
     } catch (error) {
