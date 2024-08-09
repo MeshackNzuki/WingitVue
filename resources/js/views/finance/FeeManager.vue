@@ -83,14 +83,21 @@
                                                 class="block text-sm font-medium"
                                                 >Class</label
                                             >
-                                            <input
+                                            <select
                                                 v-model="feeStructure.level"
-                                                type="text"
                                                 id="class"
                                                 name="class"
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                placeholder="Enter class"
-                                            />
+                                            >
+                                                <option
+                                                    v-for="classOption in classOptions"
+                                                    :key="classOption.id"
+                                                    :value="classOption.value"
+                                                >
+                                                    {{ classOption.level }}
+                                                </option>
+                                            </select>
+
                                             <span
                                                 v-if="errors.level"
                                                 class="text-red-500 text-sm"
@@ -277,6 +284,7 @@ const feeStructure = ref({
 });
 
 const errors = ref({});
+const classOptions = ref({});
 const searchQuery = ref("");
 
 const addDetail = () => {
@@ -305,7 +313,9 @@ const submitForm = async () => {
 };
 
 onMounted(async () => {
-    // fetch any initial data if necessary
+    axios.get("admissions/levels", { showLoader: false }).then((res) => {
+        classOptions.value = res.data.data;
+    });
 });
 </script>
 

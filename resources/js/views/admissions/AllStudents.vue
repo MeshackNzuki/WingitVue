@@ -217,15 +217,22 @@
                                                     class="block text-sm font-medium"
                                                     >Class</label
                                                 >
-                                                <input
+                                                <select
                                                     v-model="student.class_id"
-                                                    type="text"
                                                     id="class"
                                                     name="class"
-                                                    required
                                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                    placeholder="Enter class"
-                                                />
+                                                >
+                                                    <option
+                                                        v-for="classOption in classOptions"
+                                                        :key="classOption.id"
+                                                        :value="
+                                                            classOption.value
+                                                        "
+                                                    >
+                                                        {{ classOption.level }}
+                                                    </option>
+                                                </select>
                                                 <span
                                                     v-if="errors.class_id"
                                                     class="text-red-500 text-sm"
@@ -484,15 +491,20 @@
                                                 class="block text-sm font-medium"
                                                 >Class</label
                                             >
-                                            <input
+                                            <select
                                                 v-model="student.class_id"
-                                                type="text"
                                                 id="class"
                                                 name="class"
-                                                required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                placeholder="Enter class"
-                                            />
+                                            >
+                                                <option
+                                                    v-for="classOption in classOptions"
+                                                    :key="classOption.id"
+                                                    :value="classOption.value"
+                                                >
+                                                    {{ classOption.level }}
+                                                </option>
+                                            </select>
                                             <span
                                                 v-if="errors.class_id"
                                                 class="text-red-500 text-sm"
@@ -617,6 +629,7 @@ const showModalFunc = (modalId) => {
 const studentData = ref();
 const reload = ref();
 const pagination = ref({});
+const classOptions = ref({});
 const links = ref([]);
 const searchQuery = ref("");
 const student = ref({
@@ -666,6 +679,10 @@ const fetchData = () => {
 };
 onMounted(async () => {
     fetchData();
+    //get level as level options
+    axios.get("admissions/levels", { showLoader: false }).then((res) => {
+        classOptions.value = res.data.data;
+    });
 });
 
 watch([searchQuery, reload], () => {
