@@ -1,4 +1,5 @@
 <template>
+    <button @click="showSuccess()">Show Success Toast</button>
     <Table
         :headers="['CLASS/LEVEL', 'DESCRIPTION', 'TOTAL FEE', 'ACTION']"
         title="Manage fees"
@@ -92,7 +93,7 @@
                                                 <option
                                                     v-for="classOption in classOptions"
                                                     :key="classOption.id"
-                                                    :value="classOption.value"
+                                                    :value="classOption.id"
                                                 >
                                                     {{ classOption.level }}
                                                 </option>
@@ -104,6 +105,7 @@
                                                 >{{ errors.level }}</span
                                             >
                                         </div>
+
                                         <div class="col-span-2">
                                             <label
                                                 for="description"
@@ -151,7 +153,7 @@
                                                     >Detail Name</label
                                                 >
                                                 <input
-                                                    v-model="detail.name"
+                                                    v-model="detail.description"
                                                     type="text"
                                                     id="detail_name"
                                                     name="detail_name"
@@ -223,7 +225,7 @@
                                             :key="index"
                                         >
                                             <td class="py-1 px-2 border-b">
-                                                {{ detail.name }}
+                                                {{ detail.description }}
                                             </td>
                                             <td class="py-1 px-2 border-b"></td>
                                             <td
@@ -270,25 +272,38 @@
 import Table from "../../components/Tables/MainTable.vue";
 import CommonButton from "../../components/Buttons/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
+
+import { useToast } from "primevue/usetoast";
+
 import { ref, onMounted, watch } from "vue";
 import axios from "axios";
 
 const showModalFunc = (modalId) => {
     document.getElementById(modalId).showModal();
 };
+const showSuccess = () => {
+    toast.add({
+        severity: "success",
+        summary: "Success Message",
+        detail: "Your operation was successful.",
+        life: 3000,
+    });
+};
 
 const feeStructure = ref({
     level: "",
     description: "",
-    details: [{ name: "", amount: 0 }],
+    total_fee: null,
+    details: [{ description: "", amount: 0 }],
 });
 
+const toast = useToast();
 const errors = ref({});
 const classOptions = ref({});
 const searchQuery = ref("");
 
 const addDetail = () => {
-    feeStructure.value.details.push({ name: "", amount: 0 });
+    feeStructure.value.details.push({ description: "", amount: 0 });
 };
 
 const removeDetail = (index) => {
@@ -296,19 +311,33 @@ const removeDetail = (index) => {
 };
 
 const computeTotal = () => {
-    return feeStructure.value.details.reduce(
+    const calc = feeStructure.value.details.reduce(
         (sum, detail) => sum + parseFloat(detail.amount || 0),
         0,
     );
+
+    feeStructure.value.total_fee = calc;
+
+    return calc;
 };
 
 const submitForm = async () => {
+    console.log("first", feeStructure);
     try {
-        await axios.post("finance/fee-structures", feeStructure.value);
-        // handle success (e.g., show a success message or reload data)
+        await axios.post(
+            "finance/fee-structures/" + feeStructure.value.level,
+            feeStructure.value,
+        );
+        toast.add({
+            severity: "success",
+            summary: "Success Message",
+            detail: "Fee structure has been added created.",
+            life: 3000,
+        });
     } catch (error) {
         // handle error (e.g., show error messages)
         errors.value = error.response.data.errors || {};
+        console.log("err", error);
     }
 };
 

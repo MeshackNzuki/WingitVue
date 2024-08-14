@@ -93,6 +93,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Routes for managing finance
     Route::middleware('can:manage finance')->prefix('finance')->group(function () {
+        Route::post('fee-structures/{level_id}', [FeeController::class, 'saveFeeStructure']);
         Route::get('fee-structure/{level_id}', [FeeController::class, 'viewFeeStructure']);
         Route::get('balance/{student_id}', [FeeController::class, 'viewBalance']);
         Route::post('make-payment/{student_id}', [FeeController::class, 'makePayment']);

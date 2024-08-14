@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute } from "vue-router";
 import Vue3Toastify, { toast } from "vue3-toastify";
+import Toast from "primevue/toast";
 import "../../node_modules/vue3-marquee-slider/dist/style.css";
 import "vue3-toastify/dist/index.css";
 import Sidebar from "./components/Sidebar/Sidebar.vue";
@@ -34,6 +35,7 @@ watch(
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden">
         <div :class="login ? '' : 'ms-64 p-4'">
+            <Toast />
             <Sidebar />
             <TopBar />
             <router-view v-slot="{ Component }">

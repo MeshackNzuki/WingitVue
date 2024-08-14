@@ -126,6 +126,7 @@ class FeeController extends Controller
     public function saveFeeStructure(Request $request, $level_id)
     {
         $request->validate([
+            'total_fee' => 'required',
             'details' => 'required|array',
             'details.*.description' => 'required|string',
             'details.*.amount' => 'required|numeric|min:0',
@@ -137,6 +138,7 @@ class FeeController extends Controller
         try {
             // Find or create the fee structure for the given level
             $feeStructure = FeeStructure::firstOrNew(['level_id' => $level_id]);
+            $feeStructure->total_fee = $request->total_fee;
             $feeStructure->save();
 
             // Delete existing fee details
