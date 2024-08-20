@@ -278,6 +278,11 @@ import { useToast } from "primevue/usetoast";
 import { ref, onMounted, watch } from "vue";
 import axios from "axios";
 
+const toast = useToast();
+const errors = ref({});
+const classOptions = ref({});
+const searchQuery = ref("");
+
 const showModalFunc = (modalId) => {
     document.getElementById(modalId).showModal();
 };
@@ -296,11 +301,6 @@ const feeStructure = ref({
     total_fee: null,
     details: [{ description: "", amount: 0 }],
 });
-
-const toast = useToast();
-const errors = ref({});
-const classOptions = ref({});
-const searchQuery = ref("");
 
 const addDetail = () => {
     feeStructure.value.details.push({ description: "", amount: 0 });

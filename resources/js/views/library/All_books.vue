@@ -89,9 +89,10 @@
 
                 <dialog :id="book.id" class="modal">
                     <div class="modal-box dark:bg-slate-800">
-                        <form method="dialog">
+                        <Error :msg="ErrorObjectMessange" />
+                        <form method="dialog" class="modal-backdrop">
                             <button
-                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                                class="btn btn-sm btn-circle btn-gray-600 absolute right-2 top-2"
                             >
                                 ✕
                             </button>
@@ -221,12 +222,16 @@
 import Table from "../../components/Tables/MainTable.vue";
 import CommonButton from "../../components/Buttons/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
+import Error from "../../components/Flash/Error.vue";
+import Success from "../../components/Flash/Success.vue";
 import axios from "axios";
+import { toast } from "vue3-toastify";
+import { useToast } from "primevue/usetoast";
 import { ref, onMounted, watch } from "vue";
 //start issue selector
 const status = ref("student");
 //end issue selector
-
+const toastPrime = useToast();
 //issue ID
 const student_issue_admission = ref();
 const staff_issue_admission = ref();
@@ -254,17 +259,22 @@ const createInputs = ref({
 });
 const authorData = ref([]);
 const publisherData = ref([]);
+const ErrorObjectMessange = ref("");
 
 const showModalFunc = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 
+const hideModalFunc = (modalId) => {
+    document.getElementById(modalId).close();
+};
+
 const fetchData = () => {
     const showLoader = searchQuery.value.trim() === "";
-
     axios
         .get(`/library/books/${searchQuery.value}`, { showLoader: showLoader })
         .then((response) => {
+            console.log("first", response);
             pagination.value = response.data;
             links.value = response.data.links;
             books.value = response.data.data.data;
@@ -294,7 +304,6 @@ const issueBookStaff = (book_id) => {
             toast.info(response.data);
             reload.value = !reload.value;
         });
-    showModal4.value = false;
 };
 
 const issueBook = (book_id) => {
@@ -304,9 +313,28 @@ const issueBook = (book_id) => {
             book_id: book_id,
         })
         .then((response) => {
-            console.log(response);
-            toast.info(response.data);
+            hideModalFunc(book_id);
+            toast.add({
+                severity: "success",
+                summary: "Success Message",
+                detail: "Your operation was successful.",
+                life: 3000,
+            });
             reload.value = !reload.value;
+        })
+        .catch((err) => {
+            console.log("err", err);
+            ErrorObjectMessange.value = err.response.data.error;
+            const intervalId = setInterval(() => {
+                ErrorObjectMessange.value = "";
+                clearInterval(intervalId);
+            }, 3000);
+            toastPrime.add({
+                severity: "error",
+                summary: "Data Error",
+                detail: err.response.data.error,
+                life: 3000,
+            });
         });
 };
 

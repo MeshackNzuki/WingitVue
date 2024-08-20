@@ -5,7 +5,7 @@ namespace App\Http\Requests\Library;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Storebook_issueRequest extends FormRequest
+class StorebookIssueRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

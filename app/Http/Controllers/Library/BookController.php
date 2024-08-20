@@ -22,13 +22,14 @@ class BookController extends Controller
     public function index(Request $request, $query = '')
     {
         if ($query != '') {
-            $books = Book::where('number', '=', $query)
+            $books = Book::where('number', 'like', "%$query%")
+            ->orWhere('title', 'like', "%$query%")
                 ->with('auther', 'publisher', 'subject')->paginate(80);
         } else {
             $books = Book::with('auther', 'publisher', 'subject')->paginate(80);
         }
-        return $this->ResSuccess($books);
-    }
+        return $this->ResSuccess($books);    }
+
 
     /**
      * Show the form for creating a new resource.
