@@ -5,7 +5,7 @@ namespace App\Models\Library;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class auther extends Model
+class Auther extends Model
 {
     use HasFactory;
     protected $guarded=[];

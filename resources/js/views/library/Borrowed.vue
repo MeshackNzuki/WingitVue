@@ -93,6 +93,7 @@
 import Table from "../../components/Tables/MainTable.vue";
 import CommonButton from "../../components/Buttons/CommonButton.vue";
 import SmallButton from "../../components/Buttons/Small.vue";
+import { toast } from "vue3-toastify";
 import axios from "axios";
 import { ref, onMounted, watch } from "vue";
 
@@ -109,16 +110,18 @@ watch([query, reload], () => {
 });
 
 const fetchData = (id) => {
-    axios.get("/book_issue/" + query).then((response) => {
-        setIssued_book(response.data.data);
-        setPagination(response.data);
-        setLinks(response.data.links);
-    });
+    const showLoader = query.value.trim() === "";
+    axios
+        .get("library/book_issue/" + query, {
+            showLoader: showLoader,
+        })
+        .then((response) => {
+            books.value = response.data.data;
+        });
 };
-
 const handleView = (id) => {
     axios
-        .get("book-issue/edit/" + id)
+        .get("library/book-issue/edit/" + id)
         .then((response) => {
             console.log(response.data);
             setViewBook(response.data);
@@ -131,11 +134,11 @@ const handleView = (id) => {
 };
 const handleReceive = (id) => {
     axios
-        .post("book-issue/update/" + id)
+        .post("library/book-issue/update/" + id)
         .then((response) => {
             console.log(response);
             axios
-                .post("book-issue/delete/" + id)
+                .post("library/book-issue/delete/" + id)
                 .then((response) => {
                     console.log(response);
                 })
@@ -149,7 +152,7 @@ const handleReceive = (id) => {
 
     toast.success("Received & cleared");
     setShowModal(false);
-    setQuery("");
-    reload ? setReload(false) : setReload(true);
+    query.value = "";
+    reload.value = !reload;
 };
 </script>

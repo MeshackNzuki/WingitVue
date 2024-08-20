@@ -26,11 +26,11 @@ class BookIssueStaffController extends Controller
         if ($query != '') {
             $issued_books = BookIssueStaff::with('staff', 'book')
                 ->whereHas('staff', function (Builder $q) use ($query) {
-                    $q->where('adm', 'like', "%{$query}%")->orWhere('name', 'like', "%{$query}%");
+                    $q->where('admission', 'like', "%{$query}%")->orWhere('title', 'like', "%{$query}%");
                 })
                 ->orWhereHas('book', function (Builder $q) use ($query) {
                     $q->where('id', 'like', "%{$query}%")
-                        ->orWhere('name', 'like', "%{$query}%")->orWhere('id', 'like', "%{$query}%");
+                        ->orWhere('title', 'like', "%{$query}%")->orWhere('id', 'like', "%{$query}%");
                 })->paginate();
             return $this->ResSuccess($issued_books);
         } else {

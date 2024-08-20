@@ -607,138 +607,13 @@ const showModalFunc = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 
-const studentData = ref();
-const student = ref({
-    first_name: "",
-    second_name: "",
-    admission: "",
-    class_id: "",
-    guardian_email: "",
-    phone: "",
-    dormitory: "",
-    photo: null,
-    gender: "",
-});
-
-const errors = ref({
-    first_name: "",
-    second_name: "",
-    admission: "",
-    class_id: "",
-    guardian_email: "",
-    phone: "",
-    dormitory: "",
-    photo: "",
-    dob: "",
-    gender: "",
-});
 //handle file
 const onFileChange = (event) => {
     student.value.photo = event.target.files[0];
 };
 
 onMounted(async () => {
-    const response = await axios.get("students/");
+    const response = await axios.get("/admissions/students/");
     studentData.value = response.data.data.data;
 });
-
-const submitForm = async () => {
-    try {
-        // validateForm();
-        // Prepare form data
-        const formData = new FormData();
-        formData.append("first_name", student.value.first_name);
-        formData.append("second_name", student.value.second_name);
-        formData.append("admission", student.value.admission);
-        formData.append("class_id", student.value.class_id);
-        formData.append("guardian_email", student.value.guardian_email);
-        formData.append("phone", student.value.phone);
-        formData.append("dormitory", student.value.dormitory);
-        formData.append("photo", student.value.photo);
-        formData.append("dateofbirth", student.value.dob);
-        formData.append("gender", student.value.gender);
-
-        const response = await axios.post("students/", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        });
-
-        console.log("Student added successfully:", response.data);
-
-        clearForm();
-    } catch (error) {
-        console.log("first", error);
-    }
-};
-
-const validateForm = () => {
-    // Reset all error messages
-    Object.keys(errors.value).forEach((key) => {
-        errors.value[key] = "";
-    });
-
-    // Validate first name
-    if (!student.value.first_name) {
-        errors.value.first_name = "First name is required";
-    }
-
-    // Validate second name
-    if (!student.value.second_name) {
-        errors.value.second_name = "Second name is required";
-    }
-
-    // Validate admission number
-    if (!student.value.admission) {
-        errors.value.admission = "Admission number is required";
-    }
-
-    // Validate class
-    if (!student.value.class_id) {
-        errors.value.class_id = "Class is required";
-    }
-
-    // Validate guardian email
-    if (!student.value.guardian_email) {
-        errors.value.guardian_email = "Guardian email is required";
-    } else if (!validateEmail(student.value.guardian_email)) {
-        errors.value.guardian_email = "Invalid email format";
-    }
-
-    // Validate phone number
-    if (!student.value.phone) {
-        errors.value.phone = "Phone number is required";
-    } else if (!validatePhone(student.value.phone)) {
-        errors.value.phone = "Invalid phone number format";
-    }
-
-    // Validate dormitory
-    if (!student.value.dormitory) {
-        errors.value.dormitory = "Dormitory is required";
-    }
-
-    // Validate photo
-    if (!student.value.photo) {
-        errors.value.photo = "Student photo is required";
-    }
-    if (!student.value.dob) {
-        errors.value.dob = "Date of Birth is required";
-    }
-    if (!student.value.gender) {
-        errors.value.gender = "Gender is required";
-    }
-};
-
-const validateEmail = (email) => {
-    // Simple email validation regex
-    const re =
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
-    return re.test(email);
-};
-
-const validatePhone = (phone) => {
-    // Kenyan phone number validation regex
-    const re = /^(?:\+254|0)?(7|1)\d{8}$/;
-    return re.test(phone);
-};
 </script>

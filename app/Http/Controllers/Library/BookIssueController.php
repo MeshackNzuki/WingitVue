@@ -28,11 +28,11 @@ class BookIssueController extends Controller
         if ($query != '') {
             $issued_books = BookIssue::with('student', 'book')
                 ->whereHas('student', function (Builder $q) use ($query) {
-                    $q->where('adm', 'like', "%{$query}%")->orWhere('name', 'like', "%{$query}%");
+                    $q->where('admission', 'like', "%{$query}%");
                 })
                 ->orWhereHas('book', function (Builder $q) use ($query) {
-                    $q->where('name', 'like', "%{$query}%")
-                        ->orWhere('name', 'like', "%{$query}%");
+                    $q->where('title', 'like', "%{$query}%");
+                      
                 })->paginate();
             return $this->ResSuccess($issued_books);
         } else {
@@ -69,7 +69,7 @@ class BookIssueController extends Controller
         }
 
         try {
-            $student_id = Student::where('adm', $request->adm)->firstOrFail()->id;
+            $student_id = Student::where('admission', $request->admission)->firstOrFail()->id;
         } catch (\Throwable $th) {
             return $this->ResError('Admission not found', 400);
         }

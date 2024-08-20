@@ -96,7 +96,7 @@ class ReportsController extends Controller
         foreach ($categories as $category) {
             $counts[$category] = Book::with('category')
                 ->whereHas('category', function (Builder $q) use ($category) {
-                    $q->where('name', 'like', "%{$category}%");
+                    $q->where('title', 'like', "%{$category}%");
                 })
                 ->count();
         }
@@ -105,7 +105,7 @@ class ReportsController extends Controller
     }
 
     /**
-     * Count books by name with optional search query.
+     * Count books by title with optional search query.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $query
@@ -114,16 +114,16 @@ class ReportsController extends Controller
     public function countName(Request $request, $query = '')
     {
         if ($query !== '') {
-            $names = Book::where('name', 'LIKE', "%{$query}%")
-                ->select('name', DB::raw('count(*) as total'))
-                ->groupBy('name')
+            $titles = Book::where('title', 'LIKE', "%{$query}%")
+                ->select('title', DB::raw('count(*) as total'))
+                ->groupBy('title')
                 ->paginate(80);
         } else {
-            $names = Book::select('name', DB::raw('count(*) as total'))
-                ->groupBy('name')
+            $titles = Book::select('title', DB::raw('count(*) as total'))
+                ->groupBy('title')
                 ->paginate(80);
         }
 
-        return $this->resSuccess($names);
+        return $this->resSuccess($titles);
     }
 }

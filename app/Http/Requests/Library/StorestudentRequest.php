@@ -29,7 +29,7 @@ class StorestudentRequest extends FormRequest
             'gender' => "required",
             'stream' => "required",
             'class' => "required",
-            'adm' => "required",
+            'admission' => "required",
             'phone' => "required",
         ];
     }

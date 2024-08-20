@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class book_issue_history extends Model
+class BookIssueHistory extends Model
 {
     use HasFactory;
     protected $guarded = [];
