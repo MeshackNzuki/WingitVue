@@ -7,7 +7,7 @@ use App\Models\Library\Book;
 use App\Http\Requests\Library\StoreBookRequest;
 use App\Http\Requests\Library\UpdateBookRequest;
 use Illuminate\Http\Request;
-use App\Models\Library\Auther;
+use App\Models\Library\Author;
 use App\Models\Library\Subject;
 use App\Models\Library\Publisher;
 
@@ -24,9 +24,9 @@ class BookController extends Controller
         if ($query != '') {
             $books = Book::where('number', 'like', "%$query%")
             ->orWhere('title', 'like', "%$query%")
-                ->with('auther', 'publisher', 'subject')->paginate(80);
+                ->with('author', 'publisher', 'subject')->paginate(80);
         } else {
-            $books = Book::with('auther', 'publisher', 'subject')->paginate(80);
+            $books = Book::with('author', 'publisher', 'subject')->paginate(80);
         }
         return $this->ResSuccess($books);    }
 
@@ -39,7 +39,7 @@ class BookController extends Controller
     public function create()
     {
         return $this->ResSuccess([
-            'authors' => Auther::latest()->get(),
+            'authors' => Author::latest()->get(),
             'publishers' => Publisher::latest()->get(),
             'categories' => subject::latest()->get(),
         ]);
@@ -68,7 +68,7 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         return $this->ResSuccess([
-            'authors' => Auther::latest()->get(),
+            'authors' => Author::latest()->get(),
             'publishers' => Publisher::latest()->get(),
             'categories' => subject::latest()->get(),
             'book' => $book

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Library\ChangePasswordRequest;
-use App\Models\Library\Auther;
+use App\Models\Library\Author;
 use App\Models\Library\Book;
 use App\Models\Library\Staff;
 use App\Models\Library\BookIssue;
@@ -23,7 +23,7 @@ class DashboardController extends Controller
     public function index() 
     {
         return $this->ResSuccess([
-            'authors' => Auther::count(),
+            'authors' => Author::count(),
             'publishers' => Publisher::count(),
             'categories' => Category::count(),
             'books' => Book::count(),

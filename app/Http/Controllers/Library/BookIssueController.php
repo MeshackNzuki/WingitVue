@@ -9,7 +9,7 @@ use App\Models\Library\BookIssueHistory;
 use App\Http\Requests\Library\StoreBookIssueRequest;
 use App\Http\Requests\Library\UpdateBookIssueRequest;
 use Illuminate\Http\Request;
-use App\Models\Library\Auther;
+use App\Models\Library\Author;
 use App\Models\Library\Book;
 use App\Models\Library\Settings;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,7 +26,7 @@ class BookIssueController extends Controller
     public function index(Request $request, $query = '')
     {
         if ($query != '') {
-            $issued_books = BookIssue::with('student', 'book')
+            $issued_books = BookIssue::with('student', 'book' ,'book.subject')
                 ->whereHas('student', function (Builder $q) use ($query) {
                     $q->where('admission', 'like', "%{$query}%");
                 })
@@ -36,7 +36,7 @@ class BookIssueController extends Controller
                 })->paginate();
             return $this->ResSuccess($issued_books);
         } else {
-            $issued_books = BookIssue::with('student', 'book')->paginate(20);
+            $issued_books = BookIssue::with('student', 'book' ,'book.subject','book.author')->paginate(20);
             return $this->ResSuccess($issued_books);
         }
     }
@@ -75,13 +75,17 @@ class BookIssueController extends Controller
         }
 
         $issue_date = date('Y-m-d');
-        $return_date = date('Y-m-d', strtotime("+" . (Settings::latest()->first()->return_days) . " days"));
+        $return_date = date('Y-m-d', strtotime("+" . (Settings::latest()->first()->return_days_limit) . " days"));
+        $daily_fine = Settings::latest()->first()->daily_fine;
+        $return_days_limit = Settings::latest()->first()->daily_fine;
         
         $data = BookIssue::create($request->validated() + [
             'student_id' => $student_id,
             'book_id' => $request->book_id,
             'issue_date' => $issue_date,
             'return_date' => $return_date,
+            'daily_fine'=>$daily_fine,
+            'return_days_limit'=>$return_days_limit,
             'issue_status' => 'N',
         ]);
 
@@ -116,7 +120,7 @@ class BookIssueController extends Controller
 
         return $this->ResSuccess([
             'book' => $book,
-            'fine' => $fine,
+        
         ]);
     }
 

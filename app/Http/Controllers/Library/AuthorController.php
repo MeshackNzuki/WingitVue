@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
-use App\Models\Library\Auther;
-use App\Http\Requests\Library\StoreAutherRequest;
-use App\Http\Requests\Library\UpdateAutherRequest;
+use App\Models\Library\Author;
+use App\Http\Requests\Library\StoreAuthorRequest;
+use App\Http\Requests\Library\UpdateAuthorRequest;
 use App\Http\Traits\JsonResponseTrait;
 
-class AutherController extends Controller
+class AuthorController extends Controller
 {
     use JsonResponseTrait;
 
@@ -19,7 +19,7 @@ class AutherController extends Controller
      */
     public function index()
     {
-        $authors = Auther::all();
+        $authors = Author::all();
         return $this->ResSuccess($authors);
     }
 
@@ -30,52 +30,52 @@ class AutherController extends Controller
      */
     public function create()
     {
-        return $this->ResSuccess('auther.create');
+        return $this->ResSuccess('author.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Library\StoreAutherRequest  $request
+     * @param  \App\Http\Requests\Library\StoreAuthorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAutherRequest $request)
+    public function store(StoreAuthorRequest $request)
     {
-        $auther = Auther::create($request->validated());
-        return $this->ResSuccess($auther, 201);
+        $author = Author::create($request->validated());
+        return $this->ResSuccess($author, 201);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Library\Auther  $auther
+     * @param  \App\Models\Library\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function edit(Auther $auther)
+    public function edit(Author $author)
     {
         return $this->ResSuccess([
-            'view' => 'auther.edit',
-            'auther' => $auther
+            'view' => 'author.edit',
+            'author' => $author
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\Library\UpdateAutherRequest  $request
-     * @param  \App\Models\Library\Auther  $auther
+     * @param  \App\Http\Requests\Library\UpdateAuthorRequest  $request
+     * @param  \App\Models\Library\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAutherRequest $request, $id)
+    public function update(UpdateAuthorRequest $request, $id)
     {
-        $auther = Auther::find($id);
+        $author = Author::find($id);
 
-        if (!$auther) {
+        if (!$author) {
             return $this->ResError('Author not found', 404);
         }
 
-        $auther->update($request->validated());
-        return $this->ResSuccess($auther, 200);
+        $author->update($request->validated());
+        return $this->ResSuccess($author, 200);
     }
 
     /**
@@ -85,8 +85,8 @@ class AutherController extends Controller
      */
     public function destroy($id)
     {
-        $auther = Auther::findOrFail($id);
-        $auther->delete();
+        $author = Author::findOrFail($id);
+        $author->delete();
         return $this->ResSuccess(['message' => 'Author deleted successfully.'], 200);
     }
 }

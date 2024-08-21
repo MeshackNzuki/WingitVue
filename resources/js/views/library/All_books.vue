@@ -97,7 +97,24 @@
                                 ✕
                             </button>
                         </form>
-                        <h3 class="text-lg font-bold">Issue Book</h3>
+                        <h3 class="text-lg font-bold">
+                            Issue Book
+                            <span class="text-center">
+                                <span
+                                    :class="
+                                        book.status === 'Y'
+                                            ? 'text-gray-900 text-sm font-normal bg-emerald-100  rounded-full px-1'
+                                            : 'text-gray-900 text-sm font-normal bg-red-100 rounded-full px-1 '
+                                    "
+                                >
+                                    {{
+                                        book.status === "Y"
+                                            ? "Available"
+                                            : "Not Available"
+                                    }}
+                                </span>
+                            </span>
+                        </h3>
                         <p class="py-4">
                             <span
                                 >Book Title : {{ book.title }} / Number
@@ -177,7 +194,7 @@
                                             >Staff/Employee Number</label
                                         >
                                         <input
-                                            v-model="staff_issue_admission"
+                                            v-model="staff_issue_number"
                                             type="text"
                                             id="employee_number"
                                             name="employee_number"
@@ -191,6 +208,7 @@
                         </div>
                         <CommonButton
                             button-text="Issue Book"
+                            :attrib="book.status === 'Y' ? '' : 'disabled'"
                             :action="
                                 () => {
                                     student = !null
@@ -200,11 +218,12 @@
                             "
                         />
                     </div>
+                    <form method="dialog" class="modal-backdrop">
+                        <button>close</button>
+                    </form>
                 </dialog>
             </tr>
-
             <!-- create book -->
-
             <dialog id="addbook" class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                     <h3 class="font-bold text-lg">Admit book (Add new)</h3>
@@ -217,7 +236,6 @@
         <!-- end create book -->
     </Table>
 </template>
-
 <script setup>
 import Table from "../../components/Tables/MainTable.vue";
 import CommonButton from "../../components/Buttons/CommonButton.vue";
@@ -234,7 +252,7 @@ const status = ref("student");
 const toastPrime = useToast();
 //issue ID
 const student_issue_admission = ref();
-const staff_issue_admission = ref();
+const staff_issue_number = ref();
 //end Issue ID
 
 const books = ref([]);
@@ -243,7 +261,6 @@ const links = ref([]);
 const searchQuery = ref("");
 const reload = ref(false);
 const subject = ref([]);
-const book_issue_identity = ref("");
 const book_edit_id = ref(null);
 const book_edit_name = ref("");
 const book_issue_id = ref(null);
@@ -254,7 +271,7 @@ const createInputs = ref({
     cost: "",
     isbn: "",
     number: "",
-    auther_id: "",
+    author_id: "",
     publisher_id: "",
 });
 const authorData = ref([]);
@@ -296,7 +313,7 @@ watch([searchQuery, reload], () => {
 const issueBookStaff = (book_id) => {
     axios
         .post("library/book-issue-staff/create", {
-            id_number: book_issue_identity.value,
+            id_number: staff_issue_number.value,
             book_id: book_id,
         })
         .then((response) => {
@@ -309,18 +326,18 @@ const issueBookStaff = (book_id) => {
 const issueBook = (book_id) => {
     axios
         .post("library/book-issue/create", {
-            adm: book_issue_identity.value,
+            admission: student_issue_admission.value,
             book_id: book_id,
         })
         .then((response) => {
-            hideModalFunc(book_id);
-            toast.add({
+            toastPrime.add({
                 severity: "success",
                 summary: "Success Message",
-                detail: "Your operation was successful.",
+                detail: "Book Issued.",
                 life: 3000,
             });
             reload.value = !reload.value;
+            hideModalFunc(book_id);
         })
         .catch((err) => {
             console.log("err", err);
@@ -337,7 +354,6 @@ const issueBook = (book_id) => {
             });
         });
 };
-
 const handleBookEdit = (bookname, book_id) => {
     showModal5.value = true;
     book_edit_id.value = book_id;
@@ -382,7 +398,7 @@ const handleSubmit = () => {
         !createInputs.value.cost ||
         !createInputs.value.isbn ||
         !createInputs.value.number ||
-        !createInputs.value.auther_id ||
+        !createInputs.value.author_id ||
         !createInputs.value.publisher_id
     ) {
         console.log(createInputs.value);
@@ -405,7 +421,7 @@ const handleSubmit = () => {
         cost: "",
         isbn: "",
         number: "",
-        auther_id: "",
+        author_id: "",
         publisher_id: "",
     };
 };

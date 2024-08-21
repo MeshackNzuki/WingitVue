@@ -712,7 +712,7 @@ const handleSubmit = () => {
         !createInputs.cost ||
         !createInputs.isbn ||
         !createInputs.number ||
-        !createInputs.auther_id ||
+        !createInputs.author_id ||
         !createInputs.publisher_id
     ) {
         console.log(createInputs);

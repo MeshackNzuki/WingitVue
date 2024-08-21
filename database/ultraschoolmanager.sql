@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `authers`
+-- Table structure for table `authors`
 --
 
-CREATE TABLE `authers` (
+CREATE TABLE `authors` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -35,10 +35,10 @@ CREATE TABLE `authers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `authers`
+-- Dumping data for table `authors`
 --
 
-INSERT INTO `authers` (`id`, `name`, `created_at`, `updated_at`) VALUES
+INSERT INTO `authors` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'VINCENT OWONDO', '2023-01-22 05:32:28', '2023-01-22 05:32:28'),
 (2, 'KLB', '2023-01-22 05:33:26', '2023-01-22 05:33:26'),
 (3, 'DR PHYLLIS MWANGI', '2023-01-22 05:34:51', '2023-01-22 05:34:51'),
@@ -276,7 +276,7 @@ CREATE TABLE `books` (
   `pages` int(11) DEFAULT NULL,
   `cost` varchar(255) DEFAULT NULL,
   `category_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `auther_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `author_id` bigint(20) UNSIGNED DEFAULT NULL,
   `publisher_id` bigint(20) UNSIGNED DEFAULT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'Y',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -287,7 +287,7 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `title`, `isbn`, `number`, `rack_no`, `pages`, `cost`, `category_id`, `auther_id`, `publisher_id`, `status`, `created_at`, `updated_at`) VALUES
+INSERT INTO `books` (`id`, `title`, `isbn`, `number`, `rack_no`, `pages`, `cost`, `category_id`, `author_id`, `publisher_id`, `status`, `created_at`, `updated_at`) VALUES
 (68393, 'SECONDARY ENGLISH BK1', '9789966651464', '1ENG244/2019', NULL, NULL, '0', 3, 3, 1, 'Y', NULL, '2023-06-13 00:28:33'),
 (68394, 'EXCELLING IN ENGLISH BK1', '9789966446541', '1ENG12/09', NULL, NULL, NULL, 3, 3, NULL, 'Y', NULL, '2023-02-06 02:14:09'),
 (68395, 'EXCELLING IN ENGLISH BK1', '9789966446541', '1ENG29/16', NULL, NULL, NULL, 3, 3, NULL, 'Y', NULL, NULL),

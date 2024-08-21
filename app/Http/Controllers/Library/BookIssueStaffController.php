@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Library;
 
 use App\Http\Controllers\Controller;
 use App\Models\Library\BookIssueStaff;
-use App\Models\Library\Auther;
+use App\Models\Library\Author;
 use App\Models\Library\Book;
 use App\Models\Library\Settings;
 use App\Models\Library\Staff;

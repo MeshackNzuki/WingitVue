@@ -143,11 +143,11 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/update-info', [LoginController::class, 'changePassword']);
         Route::get('/dashboard', [dashboardController::class, 'index']);
 
-        Route::get('/authors', [AutherController::class, 'index']);
-        Route::get('/authors/edit/{auther}', [AutherController::class, 'edit']);
-        Route::post('/authors/update/{id}', [AutherController::class, 'update']);
-        Route::post('/authors/delete/{id}', [AutherController::class, 'destroy']);
-        Route::post('/authors/create', [AutherController::class, 'store']);
+        Route::get('/authors', [AuthorController::class, 'index']);
+        Route::get('/authors/edit/{author}', [AuthorController::class, 'edit']);
+        Route::post('/authors/update/{id}', [AuthorController::class, 'update']);
+        Route::post('/authors/delete/{id}', [AuthorController::class, 'destroy']);
+        Route::post('/authors/create', [AuthorController::class, 'store']);
 
         Route::get('/publishers', [PublisherController::class, 'index']);
         Route::get('/publisher/edit/{publisher}', [PublisherController::class, 'edit']);
