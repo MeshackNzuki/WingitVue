@@ -79,13 +79,13 @@ class ReportsController extends Controller
     }
 
     /**
-     * Count books by category.
+     * Count books by subject.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function countCategory()
+    public function countSubject()
     {
-        $categories = [
+        $subjects = [
             'mathematics', 'eng', 'kiswahili', 'cre', 'agriculture',
             'history', 'physics', 'chemistry', 'biology', 'business',
             'geography', 'fasihi', 'literature', 'computer', 'reference',
@@ -93,10 +93,10 @@ class ReportsController extends Controller
         ];
 
         $counts = [];
-        foreach ($categories as $category) {
-            $counts[$category] = Book::with('category')
-                ->whereHas('category', function (Builder $q) use ($category) {
-                    $q->where('title', 'like', "%{$category}%");
+        foreach ($subjects as $subject) {
+            $counts[$subject] = Book::with('subject')
+                ->whereHas('subject', function (Builder $q) use ($subject) {
+                    $q->where('title', 'like', "%{$subject}%");
                 })
                 ->count();
         }
@@ -111,7 +111,7 @@ class ReportsController extends Controller
      * @param  string  $query
      * @return \Illuminate\Http\JsonResponse
      */
-    public function countName(Request $request, $query = '')
+    public function countTitle(Request $request, $query = '')
     {
         if ($query !== '') {
             $titles = Book::where('title', 'LIKE', "%{$query}%")

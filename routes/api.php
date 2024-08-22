@@ -129,18 +129,14 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Routes for managing library
     Route::prefix('library')->group(function () {
-        Route::get('/count_cat', [ReportsController::class, 'count_cat']);
-        Route::get('/count_name/{query?}', [ReportsController::class, 'count_name']);
+        Route::get('/count_subject/{query?}', [ReportsController::class, 'countSubject']);
+        Route::get('/count_title/{query?}', [ReportsController::class, 'countTitle']);
 
         Route::post('/promote_all', [StudentController::class, 'promote_all']);
         Route::post('/promote_one_by_one/{param}', [StudentController::class, 'promote_one_by_one']);
         Route::post('/demote_all', [StudentController::class, 'demote_all']);
         Route::post('/demote_one_by_one/{param}', [StudentController::class, 'demote_one_by_one']);
-
-        Route::post('/logout', [LoginController::class, 'logout']);
-        Route::post('/change', [LoginController::class, 'change']);
         Route::get('/info', [LoginController::class, 'read']);
-        Route::post('/update-info', [LoginController::class, 'changePassword']);
         Route::get('/dashboard', [dashboardController::class, 'index']);
 
         Route::get('/authors', [AuthorController::class, 'index']);
@@ -155,10 +151,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/publisher/delete/{id}', [PublisherController::class, 'destroy']);
         Route::post('/publisher/create', [PublisherController::class, 'store']);
 
-        Route::get('/categories', [SubjectController::class, 'index']);
-        Route::post('/category/update/{id}', [SubjectController::class, 'update']);
-        Route::post('/category/delete/{id}', [SubjectController::class, 'destroy']);
-        Route::post('/category/create', [SubjectController::class, 'store']);
+        Route::get('/subjects', [SubjectController::class, 'index']);
+        Route::post('/subject/update/{id}', [SubjectController::class, 'update']);
+        Route::post('/subject/delete/{id}', [SubjectController::class, 'destroy']);
+        Route::post('/subject/create', [SubjectController::class, 'store']);
 
         Route::get('/books/{query?}', [BookController::class, 'index']);
         Route::get('/book/create', [BookController::class, 'create']);
@@ -182,8 +178,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/book-issue/delete/{id}', [BookIssueController::class, 'destroy']);
         Route::post('/book-issue/create', [BookIssueController::class, 'store']);
 
-        Route::post('/reports/date-wise', [ReportsController::class, 'generate_date_wise_report']);
-        Route::post('/reports/monthly-wise', [ReportsController::class, 'generate_month_wise_report']);
+        Route::post('/reports/date-wise', [ReportsController::class, 'generateDateWiseReport']);
+        Route::post('/reports/month-wise', [ReportsController::class, 'generateMonthWiseReport']);
         Route::get('/reports/not-returned/{query?}', [ReportsController::class, 'not_returned']);
 
         Route::get('/settings', [SettingsController::class, 'index']);

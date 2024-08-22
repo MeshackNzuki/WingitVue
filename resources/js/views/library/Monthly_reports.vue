@@ -11,7 +11,7 @@
         title="Daily reports"
         v-model:query="searchQuery"
         search_placeholder="Enter date"
-        search_type="date"
+        search_type="month"
         :rows="books?.length"
     >
         <template v-slot:actions>
@@ -73,7 +73,7 @@ import { useToast } from "primevue/usetoast";
 import { ref, onMounted, watch } from "vue";
 
 const books = ref([]);
-const searchQuery = ref(new Date("Y-m-d"));
+const searchQuery = ref("");
 const reload = ref(false);
 const toastPrime = useToast();
 
@@ -95,8 +95,9 @@ const hideModalFunc = (modalId) => {
 
 const fetchData = (id) => {
     axios
-        .post("library/reports/date-wise/", { date: searchQuery.value })
+        .post("library/reports/month-wise/", { month: searchQuery.value })
         .then((response) => {
+            console.log("first", response);
             books.value = response.data.data.data;
         });
 };

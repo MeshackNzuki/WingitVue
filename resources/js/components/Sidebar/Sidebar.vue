@@ -314,77 +314,19 @@
 
                         <hr />
 
-                        <router-link to="/admissions">
+                        <router-link to="/library/settings">
                             <div
                                 role="button"
                                 tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
+                                    <i class="pi pi-cog"></i>
                                 </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
+                                Settings
                             </div>
                         </router-link>
                     </nav>
-                    <router-link to="admin/">
-                        <common-button
-                            class="mt-10 shadow-sm"
-                            button-text="Administration"
-                        ></common-button>
-                    </router-link>
                 </div>
             </div>
 
@@ -490,12 +432,6 @@
 
                         <hr />
                     </nav>
-                    <router-link to="admin/">
-                        <common-button
-                            class="mt-10 shadow-sm"
-                            button-text="Administration"
-                        ></common-button>
-                    </router-link>
                 </div>
             </div>
 
@@ -680,12 +616,6 @@
 
                         <hr />
                     </nav>
-                    <router-link to="admin/">
-                        <common-button
-                            class="mt-10 shadow-sm"
-                            button-text="Administration"
-                        ></common-button>
-                    </router-link>
                 </div>
             </div>
             <!-- Student -->
@@ -752,12 +682,6 @@
 
                         <hr />
                     </nav>
-                    <router-link to="admin/">
-                        <common-button
-                            class="mt-10 shadow-sm"
-                            button-text="Administration"
-                        ></common-button>
-                    </router-link>
                 </div>
             </div>
 
@@ -828,12 +752,6 @@
 
                         <hr />
                     </nav>
-                    <router-link to="admin/">
-                        <common-button
-                            class="mt-10 shadow-sm"
-                            button-text="Administration"
-                        ></common-button>
-                    </router-link>
                 </div>
             </div>
             <div v-if="route.path.includes('/inventory')" class="min-h-96 mt-0">
@@ -899,12 +817,6 @@
 
                         <hr />
                     </nav>
-                    <router-link to="admin/">
-                        <common-button
-                            class="mt-10 shadow-sm"
-                            button-text="Administration"
-                        ></common-button>
-                    </router-link>
                 </div>
             </div>
             <div v-if="route.path.includes('/hostel')" class="min-h-96 mt-0">
@@ -970,13 +882,98 @@
 
                         <hr />
                     </nav>
+                </div>
+            </div>
+
+            <div v-if="route.path.includes('/user/profile')">
+                <router-link to="/">
+                    <div
+                        role="button"
+                        tabindex="0"
+                        class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                    >
+                        <div class="grid place-items-center mr-4">
+                            <i class="pi pi-arrow-circle-left"></i>
+                        </div>
+                        Exit
+                    </div>
+                </router-link>
+            </div>
+            <div v-if="user?.roles[0] === 'admin'">
+                <nav
+                    class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
+                >
                     <router-link to="admin/">
                         <common-button
                             class="mt-10 shadow-sm"
                             button-text="Administration"
                         ></common-button>
                     </router-link>
-                </div>
+                    <router-link to="/admissions">
+                        <div
+                            role="button"
+                            tabindex="0"
+                            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div class="grid place-items-center mr-4">
+                                <i class="pi pi-graduation-cap"></i>
+                            </div>
+                            Admissions
+                        </div>
+                    </router-link>
+
+                    <router-link to="/finance">
+                        <div
+                            role="button"
+                            tabindex="0"
+                            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div class="grid place-items-center mr-4">
+                                <i class="pi pi-briefcase"></i>
+                            </div>
+                            Finance
+                        </div>
+                    </router-link>
+
+                    <router-link to="/inventory">
+                        <div
+                            role="button"
+                            tabindex="0"
+                            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div class="grid place-items-center mr-4">
+                                <i class="pi pi-shop"></i>
+                            </div>
+                            Inventory
+                        </div>
+                    </router-link>
+
+                    <router-link to="/hostel">
+                        <div
+                            role="button"
+                            tabindex="0"
+                            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div class="grid place-items-center mr-4">
+                                <i class="pi pi-warehouse"></i>
+                            </div>
+                            hostel
+                        </div>
+                    </router-link>
+
+                    <router-link to="/library">
+                        <div
+                            role="button"
+                            tabindex="0"
+                            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div class="grid place-items-center mr-4">
+                                <i class="pi pi-book"></i>
+                            </div>
+                            Library
+                        </div>
+                    </router-link>
+                </nav>
             </div>
             <router-link to="logout">
                 <div
@@ -1002,20 +999,6 @@
                     Log Out
                 </div>
             </router-link>
-            <div v-if="route.path.includes('/user/profile')">
-                <router-link to="/">
-                    <div
-                        role="button"
-                        tabindex="0"
-                        class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                    >
-                        <div class="grid place-items-center mr-4">
-                            <i class="pi pi-arrow-circle-left"></i>
-                        </div>
-                        Exit
-                    </div>
-                </router-link>
-            </div>
         </div>
     </nav>
 </template>
@@ -1026,11 +1009,13 @@ import { useRoute } from "vue-router";
 import { useDark } from "@vueuse/core";
 import CommonButton from "../../components/Buttons/CommonButton.vue";
 import SpeedDial from "primevue/speeddial";
-
+import { authStore } from "../../stores/authStore";
 const collapseShow = ref("hidden");
 const toggleCollapseShow = (classes) => {
     collapseShow.value = classes;
 };
+
+const { user } = authStore();
 
 const isDark = useDark({ disableTransition: false });
 const route = useRoute();

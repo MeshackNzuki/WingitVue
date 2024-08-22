@@ -131,9 +131,9 @@ const routes = [
                 component: () => import("../views/library/Daily_reports.vue"),
             },
             {
-                path: "weekly_reports",
-                name: "Weekly_reports",
-                component: () => import("../views/library/Weekly_reports.vue"),
+                path: "monthly_reports",
+                name: "Monthly_reports",
+                component: () => import("../views/library/Monthly_reports.vue"),
             },
             {
                 path: "alumni",

@@ -23,9 +23,10 @@
                     <div class="form-control">
                         <input
                             :value="query"
+                            :type="search_type"
                             @input="updateValue"
                             type="text"
-                            placeholder="Search this table"
+                            :search_placeholder="search_placeholder"
                             class="input-bordered md:w-auto mx-1 w-full rounded-full px-2 font-light"
                         />
                     </div>
@@ -88,6 +89,14 @@ const props = defineProps({
     query: {
         type: String,
         default: "",
+    },
+    search_type: {
+        type: String,
+        default: "text",
+    },
+    search_placeholder: {
+        type: String,
+        default: "Search this table",
     },
     rows: {
         type: Number,

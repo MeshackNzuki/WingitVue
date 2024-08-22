@@ -48,12 +48,12 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-left font-medium text-green-500">
-                        {{ book.issue_date }}-
+                        {{ book.issue_date }}
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-left font-medium text-green-500">
-                        {{ book.return_date }}-
+                        {{ book.return_date }}
                     </div>
                 </td>
 
