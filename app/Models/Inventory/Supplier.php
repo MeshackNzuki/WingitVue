@@ -2,12 +2,13 @@
 
 namespace App\Models\Inventory;
 
+use App\Enums\SupplierType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Customer extends Model
+class Supplier extends Model
 {
     use HasFactory;
 
@@ -20,6 +21,8 @@ class Customer extends Model
         'email',
         'phone',
         'address',
+        'shopname',
+        'type',
         'photo',
         'account_holder',
         'account_number',
@@ -31,24 +34,23 @@ class Customer extends Model
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+        'type' => SupplierType::class
     ];
 
-    public function orders(): HasMany
+    public function purchases(): HasMany
     {
-        return $this->hasMany(Order::class);
-    }
-
-    public function quotations(): HasMany
-    {
-        return $this->HasMany(Quotation::class);
+        return $this->hasMany(Purchase::class);
     }
 
     public function scopeSearch($query, $value): void
     {
         $query->where('name', 'like', "%{$value}%")
             ->orWhere('email', 'like', "%{$value}%")
-            ->orWhere('phone', 'like', "%{$value}%");
+            ->orWhere('phone', 'like', "%{$value}%")
+            ->orWhere('shopname', 'like', "%{$value}%")
+            ->orWhere('type', 'like', "%{$value}%");
     }
+
      /**
      * Get the user that owns the Category
      *

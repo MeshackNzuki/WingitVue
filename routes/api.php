@@ -14,6 +14,26 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Student\StudentController;
 //end student
 
+
+//inventory
+use App\Http\Controllers\Inventory\CategoryController;
+use App\Http\Controllers\Inventory\CustomerController;
+use App\Http\Controllers\Inventory\Dashboards\DashboardController as IventoryDashboard;
+use App\Http\Controllers\Inventory\InvoiceController;
+use App\Http\Controllers\Inventory\Order\DueOrderController;
+use App\Http\Controllers\Inventory\Order\OrderCompleteController;
+use App\Http\Controllers\Inventory\Order\OrderController;
+use App\Http\Controllers\Inventory\Order\OrderPendingController;
+use App\Http\Controllers\Inventory\PosController;
+use App\Http\Controllers\Inventory\Product\ProductController;
+use App\Http\Controllers\Inventory\Product\ProductExportController;
+use App\Http\Controllers\Inventory\Product\ProductImportController;
+use App\Http\Controllers\Inventory\Purchase\PurchaseController;
+use App\Http\Controllers\Inventory\Quotation\QuotationController;
+use App\Http\Controllers\Inventory\SupplierController;
+use App\Http\Controllers\Inventory\UnitController;
+//end inventory
+
 //instructor
 use App\Http\Controllers\Instructor\InstructorController;
 //end instructor
@@ -201,14 +221,84 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/', [ProfileController::class, 'show'])->middleware('can:view own profile');
         Route::put('/', [ProfileController::class, 'update'])->middleware('can:edit own profile');
     });
+     //Inventory routes 
+    Route::prefix('inventory')->group(function () {
+    Route::get('dashboard/', [DashboardController::class, 'index']);
 
+
+    Route::resource('/quotations', QuotationController::class);
+    Route::resource('/customers', CustomerController::class);
+    Route::resource('/suppliers', SupplierController::class);
+    Route::resource('/categories', CategoryController::class);
+    Route::resource('/units', UnitController::class);
+
+    // Route Products
+    Route::get('products/import/', [ProductImportController::class, 'create']);
+    Route::post('products/import/', [ProductImportController::class, 'store']);
+    Route::get('products/export/', [ProductExportController::class, 'create']);
+    Route::resource('/products', ProductController::class);
+
+    // Route POS
+    Route::get('/pos', [PosController::class, 'index']);
+    Route::post('/pos/cart/add', [PosController::class, 'addCartItem']);
+    Route::post('/pos/cart/update/{rowId}', [PosController::class, 'updateCartItem']);
+    Route::delete('/pos/cart/delete/{rowId}', [PosController::class, 'deleteCartItem']);
+
+    // Route::post('/pos/invoice', [PosController::class, 'createInvoice']);
+    Route::post('invoice/create/', [InvoiceController::class, 'create']);
+
+    // Route Orders
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders/pending', OrderPendingController::class);
+    Route::get('/orders/complete', OrderCompleteController::class);
+
+    Route::get('/orders/create', [OrderController::class, 'create']);
+    Route::post('/orders/store', [OrderController::class, 'store']);
+
+    // SHOW ORDER
+    Route::get('/orders/{order}', [OrderController::class, 'show']);
+    Route::put('/orders/update/{order}', [OrderController::class, 'update']);
+    Route::delete('/orders/cancel/{order}', [OrderController::class, 'cancel']);
+
+    // DUES
+    Route::get('due/orders/', [DueOrderController::class, 'index']);
+    Route::get('due/order/view/{order}', [DueOrderController::class, 'show']);
+    Route::get('due/order/edit/{order}', [DueOrderController::class, 'edit']);
+    Route::put('due/order/update/{order}', [DueOrderController::class, 'update']);
+
+    // TODO: Remove from OrderController
+    Route::get('/orders/details/{order_id}/download', [OrderController::class, 'downloadInvoice']);
+
+    // Route Purchases
+    Route::get('/purchases/approved', [PurchaseController::class, 'approvedPurchases']);
+    Route::get('/purchases/report', [PurchaseController::class, 'purchaseReport']);
+    Route::get('/purchases/report/export', [PurchaseController::class, 'getPurchaseReport']);
+    Route::post('/purchases/report/export', [PurchaseController::class, 'exportPurchaseReport']);
+
+    Route::get('/purchases', [PurchaseController::class, 'index']);
+    Route::get('/purchases/create', [PurchaseController::class, 'create']);
+    Route::post('/purchases', [PurchaseController::class, 'store']);
+
+    // Route::get('/purchases/show/{purchase}', [PurchaseController::class, 'show']);
+    Route::get('/purchases/{purchase}', [PurchaseController::class, 'show']);
+
+    // Route::get('/purchases/edit/{purchase}', [PurchaseController::class, 'edit']);
+    Route::get('/purchases/{purchase}/edit', [PurchaseController::class, 'edit']);
+    Route::post('/purchases/update/{purchase}', [PurchaseController::class, 'update']);
+    Route::delete('/purchases/delete/{purchase}', [PurchaseController::class, 'destroy']);
+
+    // Route Quotations
+    // Route::get('/quotations/{quotation}/edit', [QuotationController::class, 'edit']);
+    Route::post('/quotations/complete/{quotation}', [QuotationController::class, 'update']);
+    Route::delete('/quotations/delete/{quotation}', [QuotationController::class, 'destroy']);
+    });
+    //end inventory
+    
     // Routes for managing grading
     Route::middleware('can:manage grading')->prefix('grading')->group(function () {
         Route::get('/', [GradingController::class, 'index']);
         Route::post('/', [GradingController::class, 'store']);
         // Add more routes as needed
     });
-
-
 
 });

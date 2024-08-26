@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Customer extends Model
+class Unit extends Model
 {
     use HasFactory;
 
@@ -17,15 +17,9 @@ class Customer extends Model
 
     protected $fillable = [
         'name',
-        'email',
-        'phone',
-        'address',
-        'photo',
-        'account_holder',
-        'account_number',
-        'bank_name',
+        'slug',
+        'short_code',
         "user_id",
-        "uuid"
     ];
 
     protected $casts = [
@@ -33,23 +27,24 @@ class Customer extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function orders(): HasMany
+    public function products(): HasMany
     {
-        return $this->hasMany(Order::class);
-    }
-
-    public function quotations(): HasMany
-    {
-        return $this->HasMany(Quotation::class);
+        return $this->hasMany(Product::class);
     }
 
     public function scopeSearch($query, $value): void
     {
         $query->where('name', 'like', "%{$value}%")
-            ->orWhere('email', 'like', "%{$value}%")
-            ->orWhere('phone', 'like', "%{$value}%");
+            ->orWhere('slug', 'like', "%{$value}%")
+            ->orWhere('short_code', 'like', "%{$value}%");
     }
-     /**
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    /**
      * Get the user that owns the Category
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

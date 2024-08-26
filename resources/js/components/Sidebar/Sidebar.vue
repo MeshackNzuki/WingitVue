@@ -960,7 +960,6 @@
                             hostel
                         </div>
                     </router-link>
-
                     <router-link to="/library">
                         <div
                             role="button"
