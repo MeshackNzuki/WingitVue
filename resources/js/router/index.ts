@@ -5,7 +5,7 @@ const routes = [
     {
         path: "/login",
         name: "Login",
-        component: () => import("../views/Auth/Login.vue"),
+        component: () => import("../views/auth/Login.vue"),
     },
     {
         path: "/",
@@ -328,25 +328,38 @@ const routes = [
                 name: "InventoryReports",
                 component: () => import("../views/inventory/Reports.vue"),
             },
+        ],
+    },
+    {
+        path: "/transport",
+        name: "Transport",
+        meta: { role: "transport-manager" },
+        component: () => import("../views/transport/Layout.vue"),
+        children: [
+            {
+                path: "",
+                name: "TransportDashboard",
+                component: () => import("../views/transport/Dashboard.vue"),
+            },
             {
                 path: "transport",
                 name: "InventoryTransport",
-                component: () => import("../views/inventory/Transport.vue"),
+                component: () => import("../views/transport/Transport.vue"),
             },
             {
                 path: "routes",
                 name: "TransportRoutes",
-                component: () => import("../views/inventory/Routes.vue"),
+                component: () => import("../views/transport/Routes.vue"),
             },
             {
                 path: "vehicles",
                 name: "TransportVehicles",
-                component: () => import("../views/inventory/Vehicles.vue"),
+                component: () => import("../views/transport/Vehicles.vue"),
             },
             {
                 path: "drivers",
                 name: "TransportDrivers",
-                component: () => import("../views/inventory/Drivers.vue"),
+                component: () => import("../views/transport/Drivers.vue"),
             },
         ],
     },

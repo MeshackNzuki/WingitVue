@@ -35,7 +35,7 @@
             </div>
             <!-- Admin -->
 
-            <div v-if="route.path.includes('/admin')" class="min-h-96 mt-0">
+            <div v-if="route.path.includes('/admin')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -97,91 +97,11 @@
                         </router-link>
 
                         <hr />
-
-                        <router-link to="/admissions">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-graduation-cap"></i>
-                                </div>
-                                Admissions
-                            </div>
-                        </router-link>
-
-                        <router-link to="/finance">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-briefcase"></i>
-                                </div>
-                                Finance
-                            </div>
-                        </router-link>
-
-                        <router-link to="/inventory">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-shop"></i>
-                                </div>
-                                Inventory
-                            </div>
-                        </router-link>
-
-                        <router-link to="/hostel">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-warehouse"></i>
-                                </div>
-                                hostel
-                            </div>
-                        </router-link>
-
-                        <router-link to="/library">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-book"></i>
-                                </div>
-                                Library
-                            </div>
-                        </router-link>
                     </nav>
-                    <div
-                        class="flex border border-dashed rounded-2xl justify-center items-center"
-                    >
-                        <common-button
-                            class="mt-10 shadow-sm"
-                            button-text="Add New User"
-                        ></common-button>
-                        <SpeedDial
-                            :model="items"
-                            :radius="120"
-                            type="quarter-circle"
-                            direction="up-left"
-                        />
-                    </div>
                 </div>
             </div>
-
             <!-- Library -->
-            <div v-if="route.path.includes('/library')" class="min-h-96 mt-0">
+            <div v-if="route.path.includes('/library')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -331,7 +251,7 @@
             </div>
 
             <!-- Finance -->
-            <div v-if="route.path.includes('/finance')" class="min-h-96 mt-0">
+            <div v-if="route.path.includes('/finance')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -436,7 +356,7 @@
             </div>
 
             <!-- Guardian -->
-            <div v-if="route.path.includes('/guardian')" class="min-h-96 mt-0">
+            <div v-if="route.path.includes('/guardian')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -513,10 +433,7 @@
                 </div>
             </div>
 
-            <div
-                v-if="route.path.includes('/admissions')"
-                class="min-h-96 mt-0"
-            >
+            <div v-if="route.path.includes('/admissions')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -619,7 +536,7 @@
                 </div>
             </div>
             <!-- Student -->
-            <div v-if="route.path.includes('/student')" class="min-h-96 mt-0">
+            <div v-if="route.path.includes('/student')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -686,10 +603,7 @@
             </div>
 
             <!-- Instructor -->
-            <div
-                v-if="route.path.includes('/instructor')"
-                class="min-h-96 mt-0"
-            >
+            <div v-if="route.path.includes('/instructor')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -754,7 +668,7 @@
                     </nav>
                 </div>
             </div>
-            <div v-if="route.path.includes('/inventory')" class="min-h-96 mt-0">
+            <div v-if="route.path.includes('/inventory')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -764,7 +678,7 @@
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                     >
-                        <router-link to="/admin/">
+                        <router-link to="/inventory/">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -776,50 +690,60 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="users">
+                        <router-link to="inventory/purchases">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-cart-arrow-down"></i>
+                                </div>
+                                Purchase
+                            </div>
+                        </router-link>
+                        <router-link to="inventory/items">
                             <div
                                 role="button"
                                 tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-users"></i>
+                                    <i class="pi pi-box"></i>
                                 </div>
-                                Manage Users
+                                Items
                             </div>
                         </router-link>
 
-                        <router-link to="/user/profile">
+                        <router-link to="inventory/suppliers">
                             <div
                                 role="button"
                                 tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-user"></i>
+                                    <i class="pi pi-warehouse"></i>
                                 </div>
-                                Profile
+                                Suppliers
                             </div>
                         </router-link>
-
-                        <router-link to="settings">
+                        <router-link to="inventory/categories">
                             <div
                                 role="button"
                                 tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-sitemap"></i>
                                 </div>
-                                Settings
+                                Categories
                             </div>
                         </router-link>
-
                         <hr />
                     </nav>
                 </div>
             </div>
-            <div v-if="route.path.includes('/hostel')" class="min-h-96 mt-0">
+            <div v-if="route.path.includes('/hostel')" class="mt-0">
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
@@ -885,6 +809,71 @@
                 </div>
             </div>
 
+            <div v-if="route.path.includes('/transport')" class="mt-0">
+                <span
+                    class="w-full flex justify-center text-center text-xs font-bold"
+                >
+                    Transport Module</span
+                >
+                <div class="relative flex flex-col rounded-x w-full p-2">
+                    <nav
+                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
+                    >
+                        <router-link to="/transport/">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-compass"></i>
+                                </div>
+                                Dashboard
+                            </div>
+                        </router-link>
+                        <router-link to="/transport/vehicles">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-users"></i>
+                                </div>
+                                Vehicles
+                            </div>
+                        </router-link>
+
+                        <router-link to="/transport/routes">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-user"></i>
+                                </div>
+                                Routes
+                            </div>
+                        </router-link>
+
+                        <router-link to="/transport/drivers">
+                            <div
+                                role="button"
+                                tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                            >
+                                <div class="grid place-items-center mr-4">
+                                    <i class="pi pi-cog"></i>
+                                </div>
+                                Drivers
+                            </div>
+                        </router-link>
+                        <hr />
+                    </nav>
+                </div>
+            </div>
+
             <div v-if="route.path.includes('/user/profile')">
                 <router-link to="/">
                     <div
@@ -899,7 +888,7 @@
                     </div>
                 </router-link>
             </div>
-            <div v-if="user?.roles[0] === 'admin'">
+            <div v-if="user?.roles[0] == 'admin'">
                 <nav
                     class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                 >
@@ -957,7 +946,7 @@
                             <div class="grid place-items-center mr-4">
                                 <i class="pi pi-warehouse"></i>
                             </div>
-                            hostel
+                            hostels
                         </div>
                     </router-link>
                     <router-link to="/library">
@@ -970,6 +959,18 @@
                                 <i class="pi pi-book"></i>
                             </div>
                             Library
+                        </div>
+                    </router-link>
+                    <router-link to="/transport">
+                        <div
+                            role="button"
+                            tabindex="0"
+                            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div class="grid place-items-center mr-4">
+                                <i class="pi pi-car"></i>
+                            </div>
+                            Transport
                         </div>
                     </router-link>
                 </nav>

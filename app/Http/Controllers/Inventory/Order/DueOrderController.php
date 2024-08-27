@@ -6,7 +6,6 @@ use App\Models\Inventory\Customer;
 use App\Models\Inventory\Order;
 use App\Models\Inventory\OrderDetails;
 use App\Models\Inventory\Product;
-
 use App\Http\Controllers\Controller;
 use App\Mail\StockAlert;
 use Illuminate\Http\Request;
