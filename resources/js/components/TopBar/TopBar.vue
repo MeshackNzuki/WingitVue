@@ -9,7 +9,7 @@
     >
         <div class="flex">
             <span class="font-semibold" v-if="user?.name"
-                >Hello ,{{ user?.name }}!</span
+                >{{ greeting() }}, {{ user?.name }}!</span
             >
         </div>
         <div class="flex">
@@ -27,9 +27,14 @@
         </div>
 
         <div class="flex px-4 space-x-2">
-            <button class="p-1">
-                <i class="pi pi-search"></i>
-            </button>
+            <RouterLink to="/chat/messages" class="p-1">
+                <div class="indicator">
+                    <i class="pi pi-comments"></i>
+                    <span
+                        class="badge badge-xs bg-red-500 indicator-item animate-pulse"
+                    ></span>
+                </div>
+            </RouterLink>
             <button class="p-1">
                 <div class="indicator">
                     <i class="pi pi-bell"></i>
@@ -119,4 +124,22 @@ watch(
         location.value = route.path.split("/")[1];
     },
 );
+
+const updateGreeting = () => {
+    const currentHour = new Date().getHours();
+
+    if (currentHour < 12) {
+        return "Good Morning";
+    } else if (currentHour < 18) {
+        return "Good Afternoon";
+    } else {
+        return "Good Evening";
+    }
+};
+
+const greeting = () => {
+    return updateGreeting();
+};
+
+setInterval(greeting, 60000);
 </script>
