@@ -319,6 +319,16 @@ const routes = [
                 component: () => import("../views/inventory/Items.vue"),
             },
             {
+                path: "purchases",
+                name: "InventoryPurchase",
+                component: () => import("../views/inventory/Purchase.vue"),
+            },
+            {
+                path: "categories",
+                name: "InventoryCategories",
+                component: () => import("../views/inventory/Categories.vue"),
+            },
+            {
                 path: "suppliers",
                 name: "InventorySuppliers",
                 component: () => import("../views/inventory/Suppliers.vue"),
