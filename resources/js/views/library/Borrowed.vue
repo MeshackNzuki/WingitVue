@@ -38,7 +38,7 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
-                        <div class="font-medium">
+                        <div class="text-start">
                             {{ book.book.title }}
                         </div>
                     </div>
@@ -47,12 +47,12 @@
                     <div class="text-left">{{ book.book?.number }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ book.issue_date }}
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ book.return_date }}
                     </div>
                 </td>
@@ -90,14 +90,14 @@
                                                 <tr>
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-start text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         Student Name
                                                     </th>
 
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-end text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         {{
                                                             book.student
@@ -111,14 +111,14 @@
                                                 <tr>
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-start text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         Student Adm
                                                     </th>
 
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-end text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         {{
                                                             book.student
@@ -129,14 +129,14 @@
                                                 <tr>
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-start text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         Issued On
                                                     </th>
 
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-end text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         {{ book.issue_date }}
                                                     </th>
@@ -144,14 +144,14 @@
                                                 <tr>
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-start text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         Issued On
                                                     </th>
 
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-end text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         {{ book.return_date }}
                                                     </th>
@@ -159,14 +159,14 @@
                                                 <tr>
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-start text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         Days Over Due
                                                     </th>
 
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-end text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         {{
                                                             daysBetween(
@@ -179,14 +179,14 @@
                                                 <tr>
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-start text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         Accumulated Fine
                                                     </th>
 
                                                     <th
                                                         scope="col"
-                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500"
+                                                        class="px-6 py-3 text-end text-xstext-left text-gray-500 uppercase dark:text-neutral-500"
                                                     >
                                                         {{
                                                             daysBetween(

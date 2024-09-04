@@ -27,7 +27,7 @@
                                 alt="Alex Shatov"
                             />
                         </div>
-                        <div class="font-medium">
+                        <div class="text-start">
                             {{ student.first_name }}
                             {{ student.second_name }}
                         </div>
@@ -37,7 +37,7 @@
                     <div class="text-left">{{ student.admission }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ student.class?.level }}-
                     </div>
                 </td>
@@ -83,7 +83,7 @@
                                             <div class="col-span-2">
                                                 <label
                                                     for="first_name"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >First Name</label
                                                 >
                                                 <input
@@ -106,7 +106,7 @@
                                             <div class="col-span-2">
                                                 <label
                                                     for="second_name"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Second Name</label
                                                 >
                                                 <input
@@ -131,7 +131,7 @@
                                             <div class="col-span-2">
                                                 <label
                                                     for="dob"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Date of Birth</label
                                                 >
                                                 <input
@@ -150,7 +150,7 @@
                                             <div class="col-span-2">
                                                 <label
                                                     for="admission"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Admission Number</label
                                                 >
                                                 <input
@@ -183,7 +183,7 @@
                                             <div class="col-span-2">
                                                 <label
                                                     for="gender"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Gender</label
                                                 >
                                                 <select
@@ -214,7 +214,7 @@
                                             <div class="col-span-2">
                                                 <label
                                                     for="class"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Class</label
                                                 >
                                                 <select
@@ -242,7 +242,7 @@
                                             <div class="col-span-2">
                                                 <label
                                                     for="guardian_email"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Guardian Email</label
                                                 >
                                                 <input
@@ -267,7 +267,7 @@
                                             <div class="col-span-2">
                                                 <label
                                                     for="phone"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Phone Number</label
                                                 >
                                                 <input
@@ -292,7 +292,7 @@
                                 <div class="w-full">
                                     <label
                                         for="dormitory"
-                                        class="block text-sm font-medium"
+                                        class="block text-smtext-left"
                                         >Select Hostel/Dormitory</label
                                     >
                                     <input
@@ -313,7 +313,7 @@
                                 <div class="w-full">
                                     <label
                                         for="photo"
-                                        class="block text-sm font-medium"
+                                        class="block text-smtext-left"
                                         >Student Photo (Drag drop)</label
                                     >
                                     <input
@@ -365,7 +365,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="first_name"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >First Name</label
                                             >
                                             <input
@@ -386,7 +386,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="second_name"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Second Name</label
                                             >
                                             <input
@@ -407,7 +407,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="dob"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Date of Birth</label
                                             >
                                             <input
@@ -426,7 +426,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="admission"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Admission Number</label
                                             >
                                             <input
@@ -457,7 +457,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="gender"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Gender</label
                                             >
                                             <select
@@ -488,7 +488,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="class"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Class</label
                                             >
                                             <select
@@ -514,7 +514,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="guardian_email"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Guardian Email</label
                                             >
                                             <input
@@ -537,7 +537,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="phone"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Phone Number</label
                                             >
                                             <input
@@ -562,7 +562,7 @@
                             <div class="w-full">
                                 <label
                                     for="dormitory"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Select Hostel/Dormitory</label
                                 >
                                 <input
@@ -583,7 +583,7 @@
                             <div class="w-full">
                                 <label
                                     for="photo"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Student Photo (Drag drop)</label
                                 >
                                 <input

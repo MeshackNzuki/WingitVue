@@ -62,6 +62,11 @@
                     <slot name="content"></slot>
                 </tbody>
             </table>
+            <div v-if="rows < 1" class="flex justify-center my-4 text sm">
+                <span class="px-3 py-1 bg-sky-200 rounded-badge">
+                    No data yet!</span
+                >
+            </div>
         </div>
     </div>
 </template>

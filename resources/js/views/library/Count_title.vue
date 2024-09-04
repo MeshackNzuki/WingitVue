@@ -15,7 +15,7 @@
                     <div class="text-left">{{ subject.title }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ subject.total }}
                     </div>
                 </td>

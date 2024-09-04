@@ -15,7 +15,7 @@
             <template v-slot:content>
                 <tr v-for="(hostel, index) in hostelData" :key="index">
                     <td class="p-2 whitespace-nowrap">
-                        <div class="font-medium">{{ hostel.name }}</div>
+                        <div class="text-start">{{ hostel.name }}</div>
                     </td>
                     <td class="p-2 whitespace-nowrap">
                         <div class="text-left">
@@ -64,7 +64,7 @@
                                                 <div class="">
                                                     <label
                                                         for="edit_name"
-                                                        class="block text-sm font-medium"
+                                                        class="block text-smtext-left"
                                                         >Hostel Name</label
                                                     >
                                                     <input
@@ -86,7 +86,7 @@
                                                 <div class="">
                                                     <label
                                                         for="edit_number_of_rooms"
-                                                        class="block text-sm font-medium"
+                                                        class="block text-smtext-left"
                                                         >Number of Rooms</label
                                                     >
                                                     <input
@@ -112,7 +112,7 @@
                                                 <div class="w-full">
                                                     <label
                                                         for="photo"
-                                                        class="block text-sm font-medium"
+                                                        class="block text-smtext-left"
                                                         >Hostel Photo (Drag drop
                                                         /Optional)</label
                                                     >
@@ -180,7 +180,7 @@
                                     <div class="">
                                         <label
                                             for="name"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >Hostel Name</label
                                         >
                                         <input
@@ -200,7 +200,7 @@
                                     <div class="">
                                         <label
                                             for="number_of_rooms"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >Number of Rooms</label
                                         >
                                         <input
@@ -220,7 +220,7 @@
                                     <div class="w-full">
                                         <label
                                             for="photo"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >Hostel Photo (Drag drop
                                             /Optional)</label
                                         >

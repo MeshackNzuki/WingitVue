@@ -26,7 +26,7 @@
             <tr v-for="(book, index) in books" :key="index">
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
-                        <div class="font-medium">
+                        <div class="text-start">
                             {{ book.title }}
                         </div>
                     </div>
@@ -35,19 +35,17 @@
                     <div class="text-left">{{ book.number }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="text-left text-green-500">
                         {{ book.subject?.name }}-
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="text-left text-green-500">
                         {{ book.author?.name }}-
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
-                        {{ book.isbn }}-
-                    </div>
+                    <div class="text-left text-green-500">{{ book.isbn }}-</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-lg text-center">
@@ -174,7 +172,7 @@
                                     <div v-if="status === 'student'">
                                         <label
                                             for="student_number"
-                                            class="block text-sm font-medium"
+                                            class="block text-sm text-start"
                                             >Student Admission Number</label
                                         >
                                         <input
@@ -190,7 +188,7 @@
                                     <div v-if="status === 'other'">
                                         <label
                                             for="employee_number"
-                                            class="block text-sm font-medium"
+                                            class="block text-sm text-start"
                                             >Staff/Employee Number</label
                                         >
                                         <input

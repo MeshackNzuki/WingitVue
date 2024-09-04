@@ -30,7 +30,7 @@
                                 alt="Student"
                             />
                         </div>
-                        <div class="font-medium">
+                        <div class="text-start">
                             {{ student.first_name }}
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                     <div class="text-left">{{ student.admission }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ student.class?.level }}
                     </div>
                 </td>
@@ -81,7 +81,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="class"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Class</label
                                             >
                                             <select
@@ -109,7 +109,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="description"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Description</label
                                             >
                                             <input
@@ -149,7 +149,7 @@
                                             <div class="flex-1 mr-2">
                                                 <label
                                                     for="detail_name"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Detail Name</label
                                                 >
                                                 <input
@@ -164,7 +164,7 @@
                                             <div class="flex-1 ml-2">
                                                 <label
                                                     for="amount"
-                                                    class="block text-sm font-medium"
+                                                    class="block text-smtext-left"
                                                     >Amount</label
                                                 >
                                                 <input

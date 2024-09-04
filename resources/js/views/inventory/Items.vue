@@ -26,7 +26,7 @@
         <template v-slot:content>
             <tr v-for="(item, index) in items" :key="index">
                 <td class="p-2 whitespace-nowrap">
-                    <div class="font-medium">{{ index + 1 }}</div>
+                    <div class="text-start">{{ index + 1 }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-left">{{ item.name }}</div>
@@ -38,10 +38,10 @@
                     <div class="text-left">{{ item.supplier?.name }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium">{{ item.quantity }}</div>
+                    <div class="ttext-start">{{ item.quantity }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium">{{ item.price }}</div>
+                    <div class="ttext-start">{{ item.price }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-center">
@@ -75,7 +75,7 @@
                             <div>
                                 <label
                                     for="itemName"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Item Name</label
                                 >
                                 <input
@@ -94,7 +94,7 @@
 
                                 <label
                                     for="category"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Category</label
                                 >
                                 <input

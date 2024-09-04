@@ -18,7 +18,7 @@
         <template v-slot:content>
             <tr v-for="(category, index) in categories" :key="index">
                 <td class="p-2 whitespace-nowrap">
-                    <div class="font-medium">{{ index + 1 }}</div>
+                    <div class="text-start">{{ index + 1 }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-left">{{ category.name }}</div>
@@ -64,7 +64,7 @@
                             <div>
                                 <label
                                     for="categoryName"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Category Name</label
                                 >
                                 <input
@@ -83,7 +83,7 @@
 
                                 <label
                                     for="categoryDescription"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Description</label
                                 >
                                 <input
@@ -125,11 +125,6 @@ const showModalFunc = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 
-const newItem = ref({
-    name: "",
-    category: "",
-});
-
 const newCategory = ref({
     name: "",
     description: "",
@@ -151,9 +146,6 @@ const submitCategoryForm = async () => {
 };
 
 onMounted(async () => {
-    await axios.get("inventory/items").then((res) => {
-        items.value = res.data.data;
-    });
     await axios.get("inventory/categories").then((res) => {
         categories.value = res.data.data;
     });

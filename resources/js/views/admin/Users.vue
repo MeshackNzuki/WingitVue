@@ -21,10 +21,10 @@
             <template v-slot:content>
                 <tr v-for="(user, index) in userData" :key="index">
                     <td class="p-2 whitespace-nowrap">
-                        <div class="font-medium">{{ user.name }}</div>
+                        <div class="text-start">{{ user.name }}</div>
                     </td>
                     <td class="p-2 whitespace-nowrap">
-                        <div class="font-medium">{{ user.email }}</div>
+                        <div class="text-start">{{ user.email }}</div>
                     </td>
                     <td class="p-2 whitespace-nowrap">
                         <div>{{ user.deatails ? user.deatails : "-" }}</div>
@@ -80,7 +80,7 @@
                                     <div>
                                         <label
                                             for="edit_name"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >name</label
                                         >
                                         <input
@@ -96,7 +96,7 @@
                                     <div>
                                         <label
                                             for="edit_name"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >Email</label
                                         >
                                         <input
@@ -112,7 +112,7 @@
                                     <div>
                                         <label
                                             for="edit_details"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >Details</label
                                         >
                                         <input
@@ -128,7 +128,7 @@
                                     <div>
                                         <label
                                             for="edit_role"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >Role</label
                                         >
                                         <input
@@ -144,7 +144,7 @@
                                     <div>
                                         <label
                                             for="edit_phone"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >Phone Number</label
                                         >
                                         <input
@@ -160,7 +160,7 @@
                                     <div>
                                         <label
                                             for="edit_staff_number"
-                                            class="block text-sm font-medium"
+                                            class="block text-smtext-left"
                                             >Staff Number</label
                                         >
                                         <input
@@ -202,7 +202,7 @@
                         class="flex-1 flex-col justify-center gap-2"
                     >
                         <div>
-                            <label for="name" class="block text-sm font-medium"
+                            <label for="name" class="block text-smtext-left"
                                 >name</label
                             >
                             <input
@@ -218,7 +218,7 @@
                         <div>
                             <label
                                 for="edit_name"
-                                class="block text-sm font-medium"
+                                class="block text-smtext-left"
                                 >Email</label
                             >
                             <input
@@ -232,9 +232,7 @@
                             />
                         </div>
                         <div>
-                            <label
-                                for="details"
-                                class="block text-sm font-medium"
+                            <label for="details" class="block text-smtext-left"
                                 >Details</label
                             >
                             <input
@@ -248,7 +246,7 @@
                             />
                         </div>
                         <div>
-                            <label for="role" class="block text-sm font-medium"
+                            <label for="role" class="block text-smtext-left"
                                 >Role</label
                             >
                             <input
@@ -262,7 +260,7 @@
                             />
                         </div>
                         <div>
-                            <label for="phone" class="block text-sm font-medium"
+                            <label for="phone" class="block text-smtext-left"
                                 >Phone Number</label
                             >
                             <input
@@ -278,7 +276,7 @@
                         <div>
                             <label
                                 for="staff_number"
-                                class="block text-sm font-medium"
+                                class="block text-smtext-left"
                                 >Staff Number</label
                             >
                             <input

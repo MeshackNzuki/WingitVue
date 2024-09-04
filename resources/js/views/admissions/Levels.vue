@@ -43,7 +43,7 @@
                                 alt="Student"
                             />
                         </div>
-                        <div class="font-medium">
+                        <div class="text-start">
                             {{ student.first_name }}
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                     <div class="text-left">{{ student.admission }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ student.class?.level }}
                     </div>
                 </td>
@@ -94,7 +94,7 @@
                                         <div class="">
                                             <label
                                                 for="class"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Class / Level / Year</label
                                             >
                                             <input
@@ -114,7 +114,7 @@
                                         <div class="">
                                             <label
                                                 for="description"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Description</label
                                             >
                                             <input
@@ -183,7 +183,7 @@
                                 alt="Student"
                             />
                         </div>
-                        <div class="font-medium">
+                        <div class="text-start">
                             {{ student.first_name }}
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                     <div class="text-left">{{ student.admission }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ student.class?.level }}
                     </div>
                 </td>
@@ -234,7 +234,7 @@
                                         <div class="">
                                             <label
                                                 for="class"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Stream Name</label
                                             >
                                             <input
@@ -257,7 +257,7 @@
                                         <div class="">
                                             <label
                                                 for="description"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Description</label
                                             >
                                             <input

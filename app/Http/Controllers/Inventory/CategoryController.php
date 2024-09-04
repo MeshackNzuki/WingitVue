@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Inventory;
 
-use App\Models\Category;
+use App\Models\Inventory\Category;
 use App\Http\Requests\Category\StoreCategoryRequest;
 use App\Http\Requests\Category\UpdateCategoryRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Str;
 
 class CategoryController extends Controller

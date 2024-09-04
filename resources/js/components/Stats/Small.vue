@@ -12,7 +12,7 @@
         </div>
         <div class="space-y-1">
             <div
-                class="flex items-center space-x- text-sm font-medium text-slate-500 dark:text-slate-300"
+                class="flex items-center space-x- text-smtext-left text-slate-500 dark:text-slate-300"
             >
                 <span>Revenue</span>
             </div>
@@ -20,7 +20,7 @@
         </div>
 
         <div
-            class="flex items-center space-x-1 text-sm font-medium text-emerald-500 dark:text-emerald-300"
+            class="flex items-center space-x-1 text-smtext-left text-emerald-500 dark:text-emerald-300"
         >
             <span class="text-sm font-light">+32k</span>
         </div>

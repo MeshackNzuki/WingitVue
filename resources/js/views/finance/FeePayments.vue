@@ -25,7 +25,7 @@
         <template v-slot:content>
             <tr v-for="(payment, index) in paymentData" :key="index">
                 <td class="p-2 whitespace-nowrap">
-                    <div class="font-medium">{{ payment.student_adm }}</div>
+                    <div class="text-start">{{ payment.student_adm }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-left">{{ payment.student_name }}</div>
@@ -34,7 +34,7 @@
                     <div class="text-left">{{ payment.description }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-right font-medium text-green-500">
+                    <div class="text-righttext-left text-green-500">
                         ${{ payment.amount?.toFixed(2) }}
                     </div>
                 </td>
@@ -76,7 +76,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="student_adm"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Student Admission</label
                                             >
                                             <input
@@ -98,7 +98,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="description"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Description</label
                                             >
                                             <input
@@ -120,7 +120,7 @@
                                         <div class="col-span-2">
                                             <label
                                                 for="amount"
-                                                class="block text-sm font-medium"
+                                                class="block text-smtext-left"
                                                 >Amount</label
                                             >
                                             <input

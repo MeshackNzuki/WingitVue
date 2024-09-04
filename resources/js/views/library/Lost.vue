@@ -38,7 +38,7 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
-                        <div class="font-medium">
+                        <div class="text-start">
                             {{ book.book.title }}
                         </div>
                     </div>
@@ -47,17 +47,17 @@
                     <div class="text-left">{{ book.book?.number }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ book.issue_date }}-
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ book.return_date }}
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ daysBetween(book.return_date, book.issue_date) }}
                     </div>
                 </td>

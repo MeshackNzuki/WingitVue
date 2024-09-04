@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\InventoryPurchase;
+namespace App\Http\Controllers\Inventory;
 
 use App\Enums\PurchaseStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Purchase\StorePurchaseRequest;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Purchase;
-use App\Models\PurchaseDetails;
-use App\Models\Supplier;
+use App\Models\Inventory\Category;
+use App\Models\Inventory\Product;
+use App\Models\Inventory\Purchase;
+use App\Models\Inventory\PurchaseDetails;
+use App\Models\Inventory\Supplier;
 use Carbon\Carbon;
 use Exception;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
@@ -18,12 +18,11 @@ use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
 use Illuminate\Support\Str;
-use App\Traits\ResponseTrait;
+
 
 class PurchaseController extends Controller
 {
-    use ResponseTrait;
-
+   
     public function index()
     {
         try {

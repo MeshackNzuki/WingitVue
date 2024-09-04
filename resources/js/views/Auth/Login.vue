@@ -35,7 +35,7 @@
                                 <div>
                                     <label
                                         for="email"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                        class="block mb-2 text-smtext-left text-gray-900 dark:text-white"
                                         >Your email / User name</label
                                     >
                                     <input
@@ -51,7 +51,7 @@
                                 <div>
                                     <label
                                         for="password"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                        class="block mb-2 text-smtext-left text-gray-900 dark:text-white"
                                         >Password</label
                                     >
                                     <input
@@ -67,7 +67,7 @@
 
                                 <button
                                     type="submit"
-                                    class="w-full dark:gray-400 text-white bg-emerald-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                    class="w-full dark:gray-400 text-white bg-emerald-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300text-left rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                                 >
                                     <span
                                         v-if="isLoading"
@@ -82,7 +82,7 @@
                                     Forget your password?
                                     <a
                                         href="#"
-                                        class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                                        class="text-start text-primary-600 hover:underline dark:text-primary-500"
                                         >Request Reset</a
                                     >
                                 </p>

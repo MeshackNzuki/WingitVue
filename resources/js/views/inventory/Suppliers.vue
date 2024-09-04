@@ -25,7 +25,7 @@
             <tr v-for="(supplier, index) in suppliers" :key="index">
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
-                        <div class="font-medium">
+                        <div class="text-start">
                             {{ supplier.name }}
                         </div>
                     </div>
@@ -34,12 +34,12 @@
                     <div class="text-left">{{ supplier.contact_person }}</div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ supplier.phone }}
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="text-left font-medium text-green-500">
+                    <div class="ttext-start text-green-500">
                         {{ supplier.email }}
                     </div>
                 </td>
@@ -91,7 +91,7 @@
                             <div class="mt-4">
                                 <label
                                     for="supplier_name"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Supplier Name</label
                                 >
                                 <input
@@ -106,7 +106,7 @@
                             <div class="mt-4">
                                 <label
                                     for="contact_person"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Contact Person</label
                                 >
                                 <input
@@ -121,7 +121,7 @@
                             <div class="mt-4">
                                 <label
                                     for="phone"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Phone</label
                                 >
                                 <input
@@ -136,7 +136,7 @@
                             <div class="mt-4">
                                 <label
                                     for="email"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Email</label
                                 >
                                 <input
@@ -151,7 +151,7 @@
                             <div class="mt-4">
                                 <label
                                     for="status"
-                                    class="block text-sm font-medium"
+                                    class="block text-smtext-left"
                                     >Status</label
                                 >
                                 <select
@@ -185,7 +185,7 @@
                         <div class="mt-4">
                             <label
                                 for="supplier_name"
-                                class="block text-sm font-medium"
+                                class="block text-smtext-left"
                                 >Supplier Name</label
                             >
                             <input
@@ -200,7 +200,7 @@
                         <div class="mt-4">
                             <label
                                 for="contact_person"
-                                class="block text-sm font-medium"
+                                class="block text-smtext-left"
                                 >Contact Person</label
                             >
                             <input
@@ -213,7 +213,7 @@
                             />
                         </div>
                         <div class="mt-4">
-                            <label for="phone" class="block text-sm font-medium"
+                            <label for="phone" class="block text-smtext-left"
                                 >Phone</label
                             >
                             <input
@@ -226,7 +226,7 @@
                             />
                         </div>
                         <div class="mt-4">
-                            <label for="email" class="block text-sm font-medium"
+                            <label for="email" class="block text-smtext-left"
                                 >Email</label
                             >
                             <input
@@ -239,9 +239,7 @@
                             />
                         </div>
                         <div class="mt-4">
-                            <label
-                                for="status"
-                                class="block text-sm font-medium"
+                            <label for="status" class="block text-smtext-left"
                                 >Status</label
                             >
                             <select
@@ -319,6 +317,7 @@ const hideModalFunc = (modalId) => {
 // Function to fetch supplier data from the API
 const fetchData = () => {
     const showLoader = searchQuery.value.trim() === "";
+
     axios
         .get(`/inventory/suppliers?query=${searchQuery.value}`, {
             showLoader: showLoader,
@@ -343,48 +342,8 @@ watch([searchQuery, reload], () => {
     fetchData();
 });
 
-// Functions to handle supplier edits and issues
-const issueSupplier = (supplier_id) => {
-    axios
-        .post("/inventory/supplier-issue", {
-            id_number: staff_issue_number.value,
-            supplier_id: supplier_id,
-        })
-        .then((response) => {
-            toastPrime.add({
-                severity: "success",
-                summary: "Success Message",
-                detail: "Supplier Updated.",
-                life: 3000,
-            });
-            reload.value = !reload.value;
-            hideModalFunc(supplier_id);
-        })
-        .catch((err) => {
-            console.log("err", err);
-            ErrorObjectMessange.value = err.response.data.error;
-            const intervalId = setInterval(() => {
-                ErrorObjectMessange.value = "";
-                clearInterval(intervalId);
-            }, 3000);
-            toastPrime.add({
-                severity: "error",
-                summary: "Data Error",
-                detail: err.response.data.error,
-                life: 3000,
-            });
-        });
-};
-
-// Handling form input changes
-const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    createInputs.value[name] = value;
-};
-
 // Function to handle form submission for creating a new supplier
-const handleSubmit = () => {
+const addSupplier = () => {
     if (
         !createInputs.value.name ||
         !createInputs.value.contact_person ||

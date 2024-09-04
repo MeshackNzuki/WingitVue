@@ -690,7 +690,7 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="inventory/purchases">
+                        <router-link to="/inventory/purchases">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -702,7 +702,7 @@
                                 Purchase
                             </div>
                         </router-link>
-                        <router-link to="inventory/items">
+                        <router-link to="/inventory/items">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -715,7 +715,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="inventory/suppliers">
+                        <router-link to="/inventory/suppliers">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -727,7 +727,7 @@
                                 Suppliers
                             </div>
                         </router-link>
-                        <router-link to="inventory/categories">
+                        <router-link to="/inventory/categories">
                             <div
                                 role="button"
                                 tabindex="0"

@@ -13,9 +13,8 @@ class SupplierController extends Controller
     public function index()
     {
         try {
-            $suppliersCount = Supplier::where("user_id", auth()->id())->count();
-
-            return $this->ResSuccess($suppliersCount, 'Suppliers count fetched successfully.');
+            $suppliers = Supplier::where("user_id", auth()->id())->get();
+            return $this->ResSuccess($suppliers);
         } catch (\Exception $e) {
             return $this->ResError('Failed to fetch suppliers count.');
         }
