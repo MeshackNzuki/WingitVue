@@ -440,15 +440,18 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const { user, is_authenticated } = authStore();
-    console.log("Checking access...", user?.token);
+    console.log("Authenticating...", user?.token);
 
+    // If user is authenticated
     if (is_authenticated) {
         const userRole = user?.roles[0];
 
+        // Allow admin users
         if (userRole === "admin") {
             return next();
         }
 
+        // If the route requires a specific role
         if (to.meta.role) {
             const requiredRoles = Array.isArray(to.meta.role)
                 ? to.meta.role
@@ -457,13 +460,19 @@ router.beforeEach((to, from, next) => {
             if (requiredRoles.includes(userRole)) {
                 return next();
             } else {
+                if (to.path === "/unauthorized") {
+                    return next();
+                }
                 return next({ path: "/unauthorized" });
             }
         } else {
             return next();
         }
     } else {
-        return next();
+        if (to.path === "/login") {
+            return next();
+        }
+        return next({ path: "/login" });
     }
 });
 
