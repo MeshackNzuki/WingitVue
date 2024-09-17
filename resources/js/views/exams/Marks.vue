@@ -16,7 +16,6 @@
                 classes="px-4"
             />
         </div>
-
         <!-- Select Class and Subject -->
         <div class="grid grid-cols-2 gap-4">
             <div>
@@ -97,7 +96,7 @@
 
 <script setup>
 import Table from "../../components/Tables/MainTable.vue";
-import SmallButton from "../../components/Buttons/SmallButton.vue";
+import SmallButton from "../../components/Buttons/Small.vue";
 
 import { ref, onMounted } from "vue";
 import axios from "axios";
@@ -147,6 +146,13 @@ const resetForm = () => {
         student.marks = "";
         student.comments = "";
     });
+};
+const showModalFunc = (modalId) => {
+    document.getElementById(modalId).showModal();
+};
+
+const hideModalFunc = (modalId) => {
+    document.getElementById(modalId).close();
 };
 </script>
 

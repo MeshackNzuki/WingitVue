@@ -18,6 +18,7 @@
                     Sorry, You are not allowed to view these pages..
                 </p>
                 <cbutton buttonText="Take Me Back" :action="router.back"></cbutton>
+                
             </div>
         </div>
     </section>

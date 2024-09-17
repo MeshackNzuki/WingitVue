@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\ExamControllers;
 
 use App\Models\Mark;
+
+use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 
 class MarksController extends Controller
@@ -11,7 +14,7 @@ class MarksController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'class_id' => 'required|exists:classes,id',
+            'exam_id' => 'required|exists:exams,id', 
             'subject_id' => 'required|exists:subjects,id',
             'students' => 'required|array',
             'students.*.id' => 'required|exists:students,id',
@@ -20,19 +23,19 @@ class MarksController extends Controller
         ]);
 
         foreach ($validated['students'] as $studentData) {
-            // Check if mark already exists
+            // Check if the mark already exists
             $mark = Mark::firstOrNew([
                 'student_id' => $studentData['id'],
-                'class_id' => $validated['class_id'],
+                'exam_id' => $validated['exam_id'], 
                 'subject_id' => $validated['subject_id']
             ]);
 
-            // Update or create new entry
+            // Update or create a new entry
             $mark->marks = $studentData['marks'];
             $mark->comments = $studentData['comments'] ?? null;
             $mark->save();
         }
 
-        return response()->json(['message' => 'Marks saved successfully!'], 200);
+        return $this->ResSuccess(['message' => 'Marks saved successfully!'], 200);
     }
 }

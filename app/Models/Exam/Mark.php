@@ -1,34 +1,21 @@
 <?php
-namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+namespace App\Exam\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Mark extends Model
 {
-    use HasFactory;
+    protected $fillable = ['paper_id', 'student_id', 'score'];
 
-    protected $fillable = [
-        'student_id',
-        'subject_id',
-        'class_id',
-        'marks',
-        'comments',
-    ];
+    // Many Marks belong to one Paper
+    public function paper()
+    {
+        return $this->belongsTo(Paper::class);
+    }
 
-    // Relationships
+    // Many Marks belong to one Student (assuming you have a Student model)
     public function student()
     {
         return $this->belongsTo(Student::class);
-    }
-
-    public function subject()
-    {
-        return $this->belongsTo(Subject::class);
-    }
-
-    public function class()
-    {
-        return $this->belongsTo(ClassModel::class, 'class_id');
     }
 }

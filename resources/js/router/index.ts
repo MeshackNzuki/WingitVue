@@ -303,6 +303,29 @@ const routes = [
         ],
     },
     {
+        path: "/examinations",
+        name: "Examination",
+        meta: { role: "examiner" },
+        component: () => import("../views/exams/Layout.vue"),
+        children: [
+            {
+                path: "",
+                name: "ExamsDashboard",
+                component: () => import("../views/exams/Dashboard.vue"),
+            },
+            {
+                path: "marks",
+                name: "Marks",
+                component: () => import("../views/exams/Marks.vue"),
+            },
+            {
+                path: "papers",
+                name: "Papers",
+                component: () => import("../views/exams/Papers.vue"),
+            },
+        ],
+    },
+    {
         path: "/inventory",
         name: "Inventory",
         meta: { role: "inventory-manager" },

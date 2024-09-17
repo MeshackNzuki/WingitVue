@@ -58,6 +58,12 @@ use App\Http\Controllers\Guardian\GuardianController;
 use App\Http\Controllers\Grading\GradingController;
 //end grading
 
+
+//examination
+use App\Http\Controllers\Exam\PapersController ;
+//end examination
+
+
 //library
 use App\Http\Controllers\Library\StaffController;
 use App\Http\Controllers\Library\BookController;
@@ -218,14 +224,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('inventory')->group(function () {
     Route::get('dashboard/', [IventoryDashboard::class, 'index']);
 
-    Route::resource('/suppliers', SupplierController::class);
-    Route::resource('/categories', CategoryController::class);
+    Route::apiResource('/suppliers', SupplierController::class);
+    Route::apiResource('/categories', CategoryController::class);
 
     // Route Products
     Route::get('products/import/', [ProductImportController::class, 'create']);
     Route::post('products/import/', [ProductImportController::class, 'store']);
     Route::get('products/export/', [ProductExportController::class, 'create']);
-    Route::resource('/products', ProductController::class);
+    Route::apiResource('/products', ProductController::class);
 
     // Route Purchases
     Route::get('/purchases/approved', [PurchaseController::class, 'approvedPurchases']);
@@ -251,6 +257,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('can:manage grading')->prefix('grading')->group(function () {
         Route::get('/', [GradingController::class, 'index']);
         Route::post('/', [GradingController::class, 'store']);
+        // Add more routes as needed
+    });
+
+    // Routes for managing examinations
+    Route::middleware('can:manage exams')->prefix('exams')->group(function () {
+        Route::apiResource('papers', PapersController::class);
         // Add more routes as needed
     });
 

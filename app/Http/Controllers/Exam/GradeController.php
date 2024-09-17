@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Grade;
+use App\Http\Controllers\Controller;
 use App\Subject;
 use App\Teacher;
 use Illuminate\Http\Request;
