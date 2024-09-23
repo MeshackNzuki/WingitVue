@@ -3,6 +3,15 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+
+
+//Permissions not fully setup please chech as you finalize
+
+
+
+
+
 // Auth
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\UserManagementController;
@@ -61,6 +70,8 @@ use App\Http\Controllers\Grading\GradingController;
 
 //examination
 use App\Http\Controllers\Exam\PapersController ;
+use App\Http\Controllers\Exam\ExamController;
+
 //end examination
 
 
@@ -101,7 +112,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // Add more routes as needed
     });
-
+     //subjects 
+     Route::get('/subjects', [SubjectController::class, 'index']);
+     //end subjects
 
     // Routes for managing instructors
     Route::middleware('can:manage instructors')->prefix('instructors')->group(function () {
@@ -261,9 +274,10 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // Routes for managing examinations
-    Route::middleware('can:manage exams')->prefix('exams')->group(function () {
+    Route::prefix('exams')->group(function () {
         Route::apiResource('papers', PapersController::class);
-        // Add more routes as needed
+        Route::apiResource('exams', ExamController::class);
+
     });
 
 });
