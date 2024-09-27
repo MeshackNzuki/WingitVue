@@ -3,7 +3,7 @@
         <template v-slot:actions>
             <SmallButton
                 icon="pi pi-plus"
-                :action="() => showModalFunc('addstudent')"
+                :action="() => showModal('addstudent')"
             ></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -34,7 +34,7 @@ import SmallButton from "../../components/Buttons/Small.vue";
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 

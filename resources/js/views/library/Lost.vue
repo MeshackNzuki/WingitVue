@@ -16,7 +16,7 @@
         <template v-slot:actions>
             <SmallButton
                 icon="pi pi-plus"
-                :action="() => showModalFunc('addbook')"
+                :action="() => showModal('addbook')"
             ></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -89,7 +89,7 @@ watch([searchQuery, reload], () => {
     fetchData();
 });
 
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 

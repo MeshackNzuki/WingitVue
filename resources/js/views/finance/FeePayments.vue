@@ -15,7 +15,7 @@
             <SmallButton
                 icon="pi pi-plus"
                 classes="px-4"
-                :action="() => showModalFunc('addPayment')"
+                :action="() => showModal('addPayment')"
             ></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -43,7 +43,7 @@
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
                             button-text="Edit"
-                            :action="() => showModalFunc(payment.id)"
+                            :action="() => showModal(payment.id)"
                         />
                     </div>
                 </td>
@@ -163,7 +163,7 @@ import SmallButton from "../../components/Buttons/Small.vue";
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 

@@ -7,7 +7,7 @@
             <template v-slot:actions>
                 <SmallButton
                     icon="pi pi-plus"
-                    :action="() => showModalFunc('addPaper')"
+                    :action="() => showModal('addPaper')"
                 ></SmallButton>
 
                 <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -132,11 +132,11 @@ onMounted(async () => {
     await fetchExams();
 });
 
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 
-const hideModalFunc = (modalId) => {
+const hideModal = (modalId) => {
     document.getElementById(modalId).close();
 };
 // Fetch subjects

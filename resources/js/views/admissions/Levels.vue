@@ -4,13 +4,13 @@
             icon="pi pi-plus"
             classes="px-4"
             button-text="Add new level"
-            :action="() => showModalFunc('addNewClass')"
+            :action="() => showModal('addNewClass')"
         ></SmallButton>
         <SmallButton
             icon="pi pi-plus"
             button-text="Add new Stream"
             classes="px-4"
-            :action="() => showModalFunc('addStream')"
+            :action="() => showModal('addStream')"
         ></SmallButton>
     </div>
     <Table
@@ -23,7 +23,7 @@
             <SmallButton
                 icon="pi pi-plus"
                 classes="px-4"
-                :action="() => showModalFunc('addNewClass')"
+                :action="() => showModal('addNewClass')"
             ></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -61,7 +61,7 @@
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
                             button-text="Edit"
-                            :action="() => showModalFunc(student.id)"
+                            :action="() => showModal(student.id)"
                         />
                     </div>
                 </td>
@@ -163,7 +163,7 @@
             <SmallButton
                 icon="pi pi-plus"
                 classes="px-4"
-                :action="() => showModalFunc('addStream')"
+                :action="() => showModal('addStream')"
             ></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -201,7 +201,7 @@
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
                             button-text="Edit"
-                            :action="() => showModalFunc(student.id)"
+                            :action="() => showModal(student.id)"
                         />
                     </div>
                 </td>
@@ -303,7 +303,7 @@ import SmallButton from "../../components/Buttons/Small.vue";
 import { ref, onMounted, watch } from "vue";
 import axios from "axios";
 
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 

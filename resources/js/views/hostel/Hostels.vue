@@ -7,7 +7,7 @@
             <template v-slot:actions>
                 <SmallButton
                     icon="pi pi-plus"
-                    :action="() => showModalFunc('addHostelModal')"
+                    :action="() => showModal('addHostelModal')"
                 ></SmallButton>
                 <Button icon="pi pi-print" class="mr-2" severity="secondary" />
                 <Button icon="pi pi-upload" severity="secondary" />
@@ -27,7 +27,7 @@
                             <SmallButton
                                 classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500"
                                 button-text="Edit"
-                                :action="() => showModalFunc(hostel.id)"
+                                :action="() => showModal(hostel.id)"
                             />
                             <SmallButton
                                 classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500 mx-2"
@@ -266,7 +266,7 @@ import SmallButton from "../../components/Buttons/Small.vue";
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 

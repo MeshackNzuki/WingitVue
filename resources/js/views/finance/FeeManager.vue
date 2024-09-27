@@ -10,7 +10,7 @@
             <SmallButton
                 icon="pi pi-plus"
                 classes="px-4"
-                :action="() => showModalFunc('addFeeStructure')"
+                :action="() => showModal('addFeeStructure')"
             ></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -48,7 +48,7 @@
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
                             button-text="Edit"
-                            :action="() => showModalFunc(student.id)"
+                            :action="() => showModal(student.id)"
                         />
                     </div>
                 </td>
@@ -283,7 +283,7 @@ const errors = ref({});
 const classOptions = ref({});
 const searchQuery = ref("");
 
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 const showSuccess = () => {

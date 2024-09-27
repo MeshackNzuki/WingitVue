@@ -15,7 +15,7 @@
         <template v-slot:actions>
             <SmallButton
                 icon="pi pi-plus"
-                :action="() => showModalFunc('addSupplier')"
+                :action="() => showModal('addSupplier')"
             ></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -62,7 +62,7 @@
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-yellow"
                             button-text="Edit"
-                            :action="() => showModalFunc(supplier.id)"
+                            :action="() => showModal(supplier.id)"
                         />
                     </div>
                     <div class="text-lg text-center">
@@ -306,11 +306,11 @@ const createInputs = ref({
 const ErrorObjectMessange = ref("");
 
 // Functions to show and hide modals
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 
-const hideModalFunc = (modalId) => {
+const hideModal = (modalId) => {
     document.getElementById(modalId).close();
 };
 

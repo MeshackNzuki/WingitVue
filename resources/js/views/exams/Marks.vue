@@ -1,67 +1,29 @@
 <template>
+    <div class="flex justify-center">
+        Select paper , select class,(Should be advanced for easy manipulation of
+        marks)
+    </div>
     <div>
-        <!-- Marks Entry Header -->
-        <div class="flex justify-around my-4">
-            <h2 class="text-xl font-bold">Marks Entry</h2>
-            <SmallButton
-                icon="pi pi-save"
-                button-text="Save Marks"
-                :action="saveMarks"
-                classes="px-4"
-            />
-            <SmallButton
-                icon="pi pi-refresh"
-                button-text="Reset Form"
-                :action="resetForm"
-                classes="px-4"
-            />
-        </div>
-        <!-- Select Class and Subject -->
-        <div class="grid grid-cols-2 gap-4">
-            <div>
-                <label for="class" class="block text-sm font-medium"
-                    >Select Class</label
-                >
-                <select
-                    v-model="selectedClass"
-                    id="class"
-                    class="form-select mt-1 block w-full"
-                >
-                    <option
-                        v-for="classItem in classes"
-                        :key="classItem.id"
-                        :value="classItem.id"
-                    >
-                        {{ classItem.name }}
-                    </option>
-                </select>
-            </div>
-
-            <div>
-                <label for="subject" class="block text-sm font-medium"
-                    >Select Subject</label
-                >
-                <select
-                    v-model="selectedSubject"
-                    id="subject"
-                    class="form-select mt-1 block w-full"
-                >
-                    <option
-                        v-for="subjectItem in subjects"
-                        :key="subjectItem.id"
-                        :value="subjectItem.id"
-                    >
-                        {{ subjectItem.name }}
-                    </option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Marks Entry Table -->
         <Table
-            :headers="['Student Name', 'Admission No.', 'Marks', 'Comments']"
+            :headers="[
+                'Class',
+                'Student Name',
+                'Admission No.',
+                'Subject',
+                'Marks',
+                'Comments',
+            ]"
             title="Enter Marks"
         >
+            <template v-slot:actions>
+                <SmallButton
+                    icon="pi pi-plus"
+                    :action="() => showModal('addMarks')"
+                ></SmallButton>
+
+                <Button icon="pi pi-print" class="mr-2" severity="secondary" />
+                <Button icon="pi pi-upload" severity="secondary"
+            /></template>
             <template v-slot:content>
                 <tr v-for="(student, index) in students" :key="student.id">
                     <td class="p-2">
@@ -91,6 +53,84 @@
                 </tr>
             </template>
         </Table>
+        <dialog id="addMarks" class="modal">
+            <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
+                <form method="dialog">
+                    <button
+                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                    >
+                        ✕
+                    </button>
+                </form>
+                <h3 class="text-lg font-bold">Add a New Mark!</h3>
+                <div class="flex flex-col justify-center items-start space-y-4">
+                    <div class="w-full">
+                        <label
+                            for="examsSelect"
+                            class="block text-sm font-medium text-gray-700 dark:text-slate-300"
+                            >Student Admission</label
+                        >
+                        <select
+                            v-model="newMark.admission_no"
+                            id="examsSelect"
+                            class="select select-bordered w-full mt-1"
+                        >
+                            <option disabled value="">Select ADM</option>
+                            <option
+                                v-for="student in students"
+                                :key="student.id"
+                                :value="student.id"
+                            >
+                                {{ student.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="w-full">
+                        <label
+                            for="subjectSelect"
+                            class="block text-sm font-medium text-gray-700 dark:text-slate-300"
+                            >Select paper</label
+                        >
+                        <select
+                            v-model="newMark.paper_id"
+                            id="subjectSelect"
+                            class="select select-bordered w-full mt-1"
+                        >
+                            <option disabled value="">Select Paper</option>
+                            <option
+                                v-for="paper in papers"
+                                :key="paper.id"
+                                :value="paper.id"
+                            >
+                                {{ paper.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="w-full">
+                        <label
+                            for="comments"
+                            class="block text-sm font-medium text-gray-700 dark:text-slate-300"
+                            >Comments</label
+                        >
+                        <input
+                            v-model="newMark.comments"
+                            type="text"
+                            id="comments"
+                            class="input input-bordered w-full mt-1"
+                            placeholder="Add Comments"
+                        />
+                    </div>
+                </div>
+                <div class="col-span-2 flex justify-end mt-3">
+                    <CommonButton
+                        button-text="Submit"
+                        :action="() => addPaper()"
+                    />
+                </div>
+            </div>
+        </dialog>
     </div>
 </template>
 
@@ -101,12 +141,9 @@ import SmallButton from "../../components/Buttons/Small.vue";
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-// Data for dropdowns and form
-const selectedClass = ref(null);
-const selectedSubject = ref(null);
-const students = ref([]);
-const classes = ref([]);
-const subjects = ref([]);
+const newMark = ref([
+    { mark: "", paper_id: null, admission_no: null, comments: "" },
+]);
 
 // Fetch students based on class and subject selection
 onMounted(async () => {
@@ -121,7 +158,7 @@ const fetchClasses = async () => {
 };
 
 // Fetch subjects
-const fetchSubjects = async () => {
+const fetchStudents = async () => {
     const response = await axios.get("/api/subjects");
     subjects.value = response.data;
 };
@@ -129,29 +166,15 @@ const fetchSubjects = async () => {
 // Save marks function
 const saveMarks = async () => {
     try {
-        await axios.post("/api/marks", {
-            class_id: selectedClass.value,
-            subject_id: selectedSubject.value,
-            students: students.value,
-        });
-        showSuccessModal.value = true;
-    } catch (error) {
-        showErrorModal.value = true;
-    }
+        await axios.post("/api/marks", {});
+    } catch (error) {}
 };
 
-// Reset form function
-const resetForm = () => {
-    students.value.forEach((student) => {
-        student.marks = "";
-        student.comments = "";
-    });
-};
-const showModalFunc = (modalId) => {
+const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
 
-const hideModalFunc = (modalId) => {
+const hideModal = (modalId) => {
     document.getElementById(modalId).close();
 };
 </script>
