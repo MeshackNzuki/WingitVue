@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2024 at 12:14 PM
+-- Generation Time: Oct 04, 2024 at 09:09 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -462,7 +462,7 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('spatie.permission.cache', 'a:3:{s:5:\"alias\";a:4:{s:1:\"a\";s:2:\"id\";s:1:\"b\";s:4:\"name\";s:1:\"c\";s:10:\"guard_name\";s:1:\"r\";s:5:\"roles\";}s:11:\"permissions\";a:15:{i:0;a:4:{s:1:\"a\";i:1;s:1:\"b\";s:13:\"view students\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:1;a:4:{s:1:\"a\";i:2;s:1:\"b\";s:15:\"manage students\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:2;a:4:{s:1:\"a\";i:3;s:1:\"b\";s:16:\"view instructors\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:3;a:4:{s:1:\"a\";i:4;s:1:\"b\";s:18:\"manage instructors\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:4;a:4:{s:1:\"a\";i:5;s:1:\"b\";s:12:\"view finance\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:4;}}i:5;a:4:{s:1:\"a\";i:6;s:1:\"b\";s:14:\"manage finance\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:4;}}i:6;a:4:{s:1:\"a\";i:7;s:1:\"b\";s:12:\"view library\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:5;}}i:7;a:4:{s:1:\"a\";i:8;s:1:\"b\";s:14:\"manage library\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:5;}}i:8;a:4:{s:1:\"a\";i:9;s:1:\"b\";s:12:\"view parents\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:9;a:4:{s:1:\"a\";i:10;s:1:\"b\";s:14:\"manage parents\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:10;a:4:{s:1:\"a\";i:11;s:1:\"b\";s:16:\"view own profile\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:6:{i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:4;i:5;i:5;i:6;}}i:11;a:4:{s:1:\"a\";i:12;s:1:\"b\";s:16:\"edit own profile\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:4:{i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:6;}}i:12;a:4:{s:1:\"a\";i:13;s:1:\"b\";s:14:\"manage grading\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:13;a:4:{s:1:\"a\";i:14;s:1:\"b\";s:12:\"view grading\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:14;a:4:{s:1:\"a\";i:15;s:1:\"b\";s:13:\"manage orders\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}}s:5:\"roles\";a:6:{i:0;a:3:{s:1:\"a\";i:1;s:1:\"b\";s:5:\"admin\";s:1:\"c\";s:3:\"web\";}i:1;a:3:{s:1:\"a\";i:3;s:1:\"b\";s:10:\"instructor\";s:1:\"c\";s:3:\"web\";}i:2;a:3:{s:1:\"a\";i:4;s:1:\"b\";s:7:\"finance\";s:1:\"c\";s:3:\"web\";}i:3;a:3:{s:1:\"a\";i:5;s:1:\"b\";s:7:\"library\";s:1:\"c\";s:3:\"web\";}i:4;a:3:{s:1:\"a\";i:2;s:1:\"b\";s:7:\"student\";s:1:\"c\";s:3:\"web\";}i:5;a:3:{s:1:\"a\";i:6;s:1:\"b\";s:8:\"guardian\";s:1:\"c\";s:3:\"web\";}}}', 1723710870);
+('spatie.permission.cache', 'a:3:{s:5:\"alias\";a:4:{s:1:\"a\";s:2:\"id\";s:1:\"b\";s:4:\"name\";s:1:\"c\";s:10:\"guard_name\";s:1:\"r\";s:5:\"roles\";}s:11:\"permissions\";a:15:{i:0;a:4:{s:1:\"a\";i:1;s:1:\"b\";s:13:\"view students\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:1;a:4:{s:1:\"a\";i:2;s:1:\"b\";s:15:\"manage students\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:2;a:4:{s:1:\"a\";i:3;s:1:\"b\";s:16:\"view instructors\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:3;a:4:{s:1:\"a\";i:4;s:1:\"b\";s:18:\"manage instructors\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:4;a:4:{s:1:\"a\";i:5;s:1:\"b\";s:12:\"view finance\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:4;}}i:5;a:4:{s:1:\"a\";i:6;s:1:\"b\";s:14:\"manage finance\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:4;}}i:6;a:4:{s:1:\"a\";i:7;s:1:\"b\";s:12:\"view library\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:5;}}i:7;a:4:{s:1:\"a\";i:8;s:1:\"b\";s:14:\"manage library\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:5;}}i:8;a:4:{s:1:\"a\";i:9;s:1:\"b\";s:12:\"view parents\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:9;a:4:{s:1:\"a\";i:10;s:1:\"b\";s:14:\"manage parents\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:10;a:4:{s:1:\"a\";i:11;s:1:\"b\";s:16:\"view own profile\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:6:{i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:4;i:5;i:5;i:6;}}i:11;a:4:{s:1:\"a\";i:12;s:1:\"b\";s:16:\"edit own profile\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:4:{i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:6;}}i:12;a:4:{s:1:\"a\";i:13;s:1:\"b\";s:14:\"manage grading\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:13;a:4:{s:1:\"a\";i:14;s:1:\"b\";s:12:\"view grading\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:14;a:4:{s:1:\"a\";i:15;s:1:\"b\";s:13:\"manage orders\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}}s:5:\"roles\";a:6:{i:0;a:3:{s:1:\"a\";i:1;s:1:\"b\";s:5:\"admin\";s:1:\"c\";s:3:\"web\";}i:1;a:3:{s:1:\"a\";i:3;s:1:\"b\";s:10:\"instructor\";s:1:\"c\";s:3:\"web\";}i:2;a:3:{s:1:\"a\";i:4;s:1:\"b\";s:7:\"finance\";s:1:\"c\";s:3:\"web\";}i:3;a:3:{s:1:\"a\";i:5;s:1:\"b\";s:7:\"library\";s:1:\"c\";s:3:\"web\";}i:4;a:3:{s:1:\"a\";i:2;s:1:\"b\";s:7:\"student\";s:1:\"c\";s:3:\"web\";}i:5;a:3:{s:1:\"a\";i:6;s:1:\"b\";s:8:\"guardian\";s:1:\"c\";s:3:\"web\";}}}', 1727503460);
 
 -- --------------------------------------------------------
 
@@ -491,6 +491,63 @@ CREATE TABLE `classes` (
   `capacity` int(11) DEFAULT NULL,
   `notes` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exams`
+--
+
+CREATE TABLE `exams` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `term_id` bigint(20) UNSIGNED NOT NULL,
+  `level_id` int(6) NOT NULL,
+  `exam_term_id` int(6) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `exams`
+--
+
+INSERT INTO `exams` (`id`, `name`, `term_id`, `level_id`, `exam_term_id`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
+(1, 'Opening Exam Term 1 - Class 1', 2, 1, 1, '2024-01-15', '2024-01-17', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(2, 'Midterm Exam Term 1 - Class 1', 2, 1, 2, '2024-02-15', '2024-02-17', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(3, 'End Term Exam Term 1 - Class 1', 2, 1, 3, '2024-03-15', '2024-03-17', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(4, 'Opening Exam Term 1 - Class 2', 2, 2, 1, '2024-01-15', '2024-01-17', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(5, 'Midterm Exam Term 1 - Class 2', 2, 2, 2, '2024-02-15', '2024-02-17', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(6, 'End Term Exam Term 1 - Class 2', 2, 2, 3, '2024-03-15', '2024-03-17', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(7, 'Opening Exam Term 2 - Class 1', 2, 1, 1, '2024-05-10', '2024-05-12', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(8, 'Midterm Exam Term 2 - Class 1', 2, 1, 2, '2024-06-10', '2024-06-12', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(9, 'End Term Exam Term 2 - Class 1', 2, 1, 3, '2024-07-10', '2024-07-12', '2024-09-18 06:43:39', '2024-09-18 06:43:39'),
+(10, 'Opening Exam Term 2 - Class 2', 2, 2, 1, '2024-05-10', '2024-05-12', '2024-09-18 06:43:39', '2024-09-18 06:43:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exam_terms`
+--
+
+CREATE TABLE `exam_terms` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `comments` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `exam_terms`
+--
+
+INSERT INTO `exam_terms` (`id`, `name`, `comments`, `created_at`, `updated_at`) VALUES
+(1, 'Opening Exam', 'The first exam of the term', '2024-09-17 07:36:50', '2024-09-17 07:36:50'),
+(2, 'Midterm Exam', 'The exam conducted at midterm', '2024-09-17 07:36:50', '2024-09-17 07:36:50'),
+(3, 'End Term Exam', 'The final exam of the term', '2024-09-17 07:36:50', '2024-09-17 07:36:50');
 
 -- --------------------------------------------------------
 
@@ -704,6 +761,22 @@ INSERT INTO `library_settings` (`id`, `return_days_limit`, `daily_fine`, `create
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `marks`
+--
+
+CREATE TABLE `marks` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `paper_id` bigint(20) UNSIGNED NOT NULL,
+  `marks` int(11) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -759,6 +832,63 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (4, 'App\\Models\\User', 6),
 (5, 'App\\Models\\User', 7),
 (6, 'App\\Models\\User', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` char(36) NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `order_date` varchar(255) NOT NULL,
+  `order_status` tinyint(4) NOT NULL COMMENT '0 - Pending / 1 - Complete',
+  `total_products` int(11) NOT NULL,
+  `sub_total` int(11) NOT NULL,
+  `vat` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `invoice_no` varchar(255) NOT NULL,
+  `payment_type` varchar(255) NOT NULL,
+  `pay` int(11) NOT NULL,
+  `due` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `unitcost` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `papers`
+--
+
+CREATE TABLE `papers` (
+  `id` int(11) NOT NULL,
+  `exam_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `max_score` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -910,9 +1040,80 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (77, 'App\\Models\\User', 3, 'authToken', 'e23e29855178f08e15a551175040718b661e93211fa2102c4aa02d4ebdef38bf', '[\"*\"]', '2024-06-14 05:40:20', NULL, '2024-06-14 04:15:19', '2024-06-14 05:40:20'),
 (78, 'App\\Models\\User', 3, 'authToken', 'c9d19d6f04fc9f72fbf9a5e0362bafdd9197be91433197f20296684eaa0c06c7', '[\"*\"]', '2024-06-18 04:59:04', NULL, '2024-06-18 02:16:21', '2024-06-18 04:59:04'),
 (79, 'App\\Models\\User', 3, 'authToken', '7567c4ae056ef3abd04f69ce46c1b2dc42cbf27548dddc0a9bb053d9b6d1a609', '[\"*\"]', '2024-06-24 06:13:11', NULL, '2024-06-19 10:46:18', '2024-06-24 06:13:11'),
-(80, 'App\\Models\\User', 3, 'authToken', '214a595677f305cb8d9a766394b3c509e8bbf82293224a833a07f361bb50cf7e', '[\"*\"]', '2024-08-21 07:12:13', NULL, '2024-06-25 02:24:58', '2024-08-21 07:12:13'),
+(80, 'App\\Models\\User', 3, 'authToken', '214a595677f305cb8d9a766394b3c509e8bbf82293224a833a07f361bb50cf7e', '[\"*\"]', '2024-09-03 03:58:09', NULL, '2024-06-25 02:24:58', '2024-09-03 03:58:09'),
 (81, 'App\\Models\\User', 3, 'authToken', '1ac582e44e9a4f7352be860071931c50c9f6e8274a8096c28245c8622cfdac26', '[\"*\"]', '2024-08-02 04:59:24', NULL, '2024-07-10 03:51:40', '2024-08-02 04:59:24'),
-(82, 'App\\Models\\User', 3, 'authToken', '9237e5ebdf9c491ed98ebedcf13e9638c5835893265dd7c46ac8a310ce4221ac', '[\"*\"]', '2024-08-21 06:34:24', NULL, '2024-08-07 02:26:47', '2024-08-21 06:34:24');
+(82, 'App\\Models\\User', 3, 'authToken', '9237e5ebdf9c491ed98ebedcf13e9638c5835893265dd7c46ac8a310ce4221ac', '[\"*\"]', '2024-08-22 04:09:50', NULL, '2024-08-07 02:26:47', '2024-08-22 04:09:50'),
+(83, 'App\\Models\\User', 3, 'authToken', 'cfe8d52c01b8df71514619800a0568df40eed6bb3131a0935efd220532dc793d', '[\"*\"]', '2024-09-04 03:38:11', NULL, '2024-08-27 03:01:13', '2024-09-04 03:38:11'),
+(84, 'App\\Models\\User', 3, 'authToken', 'a56aa15a133f221901ab00149a60f554c79318ad05842bef6224d293f8e31f98', '[\"*\"]', '2024-09-06 01:50:44', NULL, '2024-09-06 01:50:34', '2024-09-06 01:50:44'),
+(85, 'App\\Models\\User', 6, 'authToken', '236e3b2d813088f67ed3619ba2dd0b1c30075f8b3d1254ab11d0b31e2103ec3f', '[\"*\"]', '2024-09-09 04:59:48', NULL, '2024-09-09 04:55:52', '2024-09-09 04:59:48'),
+(86, 'App\\Models\\User', 3, 'authToken', '952ea50afaea79be2d883e8bf2049ee57ebc04b72cde47aeafa1287217258e64', '[\"*\"]', '2024-09-18 11:22:08', NULL, '2024-09-16 05:00:47', '2024-09-18 11:22:08'),
+(87, 'App\\Models\\User', 3, 'authToken', '2bc8c312008ef87a9b7359d5ebfd2d477cb34e8727bd0f4cf8843a781f656aeb', '[\"*\"]', '2024-09-17 04:56:20', NULL, '2024-09-17 04:02:49', '2024-09-17 04:56:20'),
+(88, 'App\\Models\\User', 3, 'authToken', '60687b9c89fc9a9e8386f09807bd1eb3fa581e259d19b7e64852859b94690fc2', '[\"*\"]', '2024-09-27 02:29:55', NULL, '2024-09-18 04:17:14', '2024-09-27 02:29:55'),
+(89, 'App\\Models\\User', 3, 'authToken', 'ec2c80857cf18771d954f26f5f23a7faa4455eeb530e96b6f37a60171131c934', '[\"*\"]', '2024-10-04 03:58:07', NULL, '2024-09-27 02:30:54', '2024-10-04 03:58:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` char(36) NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `buying_price` int(11) NOT NULL COMMENT 'Buying Price',
+  `selling_price` int(11) NOT NULL COMMENT 'Selling Price',
+  `quantity_alert` int(11) NOT NULL,
+  `tax` int(11) DEFAULT NULL,
+  `tax_type` tinyint(4) DEFAULT NULL,
+  `notes` text DEFAULT NULL,
+  `product_image` varchar(255) DEFAULT NULL,
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `unit_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `uuid`, `user_id`, `name`, `slug`, `code`, `quantity`, `buying_price`, `selling_price`, `quantity_alert`, `tax`, `tax_type`, `notes`, `product_image`, `category_id`, `unit_id`, `created_at`, `updated_at`) VALUES
+(1, '1909015d-e41e-4b4d-bd49-6b20f08f32cb', 1, 'iPhone 14 Pro', 'iphone-14-pro', '1', 10, 90000, 140000, 10, 24, 1, NULL, 'assets/img/products/ip14.png', 3, 3, '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(2, '52cd52c5-15e3-4485-b35f-e3c8b6c7dfd6', 1, 'ASUS Laptop', 'asus-laptop', '2', 10, 90000, 140000, 10, 24, 1, NULL, 'assets/img/products/ip14.png', 1, 3, '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(3, 'c9dffd82-8cb2-4c8f-abde-75c86e9ac0dc', 1, 'Logitech Keyboard', 'logitech-keyboard', '3', 10, 90000, 140000, 10, 24, 1, NULL, 'assets/img/products/keyboard.jpg', 2, 3, '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(4, '055ee28e-5213-4c36-818d-3efb254e6571', 1, 'Logitech Speakers', 'logitech-speakers', '4', 10, 90000, 140000, 10, 24, 1, NULL, 'assets/img/products/speaker.png', 4, 3, '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(5, '5be88d40-c82c-4a18-9424-7a420483348c', 1, 'AutoCAD v7.0', 'autocad-v7.0', '5', 10, 90000, 140000, 10, 24, 1, NULL, 'assets/img/products/autocard.png', 5, 3, '2024-08-26 02:35:40', '2024-08-26 02:35:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_categories`
+--
+
+CREATE TABLE `product_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_categories`
+--
+
+INSERT INTO `product_categories` (`id`, `user_id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Laptops', 'laptops', NULL, NULL),
+(2, 1, 'Hardware', 'hardware', NULL, NULL),
+(3, 1, 'Smartphones', 'smartphones', NULL, NULL),
+(4, 1, 'Speakers', 'speakers', NULL, NULL),
+(5, 1, 'Software', 'software', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -966,6 +1167,93 @@ INSERT INTO `publishers` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (33, 'StarShine Students Centre', '2024-01-15 00:02:24', '2024-01-15 00:02:24'),
 (34, 'TARGETER EDUCATIONAL PUBLISHERS LTD', '2024-01-15 05:06:13', '2024-01-15 05:06:13'),
 (35, 'PHOENIX PUBLISHERS', '2024-03-15 07:00:55', '2024-03-15 07:00:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchases`
+--
+
+CREATE TABLE `purchases` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `supplier_id` bigint(20) UNSIGNED NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `purchase_no` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=Pending, 1=Approved',
+  `total_amount` int(11) NOT NULL,
+  `created_by` bigint(20) UNSIGNED NOT NULL,
+  `updated_by` bigint(20) UNSIGNED DEFAULT NULL,
+  `uuid` char(36) NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase_details`
+--
+
+CREATE TABLE `purchase_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `purchase_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `unitcost` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quotations`
+--
+
+CREATE TABLE `quotations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `reference` varchar(255) NOT NULL,
+  `customer_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `customer_name` varchar(255) NOT NULL,
+  `tax_percentage` int(11) NOT NULL DEFAULT 0,
+  `tax_amount` int(11) NOT NULL DEFAULT 0,
+  `discount_percentage` int(11) NOT NULL DEFAULT 0,
+  `discount_amount` int(11) NOT NULL DEFAULT 0,
+  `shipping_amount` int(11) NOT NULL DEFAULT 0,
+  `total_amount` int(11) NOT NULL,
+  `status` tinyint(4) NOT NULL COMMENT '0 - Pending / 1 - Complete / 2 - Cancel',
+  `note` text DEFAULT NULL,
+  `uuid` char(36) NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quotation_details`
+--
+
+CREATE TABLE `quotation_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `quotation_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_code` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `unit_price` int(11) NOT NULL,
+  `sub_total` int(11) NOT NULL,
+  `product_discount_amount` int(11) NOT NULL,
+  `product_discount_type` varchar(255) NOT NULL DEFAULT 'fixed',
+  `product_tax_amount` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -1060,32 +1348,38 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('0ZYlNGj48K0lXIOzWL5hJDwPTXkFLOuCDjRddxi0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiWHpjSUpxVkk0VE9KSnF2ZGQ0aE1RNmFRWTFqN2x3eUR4eDRpYWhmZCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724233717),
-('3YfHHLWBkWzOr3RaY8PNPc9cJVUvbb6Ji5qlHgxS', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiVXlOREFOYzU2OWtPS1JEeWVsYzc1V3B3cHJ5RHVJSngwR2RSZng3MSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724220821),
-('6exjmcrSdwTyuoX853erCqRVF5iq9Q7nHc8RYRzM', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiSnc0Y3BkdmpHbWV3bHZsMzVXdXdqQjBmSlgwVUJiWTFkU3lrc3BkRSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724234439),
-('6PB04H5DUfAr98Gpxw9EAVCc8yaxVD1zxKLliri4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoic2lvd2p2RlBQdU05Y1JwQUNvYjVXNDRacnlaTkFrMUY2RWZRY0NpNCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724234534),
-('6ryPYULFUQ77KtStsCC9hNiEbqSjJun6UjbJe0a7', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiQk1kbDRraHNra2VQUE94cVVVcDdqVmdNZmQ1WG5SNkRNVWdZOWZBcCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724223535),
-('7RGvOYtJRwmZFJIrwnFoSw5WGUOai7h8uff7Llfh', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiYTdOT3R5WUV5QmpQSmo1U3I3aHN4dXlxTDk5NzB6cG9kQVZKMEUyWiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724223645),
-('9t3LPSc47g2hxrEtyHc3VIUjGFxNJNoSRympwxrT', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiR2VsUXh6N0FJNmtEb3h4a0U5a0V1d3J2NmMwZ0VrMWdIc0RhQ2dhMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724228735),
-('BYDzfFyJkrCCnq5n6dxp5qOfOdY4GRPMatCOARAB', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiTW04a2ZmM1JOMG5SNVNsN2phYjBiRkRTOXhvUGJuU2U5dW1McGxXeCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724234337),
-('cNh774JFu250CZH7XD7NWerz8Zfv19AVZIgqvjpt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiTzMwS1hySFFESlpPQ1NubHNvb3NKQWVTUERtQ21lUGhJTVVTRGtVVSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724233981),
-('CXgSYfl92ppTpZGdEwJUaMGTeUkECblOSfYFW9rT', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiYlRWdXJISkQzZ2dPeDhGUnV4c1dDRTNTbDYwR1Y1SEtaRVRFRUxkaSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724223687),
-('D1THnZzNZJGpybHZMApKWSpIIRkoH66rK7n6bfYt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoib2dYY2RBMzJVc3NpYXdRSEhRMmpacWFoSHR6ZlJwRGxZb0JJUUw5TCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724235105),
-('E8Lc1o4JzY8yRQ3c63twstxjBsBGNG6ded0vIw1a', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoia2k5ZjVIQ3JvM09QNjNabUxRYzU1Tm5qclhTOUR3OVlyQXZiWllMMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724222145),
-('FSd38sxzfdQeMnvVpDf47XjehbV0g727OXJoJ3BK', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiY2k1SlUwMVR5Q0ZtbElreEhRc3pLM2JJVUNOOFhRckFqRW85UThNUCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724221922),
-('KBENC6GdTmf6GoaBHJ60pOQMYgEM3ure7HD3DmDp', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiRHF3MWVZYWpyUWFqbkh4MUdGVGtPS2szSFlaZnhCdDBETFdWakhPSSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724230239),
-('nqAuffmbEsmiFZQZhLEwiBUr1d7Ec5tWcw1o1QwH', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoicWVkbDJKWThNT0dtSHhheXZrV2EyVmRFYUVpQjNSUTFYUU9aN3hCUyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724221901),
-('oGGbMOVEZ0g8pEBXsAjoBubDQZWx7k7dxK6AQ9wm', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiTFZ1MnJqUVhVczRxMnNDandzMm1MNzc0ZmRZOWk1bXh2T2NRYlRWRyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724226097),
-('oPX3BI4Nt88SdqP0hDld86NlhFfLN1uS12YNm6XA', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiSXo0TW4wZU1UR2FEbXFiMzJEY0g0amV4UmJFcm5ZTVR4TzNpS1h1MyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724234437),
-('Tfq49xMTtjSTOIbyO8ZFALrQ14yNW5t8m327AGz0', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiVzJJUUU0MjNwSXQ4bjdVMVVZN0puTGgzUUxOYkxFazQ5YktzR3llNCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724234063),
-('VMolrsZXLiEjRh3SF8nWaYN66xdd5S88K0Fd72Ka', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiWjBseEVzZ2w4UFl5Tno2aWhrWTBNUnNxbzBPOVNXeDJEQzBoeWpWcSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724223584),
-('WIxVzhUJ7GJ2qCqfde4J0JQrdCOWlXmlcMnwhoBQ', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoib3k3OExSQzQxVFJBVXNkN09LOGVpS1Nuck9SZGJVT1MyYTgyNUpqTSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724222587),
-('wwfgbqkqkvSASNxbWq1Au9m3j0bU6XLiDU84zBIA', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiWnlNdHFjRENYRUpXUmNoRlk5SmtXOGtvcE42bWNPWVJjOXBpbzdKTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724234280),
-('X1ToSvWP3cTWmYPq621ZvBrm5EiExmoxFUqzLf6s', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicTdFVVdnc3hNZFpKUm1xWUV5bWFCOXh2OVBCVVc4Nm5qdndjczFrQSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9saWJyYXJ5L2lzc3VlZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1724235094),
-('XEq2qp5ESj2niOBKJj7sVy6EVmPEW4ypHv3zjF4N', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiZjExb2hJczB1WkduSEdlaFlYeWpDamx4T3RPOUZlT0lkaW9ZdkV1TiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724230336),
-('ycfICduSC0doOtPcE1fzIwUa4dvpdlKuDDrDCXFq', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiMU5tZHhsSHhmS05lOXcwZ3JSTVUwOWQzdk1MWTQ3cXlneWZzeGhJNSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724222451),
-('zPoxSV96mPqmlcSi5NClBUnsOzy9TLOl42tnZ2TA', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiOU5GcTYzMlVzaERLMjAwMmFHT3J6cVdCOTdLOVZUTENoSjVEMHYyNiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724223590),
-('zTGQ10Gn2H3Ld81XMWQ1DzW8CpvDwaVXER7lB9if', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.109 Safari/537.36 CrKey/1.54.248666', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiVW81NU9HTWZEZmVPbkdrVnZlOFpVTzJ4VmdRUFV0cjdkZnY5aEhydSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1724222531);
+('1IIqvXgITl0ZG53HUeEVn7yUxCnR38v4Y5ANgz8q', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiZDZGdXZEYUNqNTdMVUVpMWNkajJOdjlDQjlyeFdsTHplVUN2R2JOSSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727415281),
+('6Nej27ocFxYsGxdMdOYwZiG0p8O1rUbPLzkwEiJd', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiYmU5OUdZb05NQkVSa05PaGNSNHBwQktmS280VEY4VURXc0FtOGo0MCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1728025059),
+('7gzq4i6BvHbHqT6ofYbwH2v5dHGdkEaEqHVQKDIz', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiM3c0YlpTTFlsRmpHUFRzUE1QZUU5bEpuQkpNbnhJWXFOMGlrQmdMTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417021),
+('8Lo2Q0AYMQ8n3y6gDKMyaCs3ezv8JYHDRVW2p0SC', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiR2NRZmJSZFo5ZlY0bVJyaldWRHBlanlmanROQlJwNVBMRDV1WW96TiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417138),
+('CxmEmXmHPs2n6VT6tzIIqlcCYhURZSjcT5CNjrsG', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoic3Q0RzhlTTFjWGRaNTBaNGlyd0t4dWRZdDQ1YzYxMHF2RkcwWUF6NiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417774),
+('dnkUzsh8QaCAKwkl7lnOttLNxXYUPK6kNZLQQ38m', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiSFlrems4Z2NGNjZRWU50bTlmemI4Qm9hMVdVQ2p2VDJYcHpudFEzcyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417238),
+('ea08dLk2jLKaPneUVYlp1PGYt1djV9rVDKfiPt69', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoidTlad0pHc1hYazZ1bWJuOVJQUzZQSkhRTEl2cTZtZ0lEZjNOU1JWUSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417274),
+('foVmc8gAHr4aluvGba2X1rbWShHEy0nWsf1gl8g9', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiN0cyWUdURFFkNGtoWmpDNUJrN05kMWVCZ2czYk93MWM4WnFVdjlZdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727415257),
+('gpJsWpFfW9MAni2JEbPHWBk2a6Ot8Vg1xJJa6pXS', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiQWxHY0pMYUpOclJVbzUyQjUxa3JWWXQ3N01KMHBjcHlXdkF3SmM3UyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417024),
+('I2khC5SzlGL5u3M7D07WWDAVrqaoW5zPTDnBGwm4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiUVR4dDBlbXoza0xjeU9oT2FJM2RuUGNqVFdpZmk3NnNCVzBHd3B3TiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417261),
+('igfnsl4XOLOXvbZzrguGYnogpiJWApD6tcnBR9Bm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaG1aU09VNDFlQTNMcUxKaGQ5YWRmQ0VwdmN6dGtSeHJRSXdjN1d5byI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9leGFtaW5hdGlvbnMvZXhhbXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1728025091),
+('IzFhvjD5REtRkVX3PgSuHefLeHMHF5GnZ6wsukZH', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoia2tZUG5PdGlrM1BTUHhmd1JOcDlpbUVBSHBOUlJpdkNyd2ZxYjYzNiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727414993),
+('JcrCNHC6Ptp2jsvNoZj7BtwtOkBWEorxM39bN1Oi', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiY1JleFFWdldQR3lBSDdpTU95d0RwbFlTRFlaZllMM2RMWXRVY2g1dSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1728024968),
+('kFnhvgYwXhohypBYNayAgH1DVS9zNpQQYFQm4cDa', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiVTU1ZDFDdjBqMDdLRlBtanh5S3h1OHlJalpqY3FqdVNBZWFlZ2h6ZiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417270),
+('kR8QbsYsHC8DQxMr0PAh2jdUGXO6GJ0GhlWiJb0D', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiazdrWG8xV25sQ2x2VXJSU3JjTWdYelFtR3VtNzJsU2ZnVlBUNUl4VCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417262),
+('kyAF2aU0bKxAXSqO7KB6iczpVXlzF5PaNYfgHCnk', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiR3JzR3NyZjhjSjF1Z1ZVSDBvMFhFWW1kYm93Q0JtNjdwakc5M0d4RSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417784),
+('mlxS9zGTuCJEmJ0Xw6JwrwG9V5u48rjaD7auCdYE', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoib1pZcnZScXdWM05yVWVMR2txcWxmZjY4VnFFcmFxTG1iWHJxUlpPTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727415281),
+('nL6vptkzhEGdrgqIkQ6RvsQwsCoYpY0O1QIpg0n6', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiRElPUzdYeTl1NXhqQk9ONm9GeVRubWNIb0pRaG1LOVBoRzRuTUdvQyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727415257),
+('qna1C0GNr16Jhk5RtksuiZsYXiDaLItmU5uaBIMZ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiekhuWjBWYTBHV1BZU2FVaGtiSjNVS05aamhYd2ZHMlBOcUVjT0V3UiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727418304),
+('QpKLgayBlEcWZyul0cXdRNzBXI9gcy0Pr9s1RhAd', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoieWszRk5wcVowRDUxWklzRzViMkNrVTBvZXQ3VjJLMjFua1lqb0xqMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1728025087),
+('rpX4mfoKBu1jhXRcVQUlXXmhcVaBzVJXbtDu6z0W', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiR0xyOHd0bUhBekFTME5iOGYxZThoMURRMlBURWhCcmJKeHg0QjdEciI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417219),
+('rqMzbvhMNaFF12vFMgDT9Tg00hUVAnhkVf2IAmlu', NULL, '127.0.0.1', 'Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiM0xKbzJJZkQ2RVBWM0luVFdSajBocTV4azR2cUM1ZXd0NG9sWFZvTiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727419246),
+('Sk9ZtTWpOqNDrXN296gR4et6l9XnN9jTi5X0MqaY', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiOGI3bHM1dUYyRXVycURyNkRlNWhYcHZMNjVXeTJwdHVmOERlWVhURiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1728024958),
+('SZLFZ6R0XgLLjci6IwWZPbKIvVx3QBF2FthXesaD', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoieHJaSFVwZ1FYeXJaT2xzcUZOcXIzMFJRMG1sQ1dTQW9uTVFZT0RMTiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1728025092),
+('t0jH3nO1YKpyrJoJpnrsz1LqkgqRV9AdSr2Yb3jF', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoidWRNdXV2SUo3UmdTeDNyQWZYREVZclhPSTRUeW5PZVJVTlhWdG44ViI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417255),
+('VsdiVLoOUSLvLrOtLzIMDkyHp9bEpkeWzNG3lxbE', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaVpuUkNzM2prUmk1ZERjZmlYdnk2TlE1eHBUWTBWdmJoOUcxcGxLViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9maW5hbmNlL2ZlZS1tYW5hZ2VyIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727421487),
+('wJyuRRVd6vzdHXAKsNRXixWhqYyxdQhbiR6dlTcj', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiUW5OeVBWSTBGVjJVcDF3aUJYOE1PNHZmM2ZXdEM0Z0UyVkVJYlpydCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727415358),
+('XTw8Xp7gfK0iFRQvHgOpMsCl6Q9bYULU5rbL2D75', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiRWhBWFNvSmNOc1BTTkN3NkZrOTV2VHB4aEhPc1lzbW51UUthVFVUSSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1728024944),
+('Y3fZwQ8RHlR4I3eZsdRWytxctPPYmzM4XQJz4kQy', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoieFd2OVFJVUxUM2YxM2hNNHpzcUVWM0RNYUMydjQzamlHM2VPNHc0TiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417273),
+('YGNNM1vWKbDbwajwcnJtOgl8uMNuqFTJKmUY7pBB', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiZUQ2MjI4clg0bkl3aURGQTZLREtvWVZ6RUUxV3hQSHZIOTc1NjYzTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417024),
+('Yw1UZedSMEzLASqMKjon7EwOC15ow4gR1bidKtFg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiY3paeGdEaTczdW8yVlU3akF1UnZack5HOWZDQ296bEdKaFp3amJvMiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1727417974),
+('ZGDy5AKvNMMSUVEG7iyZydzTxPHXTM2b1azWpwPm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiNGRvVm1BRTlPMlVUMUVLYW1pbm9oZkZvQ05PVGlYNUUyYUs3REEzZSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1728024576);
 
 -- --------------------------------------------------------
 
@@ -1260,6 +1554,101 @@ INSERT INTO `subjects` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` char(36) NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `shopname` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `account_holder` varchar(255) DEFAULT NULL,
+  `account_number` varchar(255) DEFAULT NULL,
+  `bank_name` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `uuid`, `user_id`, `name`, `email`, `phone`, `address`, `shopname`, `type`, `photo`, `account_holder`, `account_number`, `bank_name`, `created_at`, `updated_at`) VALUES
+(1, '6f38da28-7770-442d-8ee0-546c61b0c3c3', 1, 'Cecilia Bruen', 'audie.padberg@example.org', '+1.248.386.2854', '657 Klocko Courts Suite 797\nSouth Arnoldfurt, IN 85561', 'Osinski PLC', 'producer', NULL, 'Ned Beahan', '96225683', 'BNI', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(2, '0b796d12-5184-4769-822e-afb88c972bea', 1, 'Ms. Clarabelle Lind', 'ondricka.lenora@example.com', '+1.785.529.5213', '74275 Dahlia View Suite 960\nSouth Malikamouth, MD 96653', 'Bartoletti-Reilly', 'producer', NULL, 'Odell Nader', '19210309', 'Mandiri', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(3, '903685d3-72e4-4a0b-82a3-50f85903bcb2', 1, 'Collin Halvorson', 'jayden.murray@example.net', '(406) 917-1130', '49427 Schinner Valley\nSouth Braxtonside, KS 93833', 'Breitenberg Group', 'distributor', NULL, 'Mrs. Katlyn Bauch Jr.', '90172749', 'BRI', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(4, 'd0399a0a-42de-4dde-9ee2-3004918115f8', 1, 'Eleonore Hegmann V', 'okuneva.octavia@example.com', '1-657-381-4554', '479 Leif Parkways Apt. 808\nLake Frankie, TN 13162-1108', 'Russel Ltd', 'distributor', NULL, 'Dr. Israel Kiehn', '52900937', 'Mandiri', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(5, 'c9a7dcf0-e0b8-4b38-ac2b-e6c1642c1808', 1, 'Antonette Buckridge II', 'veronica94@example.com', '(406) 944-7147', '65942 Mraz Mountain Apt. 565\nNorth Arlie, GA 77427', 'Schowalter-Bahringer', 'wholesaler', NULL, 'Raphaelle Stanton', '13110973', 'BCA', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(6, 'b270e7c3-8dbb-406c-bb52-3480af2cf71b', 1, 'Jennings Bahringer', 'swolff@example.org', '+1-385-421-3090', '2147 Danyka Lodge Apt. 701\nWalshmouth, DC 10962-2090', 'Koch Group', 'wholesaler', NULL, 'Savanna Hyatt', '21505761', 'Mandiri', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(7, '77ee3462-0286-4285-89a3-6e77f96fae0a', 1, 'Jeromy White', 'ztremblay@example.org', '+1 (646) 789-3330', '3556 Sonny Courts Suite 767\nPort Bernard, WI 59804', 'Langosh Ltd', 'producer', NULL, 'Elvera Little', '55937935', 'Mandiri', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(8, '8994d021-4f84-4226-be67-a83b9a13fc9b', 1, 'Ali Botsford MD', 'wisozk.jeffrey@example.com', '+1-351-548-2871', '8504 Halvorson Forest\nMosciskishire, CA 19338', 'Keeling, Hills and Spinka', 'distributor', NULL, 'Aiden Stamm V', '95000059', 'BSI', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(9, '3098dd1d-66cb-45e6-abb6-e09551f65a9a', 1, 'Ervin Stamm', 'bogan.bridgette@example.org', '+1-850-342-2449', '57598 Durgan Manor\nGennaroburgh, MA 81101-3527', 'Streich and Sons', 'wholesaler', NULL, 'Chet Kilback', '46638355', 'BRI', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(10, 'e88a3e4a-fb47-4281-9eca-8bdcfd66828b', 1, 'Mr. Leonardo Beer DDS', 'carter.kayden@example.net', '586-471-8275', '501 Torphy Views\nLake Alfurt, ID 43964', 'Pfeffer-Mills', 'distributor', NULL, 'Alisha Kris DDS', '87996470', 'Mandiri', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(11, '8175af71-f52a-460a-a0b9-c2ecdffd3900', 1, 'Reba Bailey', 'toy.harley@example.com', '+1.915.573.4815', '1880 Langworth Inlet\nWest Adolfo, TN 53543-1217', 'Schultz Inc', 'producer', NULL, 'Tatyana Haley', '86312693', 'BNI', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(12, '8b603d27-8b21-4f1d-b83a-5727bdec15c8', 1, 'Ms. Elissa Denesik Jr.', 'kayley05@example.net', '(940) 899-2953', '87383 Luella Cliffs\nNorth Rosaliaville, NM 43188', 'Prohaska-Spencer', 'distributor', NULL, 'Dr. Jerome Kreiger', '19343629', 'BCA', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(13, '33f71c76-5f64-42dd-9cb8-fb6aa0819c22', 1, 'Madie Franecki', 'ckunde@example.org', '+1-541-537-2650', '96923 Gibson Meadow Suite 171\nHayesmouth, NV 42712-5062', 'Donnelly-Langosh', 'wholesaler', NULL, 'Damian Corkery', '35974713', 'BNI', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(14, 'c4990a12-c920-4805-809b-8262beef2950', 1, 'Assunta Cronin', 'melany60@example.org', '630.247.1611', '18570 Cooper Dale\nKerlukeberg, LA 09389-8713', 'Bartoletti-Sawayn', 'producer', NULL, 'Daphnee Jenkins', '26822071', 'Mandiri', '2024-08-26 02:35:40', '2024-08-26 02:35:40'),
+(15, '66d1333d-f54e-457d-974b-346d4337484e', 1, 'Robbie DuBuque', 'eshanahan@example.com', '(678) 867-1193', '388 Vincenzo Loop Suite 536\nCormierberg, SD 66296', 'Gaylord, Hyatt and Sawayn', 'producer', NULL, 'Dr. Tianna Herzog', '86767499', 'BSI', '2024-08-26 02:35:40', '2024-08-26 02:35:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `terms`
+--
+
+CREATE TABLE `terms` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `year` year(4) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `terms`
+--
+
+INSERT INTO `terms` (`id`, `name`, `year`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
+(2, 'Term 1', 0000, '2024-01-01', '2024-04-30', NULL, NULL),
+(3, 'Term 2', 0000, '2024-05-01', '2024-07-30', NULL, NULL),
+(4, 'Term 3', 0000, '2024-08-01', '2024-12-20', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `units`
+--
+
+CREATE TABLE `units` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `short_code` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `units`
+--
+
+INSERT INTO `units` (`id`, `user_id`, `name`, `slug`, `short_code`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Meters', 'meters', 'm', NULL, NULL),
+(2, 1, 'Centimeters', 'centimeters', 'cm', NULL, NULL),
+(3, 1, 'Piece', 'piece', 'pc', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -1323,6 +1712,19 @@ ALTER TABLE `cache_locks`
 -- Indexes for table `classes`
 --
 ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `exams`
+--
+ALTER TABLE `exams`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_term` (`term_id`);
+
+--
+-- Indexes for table `exam_terms`
+--
+ALTER TABLE `exam_terms`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1393,6 +1795,13 @@ ALTER TABLE `library_settings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `marks`
+--
+ALTER TABLE `marks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_exam` (`paper_id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -1411,6 +1820,28 @@ ALTER TABLE `model_has_permissions`
 ALTER TABLE `model_has_roles`
   ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `orders_user_id_foreign` (`user_id`),
+  ADD KEY `orders_customer_id_foreign` (`customer_id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_details_order_id_foreign` (`order_id`),
+  ADD KEY `order_details_product_id_foreign` (`product_id`);
+
+--
+-- Indexes for table `papers`
+--
+ALTER TABLE `papers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `password_reset_tokens`
@@ -1432,6 +1863,56 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_user_id_foreign` (`user_id`),
+  ADD KEY `products_category_id_foreign` (`category_id`),
+  ADD KEY `products_unit_id_foreign` (`unit_id`);
+
+--
+-- Indexes for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `categories_name_unique` (`name`),
+  ADD UNIQUE KEY `categories_slug_unique` (`slug`),
+  ADD KEY `categories_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `purchases`
+--
+ALTER TABLE `purchases`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `purchases_supplier_id_foreign` (`supplier_id`),
+  ADD KEY `purchases_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `purchase_details`
+--
+ALTER TABLE `purchase_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `purchase_details_purchase_id_foreign` (`purchase_id`),
+  ADD KEY `purchase_details_product_id_foreign` (`product_id`);
+
+--
+-- Indexes for table `quotations`
+--
+ALTER TABLE `quotations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quotations_customer_id_foreign` (`customer_id`),
+  ADD KEY `quotations_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `quotation_details`
+--
+ALTER TABLE `quotation_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quotation_details_quotation_id_foreign` (`quotation_id`),
+  ADD KEY `quotation_details_product_id_foreign` (`product_id`);
 
 --
 -- Indexes for table `roles`
@@ -1480,6 +1961,28 @@ ALTER TABLE `student_fees`
   ADD KEY `level_id` (`level_id`);
 
 --
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `suppliers_email_unique` (`email`),
+  ADD UNIQUE KEY `suppliers_phone_unique` (`phone`),
+  ADD KEY `suppliers_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `terms`
+--
+ALTER TABLE `terms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `units`
+--
+ALTER TABLE `units`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `units_user_id_foreign` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -1513,6 +2016,18 @@ ALTER TABLE `book_issue_histories`
 --
 ALTER TABLE `classes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `exams`
+--
+ALTER TABLE `exams`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `exam_terms`
+--
+ALTER TABLE `exam_terms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1569,10 +2084,34 @@ ALTER TABLE `library_settings`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `marks`
+--
+ALTER TABLE `marks`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `papers`
+--
+ALTER TABLE `papers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -1584,7 +2123,43 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `purchases`
+--
+ALTER TABLE `purchases`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `purchase_details`
+--
+ALTER TABLE `purchase_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `quotations`
+--
+ALTER TABLE `quotations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `quotation_details`
+--
+ALTER TABLE `quotation_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1611,6 +2186,24 @@ ALTER TABLE `student_fees`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `terms`
+--
+ALTER TABLE `terms`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `units`
+--
+ALTER TABLE `units`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -1619,6 +2212,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `exams`
+--
+ALTER TABLE `exams`
+  ADD CONSTRAINT `fk_term` FOREIGN KEY (`term_id`) REFERENCES `terms` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `fee_details`
@@ -1633,6 +2232,12 @@ ALTER TABLE `fee_payments`
   ADD CONSTRAINT `fee_payments_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `marks`
+--
+ALTER TABLE `marks`
+  ADD CONSTRAINT `fk_exam` FOREIGN KEY (`paper_id`) REFERENCES `exams` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `model_has_permissions`
 --
 ALTER TABLE `model_has_permissions`
@@ -1643,6 +2248,34 @@ ALTER TABLE `model_has_permissions`
 --
 ALTER TABLE `model_has_roles`
   ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `order_details_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_details_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `purchases`
+--
+ALTER TABLE `purchases`
+  ADD CONSTRAINT `purchases_supplier_id_foreign` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`),
+  ADD CONSTRAINT `purchases_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `purchase_details`
+--
+ALTER TABLE `purchase_details`
+  ADD CONSTRAINT `purchase_details_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `purchase_details_purchase_id_foreign` FOREIGN KEY (`purchase_id`) REFERENCES `purchases` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `quotation_details`
+--
+ALTER TABLE `quotation_details`
+  ADD CONSTRAINT `quotation_details_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `quotation_details_quotation_id_foreign` FOREIGN KEY (`quotation_id`) REFERENCES `quotations` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `role_has_permissions`

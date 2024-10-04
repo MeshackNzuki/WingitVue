@@ -323,6 +323,11 @@ const routes = [
                 name: "Papers",
                 component: () => import("../views/exams/Papers.vue"),
             },
+            {
+                path: "exams",
+                name: "exams",
+                component: () => import("../views/exams/Exams.vue"),
+            },
         ],
     },
     {

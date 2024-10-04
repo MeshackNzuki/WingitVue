@@ -16,7 +16,7 @@
         <template v-slot:actions>
             <SmallButton
                 icon="pi pi-plus"
-                :action="() => showModalFunc('addbook')"
+                :action="() => showModal('addbook')"
             ></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
@@ -66,21 +66,21 @@
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500"
                             button-text="Issue"
-                            :action="() => showModalFunc(book.id)"
+                            :action="() => showModal(book.id)"
                         />
                     </div>
                     <div class="text-lg text-center">
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-yellow"
                             button-text="Edit"
-                            :action="() => showModalFunc(book.id)"
+                            :action="() => showModal(book.id)"
                         />
                     </div>
                     <div class="text-lg text-center">
                         <SmallButton
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
                             button-text="Del"
-                            :action="() => showModalFunc(book.id)"
+                            :action="() => showModal(book.id)"
                         />
                     </div>
                 </td>
@@ -276,11 +276,11 @@ const authorData = ref([]);
 const publisherData = ref([]);
 const ErrorObjectMessange = ref("");
 
-const showModalFunc = (modalId) => {
+const showModal= (modalId) => {
     document.getElementById(modalId).showModal();
 };
 
-const hideModalFunc = (modalId) => {
+const hideModal= (modalId) => {
     document.getElementById(modalId).close();
 };
 

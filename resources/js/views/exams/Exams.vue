@@ -10,10 +10,10 @@
                 'Student Name',
                 'Admission No.',
                 'Subject',
-                'Marks', 
+                'Marks',
                 'Comments',
             ]"
-            title="Enter Marks"
+            title="All Exams"
         >
             <template v-slot:actions>
                 <SmallButton
