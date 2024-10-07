@@ -1074,7 +1074,7 @@
                     </router-link>
                 </nav>
             </div>
-            <router-link to="logout">
+            <span @click="logout()">
                 <div
                     role="button"
                     tabindex="0"
@@ -1097,7 +1097,7 @@
                     </div>
                     Log Out
                 </div>
-            </router-link>
+            </span>
         </div>
     </nav>
 </template>
@@ -1114,7 +1114,7 @@ const toggleCollapseShow = (classes) => {
     collapseShow.value = classes;
 };
 
-const { user } = authStore();
+const { user, logout } = authStore();
 
 const isDark = useDark({ disableTransition: false });
 const route = useRoute();

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 // Auth
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\UserManagementController;
+use App\Http\Controllers\Auth\LogoutController;
 
 // admin
 use App\Http\Controllers\Admin\AdminController;
@@ -94,6 +95,8 @@ use App\Http\Controllers\ProfileController;
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    //logout user 
+    Route::post('/logout', [LogoutController::class, 'logout']);
 
 
     Route::prefix('admin')->group(function () {

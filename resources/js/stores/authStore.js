@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import { toast } from "vue3-toastify";
+import axios from "axios";
+import router from "@/router";
 
 export const authStore = defineStore("authStore", {
     persist: true,
@@ -24,8 +26,19 @@ export const authStore = defineStore("authStore", {
         logout() {
             // Perform logout operation here...
             // Reset the store's state
-            this.user = null;
-            this.is_authenticated = false;
+            axios
+                .post("/logout")
+                .then(() => {
+                    router.push("/login");
+                })
+                .catch((error) => {
+                    console.error("Logout failed:", error);
+                })
+                .finally(() => {
+                    this.user = null;
+                    this.is_authenticated = false;
+                });
+
             // toast.success(item.name + " " + "added to cart", {
             //     transition: toast.TRANSITIONS.ZOOM,
             //     position: toast.POSITION.TOP_CENTER,

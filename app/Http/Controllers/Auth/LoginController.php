@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Student\Student;
-use App\Models\Guardian\Guardian;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
