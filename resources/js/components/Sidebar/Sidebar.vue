@@ -976,14 +976,22 @@
             </div>
             <div v-if="user?.roles[0] == 'admin'">
                 <nav
-                    class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
+                    class="flex flex-col gap-1 px-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                 >
-                    <router-link to="admin/">
-                        <common-button
-                            class="mt-10 shadow-sm"
-                            button-text="Administration"
-                        ></common-button>
+                    <strong class="ms-2">Administration</strong>
+                    <router-link to="/admin">
+                        <div
+                            role="button"
+                            tabindex="0"
+                            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                        >
+                            <div class="grid place-items-center mr-4">
+                                <i class="pi pi-wave-pulse"></i>
+                            </div>
+                            Dashboard
+                        </div>
                     </router-link>
+
                     <router-link to="/admissions">
                         <div
                             role="button"

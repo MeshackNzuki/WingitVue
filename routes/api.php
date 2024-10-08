@@ -72,6 +72,9 @@ use App\Http\Controllers\Grading\GradingController;
 //examination
 use App\Http\Controllers\Exam\PapersController ;
 use App\Http\Controllers\Exam\ExamController;
+use App\Http\Controllers\Exam\ExamTermController;
+use App\Http\Controllers\Exam\TermController;
+
 
 //end examination
 
@@ -280,7 +283,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('exams')->group(function () {
         Route::apiResource('papers', PapersController::class);
         Route::apiResource('exams', ExamController::class);
-
+        Route::apiResource('exam_terms', ExamTermController::class);
+        Route::apiResource('terms', TermController::class);
     });
 
 });

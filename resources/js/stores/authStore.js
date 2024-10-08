@@ -18,10 +18,6 @@ export const authStore = defineStore("authStore", {
             if (userData.token) {
                 this.is_authenticated = true;
             }
-            toast.success("Login success", {
-                transition: toast.TRANSITIONS.ZOOM,
-                position: toast.POSITION.TOP_CENTER,
-            });
         },
         logout() {
             // Perform logout operation here...
@@ -38,11 +34,6 @@ export const authStore = defineStore("authStore", {
                     this.user = null;
                     this.is_authenticated = false;
                 });
-
-            // toast.success(item.name + " " + "added to cart", {
-            //     transition: toast.TRANSITIONS.ZOOM,
-            //     position: toast.POSITION.TOP_CENTER,
-            // });
         },
     },
 });

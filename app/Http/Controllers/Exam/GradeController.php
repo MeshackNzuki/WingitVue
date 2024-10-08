@@ -137,7 +137,6 @@ class GradeController extends Controller
     {
         $subjects   = Subject::latest()->get();
         $assigned   = Grade::with(['subjects','students'])->findOrFail($classid);
-
         return view('backend.classes.assign-subject', compact('classid','subjects','assigned'));
     }
 
