@@ -29,6 +29,7 @@ export default {
             colors: {
                 gold: "#FBD0A0",
                 yellow: "#FF9900",
+                base: "#0e5b5c",
             },
             "confirmation-button": {
                 padding: ".5rem 1rem",

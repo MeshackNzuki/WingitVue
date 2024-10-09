@@ -1,6 +1,5 @@
 import axios from "axios";
 import { authStore } from "./stores/authStore";
-
 axios.defaults.baseURL = "http://localhost:8000/api";
 axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
 axios.defaults.headers.common["Accept"] = "application/json";

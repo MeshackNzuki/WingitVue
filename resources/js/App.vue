@@ -4,24 +4,25 @@ import Vue3Toastify, { toast } from "vue3-toastify";
 import Toast from "primevue/toast";
 import "../../node_modules/vue3-marquee-slider/dist/style.css";
 import "vue3-toastify/dist/index.css";
-import Sidebar from "./components/Sidebar/Sidebar.vue";
-import TopBar from "./components/TopBar/TopBar.vue";
+import Sidebar from "./components/Sidebar/CSidebar.vue";
+import MainTopBar from "./components/TopBar/GuestTopBar.vue";
+import GuestTopBar from "./components/TopBar/GuestTopBar.vue";
 import MobileNav from "./components/MobileNav.vue";
 import { ref, onMounted, watch } from "vue";
 
 const route = useRoute();
-const login = ref(false);
+const protected_area = ref(false);
 
 // Set login to true if the current route is /login
 if (route.path === "/login") {
-    login.value = true;
+    protected_area.value = true;
 }
 
 // Watch for route changes and update login accordingly
 watch(
     () => route.path,
     (newPath) => {
-        login.value = newPath === "/login";
+        protected_area.value = newPath === "/login";
     },
 );
 </script>
@@ -34,10 +35,22 @@ watch(
     </div>
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden">
-        <div :class="login ? '' : 'ms-64 p-4'">
+        <!-- <div :class="protected_area ? '' : 'ms-64 p-4'">
             <Toast />
             <Sidebar />
-            <TopBar />
+            <GuestTopBar />
+            <MainTopBar />
+            <router-view v-slot="{ Component }">
+                <transition name="page">
+                    <component :is="Component" />
+                </transition>
+            </router-view>
+            <MobileNav />
+        </div> -->
+        <div>
+            <Toast />
+            <!-- <Sidebar /> -->
+            <GuestTopBar />
             <router-view v-slot="{ Component }">
                 <transition name="page">
                     <component :is="Component" />

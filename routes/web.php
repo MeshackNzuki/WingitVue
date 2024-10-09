@@ -2,13 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::fallback(function () {
-    // Handle the fallback logic here, such as returning a 404 view
-   return redirect('/');
+// Define specific routes for your frontend pages here
+Route::get('/Seo-pages', function () {
+    return view('Welcome'); // or specify a view for login if different
 });
 
-    Route::get('/{any?}', function () {
-        
-        return view('VueEntry');
-
-    })->where('any', '.*');
+// Catch-all route for Vue
+Route::get('/{any?}', function () {
+    return view('VueEntry');
+})->where('any', '.*');

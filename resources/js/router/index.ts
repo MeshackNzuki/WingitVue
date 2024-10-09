@@ -2,455 +2,190 @@ import { createRouter, createWebHistory } from "vue-router";
 import { authStore } from "../stores/authStore";
 
 const routes = [
+    // Public routes
+    { path: "", name: "Home", component: () => import("../views/Home.vue") },
+    // {
+    //     path: "/login",
+    //     name: "Login",
+    //     component: () => import("../views/auth/Login.vue"),
+    // },
     {
-        path: "/login",
-        name: "Login",
-        component: () => import("../views/auth/Login.vue"),
+        path: "/client-register",
+        name: "ClientRegister",
+        component: () => import("../views/auth/ClientRegister.vue"),
     },
     {
-        path: "/",
-        name: "Usher",
-        component: () => import("../views/Usher.vue"),
+        path: "/operator-register",
+        name: "OperatorRegister",
+        component: () => import("../views/auth/OperatorRegister.vue"),
     },
     {
-        path: "/404",
-        name: "404",
-        component: () => import("../views/404.vue"),
+        path: "/flight-booking",
+        name: "FlightBooking",
+        component: () => import("../views/FlightBooking.vue"),
     },
     {
-        path: "/chat/messages",
-        name: "Chats",
-        component: () => import("../views/chats.vue"),
+        path: "/about",
+        name: "About",
+        component: () => import("../views/About.vue"),
     },
     {
-        path: "/admin",
-        name: "Admin",
-        component: () => import("../views/admin/Layout.vue"),
-        meta: { role: "admin" },
-        children: [
-            {
-                path: "",
-                name: "AdminDashboard",
-                component: () => import("../views/admin/Dashboard.vue"),
-            },
-            {
-                path: "users",
-                name: "AdminUsers",
-                component: () => import("../views/admin/Users.vue"),
-            },
-            {
-                path: "settings",
-                name: "AdminSettings",
-                component: () => import("../views/admin/Settings.vue"),
-            },
-            {
-                path: "tables",
-                name: "AdminTables",
-                component: () => import("../views/admin/Tables.vue"),
-            },
-        ],
+        path: "/listed-flights",
+        name: "ListedFlights",
+        component: () => import("../views/ListedFlights.vue"),
     },
     {
-        path: "/admissions",
-        name: "Admissions",
-        component: () => import("../views/admissions/Layout.vue"),
-        meta: { role: "admissions" },
-        children: [
-            {
-                path: "",
-                name: "AdmissionsDashboard",
-                component: () => import("../views/admissions/Dashboard.vue"),
-            },
-            {
-                path: "all",
-                name: "AdmissionsAllStudents",
-                component: () => import("../views/admissions/AllStudents.vue"),
-            },
-            {
-                path: "alumni",
-                name: "AdmissionsAlumniStudents",
-                component: () => import("../views/admissions/Alumni.vue"),
-            },
-            {
-                path: "continuing",
-                name: "AdmissionsContinuingStudents",
-                component: () => import("../views/admissions/Alumni.vue"),
-            },
-            {
-                path: "settings",
-                name: "AdmissionsSettings",
-                component: () => import("../views/admissions/Settings.vue"),
-            },
-            {
-                path: "levels",
-                name: "AdmissionsLevels",
-                component: () => import("../views/admissions/Levels.vue"),
-            },
-        ],
+        path: "/principle",
+        name: "Principle",
+        component: () => import("../views/Principle.vue"),
     },
     {
-        path: "/library",
-        name: "Library",
-        component: () => import("../views/library/Layout.vue"),
-        meta: { role: "library" },
-        children: [
-            {
-                path: "",
-                name: "LibraryDashboard",
-                component: () => import("../views/library/Dashboard.vue"),
-            },
-            {
-                path: "all_books",
-                name: "LibraryAllBooks",
-                component: () => import("../views/library/All_books.vue"),
-            },
-            {
-                path: "issued",
-                name: "LibraryIssued",
-                component: () => import("../views/library/Borrowed.vue"),
-            },
-            {
-                path: "lost",
-                name: "LibraryLostBooks",
-                component: () => import("../views/library/Lost.vue"),
-            },
-            {
-                path: "count_subject",
-                name: "LibraryCountSubject",
-                component: () => import("../views/library/Count_subject.vue"),
-            },
-            {
-                path: "count_title",
-                name: "LibraryCountTitle",
-                component: () => import("../views/library/Count_title.vue"),
-            },
-
-            {
-                path: "settings",
-                name: "LibrarySettings",
-                component: () => import("../views/library/Settings.vue"),
-            },
-            {
-                path: "daily_reports",
-                name: "Daily_reports",
-                component: () => import("../views/library/Daily_reports.vue"),
-            },
-            {
-                path: "monthly_reports",
-                name: "Monthly_reports",
-                component: () => import("../views/library/Monthly_reports.vue"),
-            },
-            {
-                path: "alumni",
-                name: "LibraryAlumni",
-                component: () => import("../views/library/Alumni.vue"),
-            },
-            {
-                path: "all_students",
-                name: "LibraryStudents",
-                component: () => import("../views/library/All_students.vue"),
-            },
-        ],
+        path: "/privacy",
+        name: "Privacy",
+        component: () => import("../views/Privacy.vue"),
     },
     {
-        path: "/finance",
-        name: "Finance",
-        component: () => import("../views/finance/Layout.vue"),
-        meta: { role: "finance" },
-        children: [
-            {
-                path: "",
-                name: "FinanceDashboard",
-                component: () => import("../views/finance/Dashboard.vue"),
-            },
-            {
-                path: "settings",
-                name: "FinanceSettings",
-                component: () => import("../views/finance/Settings.vue"),
-            },
-            {
-                path: "fee-manager",
-                name: "FeeManager",
-                component: () => import("../views/finance/FeeManager.vue"),
-            },
-            {
-                path: "student-fees",
-                name: "StudentsFees",
-                component: () => import("../views/finance/StudentsFees.vue"),
-            },
-            {
-                path: "fee-payments",
-                name: "FeePayments",
-                component: () => import("../views/finance/FeePayments.vue"),
-            },
-            {
-                path: "payments-report",
-                name: "PaymentsReport",
-                component: () => import("../views/finance/PaymentsReport.vue"),
-            },
-        ],
+        path: "/flight-search",
+        name: "FlightSearch",
+        component: () => import("../views/FlightSearch.vue"),
     },
     {
-        path: "/guardian",
-        name: "Guardian",
-        component: () => import("../views/guardian/Layout.vue"),
-        meta: { role: "guardian" },
-        children: [
-            {
-                path: "fees",
-                name: "GuardianFees",
-                component: () => import("../views/guardian/Fees.vue"),
-            },
-            {
-                path: "exams",
-                name: "GuardianExams",
-                component: () => import("../views/guardian/Exams.vue"),
-            },
-        ],
-    },
-    {
-        path: "/student",
-        name: "Student",
-        component: () => import("../views/student/Layout.vue"),
-        meta: { role: "student" },
-        children: [
-            {
-                path: "timetable",
-                name: "StudentTimetable",
-                component: () => import("../views/student/Timetable.vue"),
-            },
-            {
-                path: "exams",
-                name: "StudentExams",
-                component: () => import("../views/student/Exams.vue"),
-            },
-            {
-                path: "fees",
-                name: "StudentFees",
-                component: () => import("../views/student/Fees.vue"),
-            },
-            {
-                path: "attendance",
-                name: "StudentAttendance",
-                component: () => import("../views/student/Attendance.vue"),
-            },
-        ],
-    },
-    {
-        path: "/instructor",
-        name: "Instructor",
-        meta: { role: "instructor" },
-        component: () => import("../views/instructor/Layout.vue"),
-        children: [
-            {
-                path: "",
-                name: "InstructorDashboard",
-                component: () => import("../views/instructor/Dashboard.vue"),
-            },
-            {
-                path: "timetable",
-                name: "InstructorTimetable",
-                component: () => import("../views/instructor/Timetable.vue"),
-            },
-            {
-                path: "calendar",
-                name: "InstructorCalendar",
-                component: () => import("../views/instructor/Calendar.vue"),
-            },
-            {
-                path: "classes",
-                name: "InstructorClasses",
-                component: () => import("../views/instructor/Classes.vue"),
-            },
-            {
-                path: "planner",
-                name: "InstructorPlanner",
-                component: () => import("../views/instructor/Planner.vue"),
-            },
-        ],
-    },
-    {
-        path: "/instructor",
-        name: "Instructor",
-        meta: { role: "instructor" },
-        component: () => import("../views/instructor/Layout.vue"),
-        children: [
-            {
-                path: "",
-                name: "InstructorDashboard",
-                component: () => import("../views/instructor/Dashboard.vue"),
-            },
-            {
-                path: "timetable",
-                name: "InstructorTimetable",
-                component: () => import("../views/instructor/Timetable.vue"),
-            },
-            {
-                path: "calendar",
-                name: "InstructorCalendar",
-                component: () => import("../views/instructor/Calendar.vue"),
-            },
-            {
-                path: "classes",
-                name: "InstructorClasses",
-                component: () => import("../views/instructor/Classes.vue"),
-            },
-            {
-                path: "planner",
-                name: "InstructorPlanner",
-                component: () => import("../views/instructor/Planner.vue"),
-            },
-        ],
-    },
-    {
-        path: "/examinations",
-        name: "Examination",
-        meta: { role: "examiner" },
-        component: () => import("../views/exams/Layout.vue"),
-        children: [
-            {
-                path: "",
-                name: "ExamsDashboard",
-                component: () => import("../views/exams/Dashboard.vue"),
-            },
-            {
-                path: "marks",
-                name: "Marks",
-                component: () => import("../views/exams/Marks.vue"),
-            },
-            {
-                path: "papers",
-                name: "Papers",
-                component: () => import("../views/exams/Papers.vue"),
-            },
-            {
-                path: "exams",
-                name: "exams",
-                component: () => import("../views/exams/Exams.vue"),
-            },
-        ],
-    },
-    {
-        path: "/inventory",
-        name: "Inventory",
-        meta: { role: "inventory-manager" },
-        component: () => import("../views/inventory/Layout.vue"),
-        children: [
-            {
-                path: "",
-                name: "InventoryDashboard",
-                component: () => import("../views/inventory/Dashboard.vue"),
-            },
-            {
-                path: "items",
-                name: "InventoryItems",
-                component: () => import("../views/inventory/Items.vue"),
-            },
-            {
-                path: "purchases",
-                name: "InventoryPurchase",
-                component: () => import("../views/inventory/Purchase.vue"),
-            },
-            {
-                path: "categories",
-                name: "InventoryCategories",
-                component: () => import("../views/inventory/Categories.vue"),
-            },
-            {
-                path: "suppliers",
-                name: "InventorySuppliers",
-                component: () => import("../views/inventory/Suppliers.vue"),
-            },
-            {
-                path: "orders",
-                name: "InventoryOrders",
-                component: () => import("../views/inventory/Orders.vue"),
-            },
-            {
-                path: "reports",
-                name: "InventoryReports",
-                component: () => import("../views/inventory/Reports.vue"),
-            },
-        ],
-    },
-    {
-        path: "/transport",
-        name: "Transport",
-        meta: { role: "transport-manager" },
-        component: () => import("../views/transport/Layout.vue"),
-        children: [
-            {
-                path: "",
-                name: "TransportDashboard",
-                component: () => import("../views/transport/Dashboard.vue"),
-            },
-            {
-                path: "transport",
-                name: "InventoryTransport",
-                component: () => import("../views/transport/Transport.vue"),
-            },
-            {
-                path: "routes",
-                name: "TransportRoutes",
-                component: () => import("../views/transport/Routes.vue"),
-            },
-            {
-                path: "vehicles",
-                name: "TransportVehicles",
-                component: () => import("../views/transport/Vehicles.vue"),
-            },
-            {
-                path: "drivers",
-                name: "TransportDrivers",
-                component: () => import("../views/transport/Drivers.vue"),
-            },
-        ],
+        path: "/terms",
+        name: "Terms",
+        component: () => import("../views/Terms.vue"),
     },
 
+    // Protected dashboard routes
     {
-        path: "/hostel",
-        name: "Hostels",
-        meta: { role: "hostel-manager" },
-        component: () => import("../views/hostel/Layout.vue"),
+        path: "/aircraft-operator",
+        name: "AircraftOperator",
+        component: () => import("../views/aircraftOperator/Layout.vue"),
+        meta: { role: "aircraftOperator" },
         children: [
             {
                 path: "",
-                name: "HostelsDashboard",
-                component: () => import("../views/hostel/Dashboard.vue"),
+                name: "AircraftsDashboard",
+                component: () =>
+                    import("../views/aircraftOperator/Dashboard.vue"),
             },
             {
-                path: "all",
-                name: "HostelAll",
-                component: () => import("../views/hostel/Hostels.vue"),
+                path: "all-flights",
+                name: "AircraftAllFlights",
+                component: () =>
+                    import("../views/aircraftOperator/AllFlights.vue"),
             },
             {
-                path: "rooms",
-                name: "HostelRooms",
-                component: () => import("../views/hostel/Rooms.vue"),
+                path: "listed-flights",
+                name: "AircraftListedFlights",
+                component: () =>
+                    import("../views/aircraftOperator/ListedFlights.vue"),
             },
             {
-                path: "students",
-                name: "HostelStudents",
-                component: () => import("../views/hostel/Students.vue"),
+                path: "messages",
+                name: "AircraftMessages",
+                component: () =>
+                    import("../views/aircraftOperator/Messages.vue"),
             },
             {
-                path: "staff",
-                name: "HostelStaff",
-                component: () => import("../views/hostel/Staff.vue"),
+                path: "notifications",
+                name: "AircraftNotifications",
+                component: () =>
+                    import("../views/aircraftOperator/Notifications.vue"),
             },
             {
-                path: "maintenance",
-                name: "HostelMaintenance",
-                component: () => import("../views/hostel/Maintenance.vue"),
+                path: "pilots",
+                name: "AircraftPilots",
+                component: () => import("../views/aircraftOperator/Pilots.vue"),
+            },
+            {
+                path: "settings",
+                name: "AircraftSettings",
+                component: () =>
+                    import("../views/aircraftOperator/Settings.vue"),
+            },
+            {
+                path: "statements",
+                name: "AircraftStatements",
+                component: () =>
+                    import("../views/aircraftOperator/Statements.vue"),
+            },
+            {
+                path: "trips",
+                name: "AircraftTrips",
+                component: () => import("../views/aircraftOperator/Trips.vue"),
             },
         ],
     },
     {
-        path: "/user/profile",
-        name: "Profile",
-        component: () => import("../views/Profile.vue"),
+        path: "/client",
+        name: "Client",
+        component: () => import("../views/client/Layout.vue"),
+        meta: { role: "client" },
+        children: [
+            {
+                path: "",
+                name: "ClientDashboard",
+                component: () => import("../views/client/Dashboard.vue"),
+            },
+            {
+                path: "bookings",
+                name: "ClientBookings",
+                component: () => import("../views/client/Bookings.vue"),
+            },
+            {
+                path: "statements",
+                name: "ClientStatements",
+                component: () => import("../views/client/Statements.vue"),
+            },
+            {
+                path: "trips",
+                name: "ClientTrips",
+                component: () => import("../views/client/Trips.vue"),
+            },
+            {
+                path: "messages",
+                name: "ClientMessages",
+                component: () => import("../views/client/Messages.vue"),
+            },
+            {
+                path: "settings",
+                name: "ClientSettings",
+                component: () => import("../views/client/Settings.vue"),
+            },
+        ],
     },
-
+    {
+        path: "/tourism-operator",
+        name: "TourismOperator",
+        component: () => import("../views/tourismOperator/Layout.vue"),
+        meta: { role: "tourismOperator" },
+        children: [
+            {
+                path: "incoming-bookings",
+                name: "IncomingBookings",
+                component: () =>
+                    import("../views/tourismOperator/IncomingBookings.vue"),
+            },
+            {
+                path: "messages",
+                name: "TourismMessages",
+                component: () =>
+                    import("../views/tourismOperator/Messages.vue"),
+            },
+            {
+                path: "notifications",
+                name: "TourismNotifications",
+                component: () =>
+                    import("../views/tourismOperator/Notifications.vue"),
+            },
+            {
+                path: "all-bookings",
+                name: "AllBookings",
+                component: () =>
+                    import("../views/tourismOperator/AllBookings.vue"),
+            },
+        ],
+    },
     {
         path: "/unauthorized",
         name: "Unauthorized",
@@ -468,40 +203,25 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const { user, is_authenticated } = authStore();
-    console.log("Authenticating...", user?.token);
+    const userRole = user?.roles[0];
+    return next();
 
-    // If user is authenticated
-    if (is_authenticated) {
-        const userRole = user?.roles[0];
-
-        // Allow admin users
-        if (userRole === "admin") {
-            return next();
-        }
-
-        // If the route requires a specific role
-        if (to.meta.role) {
-            const requiredRoles = Array.isArray(to.meta.role)
-                ? to.meta.role
-                : [to.meta.role];
-
-            if (requiredRoles.includes(userRole)) {
-                return next();
-            } else {
-                if (to.path === "/unauthorized") {
-                    return next();
-                }
-                return next({ path: "/unauthorized" });
-            }
-        } else {
-            return next();
-        }
-    } else {
-        if (to.path === "/login") {
-            return next();
-        }
-        return next({ path: "/login" });
+    // Allow access to public pages
+    if (!to.meta.role) {
+        return next();
     }
+
+    // For authenticated users, check if they have the correct role
+    if (is_authenticated) {
+        if (userRole === "admin" || to.meta.role === userRole) {
+            return next();
+        }
+        return next({ path: "/unauthorized" });
+    }
+
+    // Redirect unauthenticated users trying to access protected routes
+    // next({ path: "/login" });
+    return next();
 });
 
 export default router;
