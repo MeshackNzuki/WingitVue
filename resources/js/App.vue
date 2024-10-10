@@ -7,7 +7,7 @@ import "vue3-toastify/dist/index.css";
 import Sidebar from "./components/Sidebar/CSidebar.vue";
 import MainTopBar from "./components/TopBar/GuestTopBar.vue";
 import GuestTopBar from "./components/TopBar/GuestTopBar.vue";
-import MobileNav from "./components/MobileNav.vue";
+
 import { ref, onMounted, watch } from "vue";
 
 const route = useRoute();
@@ -56,7 +56,7 @@ watch(
                     <component :is="Component" />
                 </transition>
             </router-view>
-            <MobileNav />
+
         </div>
     </div>
 </template>
