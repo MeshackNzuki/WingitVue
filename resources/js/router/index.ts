@@ -4,20 +4,25 @@ import { authStore } from "../stores/authStore";
 const routes = [
     // Public routes
     { path: "", name: "Home", component: () => import("../views/Home.vue") },
-    // {
-    //     path: "/login",
-    //     name: "Login",
-    //     component: () => import("../views/auth/Login.vue"),
-    // },
+    {
+        path: "/login",
+        name: "Login",
+        component: () => import("../views/auth/Login.vue"),
+    },
     {
         path: "/client-register",
         name: "ClientRegister",
         component: () => import("../views/auth/ClientRegister.vue"),
     },
     {
-        path: "/operator-register",
-        name: "OperatorRegister",
-        component: () => import("../views/auth/OperatorRegister.vue"),
+        path: "/aircraft-operator-register",
+        name: "AircraftOperatorRegister",
+        component: () => import("../views/auth/AircraftOperatorRegister.vue"),
+    },
+    {
+        path: "/tourism-operator-register",
+        name: "TourismOperatorRegister",
+        component: () => import("../views/auth/TourismOperatorRegister.vue"),
     },
     {
         path: "/flight-booking",

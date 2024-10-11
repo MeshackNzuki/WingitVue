@@ -50,6 +50,9 @@
 
         <!-- Right Side: User Avatar -->
         <div class="flex items-center h-12 bg-base gray-800 ml-5">
+            <router-link to="/client-register" v-if="!is_authenticated">
+                Sign Up
+            </router-link>
             <div
                 v-if="user?.avatar"
                 class="avatar pointer"
@@ -107,7 +110,7 @@
 <script setup>
 import { computed, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import Logo from "../../assets/images/logo.svg";
+import Logo from "../../assets/logo.png";
 import { authStore } from "../../stores/authStore"; // Adjust import according to your project structure
 
 const router = useRouter();
