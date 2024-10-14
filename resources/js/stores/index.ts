@@ -20,7 +20,6 @@ export const useFlightStore = defineStore("flightStore", {
                     ...flight,
                     seats: 1,
                 }));
-                console.error("these are them:", this.flights);
             } catch (error) {
                 console.error("Failed to fetch flights:", error);
             }
@@ -34,12 +33,14 @@ export const useFlightStore = defineStore("flightStore", {
                     `This flight has only ${availableSeats} available seat(s).`,
                 );
             }
+            this.totalSeats = flight.seats;
         },
         decreaseSeats(id) {
             const flight = this.flights.find((f) => f.id === id);
             if (flight && flight.seats > 1) {
                 flight.seats--;
             }
+            this.totalSeats = flight.seats;
         },
         bookFlight(id) {
             const flight = this.flights.find((f) => f.id === id);
@@ -47,8 +48,7 @@ export const useFlightStore = defineStore("flightStore", {
 
             this.selectedFlight = flight;
             this.totalSeats = flight.seats;
-            console.log("this.totalSeats", this.totalSeats);
-            console.log("  this.selectedFlight", this.selectedFlight);
+
             this.loading = true;
             setTimeout(() => {
                 this.loading = false;
