@@ -9,6 +9,7 @@ import MainTopBar from "./components/TopBar/GuestTopBar.vue";
 import GuestTopBar from "./components/TopBar/GuestTopBar.vue";
 
 import { ref, onMounted, watch } from "vue";
+import Footer from "./components/Footer.vue";
 
 const route = useRoute();
 const protected_area = ref(false);
@@ -56,7 +57,7 @@ watch(
                     <component :is="Component" />
                 </transition>
             </router-view>
-
+            <Footer />
         </div>
     </div>
 </template>
@@ -67,7 +68,7 @@ watch(
     display: grid;
     border: 4px solid #0000;
     border-radius: 50%;
-    border-color: #0c4a6e #0000;
+    border-color: #0e5b5c #0000;
     animation: l16 1s infinite linear;
 }
 .axiosspinner::before,

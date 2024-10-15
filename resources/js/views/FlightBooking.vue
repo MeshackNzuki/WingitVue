@@ -216,11 +216,18 @@
                                     class="flex items-center font-light justify-between"
                                 >
                                     {{ flightStore.totalSeats }} x KES
-                                    {{ flightStore.selectedFlight?.price }}
+                                    {{
+                                        Number(
+                                            flightStore.selectedFlight?.price,
+                                        ).toLocaleString()
+                                    }}
                                     <span
-                                        class="text-gray-700 font-semi-bold text-right ml-1"
+                                        class="text-gray-700 font-semibold text-right ml-1 rounded-md bg-emerald-500 bg-opacity-35"
                                     >
-                                        = KES {{ totalAmount }}
+                                        = KES
+                                        {{
+                                            Number(totalAmount).toLocaleString()
+                                        }}
                                     </span>
                                 </div>
                             </div>
@@ -312,23 +319,25 @@
                             </div>
                         </li>
                     </ul>
-                    <hr class="border-gray-700" />
-                    <ul>
-                        <li class="grid grid-cols-6 gap-2 h-12">
-                            <div class="flex flex-col col-span-3 pt-1 md:pt-3">
-                                <span class="text-gray-600 text-lg font-bold"
-                                    >Total</span
-                                >
-                            </div>
-                            <div class="col-span-3 pt-1 md:pt-3">
-                                <span class="text-gray-700 font-bold">
-                                    KES {{ totalAmount }}
-                                </span>
-                            </div>
-                        </li>
-                    </ul>
-                    <hr class="border-gray-700" />
                 </div>
+                <hr class="border-gray-700" />
+                <ul>
+                    <li
+                        class="flex justify-between bg-emerald-500 bg-opacity-35 p-2"
+                    >
+                        <div class="flex flex-col col-span-3 pt-1 md:pt-3">
+                            <span class="text-gray-600 text-lg font-bold"
+                                >Total</span
+                            >
+                        </div>
+                        <div class="col-span-3 pt-1 md:pt-3">
+                            <span class="text-gray-700 text-end font-bold">
+                                KES {{ Number(totalAmount).toLocaleString() }}
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <hr class="border-gray-700" />
             </div>
         </div>
         <div className="w-full flex  justify-center align-center p-2 md:p-8 ">
@@ -345,7 +354,8 @@
                         className="uppercase text-l font-bold text-gray-700 mt-2"
                     >
                         <span className="{exo2.className}">
-                            Ticket Total : KES {{ totalAmount }}
+                            Ticket Total : KES
+                            {{ Number(totalAmount).toLocaleString() }}
                         </span>
                     </h2>
                 </span>

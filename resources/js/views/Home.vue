@@ -1,299 +1,349 @@
 <template>
     <section>
         <div
-            className=" h-screen bg-[url('../assets/hiw.jpg')]  object-cover bg-no-repeat bg-center pt-32 flex justify-center items-center "
+            className=" h-screen bg-[url('../assets/hiw.jpg')]  object-cover bg-no-repeat bg-center  flex justify-center items-center "
         >
             <div class="max-w-screen-xl flex justify-center items-center">
                 <div
                     className="w-full  h-96 flex justify-between flex-col md:flex-col "
                 >
-                    <Carousel
-                        :value="flightStore.flights"
-                        :numVisible="3"
-                        :numScroll="3"
-                        circular
-                        :autoplayInterval="3000"
-                        :responsiveOptions="responsiveOptions"
-                    >
-                        <template #item="slotProps">
-                            <div
-                                class="relative hover:scale-105 transition-all duration-300 transition-timing-function-cubic-bezier-0.7 rounded-lg shadow-md m-2 from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl bg-cover backdrop-blur-md bg-opacity-25 max-w-lg"
-                            >
+                    <div v-if="flightStore.flights.length > 0">
+                        <Carousel
+                            :value="flightStore.flights"
+                            :numVisible="3"
+                            :numScroll="3"
+                            circular
+                            :autoplayInterval="4000"
+                            :responsiveOptions="responsiveOptions"
+                        >
+                            <template #item="slotProps">
                                 <div
-                                    class="absolute flex justify-center m-auto h-1/3 w-1/2 mr-0 bottom-0 bg-transparent"
+                                    class="relative hover:scale-105 transition-all duration-300 transition-timing-function-cubic-bezier-0.7 rounded-lg shadow-md m-2 from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl bg-cover backdrop-blur-md bg-opacity-25 max-w-lg"
                                 >
                                     <div
-                                        class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg"
+                                        class="absolute flex justify-center m-auto h-1/3 w-1/2 mr-0 bottom-0 bg-transparent"
                                     >
-                                        <p class="font-bold">
-                                            <i
-                                                class="pi pi-map-marker me-1 text-sm"
-                                            ></i>
-                                            <span class="text-xs">{{
-                                                slotProps.data.destination_airport?.city?.toUpperCase()
-                                            }}</span>
-                                            <br />
-                                            <span class="text-sm">
+                                        <div
+                                            class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg"
+                                        >
+                                            <p class="font-bold">
                                                 <i
-                                                    class="pi pi-info-circle w-4 mr-2 text-base"
+                                                    class="pi pi-map-marker me-1 text-sm"
                                                 ></i>
-                                                <small>
-                                                    <template
-                                                        v-if="
-                                                            slotProps.data
-                                                                .has_offer == 1
-                                                        "
-                                                    >
-                                                        {{
-                                                            calculateDiscount(
-                                                                slotProps.data
-                                                                    .price,
-                                                                slotProps.data
-                                                                    .offer_price,
-                                                            )
-                                                        }}% Off
-                                                    </template>
-                                                    <template v-else>
-                                                        Best Price
-                                                    </template>
-                                                </small>
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div
-                                        class="grid grid-cols-2 grid-flow-col gap-4 shadow-sm"
-                                    >
-                                        <div class="flex justify-center p-1">
-                                            <span
-                                                class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900"
-                                            >
-                                                <i
-                                                    class="pi pi-calendar w-5 h-5"
-                                                ></i>
-                                                {{
-                                                    format(
-                                                        new Date(
-                                                            slotProps.data.depart_time,
-                                                        ),
-                                                        "EEE d, M, Y ",
-                                                    )
-                                                }}
-                                            </span>
-                                        </div>
-                                        <div class="flex justify-center p-1">
-                                            <span
-                                                class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900"
-                                            >
-                                                <i
-                                                    class="pi pi-ticket w-5 h-5"
-                                                ></i>
-                                                <span class="me-1">{{
-                                                    slotProps.data
-                                                        .available_seats
+                                                <span class="text-xs">{{
+                                                    slotProps.data.destination_airport?.city?.toUpperCase()
                                                 }}</span>
-                                                <span>{{
-                                                    slotProps.data
-                                                        .available_seats > 1
-                                                        ? "seats"
-                                                        : "seat"
-                                                }}</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="px-6">
-                                    <div>
-                                        <table class="w-full">
-                                            <tr>
-                                                <td class="text-left">
+                                                <br />
+                                                <span class="text-sm">
+                                                    <i
+                                                        class="pi pi-info-circle w-4 mr-2 text-base"
+                                                    ></i>
                                                     <small>
-                                                        {{
+                                                        <template
+                                                            v-if="
+                                                                slotProps.data
+                                                                    .has_offer ==
+                                                                1
+                                                            "
+                                                        >
+                                                            {{
+                                                                calculateDiscount(
+                                                                    slotProps
+                                                                        .data
+                                                                        .price,
+                                                                    slotProps
+                                                                        .data
+                                                                        .offer_price,
+                                                                )
+                                                            }}% Off
+                                                        </template>
+                                                        <template v-else>
+                                                            Best Price
+                                                        </template>
+                                                    </small>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="grid grid-cols-2 grid-flow-col gap-4 shadow-sm"
+                                        >
+                                            <div
+                                                class="flex justify-center p-1"
+                                            >
+                                                <span
+                                                    class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900"
+                                                >
+                                                    <i
+                                                        class="pi pi-calendar w-5 h-5"
+                                                    ></i>
+                                                    {{
+                                                        format(
+                                                            new Date(
+                                                                slotProps.data.depart_time,
+                                                            ),
+                                                            "EEE d, M, Y ",
+                                                        )
+                                                    }}
+                                                </span>
+                                            </div>
+                                            <div
+                                                class="flex justify-center p-1"
+                                            >
+                                                <span
+                                                    class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900"
+                                                >
+                                                    <i
+                                                        class="pi pi-ticket w-5 h-5"
+                                                    ></i>
+                                                    <span class="me-1">{{
+                                                        slotProps.data
+                                                            .available_seats
+                                                    }}</span>
+                                                    <span>{{
+                                                        slotProps.data
+                                                            .available_seats > 1
+                                                            ? "seats"
+                                                            : "seat"
+                                                    }}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="px-6">
+                                        <div>
+                                            <table class="w-full">
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <small>
+                                                            {{
+                                                                format(
+                                                                    new Date(
+                                                                        slotProps.data.depart_time,
+                                                                    ),
+                                                                    "h:mm a",
+                                                                )
+                                                            }}</small
+                                                        >
+                                                    </td>
+                                                    <td></td>
+                                                    <td>
+                                                        <small>{{
                                                             format(
                                                                 new Date(
-                                                                    slotProps.data.depart_time,
+                                                                    slotProps.data.arrival_time,
                                                                 ),
                                                                 "h:mm a",
                                                             )
-                                                        }}</small
-                                                    >
-                                                </td>
-                                                <td></td>
-                                                <td>
-                                                    <small>{{
-                                                        format(
-                                                            new Date(
-                                                                slotProps.data.arrival_time,
-                                                            ),
-                                                            "h:mm a",
-                                                        )
-                                                    }}</small>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-left">
-                                                    <span
-                                                        class="font-semibold uppercase text-xs relative overflow-hidden"
-                                                    >
-                                                        {{
-                                                            slotProps.data.origin_airport?.name.split(
-                                                                " ",
-                                                            )[0]
-                                                        }}
-                                                    </span>
-                                                </td>
-                                                <td
-                                                    class="flex justify-center flex-row pt-1.5"
-                                                >
-                                                    <div
-                                                        class="flex justify-center items-center p-1 relative"
+                                                        }}</small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <span
+                                                            class="font-semibold uppercase text-xs relative overflow-hidden"
+                                                        >
+                                                            {{
+                                                                slotProps.data.origin_airport?.name.split(
+                                                                    " ",
+                                                                )[0]
+                                                            }}
+                                                        </span>
+                                                    </td>
+                                                    <td
+                                                        class="flex justify-center flex-row pt-1.5"
                                                     >
                                                         <div
-                                                            class="h-1 w-6 sm:w-8 border-dashed border-base border-t-2 relative"
+                                                            class="flex justify-center items-center p-1 relative"
                                                         >
                                                             <div
-                                                                class="w-2.5 h-2.5 bg-base rounded-full absolute -left-5 -top-1.5 transform translate-x-1/2"
-                                                            ></div>
+                                                                class="h-1 w-6 sm:w-8 border-dashed border-base border-t-2 relative"
+                                                            >
+                                                                <div
+                                                                    class="w-2.5 h-2.5 bg-base rounded-full absolute -left-5 -top-1.5 transform translate-x-1/2"
+                                                                ></div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <span
-                                                        class="h-4 w-4 rounded-full bg-base flex justify-center items-center"
+                                                        <span
+                                                            class="h-4 w-4 rounded-full bg-base flex justify-center items-center"
+                                                        >
+                                                            <i
+                                                                class="pi pi-send text-gray-50 h-2.5 w-2.5"
+                                                            ></i>
+                                                        </span>
+                                                        <div
+                                                            class="flex justify-center items-center p-1 relative"
+                                                        >
+                                                            <div
+                                                                class="h-1 w-6 sm:w-8 border-dashed border-base border-t-2 relative"
+                                                            >
+                                                                <div
+                                                                    class="w-2.5 h-2.5 bg-base rounded-full absolute -right-1/3 -top-1.5 transform translate-x-1/2"
+                                                                ></div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span
+                                                            class="font-semibold uppercase text-xs relative overflow-hidden"
+                                                        >
+                                                            {{
+                                                                slotProps.data.destination_airport?.name.split(
+                                                                    " ",
+                                                                )[0]
+                                                            }}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="text-left">
+                                            <span
+                                                class="text-sm font-thin text-left"
+                                            >
+                                                {{
+                                                    slotProps.data
+                                                        .aircraft_operator
+                                                        ?.company_name
+                                                }}
+                                            </span>
+                                        </div>
+                                        <div class="w-full text-center">
+                                            <span
+                                                v-if="
+                                                    slotProps.data.has_offer ==
+                                                    1
+                                                "
+                                                class="text-sm font-normal text-center line-through text-red-500 bg-red-50 p-1 rounded-full"
+                                            >
+                                                KES
+                                                {{
+                                                    formatCurrency(
+                                                        slotProps.data.price,
+                                                    )
+                                                }}
+                                            </span>
+                                            <span
+                                                class="text-sm font-normal text-center m-2 bg-cyan-100 px-2 py-1 rounded-full"
+                                            >
+                                                KES
+                                                {{
+                                                    slotProps.data.has_offer ==
+                                                    1
+                                                        ? formatCurrency(
+                                                              slotProps.data
+                                                                  .offer_price,
+                                                          )
+                                                        : formatCurrency(
+                                                              slotProps.data
+                                                                  .price,
+                                                          )
+                                                }}.
+                                            </span>
+                                        </div>
+                                        <div class="text-right mt-3">
+                                            <div class="flex justify-end mb-1">
+                                                <div
+                                                    class="text-second flex justify-center space-x-2 px-4"
+                                                >
+                                                    <button
+                                                        @click="
+                                                            flightStore.decreaseSeats(
+                                                                slotProps.data
+                                                                    .id,
+                                                            )
+                                                        "
+                                                        class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1"
                                                     >
                                                         <i
-                                                            class="pi pi-send text-gray-50 h-2.5 w-2.5"
+                                                            class="pi pi-minus"
                                                         ></i>
-                                                    </span>
-                                                    <div
-                                                        class="flex justify-center items-center p-1 relative"
-                                                    >
-                                                        <div
-                                                            class="h-1 w-6 sm:w-8 border-dashed border-base border-t-2 relative"
-                                                        >
-                                                            <div
-                                                                class="w-2.5 h-2.5 bg-base rounded-full absolute -right-1/3 -top-1.5 transform translate-x-1/2"
-                                                            ></div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="text-right">
+                                                    </button>
                                                     <span
-                                                        class="font-semibold uppercase text-xs relative overflow-hidden"
+                                                        class="bg-base p-2 w-8 flex justify-center items-center h-8 mb-2 text-gray-50 rounded-full font-thin"
                                                     >
                                                         {{
-                                                            slotProps.data.destination_airport?.name.split(
-                                                                " ",
-                                                            )[0]
+                                                            slotProps.data
+                                                                .seats <=
+                                                            slotProps.data
+                                                                .available_seats
+                                                                ? slotProps.data
+                                                                      .seats
+                                                                : "Add"
                                                         }}
                                                     </span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="text-left">
-                                        <span
-                                            class="text-sm font-thin text-left"
-                                        >
-                                            {{
-                                                slotProps.data.aircraft_operator
-                                                    ?.company_name
-                                            }}
-                                        </span>
-                                    </div>
-                                    <div class="w-full text-center">
-                                        <span
-                                            v-if="slotProps.data.has_offer == 1"
-                                            class="text-sm font-normal text-center line-through text-red-500 bg-red-50 p-1 rounded-full"
-                                        >
-                                            KES
-                                            {{
-                                                formatCurrency(
-                                                    slotProps.data.price,
-                                                )
-                                            }}
-                                        </span>
-                                        <span
-                                            class="text-sm font-normal text-center m-2 bg-cyan-100 px-2 py-1 rounded-full"
-                                        >
-                                            KES
-                                            {{
-                                                slotProps.data.has_offer == 1
-                                                    ? formatCurrency(
-                                                          slotProps.data
-                                                              .offer_price,
-                                                      )
-                                                    : formatCurrency(
-                                                          slotProps.data.price,
-                                                      )
-                                            }}.
-                                        </span>
-                                    </div>
-                                    <div class="text-right mt-3">
-                                        <div class="flex justify-end mb-1">
-                                            <div
-                                                class="text-second flex justify-center space-x-2 px-4"
-                                            >
-                                                <button
-                                                    @click="
-                                                        flightStore.decreaseSeats(
-                                                            slotProps.data.id,
-                                                        )
-                                                    "
-                                                    class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1"
-                                                >
-                                                    <i class="pi pi-minus"></i>
-                                                </button>
-                                                <span
-                                                    class="bg-base p-2 w-8 flex justify-center items-center h-8 mb-2 text-gray-50 rounded-full font-thin"
-                                                >
-                                                    {{
-                                                        slotProps.data.seats <=
-                                                        slotProps.data
-                                                            .available_seats
-                                                            ? slotProps.data
-                                                                  .seats
-                                                            : "Add"
-                                                    }}
-                                                </span>
-                                                <button
-                                                    @click="
-                                                        flightStore.increaseSeats(
-                                                            slotProps.data.id,
-                                                            slotProps.data
-                                                                .available_seats,
-                                                        )
-                                                    "
-                                                    class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1"
-                                                >
-                                                    <i class="pi pi-plus"></i>
-                                                </button>
-                                                <label
-                                                    for="Category"
-                                                    class="block mb-2 text-md text-gray-800"
-                                                >
-                                                    Seats
-                                                </label>
+                                                    <button
+                                                        @click="
+                                                            flightStore.increaseSeats(
+                                                                slotProps.data
+                                                                    .id,
+                                                                slotProps.data
+                                                                    .available_seats,
+                                                            )
+                                                        "
+                                                        class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1"
+                                                    >
+                                                        <i
+                                                            class="pi pi-plus"
+                                                        ></i>
+                                                    </button>
+                                                    <label
+                                                        for="Category"
+                                                        class="block mb-2 text-md text-gray-800"
+                                                    >
+                                                        Seats
+                                                    </label>
+                                                </div>
                                             </div>
+                                            <button
+                                                @click="
+                                                    flightStore.bookFlight(
+                                                        slotProps.data.id,
+                                                    )
+                                                "
+                                                class="flex-no-shrink bg-gradient-to-tr from-teal-600 via-base to-base hover:scale-110 px-5 ml-4 py-2 mb-2 text-sm shadow-sm hover:shadow-lg tracking-wider text-gray-50 font-thin rounded-full transition ease-in duration-200"
+                                            >
+                                                {{
+                                                    flightStore.loading
+                                                        ? "Please wait..."
+                                                        : " Book Now"
+                                                }}
+                                            </button>
                                         </div>
-                                        <button
-                                            @click="
-                                                flightStore.bookFlight(
-                                                    slotProps.data.id,
-                                                )
-                                            "
-                                            class="flex-no-shrink bg-gradient-to-tr from-teal-600 via-base to-base hover:scale-110 px-5 ml-4 py-2 mb-2 text-sm shadow-sm hover:shadow-lg tracking-wider text-gray-50 font-thin rounded-full transition ease-in duration-200"
-                                        >
-                                            {{
-                                                flightStore.loading
-                                                    ? "Please wait..."
-                                                    : " Book Now"
-                                            }}
-                                        </button>
                                     </div>
                                 </div>
+                            </template>
+                        </Carousel>
+                    </div>
+                    <div v-else class="p-2 md:px-8 mb-32">
+                        <vue-marquee-slider
+                            id="marquee-slider-reverse"
+                            :space="30"
+                            :speed="12000"
+                            :loop="true"
+                            pauseOnHover
+                            reverse
+                        >
+                            <div
+                                v-for="destination in destinations"
+                                :key="destination.name"
+                                class="relative"
+                            >
+                                <img
+                                    :src="getImagePath(destination.image)"
+                                    :alt="destination.name"
+                                    class="h-24 w-24 object-cover mix-blend-overlay"
+                                />
+                                <router-link
+                                    to="listed-flights"
+                                    class="text-center mt-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-50 hover:text-black hover:bg-gold px-4 py-1 rounded-full underline underline-offset-4 hover:shadow-lg transition duration-350 hover:scale-110"
+                                >
+                                    {{ destination.name }}
+                                </router-link>
                             </div>
-                        </template>
-                    </Carousel>
+                        </vue-marquee-slider>
+                    </div>
 
                     <div className="w-full flex mt-0  justify-center mb-32">
                         <div
@@ -345,7 +395,7 @@
                 class="absolute hidden w-full max-w-screen-lg bg-secondary self-center shadow-md rounded-lg h-24 lg:flex justify-center"
             >
                 <vue-marquee-slider
-                    d="marquee-slider-cards"
+                    id="marquee-slider-cards"
                     :space="30"
                     :speed="12000"
                     :loop="true"
