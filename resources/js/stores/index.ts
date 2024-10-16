@@ -1,15 +1,16 @@
-// stores/flightStore.js
+// stores/mainStore.js
 import { defineStore } from "pinia";
 import { toast } from "vue3-toastify";
 import axios from "axios";
 import router from "@/router";
 
-export const useFlightStore = defineStore("flightStore", {
+export const useMainStore = defineStore("mainStore", {
     state: () => ({
         flights: [],
         loading: false,
         selectedFlight: null,
         totalSeats: [],
+        sidebarOpen: true,
     }),
     actions: {
         async fetchFlights() {
@@ -54,6 +55,10 @@ export const useFlightStore = defineStore("flightStore", {
                 this.loading = false;
                 router.push("/flight-booking");
             }, 500);
+        },
+        // other
+        toggleSidebar() {
+            this.sidebarOpen = this.sidebarOpen;
         },
     },
 });

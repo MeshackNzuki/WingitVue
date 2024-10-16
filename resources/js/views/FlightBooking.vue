@@ -101,20 +101,20 @@
                             {{ errors.phone }}
                         </div>
 
-                        <span className="w-full flex justify-center">
-                            <h2
-                                className="uppercase text-l font-bold text-gray-700 mt-2"
-                            >
-                                <span className="{exo2.className}">
-                                    Other Passengers' Infomation
-                                </span>
-                            </h2>
-                        </span>
                         <div
                             v-for="(passenger, index) in passengers"
                             :key="index"
                             class="passenger-form"
                         >
+                            <span className="w-full flex justify-center">
+                                <h2
+                                    className="uppercase text-l font-bold text-gray-700 mt-2"
+                                >
+                                    <span className="{exo2.className}">
+                                        Other Passengers' Infomation
+                                    </span>
+                                </h2>
+                            </span>
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Full Name <sup class="text-red-500">*</sup>
@@ -166,8 +166,8 @@
 
                             <hr
                                 v-if="
-                                    flightStore.totalSeats > 2 &&
-                                    flightStore.totalSeats - 1
+                                    mainStore.totalSeats > 2 &&
+                                    mainStore.totalSeats - 1
                                 "
                                 class="bg-gray-600 h-0.5"
                             />
@@ -192,8 +192,8 @@
                                 >
                                     <i
                                         @click="
-                                            flightStore.decreaseSeats(
-                                                flightStore.selectedFlight?.id,
+                                            mainStore.decreaseSeats(
+                                                mainStore.selectedFlight?.id,
                                             )
                                         "
                                         class="pi pi-minus"
@@ -201,9 +201,9 @@
                                     Seats
                                     <i
                                         @click="
-                                            flightStore.increaseSeats(
-                                                flightStore.selectedFlight.id,
-                                                flightStore.selectedFlight
+                                            mainStore.increaseSeats(
+                                                mainStore.selectedFlight.id,
+                                                mainStore.selectedFlight
                                                     ?.available_seats,
                                             )
                                         "
@@ -215,16 +215,17 @@
                                 <div
                                     class="flex items-center font-light justify-between"
                                 >
-                                    {{ flightStore.totalSeats }} x KES
+                                    {{ mainStore.totalSeats }} x KES
                                     {{
                                         Number(
-                                            flightStore.selectedFlight?.price,
+                                            mainStore.selectedFlight?.price,
                                         ).toLocaleString()
                                     }}
+                                    =
                                     <span
                                         class="text-gray-700 font-semibold text-right ml-1 rounded-md bg-emerald-500 bg-opacity-35"
                                     >
-                                        = KES
+                                        KES
                                         {{
                                             Number(totalAmount).toLocaleString()
                                         }}
@@ -241,12 +242,12 @@
                                     class="flex items-center space-x-2 text-sm justify-between"
                                 >
                                     <span class="text-gray-700 font-light">{{
-                                        flightStore.selectedFlight
-                                            ?.origin_airport.name
+                                        mainStore.selectedFlight?.origin_airport
+                                            .name
                                     }}</span>
                                     -
                                     <span class="text-gray-700 font-light">{{
-                                        flightStore.selectedFlight
+                                        mainStore.selectedFlight
                                             ?.destination_airport.name
                                     }}</span>
                                 </div>
@@ -263,7 +264,7 @@
                                     {{
                                         format(
                                             new Date(
-                                                flightStore.selectedFlight?.depart_time,
+                                                mainStore.selectedFlight?.depart_time,
                                             ),
                                             "EEE d, M, Y, HH:mm",
                                         )
@@ -280,7 +281,7 @@
                                     {{
                                         format(
                                             new Date(
-                                                flightStore.selectedFlight?.arrival_time,
+                                                mainStore.selectedFlight?.arrival_time,
                                             ),
                                             "EEE d, M, Y, HH:mm",
                                         )
@@ -297,7 +298,7 @@
                                     class="text-gray-700 font-light text-right"
                                 >
                                     {{
-                                        flightStore.selectedFlight.aircraft
+                                        mainStore.selectedFlight.aircraft
                                             ?.aircraft_type
                                     }}
                                 </span>
@@ -312,7 +313,7 @@
                                     class="text-gray-700 font-light text-right"
                                 >
                                     {{
-                                        flightStore.selectedFlight
+                                        mainStore.selectedFlight
                                             ?.aircraft_operator?.company_name
                                     }}
                                 </span>
@@ -323,7 +324,7 @@
                 <hr class="border-gray-700" />
                 <ul>
                     <li
-                        class="flex justify-between bg-emerald-500 bg-opacity-35 p-2"
+                        class="flex justify-between bg-emerald-500 bg-opacity-35 px-2 py-2 md:px-10"
                     >
                         <div class="flex flex-col col-span-3 pt-1 md:pt-3">
                             <span class="text-gray-600 text-lg font-bold"
@@ -424,7 +425,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { useFlightStore } from "../stores"; // Import your flight store
+import { useMainStore } from "../stores"; // Import your flight store
 import { authStore } from "../stores/authStore";
 import BaseButton from "../components/Buttons/BaseButton.vue";
 import CountryDropdown from "../components/countries/Countries.vue";
@@ -434,7 +435,7 @@ import { format } from "date-fns";
 import Swal from "sweetalert2";
 import { toast } from "vue3-toastify";
 
-const flightStore = useFlightStore();
+const mainStore = useMainStore();
 const router = useRouter();
 
 const formVals = ref({
@@ -450,14 +451,14 @@ const errors = ref({});
 
 const passengers = computed(() => {
     // Ensure `passengerData` has an entry for each seat
-    while (passengerData.value.length < flightStore.totalSeats - 1) {
+    while (passengerData.value.length < mainStore.totalSeats - 1) {
         passengerData.value.push({ name: "", idNumber: "", nationality: "" });
     }
-    return Array.from({ length: flightStore.totalSeats - 1 }, (_, i) => i + 2);
+    return Array.from({ length: mainStore.totalSeats - 1 }, (_, i) => i + 2);
 });
 
 const totalAmount = computed(() => {
-    return flightStore.totalSeats * (flightStore.selectedFlight?.price || 0);
+    return mainStore.totalSeats * (mainStore.selectedFlight?.price || 0);
 });
 
 const handleFormChange = () => {
@@ -495,8 +496,8 @@ const pay = async () => {
         if (paymentResponse.data.code === "success") {
             // Proceed with booking
             const bookingResponse = await axios.post("/booking", {
-                flight_id: flightStore.selectedFlight.id,
-                seats: flightStore.totalSeats,
+                flight_id: mainStore.selectedFlight.id,
+                seats: mainStore.totalSeats,
                 guest_name: formVals.value.name,
                 guest_email: formVals.value.email,
                 guest_phone: formVals.value.phone,

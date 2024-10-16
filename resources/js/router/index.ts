@@ -65,7 +65,7 @@ const routes = [
         path: "/aircraft-operator",
         name: "AircraftOperator",
         component: () => import("../views/aircraftOperator/Layout.vue"),
-        meta: { role: "aircraftOperator" },
+        meta: { role: "aircraft_operator" },
         children: [
             {
                 path: "",
@@ -163,7 +163,7 @@ const routes = [
         path: "/tourism-operator",
         name: "TourismOperator",
         component: () => import("../views/tourismOperator/Layout.vue"),
-        meta: { role: "tourismOperator" },
+        meta: { role: "tourism_operator" },
         children: [
             {
                 path: "incoming-bookings",
@@ -207,26 +207,28 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const { user, is_authenticated } = authStore();
-    const userRole = user?.roles[0];
-    return next();
+    const { user, is_authenticated } = authStore(); // Access auth state and user role
+    const userRole = user?.role;
 
-    // Allow access to public pages
+    // If the route is public, allow access
     if (!to.meta.role) {
+        console.log("public");
         return next();
     }
 
-    // For authenticated users, check if they have the correct role
-    if (is_authenticated) {
-        if (userRole === "admin" || to.meta.role === userRole) {
-            return next();
-        }
-        return next({ path: "/unauthorized" });
+    // If the route is protected but the user is not authenticated, redirect to login
+    if (to.meta.role && !is_authenticated) {
+        console.log("kwa auth issue");
+        return next({ path: "/login" });
     }
 
-    // Redirect unauthenticated users trying to access protected routes
-    // next({ path: "/login" });
-    return next();
+    // If authenticated, check if the user has the correct role
+    if (is_authenticated && to.meta.role !== userRole) {
+        console.log("401");
+        return next({ path: "/unauthorized" });
+    }
+    console.log("ok");
+    next();
 });
 
 export default router;

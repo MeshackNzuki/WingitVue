@@ -134,10 +134,7 @@ const errors = reactive({});
 
 const router = useRouter();
 
-const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    formVals[name] = value;
-};
+const { user, login, is_authenticated } = authStore();
 
 const validate = (values) => {
     return new Promise((resolve) => {
@@ -162,24 +159,7 @@ const submit = async () => {
         }
         try {
             const res = await axios.post("/login", { ...formVals });
-            localStorage.setItem("wingitsess", JSON.stringify(res.data));
-
-            // Update the auth store with user data after login
-            authStore.setUser(res.data.user); // Assuming your user data structure is res.data.user
-
-            if (authStore.user) {
-                toast.success("Login Success, Redirecting...");
-                // Handle role-based redirection
-                if (authStore.user.role === "aircraftOperator") {
-                    router.push("/aircraft-operator");
-                } else if (authStore.user.role === "tourismOperator") {
-                    router.push("/tourism-operator");
-                } else if (authStore.user.role === "customer") {
-                    router.push("/client");
-                } else {
-                    // Handle other user roles
-                }
-            }
+            login(res.data.user);
         } catch (error) {
             toast.error(error.message);
         }
@@ -191,16 +171,8 @@ const togglePasswordVisibility = () => {
 };
 
 const checkAuth = async () => {
-    if (authStore.user) {
-        toast.success("Redirecting");
-        // Handle role-based redirection
-        if (authStore.user.role === "aircraftOperator") {
-            router.push("/aircraft-operator");
-        } else if (authStore.user.role === "tourismOperator") {
-            router.push("/tourism-operator");
-        } else if (authStore.user.role === "customer") {
-            router.push("/client");
-        }
+    if (is_authenticated) {
+        login(user);
     }
 };
 

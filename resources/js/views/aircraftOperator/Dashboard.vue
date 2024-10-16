@@ -124,17 +124,4 @@ import LineChart from "../../components/Charts/LineChart.vue";
 import DoughnutChart from "../../components/Charts/DoughnutChart.vue";
 import CardMain from "../../components/Card/CardMain.vue";
 import CommonButton from "../../components/Buttons/CommonButton.vue";
-import axios from "axios";
-
-axios
-    .post("/login", {
-        username: "mesh",
-        password: "12345678",
-    })
-    .then((res) => {
-        console.log("res", res);
-    })
-    .catch((err) => {
-        console.log("err", err);
-    });
 </script>

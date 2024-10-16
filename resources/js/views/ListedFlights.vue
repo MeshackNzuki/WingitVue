@@ -98,7 +98,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { useFlightStore } from "../stores";
+import { useMainStore } from "../stores";
 import { toast } from "vue3-toastify";
 import BaseButton from "../components/Buttons/BaseButton.vue";
 
@@ -108,7 +108,7 @@ const searchResults = ref([]);
 
 const rerender = ref(false);
 
-const flightStore = useFlightStore(); // Pinia store for flight data
+const mainStore = useMainStore(); // Pinia store for flight data
 
 // Functions
 const sortFlights = () => {
@@ -142,7 +142,7 @@ const handleSubscribe = (e) => {
 };
 
 const getFlights = async () => {
-    const flights = await flightStore.fetchFlights();
+    const flights = await mainStore.fetchFlights();
     searchResults.value = flights;
 };
 

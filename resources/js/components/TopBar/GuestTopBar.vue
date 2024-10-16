@@ -65,15 +65,16 @@
                     </div>
                     <div
                         v-else
-                        class="relative overflow-hidden bg-gray-100 rounded-full gray-600"
+                        class="relative overflow-hidden bg-gold rounded-full gray-600"
                     >
                         <div class="avatar online placeholder">
                             <div
                                 class="bg-neutral-focus text-neutral-content rounded-full w-10"
                             >
-                                <span class="text-xl font-bold uppercase">{{
-                                    userInitial
-                                }}</span>
+                                <span
+                                    class="text-xl font-bold text-gray-700 uppercase"
+                                    >{{ userInitial }}</span
+                                >
                             </div>
                         </div>
                     </div>
@@ -131,12 +132,15 @@ import Logo from "../../assets/logo.svg";
 import { authStore } from "../../stores/authStore"; // Adjust import according to your project structure
 
 const router = useRouter();
-const user = authStore();
+const { user, is_authenticated } = authStore();
 const sidebarOpen = ref(false);
 const scrolling = ref(false);
 
 const userInitial = computed(() => {
-    return user.value?.name?.charAt(0).toUpperCase() || "";
+    return (
+        user.name?.charAt(0).toUpperCase() ||
+        user.company_name?.charAt(0).toUpperCase()
+    );
 });
 
 // Navigation links

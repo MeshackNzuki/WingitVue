@@ -18,6 +18,19 @@ export const authStore = defineStore("authStore", {
             if (userData.token) {
                 this.is_authenticated = true;
             }
+
+            if (userData) {
+                // Handle role-based redirection
+                if (userData.role === "aircraft_operator") {
+                    router.push("/aircraft-operator");
+                } else if (userData.role === "tourism_operator") {
+                    router.push("/tourism-operator");
+                } else if (userData.role === "client") {
+                    router.push("/client");
+                } else {
+                    // Handle other user roles
+                }
+            }
         },
         logout() {
             // Perform logout operation here...

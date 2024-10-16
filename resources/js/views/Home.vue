@@ -7,9 +7,9 @@
                 <div
                     className="w-full  h-96 flex justify-between flex-col md:flex-col "
                 >
-                    <div v-if="flightStore.flights.length > 0">
+                    <div v-if="mainStore.flights.length > 0">
                         <Carousel
-                            :value="flightStore.flights"
+                            :value="mainStore.flights"
                             :numVisible="3"
                             :numScroll="3"
                             circular
@@ -249,7 +249,7 @@
                                                 >
                                                     <button
                                                         @click="
-                                                            flightStore.decreaseSeats(
+                                                            mainStore.decreaseSeats(
                                                                 slotProps.data
                                                                     .id,
                                                             )
@@ -275,7 +275,7 @@
                                                     </span>
                                                     <button
                                                         @click="
-                                                            flightStore.increaseSeats(
+                                                            mainStore.increaseSeats(
                                                                 slotProps.data
                                                                     .id,
                                                                 slotProps.data
@@ -298,14 +298,14 @@
                                             </div>
                                             <button
                                                 @click="
-                                                    flightStore.bookFlight(
+                                                    mainStore.bookFlight(
                                                         slotProps.data.id,
                                                     )
                                                 "
                                                 class="flex-no-shrink bg-gradient-to-tr from-teal-600 via-base to-base hover:scale-110 px-5 ml-4 py-2 mb-2 text-sm shadow-sm hover:shadow-lg tracking-wider text-gray-50 font-thin rounded-full transition ease-in duration-200"
                                             >
                                                 {{
-                                                    flightStore.loading
+                                                    mainStore.loading
                                                         ? "Please wait..."
                                                         : " Book Now"
                                                 }}
@@ -523,16 +523,16 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import Top from "../assets/top.jpg";
-import { useFlightStore } from "../stores";
+import { useMainStore } from "../stores";
 import { format } from "date-fns";
 import { VueMarqueeSlider } from "vue3-marquee-slider";
 import Carousel from "primevue/carousel";
 import SplitButton from "../components/Buttons/SplitButton.vue";
 
-const flightStore = useFlightStore();
+const mainStore = useMainStore();
 const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
 onMounted(() => {
-    flightStore.fetchFlights();
+    mainStore.fetchFlights();
 });
 
 const exo2 = {
