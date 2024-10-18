@@ -11,6 +11,7 @@ export const useMainStore = defineStore("mainStore", {
         selectedFlight: null,
         totalSeats: [],
         sidebarOpen: true,
+        airOpData: [],
     }),
     actions: {
         async fetchFlights() {
@@ -56,9 +57,19 @@ export const useMainStore = defineStore("mainStore", {
                 router.push("/flight-booking");
             }, 500);
         },
-        // other
+
+        setDashDataAirOp(data) {
+            this.airOpData = data;
+            toast.info(data);
+        },
+
+        // other utilities
         toggleSidebar() {
-            this.sidebarOpen = this.sidebarOpen;
+            this.sidebarOpen = !this.sidebarOpen;
+        },
+        //primariry for click outside
+        closeSidebar() {
+            this.sidebarOpen = false;
         },
     },
 });

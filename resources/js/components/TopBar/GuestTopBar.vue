@@ -54,7 +54,7 @@
                     <div
                         v-if="user?.avatar"
                         class="avatar pointer"
-                        @click="goToProfile"
+                        @click="goToUserArea()"
                     >
                         <div class="size-8 rounded-full ring ring-third">
                             <img
@@ -165,8 +165,8 @@ const logout = async () => {
 };
 
 // Navigate to user profile on avatar click
-const goToProfile = () => {
-    router.push("/profile");
+const goToUserArea = () => {
+    
 };
 
 // Handle sidebar toggle

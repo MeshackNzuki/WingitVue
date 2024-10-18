@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(["action", "label"]);
+const props = defineProps(["action", "label", "icon"]);
 </script>
 
 <template>
@@ -8,7 +8,7 @@ const props = defineProps(["action", "label"]);
         @click="props.action"
     >
         <span class="relative font-light leading-5 text-gray-50">
-            {{ props.label }}
+            {{ props.label }} {{ " " }} <slot name="icon"></slot>
         </span>
         <div
             class="absolute inset-0 w-full h-full transition-all duration-300 scale-0 group-hover:scale-100 group-hover:bg-white/30 rounded-md"

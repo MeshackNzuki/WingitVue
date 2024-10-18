@@ -518,6 +518,134 @@
             </div>
         </div>
     </section>
+    <section class="bg-base">
+        <div
+            class="mx-auto flex flex-col md:flex-row items-center px-2 lg:px-12 max-w-screen-xl"
+        >
+            <div
+                class="flex flex-col w-full lg:w-1/3 justify-center items-start px-2 py-8"
+            >
+                <p class="font-light text-gray-50 lg:mb-8">
+                    We are committed to providing our passengers with an
+                    exceptional travel experience, from the moment they book
+                    their flights to the time they reach their destination.
+                </p>
+                <ul class="list-none mt-2">
+                    <li class="py-1">
+                        <div class="flex items-center">
+                            <div>
+                                <span
+                                    class="inline-block py-1 px-2 uppercase rounded-full text-gold"
+                                >
+                                    <i class="pi pi-check-circle h-5 w-5"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <h4 class="text-gray-50 font-light">
+                                    Comfort and Safety
+                                </h4>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-1">
+                        <div class="flex items-center">
+                            <div>
+                                <span
+                                    class="inline-block py-1 px-2 uppercase rounded-full text-gold"
+                                >
+                                    <i class="pi pi-check-circle h-5 w-5"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <h4 class="text-gray-50 font-light">
+                                    Reliability
+                                </h4>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-1">
+                        <div class="flex items-center">
+                            <div>
+                                <span
+                                    class="inline-block px-2 uppercase rounded-full text-gold"
+                                >
+                                    <i class="pi pi-check-circle h-5 w-5"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <h4 class="text-gray-50 font-light">
+                                    Customer Service
+                                </h4>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <router-link
+                    to="/about"
+                    class="bg-transparent hover:bg-gold text-gold hover:text-black rounded shadow hover:shadow-lg py-2 mt-4 px-4 border border-gold hover:border-transparent transition duration-300"
+                >
+                    Read More
+                </router-link>
+            </div>
+            <div
+                class="p-2 mt-0 mb-3 md:mb-0 md:mt-0 ml-0 lg:w-2/3 justify-center"
+            >
+                <div
+                    class="flex flex-wrap justify-center items-center space-x-4"
+                >
+                    <div
+                        class="hidden xl:block w-40 h-60 bg-[url('../assets/p1.jpg')] bg-cover rounded-t-full bg-contain bg-center rounded-b-full transform -rotate-12 flex justify-center items-center"
+                    ></div>
+                    <div>
+                        <div
+                            class="w-60 h-96 bg-[url('../assets/p2.jpg')] rounded-t-full bg-opacity-25 bg-cover rounded-b-full bg-contin bg-center transform -rotate-12 flex justify-center items-center"
+                        ></div>
+                    </div>
+                    <div>
+                        <div
+                            class="hidden xl:block w-40 h-60 bg-[url('../assets/pill4.jpg')] rounded-t-full bg-contain bg-center bg-cover rounded-b-full transform -rotate-12 flex justify-center items-center"
+                        ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center scroll-smooth snap-center relative">
+        <div class="absolute inset-0"></div>
+        <main class="flex flex-col items-center justify-center">
+            <section
+                class="flex-col w-full h-[350px] bg-cover bg-fixed bg-center flex justify-center items-center bg-[url('../assets/thrill.jpg')]"
+            >
+                <div
+                    class="relative flex-col w-full h-[350px] max-w-screen-xl my-24 px-2 lg:px-12 flex justify-start"
+                >
+                    <div class="text-left px-4 bg-transparent">
+                        <span
+                            class="text-gray-50 md:text-5xl font-semibold mb-4"
+                        >
+                            <div class="text-3xl mb-12">
+                                <span class="text-3xl font-semibold"
+                                    >Experience the thrill of travel with
+                                    Wingit</span
+                                >
+                            </div>
+                        </span>
+                        <div class="my-6">
+                            <span class="font-light text-gray-50">
+                                <p></p>
+                            </span>
+                        </div>
+                        <span class="m-auto mt-12 mb-4 lg:mb-0 lg:m-0 lg:mt-10">
+                            <router-link to="/listed-flights">
+                                <CallToAction label="Explore" />
+                            </router-link>
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
 </template>
 
 <script setup>
@@ -528,8 +656,10 @@ import { format } from "date-fns";
 import { VueMarqueeSlider } from "vue3-marquee-slider";
 import Carousel from "primevue/carousel";
 import SplitButton from "../components/Buttons/SplitButton.vue";
+import CallToAction from "../components/Buttons/CallToAction.vue";
 
 const mainStore = useMainStore();
+
 const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
 onMounted(() => {
     mainStore.fetchFlights();

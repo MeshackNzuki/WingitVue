@@ -7,6 +7,9 @@
                 : 'bg-slate-100',
         ]"
     >
+        <button @click="mainStore.toggleSidebar()">
+            <i class="pi pi-align-right"></i>
+        </button>
         <div class="flex">
             <span class="font-semibold" v-if="user?.name"
                 >{{ greeting() }}, {{ user?.name }}!</span
@@ -16,7 +19,7 @@
             <span
                 class="font-semibold uppercase text-sm"
                 v-if="location != '404' && location != 'unauthorized'"
-                >{{ location }} Module</span
+                >{{ location?.split("/")[1] }} Module</span
             >
             <span
                 class="cursor-pointer font-semibold animate animate-pulse text-red-500"
@@ -84,6 +87,35 @@
                     />
                 </svg>
             </label>
+            <div>
+                <div
+                    v-if="user?.avatar"
+                    class="avatar pointer"
+                    @click="goToUserArea()"
+                >
+                    <div class="size-8 rounded-full ring ring-third">
+                        <img
+                            :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
+                            alt="User Avatar"
+                        />
+                    </div>
+                </div>
+                <div
+                    v-else
+                    class="relative overflow-hidden bg-gold rounded-full gray-600"
+                >
+                    <div class="avatar online placeholder">
+                        <div
+                            class="bg-neutral-focus text-neutral-content rounded-full w-10"
+                        >
+                            <span
+                                class="text-xl font-bold text-gray-700 uppercase"
+                                >{{ userInitial }}</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -92,6 +124,7 @@ import { ref, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useDark, useToggle } from "@vueuse/core";
 import { authStore } from "../../stores/authStore";
+import { useMainStore } from "../../stores";
 import commonButton from "../../components/Buttons/CommonButton.vue";
 
 const isDark = useDark({ disableTransition: false });
@@ -103,6 +136,7 @@ const toggleCollapseShow = (classes) => {
 };
 
 const { user } = authStore();
+const mainStore = useMainStore();
 
 const route = useRoute();
 const login = ref(false);

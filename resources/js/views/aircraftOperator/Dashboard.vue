@@ -1,7 +1,28 @@
 <template>
     <div class="bg-slate-100 dark:bg-sky-950 min-h-screen rounded-md">
         <div class="flex flex-wrap justify-around my-6 py-12 w-full gap-4">
-            <StatCard /> <StatCard /> <StatCard /> <StatCard /><StatCard />
+            <StatCard
+                label="All flights"
+                description="verified"
+                :quantity="mainStore.airOpData.all_flights_count"
+                icon="pi pi-send"
+            />
+            <StatCard
+                label="Listed flights"
+                description="Approved"
+                :quantity="mainStore.airOpData.listed_flights_count"
+                icon="pi pi-check"
+            />
+            <StatCard
+                label="My pilots"
+                description="Approved"
+                :quantity="mainStore.airOpData.pilots_count"
+                icon="pi pi-check"
+            />
+            <StatCard
+                description="32% Increase"
+                :quantity="mainStore.airOpData.total_revenue_count"
+            />
         </div>
         <div class="flex mt-4">
             <div
@@ -58,7 +79,7 @@
                     <ul class="menu rounded-box w-full">
                         <li>
                             <details close>
-                                <summary>Admissions</summary>
+                                <summary>Users</summary>
                                 <ul>
                                     <li><a>Submenu 1</a></li>
                                     <li><a>Submenu 2</a></li>
@@ -67,7 +88,7 @@
                         </li>
                         <li>
                             <details close>
-                                <summary>Finance</summary>
+                                <summary>Statements</summary>
                                 <ul>
                                     <li><a>Submenu 1</a></li>
                                     <li><a>Submenu 2</a></li>
@@ -76,7 +97,7 @@
                         </li>
                         <li>
                             <details close>
-                                <summary>Transport</summary>
+                                <summary>Profile</summary>
                                 <ul>
                                     <li><a>Submenu 1</a></li>
                                     <li><a>Submenu 2</a></li>
@@ -85,7 +106,7 @@
                         </li>
                         <li>
                             <details close>
-                                <summary>Parent</summary>
+                                <summary>Check docs</summary>
                                 <ul>
                                     <li><a>Submenu 1</a></li>
                                     <li><a>Submenu 2</a></li>
@@ -94,7 +115,7 @@
                         </li>
                         <li>
                             <details close>
-                                <summary>Parent</summary>
+                                <summary>AirCrafts</summary>
                                 <ul>
                                     <li><a>Submenu 1</a></li>
                                     <li><a>Submenu 2</a></li>
@@ -123,5 +144,15 @@ import BarChart from "../../components/Charts/BarChart.vue";
 import LineChart from "../../components/Charts/LineChart.vue";
 import DoughnutChart from "../../components/Charts/DoughnutChart.vue";
 import CardMain from "../../components/Card/CardMain.vue";
+import { useMainStore } from "../../stores";
 import CommonButton from "../../components/Buttons/CommonButton.vue";
+import axios from "axios";
+
+const mainStore = useMainStore();
+
+const fetchDashData = async () => {
+    const response = await axios.get("/dashdata-airop");
+    mainStore.setDashDataAirOp(response.data);
+};
+fetchDashData();
 </script>
