@@ -5,6 +5,7 @@ import axios from "axios";
 import router from "@/router";
 
 export const useMainStore = defineStore("mainStore", {
+    persist: true,
     state: () => ({
         flights: [],
         loading: false,

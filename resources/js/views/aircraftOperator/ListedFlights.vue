@@ -53,6 +53,7 @@
   <script setup>
   import { ref, onMounted, computed } from 'vue';
   import axios from 'axios';
+  import Table from "../../components/Tables/mainTable.vue"
   import { format } from 'date-fns';
 
   

@@ -84,6 +84,7 @@
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
   import Swal from 'sweetalert2';
+  import Table from "../../components/Tables/mainTable.vue"
   
   const pilots = ref([]);
   const pilotVals = ref({

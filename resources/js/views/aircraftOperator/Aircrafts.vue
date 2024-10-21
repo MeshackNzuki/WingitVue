@@ -70,7 +70,7 @@
                     ></SmallButton>
                 </div>
             </td>
-            <dialog id="my_modal_create" class="modal">
+            <dialog id="addAircraft" class="modal">
       <form method="dialog" class="modal-box" @submit.prevent="handleSubmit">
         <button type="button" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModal">
           ✕
@@ -332,9 +332,12 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
-import { useSession } from '../../auth/auth';
-import { toast } from 'react-toastify'; // Consider using a Vue toast library
-import "react-datepicker/dist/react-datepicker.css"; // Consider using a Vue datepicker
+import { format } from "date-fns";
+import Table from "../../components/Tables/mainTable.vue"
+import { toast } from 'vue3-toastify'; 
+
+import SmallButton from "../../components/Buttons/Small.vue"
+
 
 const aircraftVals = ref({});
 const reload = ref(false);
@@ -423,15 +426,8 @@ const handleDelete = (id) => {
   }
 };
 
-// Show and close modal
-const showModal = () => {
-  const modal = document.getElementById("my_modal_create");
-  modal.showModal();
-};
-
-const closeModal = () => {
-  const modal = document.getElementById("my_modal_create");
-  modal.close();
+const showModal = (modalId) => {
+    document.getElementById(modalId).showModal();
 };
 
 // Fetch aircrafts on component mount

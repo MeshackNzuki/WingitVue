@@ -103,6 +103,12 @@ const routes = [
                 component: () => import("../views/aircraftOperator/Pilots.vue"),
             },
             {
+                path: "aircrafts",
+                name: "Aircrafs",
+                component: () =>
+                    import("../views/aircraftOperator/Aircrafts.vue"),
+            },
+            {
                 path: "settings",
                 name: "AircraftSettings",
                 component: () =>
