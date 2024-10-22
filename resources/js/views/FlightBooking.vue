@@ -163,7 +163,6 @@
                                     />
                                 </span>
                             </label>
-
                             <hr
                                 v-if="
                                     mainStore.totalSeats > 2 &&
