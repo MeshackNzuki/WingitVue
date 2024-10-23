@@ -50,34 +50,25 @@
                 >
                     Login
                 </router-link>
-                <div v-if="is_authenticated">
-                    <div
-                        v-if="user?.avatar"
-                        class="avatar pointer"
-                        @click="goToUserArea()"
-                    >
-                        <div class="size-8 rounded-full ring ring-third">
-                            <img
-                                :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
-                                alt="User Avatar"
-                            />
-                        </div>
-                    </div>
-                    <div
-                        v-else
-                        class="relative overflow-hidden bg-gold rounded-full gray-600"
-                    >
-                        <div class="avatar online placeholder">
-                            <div
-                                class="bg-neutral-focus text-neutral-content rounded-full w-10"
-                            >
-                                <span
-                                    class="text-xl font-bold text-gray-700 uppercase"
-                                    >{{ userInitial }}</span
-                                >
+                <div v-if="is_authenticated" @click="goToUserArea()">
+                    <router-link>
+                        <div v-if="user?.avatar" class="avatar pointer">
+                            <div class="size-8 rounded-full ring ring-third">
+                                <img
+                                    :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
+                                    alt="User Avatar"
+                                />
                             </div>
                         </div>
-                    </div>
+                        <div
+                            v-else
+                            class="relative overflow-hidden bg-gold rounded-full gray-600"
+                        >
+                            <div class="size-10 rounded-full ring ring-third">
+                                <img :src="`${Logo2}`" alt="User Avatar" />
+                            </div>
+                        </div>
+                    </router-link>
                 </div>
 
                 <button @click="toggleSidebar" class="lg:hidden ml-2">
@@ -129,10 +120,11 @@
 import { computed, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import Logo from "../../assets/logo.svg";
+import Logo2 from "../../assets/logo.png";
 import { authStore } from "../../stores/authStore"; // Adjust import according to your project structure
 
 const router = useRouter();
-const { user, is_authenticated } = authStore();
+const { user, is_authenticated, goToUserArea } = authStore();
 const sidebarOpen = ref(false);
 const scrolling = ref(false);
 
@@ -162,11 +154,6 @@ const logout = async () => {
     } catch (error) {
         console.error("Logout failed:", error);
     }
-};
-
-// Navigate to user profile on avatar click
-const goToUserArea = () => {
-    
 };
 
 // Handle sidebar toggle

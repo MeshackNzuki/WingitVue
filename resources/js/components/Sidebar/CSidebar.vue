@@ -184,7 +184,7 @@
                 <span
                     class="w-full flex justify-center text-center text-xs font-bold"
                 >
-                    Examinations</span
+                    Trips</span
                 >
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav
@@ -273,7 +273,7 @@
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                     >
-                        <router-link to="/transport/">
+                        <router-link to="/aircraft-operator">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -295,6 +295,12 @@
                                     <i class="pi pi-users"></i>
                                 </div>
                                 All flights
+                                <span
+                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs"
+                                    >{{
+                                        mainStore.airOpData.all_flights_count
+                                    }}</span
+                                >
                             </div>
                         </router-link>
 
@@ -308,6 +314,12 @@
                                     <i class="pi pi-user"></i>
                                 </div>
                                 Listed Flights
+                                <span
+                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs"
+                                    >{{
+                                        mainStore.airOpData.listed_flights_count
+                                    }}</span
+                                >
                             </div>
                         </router-link>
 
@@ -321,9 +333,13 @@
                                     <i class="pi pi-cog"></i>
                                 </div>
                                 Trips
+                                <span
+                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs"
+                                    >{{ mainStore.airOpData.trips_count }}</span
+                                >
                             </div>
                         </router-link>
-                        <router-link to="/aircraft-operator/trips">
+                        <router-link to="/aircraft-operator/statements">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -369,6 +385,12 @@
                                     <i class="pi pi-cog"></i>
                                 </div>
                                 Messages
+                                <span
+                                    class="size-5 p-1 rounded-full text-white bg-rose-500 flex items-center justify-center shadow-md mb-4"
+                                    >{{
+                                        mainStore.airOpData.messages_count
+                                    }}</span
+                                >
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/notifications">
@@ -381,6 +403,12 @@
                                     <i class="pi pi-cog"></i>
                                 </div>
                                 Notifications
+                                <span
+                                    class="size-5 p-1 rounded-full text-white bg-rose-500 flex items-center justify-center shadow-md mb-4"
+                                    >{{
+                                        mainStore.airOpData.notification_count
+                                    }}</span
+                                >
                             </div>
                         </router-link>
                         <router-link to="/profile">

@@ -16,12 +16,14 @@
             <StatCard
                 label="My pilots"
                 description="Approved"
-                :quantity="mainStore.airOpData.pilots_count"
+                :quantity="mainStore.airOpData.pilots_count || '0'"
                 icon="pi pi-check"
             />
             <StatCard
+                label="Trips"
                 description="32% Increase"
-                :quantity="mainStore.airOpData.total_revenue_count"
+                :quantity="mainStore.airOpData.total_revenue_count || '0'"
+                icon="pi pi-check"
             />
         </div>
         <div class="flex mt-4">
@@ -33,7 +35,11 @@
                 >
                     <div class="flex flex-col gap-4 mb-4">
                         <div class="flex flex-row gap-4">
-                            <SmallStatCard /><SmallStatCard />
+                            <SmallStatCard
+                                :quantity="
+                                    mainStore.airOpData.total_revenue_count
+                                "
+                            /><SmallStatCard />
                         </div>
                         <div class="flex flex-row gap-4">
                             <SmallStatCard /><SmallStatCard />

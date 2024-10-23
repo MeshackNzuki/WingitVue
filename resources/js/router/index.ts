@@ -15,6 +15,11 @@ const routes = [
         component: () => import("../views/auth/ClientRegister.vue"),
     },
     {
+        path: "/operator",
+        name: "Operator",
+        component: () => import("../views/operator.vue"),
+    },
+    {
         path: "/aircraft-operator-register",
         name: "AircraftOperatorRegister",
         component: () => import("../views/auth/AircraftOperatorRegister.vue"),
@@ -224,7 +229,6 @@ router.beforeEach((to, from, next) => {
 
     // If the route is protected but the user is not authenticated, redirect to login
     if (to.meta.role && !is_authenticated) {
-        console.log("kwa auth issue");
         return next({ path: "/login" });
     }
 

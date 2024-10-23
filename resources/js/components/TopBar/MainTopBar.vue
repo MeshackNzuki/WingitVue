@@ -15,7 +15,7 @@
                 >{{ greeting() }}, {{ user?.name }}!</span
             >
         </div>
-        <div class="flex">
+        <div class="hidden lg:flex">
             <span
                 class="font-semibold uppercase text-sm"
                 v-if="location != '404' && location != 'unauthorized'"
@@ -30,7 +30,7 @@
         </div>
 
         <div class="flex px-4 space-x-2">
-            <RouterLink to="/chat/messages" class="p-1">
+            <RouterLink to="/chat/messages" class="p-1 mt-1.5">
                 <div class="indicator">
                     <i class="pi pi-comments"></i>
                     <span
@@ -87,6 +87,7 @@
                     />
                 </svg>
             </label>
+
             <div>
                 <div
                     v-if="user?.avatar"
@@ -102,20 +103,36 @@
                 </div>
                 <div
                     v-else
-                    class="relative overflow-hidden bg-gold rounded-full gray-600"
+                    class="relative overflow-hidden bg-gold rounded-full gray-600 mt-1"
                 >
-                    <div class="avatar online placeholder">
-                        <div
-                            class="bg-neutral-focus text-neutral-content rounded-full w-10"
-                        >
-                            <span
-                                class="text-xl font-bold text-gray-700 uppercase"
-                                >{{ userInitial }}</span
-                            >
-                        </div>
+                    <div class="size-9 rounded-full ring ring-third">
+                        <img :src="`${Logo2}`" alt="User Avatar" />
                     </div>
                 </div>
             </div>
+            <span @click="logout()">
+                <div
+                    role="button"
+                    tabindex="0"
+                    class="flex items-center w-full py-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+                >
+                    <div class="grid place-items-center mr-4">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                            class="h-5 w-5"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M12 2.25a.75.75 0 01.75.75v9a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM6.166 5.106a.75.75 0 010 1.06 8.25 8.25 0 1011.668 0 .75.75 0 111.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 011.06 0z"
+                                clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                    </div>
+                </div>
+            </span>
         </div>
     </div>
 </template>
@@ -125,6 +142,7 @@ import { useRoute } from "vue-router";
 import { useDark, useToggle } from "@vueuse/core";
 import { authStore } from "../../stores/authStore";
 import { useMainStore } from "../../stores";
+import Logo2 from "../../assets/logo.png";
 import commonButton from "../../components/Buttons/CommonButton.vue";
 
 const isDark = useDark({ disableTransition: false });
@@ -135,7 +153,7 @@ const toggleCollapseShow = (classes) => {
     collapseShow.value = classes;
 };
 
-const { user } = authStore();
+const { user, goToUserArea, logout } = authStore();
 const mainStore = useMainStore();
 
 const route = useRoute();

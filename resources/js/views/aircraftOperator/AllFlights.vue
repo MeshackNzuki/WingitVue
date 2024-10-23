@@ -451,7 +451,7 @@ import axios from "axios";
 import { toast } from "vue3-toastify";
 import Swal from "sweetalert2";
 import SmallButton from "../../components/Buttons/Small.vue";
-import Table from "../../components/Tables/mainTable.vue";
+import Table from "../../components/Tables/MainTable.vue";
 import Datepicker from "vuejs3-datepicker";
 
 const CreateFlightInit = {

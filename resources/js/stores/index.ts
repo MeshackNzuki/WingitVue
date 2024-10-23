@@ -61,7 +61,6 @@ export const useMainStore = defineStore("mainStore", {
 
         setDashDataAirOp(data) {
             this.airOpData = data;
-            toast.info(data);
         },
 
         // other utilities

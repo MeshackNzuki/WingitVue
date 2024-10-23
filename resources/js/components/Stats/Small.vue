@@ -14,19 +14,42 @@
             <div
                 class="flex items-center space-x- text-smtext-left text-slate-500 dark:text-slate-300"
             >
-                <span>Revenue</span>
+                <span>{{ label }}</span>
             </div>
-            <div class="dark:text-slate-100">$192.1k</div>
+            <div class="dark:text-slate-100">{{ quantity }}</div>
         </div>
 
         <div
             class="flex items-center space-x-1 text-smtext-left text-emerald-500 dark:text-emerald-300"
         >
-            <span class="text-sm font-light">+32k</span>
+            <span class="text-sm font-light">{{ change }}</span>
         </div>
     </div>
 </template>
 <script setup>
 import { useDark, useToggle } from "@vueuse/core";
+const props = defineProps({
+    label: {
+        type: String,
+        default: "Revenue",
+    },
+    change: {
+        type: String,
+        default: "+9%",
+    },
+    quantity: {
+        type: String,
+        default: "$192.1k",
+    },
+    up: {
+        type: String,
+        default: "none",
+    },
+    icon: {
+        type: String,
+        default: "pi pi-dollar",
+    },
+});
+
 const isDark = useDark({ disableTransition: false });
 </script>

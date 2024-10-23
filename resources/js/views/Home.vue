@@ -83,7 +83,7 @@
                                                             new Date(
                                                                 slotProps.data.depart_time,
                                                             ),
-                                                            "EEE d, M, Y ",
+                                                            "EEE d, M, y ",
                                                         )
                                                     }}
                                                 </span>

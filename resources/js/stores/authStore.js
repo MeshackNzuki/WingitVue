@@ -11,15 +11,17 @@ export const authStore = defineStore("authStore", {
     }),
     actions: {
         login(userData) {
-            // Perform login operation here...
-            // After successful login, update the store's state with user data
-            this.user = userData;
-
             if (userData.token) {
+                this.user = userData;
                 this.is_authenticated = true;
+                this.goToUserArea();
+            } else {
+                toast.error("Login failed. Please check your credentials.");
             }
-
-            if (userData) {
+        },
+        goToUserArea() {
+            if (this.user) {
+                const userData = this.user;
                 // Handle role-based redirection
                 if (userData.role === "aircraft_operator") {
                     router.push("/aircraft-operator");
