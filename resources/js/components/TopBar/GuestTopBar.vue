@@ -117,13 +117,14 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
+import { computed, ref, onMounted, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import Logo from "../../assets/logo.svg";
 import Logo2 from "../../assets/logo.png";
 import { authStore } from "../../stores/authStore"; // Adjust import according to your project structure
 
-const router = useRoute();
+const route = useRoute();
+const router = useRouter();
 const { user, is_authenticated, goToUserArea } = authStore();
 const sidebarOpen = ref(false);
 const scrolling = ref(false);
@@ -164,7 +165,7 @@ const toggleSidebar = () => {
 
 // Handle scroll event
 const handleScroll = () => {
-    if (window.scrollY >= window.innerHeight * 0.3 && fullnavpage) {
+    if (window.scrollY >= window.innerHeight * 0.3 || fullnavpage.value) {
         scrolling.value = true;
     } else {
         scrolling.value = false;
@@ -172,17 +173,27 @@ const handleScroll = () => {
 };
 
 const checkRoute = async () => {
-    console.log("route.path", router.path);
-    if (router.path === "/operator/") {
+    if (route.path === "/operator") {
+        console.log("route.path", route.path);
         console.log("full page topbar");
         fullnavpage.value = true;
-    } else fullnavpage.value = false;
+        scrolling.value = true;
+    } else {
+        fullnavpage.value = false;
+        scrolling.value = false;
+    }
 };
+
+watch(
+    () => route.path,
+    async () => {
+        checkRoute();
+    },
+);
 
 // Event listeners for scroll
 onMounted(async () => {
     window.addEventListener("scroll", handleScroll);
-    checkRoute();
 });
 </script>
 

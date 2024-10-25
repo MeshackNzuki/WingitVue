@@ -37,9 +37,11 @@ const isProtectedRoute = computed(() => route.meta.role && is_authenticated);
             <GuestTopBar v-if="!isProtectedRoute" />
             <MainTopBar v-if="isProtectedRoute" />
             <router-view v-slot="{ Component }">
-                <transition name="page">
-                    <component :is="Component" />
-                </transition>
+                <div class="min-h-screen">
+                    <transition name="page">
+                        <component :is="Component" />
+                    </transition>
+                </div>
             </router-view>
             <Footer v-if="!isProtectedRoute" />
         </div>

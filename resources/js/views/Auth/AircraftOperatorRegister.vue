@@ -632,6 +632,7 @@ const handleSubmit = () => {
             // Redirect after success if needed
         })
         .catch((err) => {
+            console.log("err", err);
             if (err.response?.data?.errors?.email) {
                 Swal.fire({
                     text: err.response.data.message,

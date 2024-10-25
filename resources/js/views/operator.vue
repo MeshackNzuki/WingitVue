@@ -1,5 +1,7 @@
 <template>
-    <div class="flex flex-col mt-16 justify-center items-center min-h-screen">
+    <div
+        class="flex flex-col justify-center items-center min-h-screen pt-24 lg:pt-0"
+    >
         <h5 class="font-bold mb-10">Operator Accounts</h5>
         <div class="flex flex-col md:flex-row gap-10">
             <div

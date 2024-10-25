@@ -6,6 +6,7 @@ import router from "@/router";
 
 export const useMainStore = defineStore("mainStore", {
     persist: true,
+
     state: () => ({
         flights: [],
         loading: false,
@@ -14,6 +15,7 @@ export const useMainStore = defineStore("mainStore", {
         sidebarOpen: true,
         airOpData: [],
     }),
+
     actions: {
         async fetchFlights() {
             try {
