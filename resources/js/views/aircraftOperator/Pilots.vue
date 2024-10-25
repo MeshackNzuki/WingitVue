@@ -112,9 +112,7 @@
                                                     name="license"
                                                     class="file-input file-input-info file-input-sm file-input-bordered w-full max-w-xs"
                                                     @change="
-                                                        handleFileChange(
-                                                            'license',
-                                                        )
+                                                        handleFileChange
                                                     "
                                                 />
 
@@ -146,9 +144,7 @@
                                                     name="medical"
                                                     class="file-input file-input-info file-input-sm file-input-bordered w-full max-w-xs"
                                                     @change="
-                                                        handleFileChange(
-                                                            'medical',
-                                                        )
+                                                        handleFileChange()
                                                     "
                                                 />
 
@@ -178,7 +174,7 @@
                                         <button
                                             class="btn"
                                             type="button"
-                                            @click="handleSubmit"
+                                            @click="handleSubmit()"
                                         >
                                             Save
                                         </button>
@@ -214,8 +210,7 @@
                                 Name
                             </label>
                             <input
-                                id="name"
-                                name="name"
+                                id="name"                              
                                 placeholder=""
                                 autocomplete="name"
                                 class="input input-bordered input-sm w-full max-w-xs"
@@ -229,8 +224,7 @@
                                 Total Hours
                             </label>
                             <input
-                                id="hours"
-                                name="hours"
+                                id="hours"                              
                                 type="number"
                                 placeholder=""
                                 autocomplete="pilotname"
@@ -246,9 +240,9 @@
                             </label>
                             <input
                                 type="file"
-                                name="licenseFile"
+                                name="licence"
                                 class="file-input file-input-info file-input-sm file-input-bordered w-full max-w-xs"
-                                @change="handleFileChange()"
+                                @change="handleFileChange"
                             />
 
                             <label
@@ -274,9 +268,9 @@
                             </label>
                             <input
                                 type="file"
-                                name="medicalFile"
+                                name="medical"
                                 class="file-input file-input-info file-input-sm file-input-bordered w-full max-w-xs"
-                                @change="handleFileChange()"
+                                @change="handleFileChange"
                             />
 
                             <label
@@ -313,6 +307,10 @@ import axios from "axios";
 import SmallButton from "../../components/Buttons/Small.vue";
 import Swal from "sweetalert2";
 import Table from "../../components/Tables/MainTable.vue";
+import { authStore } from "../../stores/authStore";
+
+
+const auth = authStore()
 
 const pilots = ref([]);
 const pilotVals = ref({
@@ -324,14 +322,10 @@ const pilotVals = ref({
     medical_expiry: "",
 });
 const query = ref("");
-const pilot_edit_id = ref(null);
+
 const currentDate = ref(new Date().toISOString().split("T")[0]);
 
-const addModal = ref(null);
-const editModal = ref(null);
 
-const licenseFile = ref(null);
-const medicalFile = ref(null);
 const editLicenseFile = ref(null);
 const editMedicalFile = ref(null);
 
@@ -348,28 +342,26 @@ const handleFileChange = (e) => {
 const openAddModal = () => addModal.value.showModal();
 const closeAddModal = () => addModal.value.close();
 
-const openEditModal = (pilot) => {
-    pilotVals.value = { ...pilot };
-    pilot_edit_id.value = pilot.id;
-    editModal.value.showModal();
-};
+
 const closeEditModal = () => editModal.value.close();
 
 // Handle submit for new pilot
 const handleSubmit = async () => {
-    console.log("called");
     const formData = new FormData();
     formData.append("name", pilotVals.value.name);
     formData.append("hours", pilotVals.value.hours);
-    formData.append("license", licenseFile.value.files[0]);
+    formData.append("license", pilotVals.value.license);
     formData.append("license_expiry", pilotVals.value.license_expiry);
-    formData.append("medical", medicalFile.value.files[0]);
+    formData.append("medical", pilotVals.value.medical);
     formData.append("medical_expiry", pilotVals.value.medical_expiry);
-
+    formData.append("aircraftoperator", auth.user.id);
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
     try {
         await axios.post("/pilots", formData);
         Swal.fire("Success", "Pilot added successfully", "success");
-        closeAddModal();
+ 
         getPilots();
     } catch (error) {
         console.error(error);

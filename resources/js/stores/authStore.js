@@ -44,6 +44,9 @@ export const authStore = defineStore("authStore", {
                 })
                 .catch((error) => {
                     console.error("Logout failed:", error);
+                    //still remove user data
+                    this.user = null;
+                    this.is_authenticated = false;
                 })
                 .finally(() => {
                     this.user = null;

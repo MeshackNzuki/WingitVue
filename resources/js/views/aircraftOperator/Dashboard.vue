@@ -81,7 +81,7 @@
             <div
                 class="w-full flex flex-col md:flex-row justify-around items-center gap-4"
             >
-                <CardMain title="Department users">
+                <CardMain title="Useful links">
                     <ul class="menu rounded-box w-full">
                         <li>
                             <details close>

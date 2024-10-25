@@ -453,6 +453,8 @@ import Swal from "sweetalert2";
 import SmallButton from "../../components/Buttons/Small.vue";
 import Table from "../../components/Tables/MainTable.vue";
 import Datepicker from "vuejs3-datepicker";
+import { authStore } from "../../stores/authStore";
+const auth = authStore()
 
 const CreateFlightInit = {
     origin_airport_id: "",
@@ -507,7 +509,7 @@ const handleSubmit = async () => {
         flightVals.value.aircraft_id = aircraft.value.value;
         flightVals.value.depart_time = startDate.value;
         flightVals.value.arrival_time = endDate.value;
-        flightVals.value.tourism_operator_id = tourOperator.value.value;
+        flightVals.value.tourism_operator_id = auth.user.id;
 
         await axios.post("flights", flightVals.value);
         Swal.fire({
