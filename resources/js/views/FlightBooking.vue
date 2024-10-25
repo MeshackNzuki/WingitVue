@@ -435,14 +435,16 @@ import Swal from "sweetalert2";
 import { toast } from "vue3-toastify";
 
 const mainStore = useMainStore();
+const auth = authStore();
+
 const router = useRouter();
 
 const formVals = ref({
-    name: "",
-    email: "",
-    id_number: "",
-    nationality: "Kenya",
-    phone: "",
+    name: auth.user?.name || "",
+    email: auth.user?.email || "",
+    id_number: auth.user?.id_number || "",
+    nationality: auth.user?.nationality || "Kenya",
+    phone: auth.user?.phone || "",
 });
 
 const passengerData = ref([]);

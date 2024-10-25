@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Header />
         <div
             className="min-h-screen flex flex-col items-center justify-ceter bg-base p-2"
         >
@@ -19,7 +18,7 @@
                 </div>
                 <div>
                     <div v-if="currentStep === 1">
-                        <form action="#" @submit.prevent="handleNext">
+                        <form action="#" @submit.prevent="">
                             <div class="flex flex-col mb-3 md:mb-6">
                                 <label
                                     for="name"
@@ -101,105 +100,94 @@
                                 />
                             </div>
 
-                            <div class="flex justify-between space-x-4 w-full">
-                                <button
-                                    type="submit"
-                                    class="p-8 px-4 py-2 bg-green-700 text-white rounded-full flex items-center"
-                                >
-                                    Next <i class="pi pi-angle-right ml-2"></i>
-                                </button>
+                            <div
+                                class="flex justify-between space-x-4 w-full mt-4"
+                            >
+                                <BaseButton
+                                    label="Next"
+                                    class="p-8"
+                                    :action="() => handleNext()"
+                                />
                             </div>
                         </form>
                     </div>
 
                     <div v-if="currentStep === 2">
-                        <form action="#" @submit.prevent="handleNext">
-                            <ul class="steps w-full">
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li data-content="✓" class="step"></li>
-                                <li data-content="✓" class="step"></li>
-                            </ul>
+                        <ul class="steps w-full">
+                            <li data-content="✓" class="step step-success"></li>
+                            <li data-content="✓" class="step"></li>
+                            <li data-content="✓" class="step"></li>
+                        </ul>
 
-                            <!-- Password Field -->
-                            <div class="flex flex-col mb-3 md:mb-6">
-                                <label
-                                    for="password"
-                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                        <!-- Password Field -->
+                        <div class="flex flex-col mb-3 md:mb-6">
+                            <label
+                                for="password"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                            >
+                                Password:
+                            </label>
+                            <div class="relative">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
                                 >
-                                    Password:
-                                </label>
-                                <div class="relative">
-                                    <div
-                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                    >
-                                        <i class="pi pi-lock text-xl"></i>
-                                    </div>
-                                    <input
-                                        id="password"
-                                        type="password"
-                                        v-model="formVals.password"
-                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                        placeholder="Password"
-                                    />
+                                    <i class="pi pi-lock text-xl"></i>
                                 </div>
-                                <Error
-                                    v-if="errors.step2.password"
-                                    :message="errors.step2.password"
+                                <input
+                                    id="password"
+                                    type="password"
+                                    v-model="formVals.password"
+                                    class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
+                                    placeholder="Password"
                                 />
                             </div>
+                            <Error
+                                v-if="errors.step2.password"
+                                :message="errors.step2.password"
+                            />
+                        </div>
 
-                            <!-- Confirm Password Field -->
-                            <div class="flex flex-col mb-3 md:mb-6">
-                                <label
-                                    for="password_confirmation"
-                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                        <!-- Confirm Password Field -->
+                        <div class="flex flex-col mb-3 md:mb-6">
+                            <label
+                                for="password_confirmation"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                            >
+                                Confirm Password:
+                            </label>
+                            <div class="relative">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
                                 >
-                                    Confirm Password:
-                                </label>
-                                <div class="relative">
-                                    <div
-                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                    >
-                                        <i
-                                            class="pi pi-check-circle text-xl"
-                                        ></i>
-                                    </div>
-                                    <input
-                                        id="password_confirmation"
-                                        type="password"
-                                        v-model="formVals.password_confirmation"
-                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                        placeholder="Confirm Password"
-                                    />
+                                    <i class="pi pi-check-circle text-xl"></i>
                                 </div>
-                                <Error
-                                    v-if="errors.step2.password_confirmation"
-                                    :message="
-                                        errors.step2.password_confirmation
-                                    "
+                                <input
+                                    id="password_confirmation"
+                                    type="password"
+                                    v-model="formVals.password_confirmation"
+                                    class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
+                                    placeholder="Confirm Password"
                                 />
                             </div>
+                            <Error
+                                v-if="errors.step2.password_confirmation"
+                                :message="errors.step2.password_confirmation"
+                            />
+                        </div>
 
-                            <!-- Navigation Buttons -->
-                            <div class="flex justify-between space-x-4 w-full">
-                                <button
-                                    @click="handlePrev"
-                                    class="p-8 px-4 py-2 bg-gray-500 text-white rounded-full flex items-center"
-                                >
-                                    <i class="pi pi-angle-left mr-2"></i>
-                                    Previous
-                                </button>
-                                <button
-                                    type="submit"
-                                    class="p-8 px-4 py-2 bg-green-700 text-white rounded-full flex items-center"
-                                >
-                                    Next <i class="pi pi-angle-right ml-2"></i>
-                                </button>
-                            </div>
-                        </form>
+                        <!-- Navigation BaseButtons -->
+                        <div class="flex justify-between space-x-4 w-full mt-4">
+                            <BaseButton
+                                label="Previous"
+                                class="p-8"
+                                :action="() => handlePrev()"
+                            />
+                            <BaseButton
+                                label="Next"
+                                class="p-8"
+                                :action="() => handleNext()"
+                            />
+                        </div>
                     </div>
 
                     <div v-if="currentStep === 3">
@@ -266,23 +254,20 @@
                                 </div>
                             </div>
 
-                            <!-- Navigation Buttons -->
+                            <!-- Navigation BaseButtons -->
                             <div
                                 class="flex justify-between space-x-4 w-full mt-4"
                             >
-                                <button
-                                    @click="handlePrev"
-                                    class="p-8 px-4 py-2 bg-gray-500 text-white rounded-full flex items-center"
-                                >
-                                    <i class="pi pi-angle-left mr-2"></i>
-                                    Previous
-                                </button>
-                                <button
-                                    @click="handleNext"
-                                    class="p-8 px-4 py-2 bg-green-700 text-white rounded-full flex items-center"
-                                >
-                                    Next <i class="pi pi-angle-right ml-2"></i>
-                                </button>
+                                <BaseButton
+                                    label="Previous"
+                                    class="p-8"
+                                    :action="() => handlePrev()"
+                                />
+                                <BaseButton
+                                    label="Next"
+                                    class="p-8"
+                                    :action="() => handleNext()"
+                                />
                             </div>
                         </div>
                     </div>
@@ -348,29 +333,26 @@
                                         </div>
                                     </label>
                                     <Error
-                                        v-if="errors.step5.company_pin"
-                                        :message="errors.step5.company_pin"
+                                        v-if="errors.step4.company_pin"
+                                        :message="errors.step4.company_pin"
                                     />
                                 </div>
                             </div>
 
-                            <!-- Navigation Buttons -->
+                            <!-- Navigation BaseButtons -->
                             <div
                                 class="flex justify-between space-x-4 w-full mt-4"
                             >
-                                <button
-                                    @click="handlePrev"
-                                    class="p-8 px-4 py-2 bg-gray-500 text-white rounded-full flex items-center"
-                                >
-                                    <i class="pi pi-angle-left mr-2"></i>
-                                    Previous
-                                </button>
-                                <button
-                                    @click="submit"
-                                    class="p-8 px-4 py-2 bg-green-700 text-white rounded-full flex items-center"
-                                >
-                                    Submit
-                                </button>
+                                <BaseButton
+                                    label="Previous"
+                                    class="p-8"
+                                    :action="() => handlePrev()"
+                                />
+                                <BaseButton
+                                    label="Next"
+                                    class="p-8"
+                                    :action="() => submit()"
+                                />
                             </div>
                         </div>
                     </div>
@@ -438,7 +420,6 @@ const validateStep = (step, formValues) => {
 };
 
 const handleNext = (e) => {
-    e.preventDefault();
     const currentStepErrors = validateStep(currentStep.value, formVals.value);
     if (Object.keys(currentStepErrors).length === 0) {
         currentStep.value++;
@@ -448,7 +429,6 @@ const handleNext = (e) => {
 };
 
 const handlePrev = (e) => {
-    e.preventDefault();
     currentStep.value--;
 };
 
@@ -462,7 +442,6 @@ const handleFileChange = (e) => {
 };
 
 const submit = async (e) => {
-    e.preventDefault();
     const formDataToSend = new FormData();
     Object.keys(formVals.value).forEach((key) => {
         formDataToSend.append(key, formVals.value[key]);
@@ -481,16 +460,16 @@ const submit = async (e) => {
         Swal.fire({
             text: "Your account has been created. You will receive a review update via email.",
             icon: "success",
-            confirmButtonText: "Close",
-            confirmButtonColor: "#0f6566",
+            confirmBaseButtonText: "Close",
+            confirmBaseButtonColor: "#0f6566",
         });
         router.push("/");
     } catch (error) {
         Swal.fire({
             text: error.response.data.message || "Error creating account",
             icon: "error",
-            confirmButtonText: "Close",
-            confirmButtonColor: "#425C59",
+            confirmBaseButtonText: "Close",
+            confirmBaseButtonColor: "#425C59",
         });
     }
 };
@@ -545,12 +524,4 @@ const validateStep4Fields = (values) => {
 };
 </script>
 
-<style scoped>
-/* Add your styles here */
-.input-field {
-    /* Add input styles */
-}
-.input-file {
-    /* Add file input styles */
-}
-</style>
+<style scoped></style>

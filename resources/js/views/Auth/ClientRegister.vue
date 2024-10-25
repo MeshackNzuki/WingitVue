@@ -38,6 +38,40 @@
                             </div>
                             <Error v-if="errors.name" :message="errors.name" />
                         </div>
+                        <div class="flex flex-col mb-3 md:mb-6">
+                            <label
+                                for="email"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800"
+                            >
+                                Phone Number
+                            </label>
+                            <div class="relative">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
+                                >
+                                    <i
+                                        class="pi pi-phone"
+                                        style="font-size: 1.5em"
+                                    ></i>
+                                </div>
+                                <div
+                                    class="flex flex-row items-center relative"
+                                >
+                                    <div class="absolute left-8 text-gray-400">
+                                        <CountryCode
+                                            v-model="formVals.country_code"
+                                        />
+                                    </div>
+                                    <input
+                                        id="contact_number"
+                                        type="tel"
+                                        name="contact_number"
+                                        v-model="formVals.contact_number"
+                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800 ml-36"
+                                    />
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
                             <label
@@ -153,6 +187,7 @@ import BaseButton from "../../components/Buttons/BaseButton.vue";
 import Error from "../../components/Errors/Error.vue";
 import axios from "axios";
 import Swal from "sweetalert2";
+import CountryCode from "../../components/countries/CountryCodes.vue";
 
 // Reactive form values and errors
 const formVals = reactive({
@@ -160,6 +195,7 @@ const formVals = reactive({
     username: "",
     first_name: "",
     second_name: "",
+    country: "",
     email: "",
     password: "",
     password_confirmation: "",

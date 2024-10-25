@@ -2,7 +2,12 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const props = defineProps(["action", "name"]);
+const props = defineProps({
+    modelValue: Object, // Expecting an object with `name` and `code`
+    name: String,
+});
+const emit = defineEmits(["update:modelValue"]); // Emit event for v-model updates
+
 const countryCodes = ref([]);
 
 const fetchCountryCodes = async () => {
@@ -18,11 +23,24 @@ const fetchCountryCodes = async () => {
         }));
 
         countryCodes.value = codesData
-            .filter((c) => c.code) // Only include countries with valid codes
+            .filter((c) => c.code)
             .sort((a, b) => a.name.localeCompare(b.name));
+
+        // Set the first country as default if modelValue is empty
+        if (!props.modelValue && countryCodes.value.length > 0) {
+            emit("update:modelValue", countryCodes.value[0]);
+        }
     } catch (error) {
         console.error("Error fetching country codes:", error);
     }
+};
+
+// Emit both country name and code when a new selection is made
+const updateValue = (event) => {
+    const selectedCountry = countryCodes.value.find(
+        (country) => country.code === event.target.value,
+    );
+    emit("update:modelValue", selectedCountry || { name: "", code: "" });
 };
 
 onMounted(fetchCountryCodes);
@@ -31,12 +49,13 @@ onMounted(fetchCountryCodes);
 <template>
     <select
         id="countryCode"
-        class="w-24 text-gray-400"
-        @change="props.action"
-        :name="props.name"
-        default-value="+254"
+        class="w-24 text-gray-700 rounded-md p-1"
+        :name="name"
+        :value="modelValue?.code"
+        @input="updateValue"
     >
         <option v-if="countryCodes.length === 0">Loading...</option>
+
         <option
             v-else
             v-for="country in countryCodes"

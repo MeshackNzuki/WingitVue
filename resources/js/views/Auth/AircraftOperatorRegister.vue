@@ -17,532 +17,491 @@
                     signup
                 </div>
                 <div>
-                    <form @submit.prevent="handleSubmit">
-                        <div v-if="currentStep === 1">
-                            <form @submit.prevent="handleNext">
-                                <div class="flex flex-col mb-3 md:mb-6">
-                                    <label
-                                        for="name"
-                                        class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                    >
-                                        Full Company Name
-                                    </label>
-                                    <div class="relative">
-                                        <div
-                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                        >
-                                            <i
-                                                class="pi pi-building"
-                                                style="font-size: 1.5em"
-                                            ></i>
-                                        </div>
-                                        <input
-                                            id="name"
-                                            type="text"
-                                            name="name"
-                                            v-model="formVals.name"
-                                            class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                            placeholder="Registered Company Name"
+                    <div v-if="currentStep === 1">
+                        <div class="flex flex-col mb-3 md:mb-6">
+                            <label
+                                for="name"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                            >
+                                Full Company Name
+                            </label>
+                            <div class="relative">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
+                                >
+                                    <i
+                                        class="pi pi-building"
+                                        style="font-size: 1.5em"
+                                    ></i>
+                                </div>
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    v-model="formVals.name"
+                                    class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
+                                    placeholder="Registered Company Name"
+                                />
+                            </div>
+                            <Error
+                                v-if="errors.step1.name"
+                                :message="errors.step1.name"
+                            />
+                        </div>
+
+                        <div class="flex flex-col mb-3 md:mb-6">
+                            <label
+                                for="email"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                            >
+                                E-Mail Address:
+                            </label>
+                            <div class="relative">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
+                                >
+                                    <i
+                                        class="pi pi-envelope"
+                                        style="font-size: 1.5em"
+                                    ></i>
+                                </div>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    v-model="formVals.email"
+                                    class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
+                                    placeholder="E-Mail Address"
+                                />
+                            </div>
+                            <Error
+                                v-if="errors.step1.email"
+                                :message="errors.step1.email"
+                            />
+                        </div>
+
+                        <div class="flex flex-col mb-3 md:mb-6">
+                            <label
+                                for="contact_number"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                            >
+                                Contact number
+                            </label>
+                            <div class="relative">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
+                                >
+                                    <i
+                                        class="pi pi-phone"
+                                        style="font-size: 1.5em"
+                                    ></i>
+                                </div>
+                                <div
+                                    class="flex flex-row items-center relative"
+                                >
+                                    <div class="absolute left-8 text-gray-400">
+                                        <CountryCode
+                                            v-model="formVals.country_code"
                                         />
                                     </div>
-                                    <Error
-                                        v-if="errors.step1.name"
-                                        :message="errors.step1.name"
+                                    <input
+                                        id="contact_number"
+                                        type="tel"
+                                        name="contact_number"
+                                        v-model="formVals.contact_number"
+                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800 ml-36"
                                     />
                                 </div>
+                            </div>
+                            <Error
+                                v-if="errors.step1.contact_number"
+                                :message="errors.step1.contact_number"
+                            />
+                        </div>
 
-                                <div class="flex flex-col mb-3 md:mb-6">
-                                    <label
-                                        for="email"
-                                        class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                    >
-                                        E-Mail Address:
-                                    </label>
-                                    <div class="relative">
-                                        <div
-                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                        >
-                                            <i
-                                                class="pi pi-envelope"
-                                                style="font-size: 1.5em"
-                                            ></i>
-                                        </div>
-                                        <input
-                                            id="email"
-                                            type="email"
-                                            name="email"
-                                            v-model="formVals.email"
-                                            class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                            placeholder="E-Mail Address"
-                                        />
-                                    </div>
-                                    <Error
-                                        v-if="errors.step1.email"
-                                        :message="errors.step1.email"
-                                    />
+                        <div class="flex justify-between space-x-4 w-full">
+                            <BaseButton
+                                label="Next"
+                                class="p-8"
+                                :action="() => handleNext()"
+                            />
+                        </div>
+                    </div>
+
+                    <div v-if="currentStep === 2">
+                        <ul class="steps w-full">
+                            <li
+                                data-content="✓"
+                                class="step step-success text-gray-50"
+                            ></li>
+                            <li data-content="✓" class="step"></li>
+                            <li data-content="✓" class="step"></li>
+                            <li data-content="✓" class="step"></li>
+                        </ul>
+
+                        <div class="flex flex-col mb-3 md:mb-6"></div>
+                        <div class="flex flex-col mb-3 md:mb-6"></div>
+
+                        <div class="flex flex-col mb-3 md:mb-6">
+                            <label
+                                for="password"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                            >
+                                Password:
+                            </label>
+                            <div class="relative">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
+                                >
+                                    <i
+                                        class="pi pi-lock"
+                                        style="font-size: 1.5em"
+                                    ></i>
                                 </div>
+                                <input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    v-model="formVals.password"
+                                    class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
+                                    placeholder="Password"
+                                />
+                            </div>
+                            <Error
+                                v-if="errors.step2.password"
+                                :message="errors.step2.password"
+                            />
+                        </div>
 
-                                <div class="flex flex-col mb-3 md:mb-6">
+                        <div class="flex flex-col mb-3 md:mb-6">
+                            <label
+                                for="password_confirmation"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                            >
+                                Confirm Password:
+                            </label>
+                            <div class="relative">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
+                                >
+                                    <i
+                                        class="pi pi-check-circle text-xl"
+                                        style="font-size: 1.5em"
+                                    ></i>
+                                </div>
+                                <input
+                                    id="password_confirmation"
+                                    type="password"
+                                    name="password_confirmation"
+                                    v-model="formVals.password_confirmation"
+                                    class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
+                                    placeholder="Confirm Password"
+                                />
+                            </div>
+                            <Error
+                                v-if="errors.step2.password_confirmation"
+                                :message="errors.step2.password_confirmation"
+                            />
+                        </div>
+
+                        <div class="flex justify-between space-x-4 w-full">
+                            <BaseButton
+                                label="Previous"
+                                class="p-8"
+                                :action="() => handlePrev()"
+                            />
+                            <BaseButton
+                                label="next"
+                                class="p-8"
+                                :action="() => handleNext()"
+                            />
+                        </div>
+                    </div>
+
+                    <div v-if="currentStep === 3">
+                        <!-- Step 3 Fields -->
+                        <div>
+                            <ul class="steps w-full">
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                                <li data-content="✓" class="step"></li>
+                                <li data-content="✓" class="step"></li>
+                            </ul>
+
+                            <div class="mb-6 pt-4">
+                                <label
+                                    class="mb-5 block text-xl font-semibold text-gray-800"
+                                >
+                                    Certificate of incorporation (Upload a pdf
+                                    copy)
+                                </label>
+
+                                <div class="mb-8">
+                                    <input
+                                        type="file"
+                                        name="coi_doc"
+                                        id="file1"
+                                        class="sr-only"
+                                        @change="handleFileChange"
+                                    />
                                     <label
-                                        for="contact_number"
-                                        class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                                        for="file1"
+                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
                                     >
-                                        Contact number
-                                    </label>
-                                    <div class="relative">
-                                        <div
-                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                        >
-                                            <i
-                                                class="pi pi-phone"
-                                                style="font-size: 1.5em"
-                                            ></i>
-                                        </div>
-                                        <div
-                                            class="flex flex-row items-center relative"
-                                        >
-                                            <div
-                                                class="absolute left-8 text-gray-400"
+                                        <div>
+                                            <span
+                                                class="mb-2 block text-gray-800"
                                             >
-                                                <CountryCode
-                                                    name="country_code"
-                                                    v-model="
-                                                        formVals.country_code
-                                                    "
-                                                />
-                                            </div>
-                                            <input
-                                                id="contact_number"
-                                                type="tel"
-                                                name="contact_number"
-                                                v-model="
-                                                    formVals.contact_number
-                                                "
-                                                class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800 ml-36"
-                                            />
+                                                <i
+                                                    class="pi pi-paperclip"
+                                                    style="font-size: 1.5em"
+                                                ></i>
+                                                Drop files here
+                                            </span>
+                                            <span
+                                                class="mb-2 block text-base font-medium text-[#6B7280]"
+                                                >Or</span
+                                            >
+                                            <span
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
+                                            >
+                                                Browse
+                                            </span>
+                                            <p v-if="formVals.coi_doc">
+                                                Selected File:
+                                                {{ formVals.coi_doc.name }}
+                                            </p>
                                         </div>
-                                    </div>
-                                    <Error
-                                        v-if="errors.step1.contact_number"
-                                        :message="errors.step1.contact_number"
-                                    />
-                                </div>
-
-                                <div
-                                    class="flex justify-between space-x-4 w-full"
-                                >
-                                    <BaseButton
-                                        label="next"
-                                        class="p-8"
-                                        @action="handleNext"
-                                    />
-                                </div>
-                            </form>
-                        </div>
-
-                        <div v-if="currentStep === 2">
-                            <form @submit.prevent="handleNext">
-                                <ul class="steps w-full">
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success text-gray-50"
-                                    ></li>
-                                    <li data-content="✓" class="step"></li>
-                                    <li data-content="✓" class="step"></li>
-                                    <li data-content="✓" class="step"></li>
-                                </ul>
-
-                                <div class="flex flex-col mb-3 md:mb-6"></div>
-                                <div class="flex flex-col mb-3 md:mb-6"></div>
-
-                                <div class="flex flex-col mb-3 md:mb-6">
-                                    <label
-                                        for="password"
-                                        class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                    >
-                                        Password:
                                     </label>
-                                    <div class="relative">
-                                        <div
-                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                        >
-                                            <i
-                                                class="pi pi-lock"
-                                                style="font-size: 1.5em"
-                                            ></i>
-                                        </div>
-                                        <input
-                                            id="password"
-                                            type="password"
-                                            name="password"
-                                            v-model="formVals.password"
-                                            class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                            placeholder="Password"
-                                        />
-                                    </div>
                                     <Error
-                                        v-if="errors.step2.password"
-                                        :message="errors.step2.password"
-                                    />
-                                </div>
-
-                                <div class="flex flex-col mb-3 md:mb-6">
-                                    <label
-                                        for="password_confirmation"
-                                        class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                    >
-                                        Confirm Password:
-                                    </label>
-                                    <div class="relative">
-                                        <div
-                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                        >
-                                            <i
-                                                class="pi pi-check-circle text-xl"
-                                                style="font-size: 1.5em"
-                                            ></i>
-                                        </div>
-                                        <input
-                                            id="password_confirmation"
-                                            type="password"
-                                            name="password_confirmation"
-                                            v-model="
-                                                formVals.password_confirmation
-                                            "
-                                            class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                            placeholder="Confirm Password"
-                                        />
-                                    </div>
-                                    <Error
-                                        v-if="
-                                            errors.step2.password_confirmation
-                                        "
-                                        :message="
-                                            errors.step2.password_confirmation
-                                        "
-                                    />
-                                </div>
-
-                                <div
-                                    class="flex justify-between space-x-4 w-full"
-                                >
-                                    <BaseButton
-                                        label="Previous"
-                                        class="p-8"
-                                        @action="handlePrev"
-                                    />
-                                    <BaseButton
-                                        label="next"
-                                        class="p-8"
-                                        @action="handleNext"
-                                    />
-                                </div>
-                            </form>
-                        </div>
-
-                        <div v-if="currentStep === 3">
-                            <!-- Step 3 Fields -->
-                            <div>
-                                <ul class="steps w-full">
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                    <li data-content="✓" class="step"></li>
-                                    <li data-content="✓" class="step"></li>
-                                </ul>
-
-                                <div class="mb-6 pt-4">
-                                    <label
-                                        class="mb-5 block text-xl font-semibold text-gray-800"
-                                    >
-                                        Certificate of incorporation (Upload a
-                                        pdf copy)
-                                    </label>
-
-                                    <div class="mb-8">
-                                        <input
-                                            type="file"
-                                            name="coi_doc"
-                                            id="file1"
-                                            class="sr-only"
-                                            @change="handleFileChange"
-                                        />
-                                        <label
-                                            for="file1"
-                                            class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
-                                        >
-                                            <div>
-                                                <span
-                                                    class="mb-2 block text-gray-800"
-                                                >
-                                                    <i
-                                                        class="pi pi-paperclip"
-                                                        style="font-size: 1.5em"
-                                                    ></i>
-                                                    Drop files here
-                                                </span>
-                                                <span
-                                                    class="mb-2 block text-base font-medium text-[#6B7280]"
-                                                    >Or</span
-                                                >
-                                                <span
-                                                    class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
-                                                >
-                                                    Browse
-                                                </span>
-                                                <p v-if="formVals.coi_doc">
-                                                    Selected File:
-                                                    {{ formVals.coi_doc.name }}
-                                                </p>
-                                            </div>
-                                        </label>
-                                        <Error
-                                            v-if="errors.step3.coi_doc"
-                                            :message="errors.step3.coi_doc"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="flex justify-between space-x-4 w-full mt-4"
-                                >
-                                    <BaseButton
-                                        label="Previous"
-                                        class="p-8"
-                                        @action="handlePrev"
-                                    />
-                                    <BaseButton
-                                        label="next"
-                                        class="p-8"
-                                        @action="handleNext"
+                                        v-if="errors.step3.coi_doc"
+                                        :message="errors.step3.coi_doc"
                                     />
                                 </div>
                             </div>
+
+                            <div
+                                class="flex justify-between space-x-4 w-full mt-4"
+                            >
+                                <BaseButton
+                                    label="Previous"
+                                    class="p-8"
+                                    :action="() => handlePrev()"
+                                />
+                                <BaseButton
+                                    label="next"
+                                    class="p-8"
+                                    :action="() => handleNext()"
+                                />
+                            </div>
                         </div>
+                    </div>
 
-                        <div v-if="currentStep === 4">
-                            <div>
-                                <ul class="steps w-full">
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                    <li data-content="✓" class="step"></li>
-                                </ul>
+                    <div v-if="currentStep === 4">
+                        <div>
+                            <ul class="steps w-full">
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                                <li data-content="✓" class="step"></li>
+                            </ul>
 
-                                <div class="mb-6 pt-4">
+                            <div class="mb-6 pt-4">
+                                <label
+                                    class="mb-5 block text-xl font-semibold text-gray-800"
+                                >
+                                    AOC document (Upload a pdf copy, and provide
+                                    expiry date)
+                                </label>
+
+                                <div class="mb-8">
+                                    <input
+                                        type="file"
+                                        name="AOC_doc"
+                                        id="file2"
+                                        class="sr-only"
+                                        @change="handleFileChange"
+                                    />
                                     <label
-                                        class="mb-5 block text-xl font-semibold text-gray-800"
+                                        for="file2"
+                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
                                     >
-                                        AOC document (Upload a pdf copy, and
-                                        provide expiry date)
-                                    </label>
-
-                                    <div class="mb-8">
-                                        <input
-                                            type="file"
-                                            name="AOC_doc"
-                                            id="file2"
-                                            class="sr-only"
-                                            @change="
-                                                handleFileChange(
-                                                    'AOC_doc',
-                                                    $event,
-                                                )
-                                            "
-                                        />
-                                        <label
-                                            for="file2"
-                                            class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
-                                        >
-                                            <div>
-                                                <span
-                                                    class="mb-2 block text-gray-800"
-                                                >
-                                                    <i
-                                                        class="pi pi-paperclip"
-                                                    ></i>
-                                                    Drop files here
-                                                </span>
-                                                <span
-                                                    class="mb-2 block text-base font-medium text-[#6B7280]"
-                                                >
-                                                    Or
-                                                </span>
-                                                <span
-                                                    class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
-                                                >
-                                                    Browse
-                                                </span>
-                                                <p v-if="formVals.AOC_doc">
-                                                    Selected File:
-                                                    {{ formVals.AOC_doc.name }}
-                                                </p>
-                                            </div>
-                                        </label>
-                                        <Error
-                                            v-if="errors.step4.AOC_doc"
-                                            :message="errors.step4.AOC_doc"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div class="flex flex-col mb-3 md:mb-6">
-                                    <label
-                                        for="AOC_expiry_date"
-                                        class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                    >
-                                        AOC Expiry date
-                                    </label>
-                                    <div class="relative">
-                                        <div
-                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                        >
-                                            <i class="pi pi-clock"></i>
+                                        <div>
+                                            <span
+                                                class="mb-2 block text-gray-800"
+                                            >
+                                                <i class="pi pi-paperclip"></i>
+                                                Drop files here
+                                            </span>
+                                            <span
+                                                class="mb-2 block text-base font-medium text-[#6B7280]"
+                                            >
+                                                Or
+                                            </span>
+                                            <span
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
+                                            >
+                                                Browse
+                                            </span>
+                                            <p v-if="formVals.AOC_doc">
+                                                Selected File:
+                                                {{ formVals.AOC_doc.name }}
+                                            </p>
                                         </div>
-
-                                        <input
-                                            id="AOC_expiry_date"
-                                            type="date"
-                                            name="AOC_expiry_date"
-                                            class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                            v-model="formVals.AOC_expiry_date"
-                                        />
-                                    </div>
-                                    <Error
-                                        v-if="errors.step4.AOC_expiry_date"
-                                        :message="errors.step4.AOC_expiry_date"
-                                    />
-                                </div>
-
-                                <div
-                                    class="flex justify-between space-x-4 w-full mt-4"
-                                >
-                                    <BaseButton
-                                        label="Previous"
-                                        class="p-8"
-                                        @action="handlePrev"
-                                    />
-                                    <BaseButton
-                                        label="Next"
-                                        class="p-8"
-                                        @action="handleNext"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div v-if="currentStep === 5">
-                            <div>
-                                <ul class="steps w-full">
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                    <li
-                                        data-content="✓"
-                                        class="step step-success"
-                                    ></li>
-                                </ul>
-
-                                <div class="mb-6 pt-4">
-                                    <label
-                                        class="mb-5 block text-xl font-semibold text-gray-800"
-                                    >
-                                        Company PIN certificate (Upload a pdf
-                                        copy)
                                     </label>
-
-                                    <div class="mb-8">
-                                        <input
-                                            type="file"
-                                            name="company_pin"
-                                            id="file3"
-                                            class="sr-only"
-                                            @change="
-                                                handleFileChange(
-                                                    'company_pin',
-                                                    $event,
-                                                )
-                                            "
-                                        />
-                                        <label
-                                            for="file3"
-                                            class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
-                                        >
-                                            <div>
-                                                <span
-                                                    class="mb-2 block text-gray-800"
-                                                >
-                                                    <i
-                                                        class="pi pi-paperclip"
-                                                    ></i>
-                                                    Drop files here
-                                                </span>
-                                                <span
-                                                    class="mb-2 block text-base font-medium text-[#6B7280]"
-                                                >
-                                                    Or
-                                                </span>
-                                                <span
-                                                    class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
-                                                >
-                                                    Browse
-                                                </span>
-                                                <p v-if="formVals.company_pin">
-                                                    Selected File:
-                                                    {{
-                                                        formVals.company_pin
-                                                            .name
-                                                    }}
-                                                </p>
-                                            </div>
-                                        </label>
-                                        <Error
-                                            v-if="errors.step5.company_pin"
-                                            :message="errors.step5.company_pin"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="flex justify-between space-x-4 w-full mt-4"
-                                >
-                                    <BaseButton
-                                        label="Previous"
-                                        class="p-8"
-                                        @action="handlePrev"
-                                    />
-                                    <BaseButton
-                                        label="Submit"
-                                        class="p-8"
-                                        @action="submit"
+                                    <Error
+                                        v-if="errors.step4.AOC_doc"
+                                        :message="errors.step4.AOC_doc"
                                     />
                                 </div>
                             </div>
+
+                            <div class="flex flex-col mb-3 md:mb-6">
+                                <label
+                                    for="AOC_expiry_date"
+                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
+                                >
+                                    AOC Expiry date
+                                </label>
+                                <div class="relative">
+                                    <div
+                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
+                                    >
+                                        <i class="pi pi-clock"></i>
+                                    </div>
+
+                                    <input
+                                        id="AOC_expiry_date"
+                                        type="date"
+                                        name="AOC_expiry_date"
+                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
+                                        v-model="formVals.AOC_expiry_date"
+                                    />
+                                </div>
+                                <Error
+                                    v-if="errors.step4.AOC_expiry_date"
+                                    :message="errors.step4.AOC_expiry_date"
+                                />
+                            </div>
+
+                            <div
+                                class="flex justify-between space-x-4 w-full mt-4"
+                            >
+                                <BaseButton
+                                    label="Previous"
+                                    class="p-8"
+                                    :action="() => handlePrev()"
+                                />
+                                <BaseButton
+                                    label="Next"
+                                    class="p-8"
+                                    :action="() => handleNext()"
+                                />
+                            </div>
                         </div>
-                    </form>
+                    </div>
+
+                    <div v-if="currentStep === 5">
+                        <div>
+                            <ul class="steps w-full">
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                                <li
+                                    data-content="✓"
+                                    class="step step-success"
+                                ></li>
+                            </ul>
+
+                            <div class="mb-6 pt-4">
+                                <label
+                                    class="mb-5 block text-xl font-semibold text-gray-800"
+                                >
+                                    Company PIN certificate (Upload a pdf copy)
+                                </label>
+
+                                <div class="mb-8">
+                                    <input
+                                        type="file"
+                                        name="company_pin"
+                                        id="file3"
+                                        class="sr-only"
+                                        @change="handleFileChange"
+                                    />
+                                    <label
+                                        for="file3"
+                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
+                                    >
+                                        <div>
+                                            <span
+                                                class="mb-2 block text-gray-800"
+                                            >
+                                                <i class="pi pi-paperclip"></i>
+                                                Drop files here
+                                            </span>
+                                            <span
+                                                class="mb-2 block text-base font-medium text-[#6B7280]"
+                                            >
+                                                Or
+                                            </span>
+                                            <span
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
+                                            >
+                                                Browse
+                                            </span>
+                                            <p v-if="formVals.company_pin">
+                                                Selected File:
+                                                {{ formVals.company_pin.name }}
+                                            </p>
+                                        </div>
+                                    </label>
+                                    <Error
+                                        v-if="errors.step5.company_pin"
+                                        :message="errors.step5.company_pin"
+                                    />
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex justify-between space-x-4 w-full mt-4"
+                            >
+                                <BaseButton
+                                    label="Previous"
+                                    class="p-8"
+                                    :action="() => handlePrev()"
+                                />
+                                <BaseButton
+                                    label="Submit"
+                                    class="p-8"
+                                    :action="handleSubmit()"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="flex justify-center items-center mt-2">
                     <a
@@ -636,9 +595,9 @@ const handleSubmit = () => {
     formDataToSend.append("company_name", formVals.value.name);
     formDataToSend.append(
         "contact_number",
-        formVals.value.country_code + formVals.value.contact_number,
+        formVals.value.country_code.code + formVals.value.contact_number,
     );
-    formDataToSend.append("country", formVals.value.country);
+    formDataToSend.append("country", formVals.value.country_code.name);
     formDataToSend.append("email", formVals.value.email);
     formDataToSend.append("password", formVals.value.password);
     formDataToSend.append(
@@ -649,6 +608,10 @@ const handleSubmit = () => {
     formDataToSend.append("AOC_doc", formVals.value.AOC_doc);
     formDataToSend.append("AOC_expiry_date", formVals.value.AOC_expiry_date);
     formDataToSend.append("company_pin", formVals.value.company_pin);
+
+    for (let [key, value] of formDataToSend.entries()) {
+        console.log(`${key}: ${value}`);
+    }
 
     axios
         .post("/register/aircraft-operator", formDataToSend, {
