@@ -497,7 +497,7 @@
                                 <BaseButton
                                     label="Submit"
                                     class="p-8"
-                                    :action="handleSubmit()"
+                                    :action="() => handleNext()"
                                 />
                             </div>
                         </div>
@@ -573,7 +573,11 @@ const faAngleRight = `<i class="pi pi-angle-right"></i>`;
 
 const handleNext = () => {
     const currentStepErrors = validateStep(currentStep.value);
-
+    console.log("currentStep", currentStep);
+    if (currentStep.value === 5) {
+        handleSubmit();
+        return;
+    }
     if (Object.keys(currentStepErrors).length === 0) {
         currentStep.value += 1;
     } else {

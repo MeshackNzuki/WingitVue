@@ -181,13 +181,16 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { reactive, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
 import Error from "../../components/Errors/Error.vue";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { authStore } from "../../stores/authStore";
 import CountryCode from "../../components/countries/CountryCodes.vue";
+
+const { user, login, is_authenticated } = authStore();
 
 // Reactive form values and errors
 const formVals = reactive({
@@ -196,6 +199,8 @@ const formVals = reactive({
     first_name: "",
     second_name: "",
     country: "",
+    phone: "",
+    contact_number: "",
     email: "",
     password: "",
     password_confirmation: "",
@@ -239,19 +244,23 @@ const submit = async () => {
     formVals.first_name = first_name;
     formVals.second_name = second_name;
     formVals.username = first_name;
-
+    formVals.country = formVals.country_code.name;
+    formVals.phone = formVals.country_code.code + formVals.contact_number;
+    console.log("formvals", formVals);
     try {
         const response = await axios.post("register/customer", formVals);
-        localStorage.setItem("wingitsess", JSON.stringify(response.data));
-        await Swal.fire({
+
+        login(response.data.user);
+        console.log("response", response);
+        Swal.fire({
             text: "Account created - Happy adventure!",
             icon: "success",
             confirmButtonText: "Close",
             confirmButtonColor: "#0f6566",
         });
-        router.push("/client");
+        router.push("/customer");
     } catch (error) {
-        await Swal.fire({
+        Swal.fire({
             text: error.response?.data?.message || "Error creating account",
             icon: "error",
             confirmButtonText: "Close",
@@ -259,4 +268,10 @@ const submit = async () => {
         });
     }
 };
+onMounted(() => {
+    if (is_authenticated) {
+        console.log("first", user.role);
+        router.push(user.role);
+    }
+});
 </script>

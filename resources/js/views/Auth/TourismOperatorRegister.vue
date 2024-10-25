@@ -351,7 +351,7 @@
                                 <BaseButton
                                     label="Next"
                                     class="p-8"
-                                    :action="() => submit()"
+                                    :action="() => handleNext()"
                                 />
                             </div>
                         </div>
@@ -420,6 +420,10 @@ const validateStep = (step, formValues) => {
 };
 
 const handleNext = (e) => {
+    if (currentStep.value === 4) {
+        handleSubmit();
+        return;
+    }
     const currentStepErrors = validateStep(currentStep.value, formVals.value);
     if (Object.keys(currentStepErrors).length === 0) {
         currentStep.value++;

@@ -466,10 +466,6 @@ const handleFormChange = () => {
     // Use reactive state updates
 };
 
-const handleFormChangePass = (index) => {
-    // Update the specific passenger form values
-};
-
 const pay = async () => {
     // Clear error object
     errors.value = {};
