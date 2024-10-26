@@ -260,7 +260,7 @@
               id="available_seats"
               type="number"
               class="input input-bordered input-sm w-full max-w-xs"
-              v-model="availableSeats"
+              v-model="flightVals.available_seats"
             />
             <label for="price" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
               Price Per Seat
@@ -345,7 +345,7 @@
         </div>
         <div class="modal-action">
           <button class="btn">Close</button>
-          <button class="btn" @click.prevent="handleSubmit">
+          <button class="btn" @click="handleSubmit">
             Save
           </button>
         </div>
@@ -363,6 +363,8 @@ import SmallButton from "../../components/Buttons/Small.vue"
 import Table from "../../components/Tables/MainTable.vue"
 import Datepicker from 'vuejs3-datepicker';
 import Select from 'vue-select';
+import { format } from 'date-fns';
+
 
 const CreateFlightInit = {
   origin_airport_id: '',
@@ -524,9 +526,11 @@ const getTourOperators = async () => {
 
 const getAircrafts = async () => {
   const res = await axios.get('aircrafts');
+  
+console.log('aircrafts',res)
 selectOptionsAircrafts.value = res.data.map(d => ({
       value: d.id,
-      label: d.aircraft_range,
+      label: d.aircraft_type,
     }));
 };
 
@@ -535,7 +539,7 @@ const showModal = (modalId) => {
 };
 
 watch([searchQuery, reload], () => {
-    fetchData();
+  getflights();
 });
 
 onMounted(() => {
