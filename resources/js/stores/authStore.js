@@ -40,6 +40,8 @@ export const authStore = defineStore("authStore", {
             axios
                 .post("/logout")
                 .then(() => {
+                    this.user = null;
+                    this.is_authenticated = false;
                     router.push("/login");
                 })
                 .catch((error) => {
@@ -48,10 +50,7 @@ export const authStore = defineStore("authStore", {
                     this.user = null;
                     this.is_authenticated = false;
                 })
-                .finally(() => {
-                    this.user = null;
-                    this.is_authenticated = false;
-                });
+               
         },
     },
 });

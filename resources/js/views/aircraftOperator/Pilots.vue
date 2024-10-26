@@ -302,7 +302,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted ,watch } from "vue";
 import axios from "axios";
 import SmallButton from "../../components/Buttons/Small.vue";
 import Swal from "sweetalert2";
@@ -322,6 +322,7 @@ const pilotVals = ref({
     medical_expiry: "",
 });
 const query = ref("");
+const reload = ref(false);
 
 const currentDate = ref(new Date().toISOString().split("T")[0]);
 
@@ -359,7 +360,9 @@ const handleSubmit = async () => {
         console.log(`${key}: ${value}`);
     }
     try {
-        await axios.post("/pilots", formData);
+        await axios.post("/pilots", formData).then(()=>{
+            reload.value = !reload.value
+        });
         Swal.fire("Success", "Pilot added successfully", "success");
  
         getPilots();
@@ -396,5 +399,9 @@ const showModal = (modalId) => {
 // Fetch pilots when component is mounted
 onMounted(() => {
     getPilots();
+});
+
+watch(reload, () => {
+  getPilots();
 });
 </script>

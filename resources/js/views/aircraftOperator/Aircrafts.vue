@@ -480,7 +480,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted,watch } from "vue";
 import axios from "axios";
 import { format } from "date-fns";
 import Table from "../../components/Tables/MainTable.vue";
@@ -617,6 +617,10 @@ const handleDelete = (id) => {
 
 // Fetch aircrafts on component mount
 onMounted(getAircrafts);
+
+watch(reload, () => {
+  getAircrafts();
+});
 
 const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
