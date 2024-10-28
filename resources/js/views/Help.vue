@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="bg-[url('../assets/homeh.jpg')] bg-cover bg-no-repeat lg:bg-contain"
-    >
+    <div class="bg-[url('../assets/homeh.jpg')] bg-cover bg-no-repeat">
         <div class="container mx-auto px-6 text-gray-800 md:px-12 xl:px-6">
             <main>
                 <div

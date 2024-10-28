@@ -45,7 +45,7 @@
             </div>
         </div>
         <!-- <div>
-            <p class="text-sm font-thin -mt-3">
+            <p class="text-sm font-light -mt-3">
                 {{ viewItemText }}
             </p>
         </div> -->

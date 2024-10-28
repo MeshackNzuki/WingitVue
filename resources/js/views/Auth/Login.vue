@@ -92,7 +92,7 @@
                             <div class="flex ml-auto">
                                 <a
                                     href="#"
-                                    class="inline-flex text-sm text-gray-700 hover:text-[#EF434A] font-thin underline"
+                                    class="inline-flex text-sm text-gray-700 hover:text-[#EF434A] font-light underline"
                                     >Forgot Password?</a
                                 >
                             </div>

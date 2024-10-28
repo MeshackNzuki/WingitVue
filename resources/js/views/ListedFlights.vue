@@ -34,9 +34,273 @@
 
                 <div class="w-full mt-8 flex justify-center">
                     <div
-                        class="flex flex-wrap w-full justify-center max-w-screen-2xl gap-4"
+                        v-if="mainStore.flights.length > 0"
+                        class="flex flex-col md:grid grid-cols-3 gap-4"
                     >
-                        flight cards
+                        <div v-for="(flight, index) in mainStore.flights">
+                            <div
+                                class="relative hover:scale-105 transition-all duration-300 transition-timing-function-cubic-bezier-0.7 rounded-lg shadow-md m-2 from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl bg-cover backdrop-blur-md bg-opacity-25 max-w-lg"
+                            >
+                                <div
+                                    class="absolute flex justify-center m-auto h-1/3 w-1/2 mr-0 bottom-0 bg-transparent"
+                                >
+                                    <div
+                                        class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg"
+                                    >
+                                        <p class="font-bold">
+                                            <i
+                                                class="pi pi-map-marker me-1 text-sm"
+                                            ></i>
+                                            <span class="text-xs">{{
+                                                flight.destination_airport?.city?.toUpperCase()
+                                            }}</span>
+                                            <br />
+                                            <span class="text-sm">
+                                                <i
+                                                    class="pi pi-info-circle w-4 mr-2 text-base"
+                                                ></i>
+                                                <small>
+                                                    <template
+                                                        v-if="
+                                                            flight.has_offer ==
+                                                            1
+                                                        "
+                                                    >
+                                                        {{
+                                                            calculateDiscount(
+                                                                flight.price,
+                                                                flight.offer_price,
+                                                            )
+                                                        }}% Off
+                                                    </template>
+                                                    <template v-else>
+                                                        Best Price
+                                                    </template>
+                                                </small>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div
+                                        class="grid grid-cols-2 grid-flow-col gap-4 shadow-sm"
+                                    >
+                                        <div class="flex justify-center p-1">
+                                            <span
+                                                class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900"
+                                            >
+                                                <i
+                                                    class="pi pi-calendar w-5 h-5"
+                                                ></i>
+                                                {{
+                                                    format(
+                                                        new Date(
+                                                            flight.depart_time,
+                                                        ),
+                                                        "EEE d, M, y ",
+                                                    )
+                                                }}
+                                            </span>
+                                        </div>
+                                        <div class="flex justify-center p-1">
+                                            <span
+                                                class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900"
+                                            >
+                                                <i
+                                                    class="pi pi-ticket w-5 h-5"
+                                                ></i>
+                                                <span class="me-1">{{
+                                                    flight.available_seats
+                                                }}</span>
+                                                <span>{{
+                                                    flight.available_seats > 1
+                                                        ? "seats"
+                                                        : "seat"
+                                                }}</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-6">
+                                    <div>
+                                        <table class="w-full">
+                                            <tr>
+                                                <td class="text-left">
+                                                    <small>
+                                                        {{
+                                                            format(
+                                                                new Date(
+                                                                    flight.depart_time,
+                                                                ),
+                                                                "h:mm a",
+                                                            )
+                                                        }}</small
+                                                    >
+                                                </td>
+                                                <td></td>
+                                                <td>
+                                                    <small>{{
+                                                        format(
+                                                            new Date(
+                                                                flight.arrival_time,
+                                                            ),
+                                                            "h:mm a",
+                                                        )
+                                                    }}</small>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">
+                                                    <span
+                                                        class="font-semibold uppercase text-xs relative overflow-hidden"
+                                                    >
+                                                        {{
+                                                            flight.origin_airport?.name.split(
+                                                                " ",
+                                                            )[0]
+                                                        }}
+                                                    </span>
+                                                </td>
+                                                <td
+                                                    class="flex justify-center flex-row pt-1.5"
+                                                >
+                                                    <div
+                                                        class="flex justify-center items-center p-1 relative"
+                                                    >
+                                                        <div
+                                                            class="h-1 w-6 sm:w-8 border-dashed border-base border-t-2 relative"
+                                                        >
+                                                            <div
+                                                                class="w-2.5 h-2.5 bg-base rounded-full absolute -left-5 -top-1.5 transform translate-x-1/2"
+                                                            ></div>
+                                                        </div>
+                                                    </div>
+                                                    <span
+                                                        class="h-4 w-4 rounded-full bg-base flex justify-center items-center"
+                                                    >
+                                                        <i
+                                                            class="pi pi-send text-gray-50 h-2.5 w-2.5"
+                                                        ></i>
+                                                    </span>
+                                                    <div
+                                                        class="flex justify-center items-center p-1 relative"
+                                                    >
+                                                        <div
+                                                            class="h-1 w-6 sm:w-8 border-dashed border-base border-t-2 relative"
+                                                        >
+                                                            <div
+                                                                class="w-2.5 h-2.5 bg-base rounded-full absolute -right-1/3 -top-1.5 transform translate-x-1/2"
+                                                            ></div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span
+                                                        class="font-semibold uppercase text-xs relative overflow-hidden"
+                                                    >
+                                                        {{
+                                                            flight.destination_airport?.name.split(
+                                                                " ",
+                                                            )[0]
+                                                        }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="text-left">
+                                        <span
+                                            class="text-sm font-light text-left"
+                                        >
+                                            {{
+                                                flight.aircraft_operator
+                                                    ?.company_name
+                                            }}
+                                        </span>
+                                    </div>
+                                    <div class="w-full text-center">
+                                        <span
+                                            v-if="flight.has_offer == 1"
+                                            class="text-sm font-normal text-center line-through text-red-500 bg-red-50 p-1 rounded-full"
+                                        >
+                                            KES
+                                            {{ formatCurrency(flight.price) }}
+                                        </span>
+                                        <span
+                                            class="text-sm font-normal text-center m-2 bg-cyan-100 px-2 py-1 rounded-full"
+                                        >
+                                            KES
+                                            {{
+                                                flight.has_offer == 1
+                                                    ? formatCurrency(
+                                                          flight.offer_price,
+                                                      )
+                                                    : formatCurrency(
+                                                          flight.price,
+                                                      )
+                                            }}.
+                                        </span>
+                                    </div>
+                                    <div class="text-right mt-3">
+                                        <div class="flex justify-end mb-1">
+                                            <div
+                                                class="text-second flex justify-center space-x-2 px-4"
+                                            >
+                                                <button
+                                                    @click="
+                                                        mainStore.decreaseSeats(
+                                                            flight.id,
+                                                        )
+                                                    "
+                                                    class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1"
+                                                >
+                                                    <i class="pi pi-minus"></i>
+                                                </button>
+                                                <span
+                                                    class="bg-base p-2 w-8 flex justify-center items-center h-8 mb-2 text-gray-50 rounded-full font-light"
+                                                >
+                                                    {{
+                                                        flight.seats <=
+                                                        flight.available_seats
+                                                            ? flight.seats
+                                                            : "Add"
+                                                    }}
+                                                </span>
+                                                <button
+                                                    @click="
+                                                        mainStore.increaseSeats(
+                                                            flight.id,
+                                                            flight.available_seats,
+                                                        )
+                                                    "
+                                                    class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1"
+                                                >
+                                                    <i class="pi pi-plus"></i>
+                                                </button>
+                                                <label
+                                                    for="Category"
+                                                    class="block mb-2 text-md text-gray-800"
+                                                >
+                                                    Seats
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button
+                                            @click="
+                                                mainStore.bookFlight(flight.id)
+                                            "
+                                            class="flex-no-shrink bg-gradient-to-tr from-teal-600 via-base to-base hover:scale-110 px-5 ml-4 py-2 mb-2 text-sm shadow-sm hover:shadow-lg tracking-wider text-gray-50 font-light rounded-full transition ease-in duration-200"
+                                        >
+                                            {{
+                                                mainStore.loading
+                                                    ? "Please wait..."
+                                                    : " Book Now"
+                                            }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -101,6 +365,7 @@ import { useRouter } from "vue-router";
 import { useMainStore } from "../stores";
 import { toast } from "vue3-toastify";
 import BaseButton from "../components/Buttons/BaseButton.vue";
+import { format } from "date-fns";
 
 // Local state
 
@@ -140,6 +405,11 @@ const handleSubscribe = (e) => {
         life: 3000,
     });
 };
+
+const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
+onMounted(() => {
+    mainStore.fetchFlights();
+});
 
 const getFlights = async () => {
     const flights = await mainStore.fetchFlights();

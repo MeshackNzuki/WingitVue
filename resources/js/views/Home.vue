@@ -7,18 +7,18 @@
                 <div
                     className="w-full  h-96 flex justify-between flex-col md:flex-col "
                 >
-                    <div v-if="mainStore.flights.length > 0">
+                    <div v-if="mainStore.flights.length > 0" class="">
                         <Carousel
                             :value="mainStore.flights"
                             :numVisible="3"
                             :numScroll="3"
+                            :responsiveOptions="responsiveOptions"
                             circular
                             :autoplayInterval="4000"
-                            :responsiveOptions="responsiveOptions"
                         >
                             <template #item="slotProps">
                                 <div
-                                    class="relative hover:scale-105 transition-all duration-300 transition-timing-function-cubic-bezier-0.7 rounded-lg shadow-md m-2 from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl bg-cover backdrop-blur-md bg-opacity-25 max-w-lg"
+                                    class="relative hover:scale-105 transition-all duration-300 rounded-lg shadow-md m-2 bg-gradient-to-tl from-cyan-50 via-purple-50 to-rose-100 bg-cover backdrop-blur-md bg-opacity-25 w-full md:max-w-lg"
                                 >
                                     <div
                                         class="absolute flex justify-center m-auto h-1/3 w-1/2 mr-0 bottom-0 bg-transparent"
@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                     <div class="px-6">
-                                        <div>
+                                        <!-- <div>
                                             <table class="w-full">
                                                 <tr>
                                                     <td class="text-left">
@@ -197,10 +197,10 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                        </div>
-                                        <div class="text-left">
+                                        </div> -->
+                                        <!-- <div class="text-left">
                                             <span
-                                                class="text-sm font-thin text-left"
+                                                class="text-sm font-light text-left"
                                             >
                                                 {{
                                                     slotProps.data
@@ -208,8 +208,8 @@
                                                         ?.company_name
                                                 }}
                                             </span>
-                                        </div>
-                                        <div class="w-full text-center">
+                                        </div> -->
+                                        <!-- <div class="w-full text-center">
                                             <span
                                                 v-if="
                                                     slotProps.data.has_offer ==
@@ -241,8 +241,8 @@
                                                           )
                                                 }}.
                                             </span>
-                                        </div>
-                                        <div class="text-right mt-3">
+                                        </div> -->
+                                        <!-- <div class="text-right mt-3">
                                             <div class="flex justify-end mb-1">
                                                 <div
                                                     class="text-second flex justify-center space-x-2 px-4"
@@ -261,7 +261,7 @@
                                                         ></i>
                                                     </button>
                                                     <span
-                                                        class="bg-base p-2 w-8 flex justify-center items-center h-8 mb-2 text-gray-50 rounded-full font-thin"
+                                                        class="bg-base p-2 w-8 flex justify-center items-center h-8 mb-2 text-gray-50 rounded-full font-light"
                                                     >
                                                         {{
                                                             slotProps.data
@@ -302,7 +302,7 @@
                                                         slotProps.data.id,
                                                     )
                                                 "
-                                                class="flex-no-shrink bg-gradient-to-tr from-teal-600 via-base to-base hover:scale-110 px-5 ml-4 py-2 mb-2 text-sm shadow-sm hover:shadow-lg tracking-wider text-gray-50 font-thin rounded-full transition ease-in duration-200"
+                                                class="flex-no-shrink bg-gradient-to-tr from-teal-600 via-base to-base hover:scale-110 px-5 ml-4 py-2 mb-2 text-sm shadow-sm hover:shadow-lg tracking-wider text-gray-50 font-light rounded-full transition ease-in duration-200"
                                             >
                                                 {{
                                                     mainStore.loading
@@ -310,7 +310,7 @@
                                                         : " Book Now"
                                                 }}
                                             </button>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </template>
@@ -357,7 +357,7 @@
                                 </span>
                             </h1>
                             <span
-                                className="mt-2 md:m-0 lg:mt-2 text-gray-50 lg:text-md font-thin mb-4 "
+                                className="mt-2 md:m-0 lg:mt-2 text-gray-50 lg:text-md font-light mb-4 "
                             >
                                 <h2>
                                     Explore Kenyan cities , towns , and parks
@@ -375,8 +375,10 @@
                                             <SplitButton
                                                 link1="/listed-flights"
                                                 label1="All Flights"
+                                                icon1=""
                                                 link2="/flight-search"
                                                 label2="Search Flight"
+                                                icon2="pi pi-search"
                                             />
                                         </span>
                                     </span>
@@ -479,6 +481,9 @@
                                         class="me-2"
                                         to="/search-flight"
                                     >
+                                        <i
+                                            class="pi pi-search text-gray-700 text-2xl"
+                                        ></i>
                                         Search
                                     </router-link>
                                     |
@@ -682,6 +687,11 @@ const responsiveOptions = ref([
     {
         breakpoint: "767px",
         numVisible: 2,
+        numScroll: 1,
+    },
+    {
+        breakpoint: "575px",
+        numVisible: 1,
         numScroll: 1,
     },
     {

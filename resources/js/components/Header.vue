@@ -134,7 +134,7 @@ import { RouterLink } from 'vue-router';
                 class="bg-gray-950 absolute hidden lg:block left-0 top-40 h-96 px-8 py-8 rounded-r-lg shadow-md"
             >
                 <ul
-                    class="flex flex-col space-y-4 text-white text-sm font-thin p-2"
+                    class="flex flex-col space-y-4 text-white text-sm font-light p-2"
                 >
                     <li>Window shop</li>
                     <li>Women Cloths</li>
