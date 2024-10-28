@@ -90,10 +90,10 @@
 
                         <div class="flex items-center mb-6 -mt-4">
                             <div class="flex ml-auto">
-                                <a
-                                    href="#"
+                                <router-link
+                                    to="/password-reset"
                                     class="inline-flex text-sm text-gray-700 hover:text-[#EF434A] font-light underline"
-                                    >Forgot Password?</a
+                                    >Forgot Password?</router-link
                                 >
                             </div>
                         </div>

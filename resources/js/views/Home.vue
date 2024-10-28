@@ -17,6 +17,112 @@
                             :autoplayInterval="4000"
                         >
                             <template #item="slotProps">
+                                <!-- <div
+                                    class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+                                >
+                                    <div
+                                        class="flex items-center justify-between bg-teal-600 text-white px-6 py-4"
+                                    >
+                                        <div class="text-lg font-bold">
+                                            Delta Airlines
+                                        </div>
+                                        <img
+                                            src="https://via.placeholder.com/40"
+                                            alt="Airline Logo"
+                                            class="w-10 h-10 rounded-full"
+                                        />
+                                    </div>
+
+                                    <div class="px-6 py-4">
+                                        <div
+                                            class="flex justify-between items-center text-gray-700"
+                                        >
+                                            <div class="text-left">
+                                                <p class="text-sm">From</p>
+                                                <p
+                                                    class="text-xl font-semibold"
+                                                >
+                                                    JFK
+                                                </p>
+                                                <p
+                                                    class="text-sm text-gray-500"
+                                                >
+                                                    New York
+                                                </p>
+                                            </div>
+                                            <div class="text-center">
+                                                <p
+                                                    class="text-gray-500 text-xs uppercase"
+                                                >
+                                                    Flight
+                                                </p>
+                                                <p
+                                                    class="text-lg font-bold text-teal-600"
+                                                >
+                                                    DL 145
+                                                </p>
+                                                <div
+                                                    class="flex items-center space-x-2 text-sm mt-1 text-gray-400"
+                                                >
+                                                    <span>10:00 AM</span>
+                                                    <span>-</span>
+                                                    <span>1:00 PM</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <p class="text-sm">To</p>
+                                                <p
+                                                    class="text-xl font-semibold"
+                                                >
+                                                    LAX
+                                                </p>
+                                                <p
+                                                    class="text-sm text-gray-500"
+                                                >
+                                                    Los Angeles
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex justify-between items-center mt-4"
+                                        >
+                                            <div class="text-gray-600">
+                                                <p class="text-sm">Date</p>
+                                                <p class="text-lg font-medium">
+                                                    Dec 25, 2023
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="text-gray-600 text-center"
+                                            >
+                                                <p class="text-sm">Duration</p>
+                                                <p class="text-lg font-medium">
+                                                    5h 30m
+                                                </p>
+                                            </div>
+                                            <div
+                                                class="text-gray-600 text-right"
+                                            >
+                                                <p class="text-sm">Class</p>
+                                                <p class="text-lg font-medium">
+                                                    Economy
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="px-6 py-4 bg-gray-100 border-t text-center"
+                                    >
+                                        <button
+                                            class="bg-teal-600 text-white w-full py-2 rounded hover:bg-teal-700 transition duration-300"
+                                        >
+                                            Book Now
+                                        </button>
+                                    </div>
+                                </div> -->
+
                                 <div
                                     class="relative hover:scale-105 transition-all duration-300 rounded-lg shadow-md m-2 bg-gradient-to-tl from-cyan-50 via-purple-50 to-rose-100 bg-cover backdrop-blur-md bg-opacity-25 w-full md:max-w-lg"
                                 >
@@ -112,7 +218,7 @@
                                         </div>
                                     </div>
                                     <div class="px-6">
-                                        <!-- <div>
+                                        <div>
                                             <table class="w-full">
                                                 <tr>
                                                     <td class="text-left">
@@ -197,8 +303,8 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                        </div> -->
-                                        <!-- <div class="text-left">
+                                        </div>
+                                        <div class="text-left">
                                             <span
                                                 class="text-sm font-light text-left"
                                             >
@@ -208,8 +314,8 @@
                                                         ?.company_name
                                                 }}
                                             </span>
-                                        </div> -->
-                                        <!-- <div class="w-full text-center">
+                                        </div>
+                                        <div class="w-full text-center">
                                             <span
                                                 v-if="
                                                     slotProps.data.has_offer ==
@@ -241,8 +347,8 @@
                                                           )
                                                 }}.
                                             </span>
-                                        </div> -->
-                                        <!-- <div class="text-right mt-3">
+                                        </div>
+                                        <div class="text-right mt-3">
                                             <div class="flex justify-end mb-1">
                                                 <div
                                                     class="text-second flex justify-center space-x-2 px-4"
@@ -310,7 +416,7 @@
                                                         : " Book Now"
                                                 }}
                                             </button>
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </div>
                             </template>
