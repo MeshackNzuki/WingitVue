@@ -16,10 +16,11 @@
                             circular
                             :autoplayInterval="4000"
                         >
-                            <template #item="slotProps">
-                                <!-- <div
-                                    class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+                            <template #item="slotProps" class="">
+                                <div
+                                    class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden re;ative"
                                 >
+                                
                                     <div
                                         class="flex items-center justify-between bg-teal-600 text-white px-6 py-4"
                                     >
@@ -32,100 +33,51 @@
                                             class="w-10 h-10 rounded-full"
                                         />
                                     </div>
-
-                                    <div class="px-6 py-4">
-                                        <div
-                                            class="flex justify-between items-center text-gray-700"
-                                        >
-                                            <div class="text-left">
-                                                <p class="text-sm">From</p>
-                                                <p
-                                                    class="text-xl font-semibold"
-                                                >
-                                                    JFK
-                                                </p>
-                                                <p
-                                                    class="text-sm text-gray-500"
-                                                >
-                                                    New York
-                                                </p>
-                                            </div>
-                                            <div class="text-center">
-                                                <p
-                                                    class="text-gray-500 text-xs uppercase"
-                                                >
-                                                    Flight
-                                                </p>
-                                                <p
-                                                    class="text-lg font-bold text-teal-600"
-                                                >
-                                                    DL 145
-                                                </p>
-                                                <div
-                                                    class="flex items-center space-x-2 text-sm mt-1 text-gray-400"
-                                                >
-                                                    <span>10:00 AM</span>
-                                                    <span>-</span>
-                                                    <span>1:00 PM</span>
-                                                </div>
-                                            </div>
-                                            <div class="text-right">
-                                                <p class="text-sm">To</p>
-                                                <p
-                                                    class="text-xl font-semibold"
-                                                >
-                                                    LAX
-                                                </p>
-                                                <p
-                                                    class="text-sm text-gray-500"
-                                                >
-                                                    Los Angeles
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="flex justify-between items-center mt-4"
-                                        >
-                                            <div class="text-gray-600">
-                                                <p class="text-sm">Date</p>
-                                                <p class="text-lg font-medium">
-                                                    Dec 25, 2023
-                                                </p>
-                                            </div>
-                                            <div
-                                                class="text-gray-600 text-center"
-                                            >
-                                                <p class="text-sm">Duration</p>
-                                                <p class="text-lg font-medium">
-                                                    5h 30m
-                                                </p>
-                                            </div>
-                                            <div
-                                                class="text-gray-600 text-right"
-                                            >
-                                                <p class="text-sm">Class</p>
-                                                <p class="text-lg font-medium">
-                                                    Economy
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <div
-                                        class="px-6 py-4 bg-gray-100 border-t text-center"
+                                        class="absolute flex justify-center m-auto h-1/3 w-1/2 mr-0 bottom-0 bg-transparent"
                                     >
-                                        <button
-                                            class="bg-teal-600 text-white w-full py-2 rounded hover:bg-teal-700 transition duration-300"
+                                        <div
+                                            class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg"
                                         >
-                                            Book Now
-                                        </button>
-                                    </div>
-                                </div> -->
-
-                                <div
-                                    class="relative hover:scale-105 transition-all duration-300 rounded-lg shadow-md m-2 bg-gradient-to-tl from-cyan-50 via-purple-50 to-rose-100 bg-cover backdrop-blur-md bg-opacity-25 w-full md:max-w-lg"
-                                >
+                                            <p class="font-bold">
+                                                <i
+                                                    class="pi pi-map-marker me-1 text-sm"
+                                                ></i>
+                                                <span class="text-xs">{{
+                                                    slotProps.data.destination_airport?.city?.toUpperCase()
+                                                }}</span>
+                                                <br />
+                                                <span class="text-sm">
+                                                    <i
+                                                        class="pi pi-info-circle w-4 mr-2 text-base"
+                                                    ></i>
+                                                    <small>
+                                                        <template
+                                                            v-if="
+                                                                slotProps.data
+                                                                    .has_offer ==
+                                                                1
+                                                            "
+                                                        >
+                                                            {{
+                                                                calculateDiscount(
+                                                                    slotProps
+                                                                        .data
+                                                                        .price,
+                                                                    slotProps
+                                                                        .data
+                                                                        .offer_price,
+                                                                )
+                                                            }}% Off
+                                                        </template>
+                                                        <template v-else>
+                                                            Best Price
+                                                        </template>
+                                                    </small>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>  
                                     <div
                                         class="absolute flex justify-center m-auto h-1/3 w-1/2 mr-0 bottom-0 bg-transparent"
                                     >
@@ -418,6 +370,13 @@
                                             </button>
                                         </div>
                                     </div>
+
+                                </div>
+
+                                <div
+                                    class="relative hover:scale-105 transition-all  duration-300 rounded-lg shadow-md m-2 bg-gradient-to-tl from-cyan-50 via-purple-50 to-rose-100 bg-cover backdrop-blur-md bg-opacity-25 max-w-md"
+                                >
+ 
                                 </div>
                             </template>
                         </Carousel>
@@ -450,7 +409,6 @@
                             </div>
                         </vue-marquee-slider>
                     </div>
-
                     <div className="w-full flex mt-0  justify-center mb-32">
                         <div
                             className="flex flex-col  text-gray-50 w-full px-2 lg:px-12 py-4 max-w-screen-xl"
