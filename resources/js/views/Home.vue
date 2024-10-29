@@ -18,24 +18,26 @@
                         >
                             <template #item="slotProps" class="">
                                 <div
-                                    class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden re;ative"
+                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg overflow-hidden re;ative"
                                 >
                                 
                                     <div
-                                        class="flex items-center justify-between bg-teal-600 text-white px-6 py-4"
+                                        class="flex items-center justify-between bg-teal-600 text-white px-6 py-0.5"
                                     >
                                         <div class="text-lg font-bold">
-                                            Delta Airlines
+                                            {{
+                                                    slotProps.data
+                                                        .aircraft_operator
+                                                        ?.company_name
+                                                }}
                                         </div>
                                         <img
                                             src="https://via.placeholder.com/40"
                                             alt="Airline Logo"
                                             class="w-10 h-10 rounded-full"
                                         />
-                                    </div>
-                                    <div
-                                        class="absolute flex justify-center m-auto h-1/3 w-1/2 mr-0 bottom-0 bg-transparent"
-                                    >
+                                    </div> 
+                                   
                                         <div
                                             class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg"
                                         >
@@ -47,85 +49,13 @@
                                                     slotProps.data.destination_airport?.city?.toUpperCase()
                                                 }}</span>
                                                 <br />
-                                                <span class="text-sm">
-                                                    <i
-                                                        class="pi pi-info-circle w-4 mr-2 text-base"
-                                                    ></i>
-                                                    <small>
-                                                        <template
-                                                            v-if="
-                                                                slotProps.data
-                                                                    .has_offer ==
-                                                                1
-                                                            "
-                                                        >
-                                                            {{
-                                                                calculateDiscount(
-                                                                    slotProps
-                                                                        .data
-                                                                        .price,
-                                                                    slotProps
-                                                                        .data
-                                                                        .offer_price,
-                                                                )
-                                                            }}% Off
-                                                        </template>
-                                                        <template v-else>
-                                                            Best Price
-                                                        </template>
-                                                    </small>
-                                                </span>
+                                              
                                             </p>
                                         </div>
-                                    </div>  
-                                    <div
-                                        class="absolute flex justify-center m-auto h-1/3 w-1/2 mr-0 bottom-0 bg-transparent"
-                                    >
-                                        <div
-                                            class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg"
-                                        >
-                                            <p class="font-bold">
-                                                <i
-                                                    class="pi pi-map-marker me-1 text-sm"
-                                                ></i>
-                                                <span class="text-xs">{{
-                                                    slotProps.data.destination_airport?.city?.toUpperCase()
-                                                }}</span>
-                                                <br />
-                                                <span class="text-sm">
-                                                    <i
-                                                        class="pi pi-info-circle w-4 mr-2 text-base"
-                                                    ></i>
-                                                    <small>
-                                                        <template
-                                                            v-if="
-                                                                slotProps.data
-                                                                    .has_offer ==
-                                                                1
-                                                            "
-                                                        >
-                                                            {{
-                                                                calculateDiscount(
-                                                                    slotProps
-                                                                        .data
-                                                                        .price,
-                                                                    slotProps
-                                                                        .data
-                                                                        .offer_price,
-                                                                )
-                                                            }}% Off
-                                                        </template>
-                                                        <template v-else>
-                                                            Best Price
-                                                        </template>
-                                                    </small>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
+                                  
                                     <div>
                                         <div
-                                            class="grid grid-cols-2 grid-flow-col gap-4 shadow-sm"
+                                            class="flex w-full justify-between"
                                         >
                                             <div
                                                 class="flex justify-center p-1"
@@ -133,9 +63,9 @@
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900"
                                                 >
-                                                    <i
-                                                        class="pi pi-calendar w-5 h-5"
-                                                    ></i>
+                                                    <!-- <i
+                                                        class="pi pi-calendar w-5 h-5 mt-0.5"
+                                                    ></i> -->
                                                     {{
                                                         format(
                                                             new Date(
@@ -146,15 +76,19 @@
                                                     }}
                                                 </span>
                                             </div>
+                                            <span class="mt-1.5 font-semibold">FLIGHT:{{
+                                                        slotProps.data
+                                                            .flight_no
+                                                    }}</span>
                                             <div
                                                 class="flex justify-center p-1"
                                             >
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900"
                                                 >
-                                                    <i
-                                                        class="pi pi-ticket w-5 h-5"
-                                                    ></i>
+                                                    <!-- <i
+                                                        class="pi pi-seat w-5 h-5 mt-0.5"
+                                                    ></i> -->
                                                     <span class="me-1">{{
                                                         slotProps.data
                                                             .available_seats
@@ -256,17 +190,7 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div class="text-left">
-                                            <span
-                                                class="text-sm font-light text-left"
-                                            >
-                                                {{
-                                                    slotProps.data
-                                                        .aircraft_operator
-                                                        ?.company_name
-                                                }}
-                                            </span>
-                                        </div>
+
                                         <div class="w-full text-center">
                                             <span
                                                 v-if="
@@ -282,8 +206,11 @@
                                                     )
                                                 }}
                                             </span>
-                                            <span
-                                                class="text-sm font-normal text-center m-2 bg-cyan-100 px-2 py-1 rounded-full"
+                                           
+                                        </div>
+                                        <div class="flex justify-between"> 
+                                            <div
+                                                class="text-sm font-bold text-center m-2 bg-emerald-200 px-2 py-1 h-7 rounded-full"
                                             >
                                                 KES
                                                 {{
@@ -298,9 +225,7 @@
                                                                   .price,
                                                           )
                                                 }}.
-                                            </span>
-                                        </div>
-                                        <div class="text-right mt-3">
+                                            </div>  <div class="text-right mt-3">
                                             <div class="flex justify-end mb-1">
                                                 <div
                                                     class="text-second flex justify-center space-x-2 px-4"
@@ -354,6 +279,35 @@
                                                     </label>
                                                 </div>
                                             </div>
+                                            <div class="flex justify-between w-full bg-red-400">                                                
+                                                <div class="text-sm">
+                                                    <i
+                                                        class="pi pi-info-circle w-4 mr-2 text-base"
+                                                    ></i>
+                                                    <small>
+                                                        <span
+                                                            v-if="
+                                                                slotProps.data
+                                                                    .has_offer ==
+                                                                1
+                                                            "
+                                                        >
+                                                            {{
+                                                                calculateDiscount(
+                                                                    slotProps
+                                                                        .data
+                                                                        .price,
+                                                                    slotProps
+                                                                        .data
+                                                                        .offer_price,
+                                                                )
+                                                            }}% Off
+                                                        </span>
+                                                        <span v-else>
+                                                            Best Price
+                                                        </span>
+                                                    </small>
+                                                </div>
                                             <button
                                                 @click="
                                                     mainStore.bookFlight(
@@ -369,6 +323,10 @@
                                                 }}
                                             </button>
                                         </div>
+                                            
+                                        </div>
+                                    </div>
+                                      
                                     </div>
 
                                 </div>
