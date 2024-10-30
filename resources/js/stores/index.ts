@@ -14,6 +14,7 @@ export const useMainStore = defineStore("mainStore", {
         totalSeats: [],
         sidebarOpen: true,
         airOpData: [],
+        greetings: "Hi",
     }),
 
     actions: {
@@ -72,6 +73,23 @@ export const useMainStore = defineStore("mainStore", {
         //primariry for click outside
         closeSidebar() {
             this.sidebarOpen = false;
+        },
+        updateGreeting() {
+            const currentHour = new Date().getHours();
+
+            if (currentHour < 12) {
+                this.greetings = "Good Morning";
+            } else if (currentHour < 18) {
+                this.greetings = "Good Afternoon";
+            } else {
+                this.greetings = "Good Evening";
+            }
+        },
+        greeting() {
+            return this.updateGreeting();
+        },
+        startInterval() {
+            setInterval(this.greeting(), 60000);
         },
     },
 });

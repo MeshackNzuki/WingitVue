@@ -10,11 +10,6 @@
         <button @click="mainStore.toggleSidebar()">
             <i class="pi pi-align-right"></i>
         </button>
-        <div class="flex">
-            <span class="font-semibold" v-if="user?.name"
-                >{{ greeting() }}, {{ user?.name }}!</span
-            >
-        </div>
         <div class="hidden lg:flex">
             <span
                 class="font-semibold uppercase text-sm"
@@ -176,22 +171,4 @@ watch(
         location.value = route.path.split("/")[1];
     },
 );
-
-const updateGreeting = () => {
-    const currentHour = new Date().getHours();
-
-    if (currentHour < 12) {
-        return "Good Morning";
-    } else if (currentHour < 18) {
-        return "Good Afternoon";
-    } else {
-        return "Good Evening";
-    }
-};
-
-const greeting = () => {
-    return updateGreeting();
-};
-
-setInterval(greeting, 60000);
 </script>

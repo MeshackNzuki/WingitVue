@@ -180,12 +180,7 @@
                     </nav>
                 </div>
             </div>
-            <div v-if="route.path.includes('/client')" class="mt-0">
-                <span
-                    class="w-full flex justify-center text-center text-xs font-bold"
-                >
-                    Trips</span
-                >
+            <div v-if="route.path.includes('/customer')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
@@ -211,21 +206,22 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-pencil"></i>
                                 </div>
-                                Marks
+                                My Bookings
                             </div>
                         </router-link>
-                        <router-link to="/examinations/papers">
+                        <router-link to="/examinations/marks">
                             <div
                                 role="button"
                                 tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-file"></i>
+                                    <i class="pi pi-calendar"></i>
                                 </div>
-                                Papers
+                                My Trips
                             </div>
                         </router-link>
+
                         <router-link to="/examinations/exams">
                             <div
                                 role="button"
@@ -235,7 +231,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-file"></i>
                                 </div>
-                                Exams
+                                Parking Lists
                             </div>
                         </router-link>
 
@@ -248,7 +244,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-user"></i>
                                 </div>
-                                Profile
+                                Account
                             </div>
                         </router-link>
 
