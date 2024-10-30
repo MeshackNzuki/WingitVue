@@ -777,7 +777,7 @@
                                 alt="Wingit - flight booking"
                             />
                         </figure>
-                        <p class="mt-1 text-gray-500">
+                        <p class="mt-1 text-gray-700">
                             Experience private charter flight at a fraction of
                             the cost with all the freedom and flexibility that
                             comes with it. We update availability of routes
@@ -788,7 +788,7 @@
                 </div>
 
                 <div class="flex gap-4 items-start flex-col">
-                    <span class="text-base bg-violet-500/10 p-3 rounded-full"
+                    <span class="text-base md:bg-violet-500/10 p-3 rounded-full"
                         ><svg
                             width="15"
                             height="15"
@@ -814,7 +814,7 @@
                                 alt="Wingit - flight booking"
                             />
                         </figure>
-                        <p class="mt-1 text-gray-500">
+                        <p class="mt-1 text-white md:text-gray-700">
                             Whether you are dreaming of a beach holiday, safari
                             escape, reunion with family or a business trip, we
                             will take you there in comfort, safety and style.
@@ -823,7 +823,8 @@
                 </div>
 
                 <div class="flex gap-4 items-start flex-col">
-                    <span class="text-base bg-violet-500/10 p-3 rounded-full"
+                    <span
+                        class="text-base bg-white md:bg-violet-500/10 p-3 rounded-full"
                         ><svg
                             width="15"
                             height="15"
@@ -849,7 +850,7 @@
                                 alt="Wingit - flight booking"
                             />
                         </figure>
-                        <p class="mt-1 text-gray-500">
+                        <p class="mt-1 text-white md:text-gray-700">
                             Life is unpredictable - Change your plans without
                             any hassle and enjoy the freedom to travel on your
                             terms with Wingit.
