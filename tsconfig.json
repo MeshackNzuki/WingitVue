@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": false,
+        "forceConsistentCasingInFileNames": false,
+        "strict": false,
+        "skipLibCheck": true,
+        "allowJs": true,
+        "checkJs": false ,
+        "outDir": "./public/build",
+    },
+  
+}

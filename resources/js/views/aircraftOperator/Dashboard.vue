@@ -5,25 +5,25 @@
                 label="All flights"
                 description="verified"
                 :quantity="mainStore.airOpData.all_flights_count"
-                icon="pi pi-send"
+                icon="pi pi-th-large"
             />
             <StatCard
                 label="Listed flights"
                 description="Approved"
                 :quantity="mainStore.airOpData.listed_flights_count"
-                icon="pi pi-check"
+                icon="pi pi-list"
             />
             <StatCard
                 label="My pilots"
                 description="Approved"
                 :quantity="mainStore.airOpData.pilots_count || '0'"
-                icon="pi pi-check"
+                icon="pi pi-user"
             />
             <StatCard
                 label="Trips"
                 description="32% Increase"
                 :quantity="mainStore.airOpData.total_revenue_count || '0'"
-                icon="pi pi-check"
+                icon="pi pi-sync"
             />
         </div>
         <div class="flex mt-4">

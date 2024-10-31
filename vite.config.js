@@ -14,6 +14,6 @@ export default defineConfig({
         "process.env": {},
     },
     build: {
-        outDir: "public/dist",
+        outDir: "./public/build",
     },
 });

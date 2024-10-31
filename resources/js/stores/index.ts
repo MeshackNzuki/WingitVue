@@ -2,7 +2,7 @@
 import { defineStore } from "pinia";
 import { toast } from "vue3-toastify";
 import axios from "axios";
-import router from "@/router";
+import router from "../router";
 
 export const useMainStore = defineStore("mainStore", {
     persist: true,
