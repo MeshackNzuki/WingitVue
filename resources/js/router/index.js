@@ -249,7 +249,7 @@ const routes = [
 const router = createRouter({
     linkActiveClass: "border-indigo-500",
     linkExactActiveClass: "border-indigo-700",
-    history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHistory("/"),
     routes,
 });
 
