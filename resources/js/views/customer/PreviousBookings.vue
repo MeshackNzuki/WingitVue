@@ -114,7 +114,7 @@ export default {
         const searchQuery = ref("");
 
         const getBookings = async () => {
-            const res = await axios.get("/client-booking");
+            const res = await axios.get("/client-previous-booking");
             booking.value = res.data;
         };
 

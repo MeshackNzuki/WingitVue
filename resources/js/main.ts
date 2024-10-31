@@ -22,7 +22,7 @@ const app = createApp(App);
 
 app.use(Vue3Toastify, {
     autoClose: 2000,
-    multiple: true,
+    multiple: false,
 });
 app.use(createPinia().use(piniaPluginPersistedstate));
 app.use(router);

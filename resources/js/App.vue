@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { RouterView, useRoute } from "vue-router";
 import Toast from "primevue/toast";
 import "../../node_modules/vue3-marquee-slider/dist/style.css";
@@ -18,6 +18,10 @@ const mainStore = useMainStore();
 const { is_authenticated } = authStore();
 // Compute if the current route is protected
 const isProtectedRoute = computed(() => route.meta.role && is_authenticated);
+
+onMounted(() => {
+    mainStore.startStoreServices();
+});
 </script>
 <template>
     <div

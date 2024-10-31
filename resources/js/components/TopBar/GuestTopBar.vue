@@ -33,7 +33,6 @@
                     </router-link>
                 </nav>
             </div>
-
             <!-- Right Side: User Avatar -->
             <div class="flex items-center h-12 ml-5">
                 <router-link
@@ -50,25 +49,33 @@
                 >
                     Login
                 </router-link>
-                <div v-if="is_authenticated" @click="goToUserArea()">
-                    <router-link>
-                        <div v-if="user?.avatar" class="avatar pointer">
-                            <div class="size-8 rounded-full ring ring-third">
-                                <img
-                                    :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
-                                    alt="User Avatar"
-                                />
-                            </div>
+                <div
+                    v-if="is_authenticated"
+                    @click="goToUserArea()"
+                    class="flex flex-row gap-1"
+                >
+                    <div
+                        class="bg-gold text-gray-800 shadow-sm rounded-full px-2 pt-1 text-center my-1 cursor-pointer"
+                    >
+                        Dashboard
+                    </div>
+
+                    <div v-if="user?.avatar" class="avatar pointer">
+                        <div class="size-8 rounded-full ring ring-third">
+                            <img
+                                :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
+                                alt="User Avatar"
+                            />
                         </div>
-                        <div
-                            v-else
-                            class="relative overflow-hidden bg-gold rounded-full gray-600"
-                        >
-                            <div class="size-10 rounded-full ring ring-third">
-                                <img :src="`${Logo2}`" alt="User Avatar" />
-                            </div>
+                    </div>
+                    <div
+                        v-else
+                        class="relative overflow-hidden bg-gold rounded-full gray-600"
+                    >
+                        <div class="size-10 rounded-full ring ring-third">
+                            <img :src="`${Logo2}`" alt="User Avatar" />
                         </div>
-                    </router-link>
+                    </div>
                 </div>
 
                 <button @click="toggleSidebar" class="lg:hidden ml-2">

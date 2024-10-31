@@ -195,7 +195,7 @@
                                                 mainStore.selectedFlight?.id,
                                             )
                                         "
-                                        class="pi pi-minus"
+                                        class="pi pi-minus text-base animate-pulse"
                                     ></i>
                                     Seats
                                     <i
@@ -206,7 +206,7 @@
                                                     ?.available_seats,
                                             )
                                         "
-                                        class="pi pi-plus"
+                                        class="pi pi-plus text-base animate-pulse"
                                     ></i>
                                 </span>
                             </div>

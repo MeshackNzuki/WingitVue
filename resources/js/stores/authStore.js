@@ -27,10 +27,10 @@ export const authStore = defineStore("authStore", {
                     router.push("/aircraft-operator");
                 } else if (userData.role === "tourism_operator") {
                     router.push("/tourism-operator");
-                } else if (userData.role === "client") {
-                    router.push("/client");
+                } else if (userData.role === "customer") {
+                    router.push("/customer");
                 } else {
-                    // Handle other user roles
+                    toast.info("please log out to login in again.");
                 }
             }
         },
@@ -49,8 +49,7 @@ export const authStore = defineStore("authStore", {
                     //still remove user data
                     this.user = null;
                     this.is_authenticated = false;
-                })
-               
+                });
         },
     },
 });

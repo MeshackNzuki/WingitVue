@@ -160,7 +160,7 @@ const routes = [
             },
             {
                 path: "bookings",
-                name: "CCustomerBookings",
+                name: "CustomerBookings",
                 component: () => import("../views/customer/Bookings.vue"),
             },
             {
@@ -172,6 +172,27 @@ const routes = [
                 path: "trips",
                 name: "CustomerTrips",
                 component: () => import("../views/customer/Trips.vue"),
+            },
+            {
+                path: "trips",
+                name: "CustomerTrips",
+                component: () => import("../views/customer/Trips.vue"),
+            },
+            {
+                path: "fun-things",
+                name: "CustomerFunthings",
+                component: () => import("../views/customer/Funthings.vue"),
+            },
+            {
+                path: "places",
+                name: "CustomerPlaces",
+                component: () => import("../views/customer/Places.vue"),
+            },
+            {
+                path: "previous-bookings",
+                name: "CustomerPreviousBookings",
+                component: () =>
+                    import("../views/customer/PreviousBookings.vue"),
             },
             {
                 path: "messages",

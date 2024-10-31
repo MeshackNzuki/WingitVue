@@ -14,10 +14,15 @@ export const useMainStore = defineStore("mainStore", {
         totalSeats: [],
         sidebarOpen: true,
         airOpData: [],
+        customerData: [],
         greetings: "Hi",
     }),
 
     actions: {
+        startStoreServices() {
+            this.fetchFlights();
+            this.startInterval();
+        },
         async fetchFlights() {
             try {
                 const res = await axios.get("/flights-all");
@@ -35,6 +40,7 @@ export const useMainStore = defineStore("mainStore", {
             if (flight && flight.seats < availableSeats) {
                 flight.seats++;
             } else {
+                toast.clearAll();
                 toast.info(
                     `This flight has only ${availableSeats} available seat(s).`,
                 );
@@ -65,6 +71,9 @@ export const useMainStore = defineStore("mainStore", {
         setDashDataAirOp(data) {
             this.airOpData = data;
         },
+        setDashDataCustomer(data) {
+            this.CustomerData = data;
+        },
 
         // other utilities
         toggleSidebar() {
@@ -76,6 +85,7 @@ export const useMainStore = defineStore("mainStore", {
         },
         updateGreeting() {
             const currentHour = new Date().getHours();
+            console.log("setting time..");
 
             if (currentHour < 12) {
                 this.greetings = "Good Morning";
@@ -85,11 +95,9 @@ export const useMainStore = defineStore("mainStore", {
                 this.greetings = "Good Evening";
             }
         },
-        greeting() {
-            return this.updateGreeting();
-        },
-        startInterval() {
-            setInterval(this.greeting(), 60000);
+        async startInterval() {
+            this.updateGreeting();
+            setInterval(this.updateGreeting, 3000);
         },
     },
 });

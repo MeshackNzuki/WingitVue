@@ -24,7 +24,7 @@
                         >
                             <template #item="slotProps" class="flex-1">
                                 <div
-                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative"
+                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-200"
                                 >
                                     <div
                                         class="flex items-center justify-between bg-base text-white px-6 py-0.5"
@@ -589,7 +589,7 @@
             >
                 <div class="bg-slate-500 mt-5">
                     <img
-                        class="w-full h-full rounded-md mix-blend-overlay"
+                        class="w-full h-full rounded-md hover:scale-105 transition-all duration-200"
                         :src="Top"
                         alt="mockup"
                     />
@@ -673,7 +673,7 @@
                     class="flex flex-wrap justify-center items-center space-x-4"
                 >
                     <div
-                        class="hidden xl:block w-40 h-60 bg-[url('../assets/p1.jpg')] bg-cover rounded-t-full bg-contain bg-center rounded-b-full transform -rotate-12 flex justify-center items-center"
+                        class="xl:block w-40 h-60 bg-[url('../assets/p1.jpg')] bg-cover rounded-t-full bg-contain bg-center rounded-b-full transform -rotate-12 flex justify-center items-center"
                     ></div>
                     <div>
                         <div
@@ -682,7 +682,7 @@
                     </div>
                     <div>
                         <div
-                            class="hidden xl:block w-40 h-60 bg-[url('../assets/pill4.jpg')] rounded-t-full bg-contain bg-center bg-cover rounded-b-full transform -rotate-12 flex justify-center items-center"
+                            class="xl:block w-40 h-60 bg-[url('../assets/pill4.jpg')] rounded-t-full bg-contain bg-center bg-cover rounded-b-full transform -rotate-12 flex justify-center items-center"
                         ></div>
                     </div>
                 </div>
@@ -865,21 +865,27 @@
             <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
                 <div class="-m-1 flex flex-wrap md:-m-2">
                     <div class="flex w-1/2 flex-wrap">
-                        <div class="w-1/2 p-1 md:p-2">
+                        <div
+                            class="w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200"
+                        >
                             <img
                                 alt="gallery"
                                 class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Kisumu.jpg"
                             />
                         </div>
-                        <div class="w-1/2 p-1 md:p-2">
+                        <div
+                            class="w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200"
+                        >
                             <img
                                 alt="gallery"
                                 class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Malindi.jpg"
                             />
                         </div>
-                        <div class="w-full p-1 md:p-2">
+                        <div
+                            class="w-full p-1 md:p-2 hover:scale-105 transition-all duration-200"
+                        >
                             <img
                                 alt="gallery"
                                 class="block h-full w-full rounded-lg object-cover object-center"
@@ -888,21 +894,27 @@
                         </div>
                     </div>
                     <div class="flex w-1/2 flex-wrap">
-                        <div class="w-full p-1 md:p-2">
+                        <div
+                            class="w-full p-1 md:p-2 hover:scale-105 transition-all duration-200"
+                        >
                             <img
                                 alt="gallery"
                                 class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Nanyuki.jpg"
                             />
                         </div>
-                        <div class="w-1/2 p-1 md:p-2">
+                        <div
+                            class="w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200"
+                        >
                             <img
                                 alt="gallery"
                                 class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Masaimara.jpg"
                             />
                         </div>
-                        <div class="w-1/2 p-1 md:p-2">
+                        <div
+                            class="w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200"
+                        >
                             <img
                                 alt="gallery"
                                 class="block h-full w-full rounded-lg object-cover object-center"
@@ -929,9 +941,6 @@ import CallToAction from "../components/Buttons/CallToAction.vue";
 const mainStore = useMainStore();
 
 const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
-onMounted(() => {
-    mainStore.fetchFlights();
-});
 
 const exo2 = {
     className: "your-exo-class-name",
