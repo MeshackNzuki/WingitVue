@@ -36,6 +36,8 @@ export const authStore = defineStore("authStore", {
         },
         logout() {
             // Perform logout operation here...
+            this.user = null;
+            this.is_authenticated = false;
             // Reset the store's state
             axios
                 .post("/logout")
@@ -49,7 +51,9 @@ export const authStore = defineStore("authStore", {
                     //still remove user data
                     this.user = null;
                     this.is_authenticated = false;
+                    router.push("/login");
                 });
+            router.push("/login");
         },
     },
 });

@@ -135,6 +135,12 @@ const routes = [
                     import("../views/aircraftOperator/Settings.vue"),
             },
             {
+                path: "account",
+                name: "aircraftOperatorAccount",
+                component: () =>
+                    import("../views/aircraftOperator/Account.vue"),
+            },
+            {
                 path: "statements",
                 name: "AircraftStatements",
                 component: () =>
@@ -198,6 +204,11 @@ const routes = [
                 path: "messages",
                 name: "CustomerMessages",
                 component: () => import("../views/customer/Messages.vue"),
+            },
+            {
+                path: "account",
+                name: "CustomerAccount",
+                component: () => import("../views/customer/Account.vue"),
             },
             {
                 path: "settings",

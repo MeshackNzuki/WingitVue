@@ -152,7 +152,7 @@
                                 Notifications
                             </div>
                         </router-link>
-                        <router-link to="/profile">
+                        <router-link to="/tourism-operator/account">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -161,7 +161,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
-                                Profile
+                                Account
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/settings">
@@ -185,7 +185,7 @@
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
                     >
-                        <router-link to="/examinations/">
+                        <router-link to="/customer/">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -197,7 +197,7 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="/examinations/marks">
+                        <router-link to="/customer/bookings">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -209,7 +209,7 @@
                                 My Bookings
                             </div>
                         </router-link>
-                        <router-link to="/examinations/marks">
+                        <router-link to="/customer/previous-bookings">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -222,7 +222,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/examinations/exams">
+                        <router-link to="/customer/packing-lists">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -231,11 +231,11 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-briefcase"></i>
                                 </div>
-                                Parking Lists
+                                Packing Lists
                             </div>
                         </router-link>
 
-                        <router-link to="/profile">
+                        <router-link to="/customer/account">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -248,7 +248,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/examinations/settings">
+                        <router-link to="/customer/settings">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -407,7 +407,7 @@
                                 >
                             </div>
                         </router-link>
-                        <router-link to="/profile">
+                        <router-link to="/aircraft-operator/account">
                             <div
                                 role="button"
                                 tabindex="0"
@@ -416,7 +416,7 @@
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
-                                Profile
+                                Account
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/settings">

@@ -181,7 +181,7 @@
 </template>
 
 <script setup>
-import { reactive, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
 import Error from "../../components/Errors/Error.vue";
@@ -193,7 +193,7 @@ import CountryCode from "../../components/countries/CountryCodes.vue";
 const { user, login, is_authenticated } = authStore();
 
 // Reactive form values and errors
-const formVals = reactive({
+const formVals = ref({
     name: "",
     username: "",
     first_name: "",
@@ -208,26 +208,26 @@ const formVals = reactive({
     passport: "",
 });
 
-const errors = reactive({});
+const errors = ref({});
 
 // Validation function
 const validate = () => {
     const validationErrors = {};
     const mailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (!formVals.name) validationErrors.name = "Name is required";
-    else if (!formVals.name.split(" ")[1])
+    if (!formVals.value.name) validationErrors.name = "Name is required";
+    else if (!formVals.value.name.split(" ")[1])
         validationErrors.name = "Please input second name";
 
-    if (!formVals.email) validationErrors.email = "Email is required";
-    else if (!mailRegex.test(formVals.email))
+    if (!formVals.value.email) validationErrors.email = "Email is required";
+    else if (!mailRegex.test(formVals.value.email))
         validationErrors.email = "Please enter a valid email";
 
-    if (!formVals.password)
+    if (!formVals.value.password)
         validationErrors.password = "Please set your password";
-    if (formVals.password !== formVals.password_confirmation)
+    if (formVals.value.password !== formVals.value.password_confirmation)
         validationErrors.password_confirmation = "Your passwords don't match";
-    if (formVals.password.length < 8)
+    if (formVals.value.password.length < 8)
         validationErrors.password = "Please use at least 8 characters";
 
     return validationErrors;
@@ -236,20 +236,26 @@ const validate = () => {
 // Submit function
 const router = useRouter();
 const submit = async () => {
-    Object.assign(errors, validate());
+    console.log("called...", errors.value);
 
-    if (Object.keys(errors).length > 0) return;
+    // Clear previous errors
+    Object.assign(errors.value, {});
 
-    const [first_name, second_name] = formVals.name.split(" ");
-    formVals.first_name = first_name;
-    formVals.second_name = second_name;
-    formVals.username = first_name;
-    formVals.country = formVals.country_code.name;
-    formVals.phone = formVals.country_code.code + formVals.contact_number;
-    console.log("formvals", formVals);
+    // Validate and assign errors if any
+    Object.assign(errors.value, validate());
+
+    if (Object.keys(errors.value).length > 0) return;
+
+    const [first_name, second_name] = formVals.value.name.split(" ");
+    formVals.value.first_name = first_name;
+    formVals.value.second_name = second_name;
+    formVals.value.username = first_name;
+    formVals.value.country = formVals.value.country_code.name;
+    formVals.value.phone =
+        formVals.value.country_code.code + formVals.value.contact_number;
+    console.log("formvals", formVals.value);
     try {
-        const response = await axios.post("register/customer", formVals);
-
+        const response = await axios.post("register/customer", formVals.value);
         login(response.data.user);
         console.log("response", response);
         Swal.fire({
@@ -268,6 +274,7 @@ const submit = async () => {
         });
     }
 };
+
 onMounted(() => {
     if (is_authenticated) {
         console.log("first", user.role);

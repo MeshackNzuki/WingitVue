@@ -18,7 +18,7 @@
                             :showIndicators="true"
                             :showNavigators="false"
                             :responsiveOptions="responsiveOptions"
-                            containerClass="w-96 md:w-full "
+                            containerClass="w-[350px] md:w-full "
                             circular
                             :autoplayInterval="4000"
                         >
@@ -689,7 +689,6 @@
             </div>
         </div>
     </section>
-
     <section class="text-center scroll-smooth snap-center relative">
         <main class="flex flex-col items-center justify-center">
             <section

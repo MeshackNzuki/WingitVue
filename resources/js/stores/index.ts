@@ -85,7 +85,6 @@ export const useMainStore = defineStore("mainStore", {
         },
         updateGreeting() {
             const currentHour = new Date().getHours();
-            console.log("setting time..");
 
             if (currentHour < 12) {
                 this.greetings = "Good Morning";
