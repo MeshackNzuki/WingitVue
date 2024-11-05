@@ -113,7 +113,7 @@ onMounted(() => {
     setTimeout(() => {
         menu.value = false;
         clearInterval(intervalId);
-    }, 12000);
+    }, 18000);
 });
 
 // Helper function to update the WhatsApp link
