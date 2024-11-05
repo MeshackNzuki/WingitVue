@@ -41,7 +41,7 @@
                                     :src="
                                         user?.avatar != null
                                             ? `https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user?.avatar}`
-                                            : `https://cdn.vectorstock.com/i/2000v/95/56/user-profile-icon-avatar-or-person-vector-45089556.avif`
+                                            : `../assets/logo.png`
                                     "
                                 />
                             </div>

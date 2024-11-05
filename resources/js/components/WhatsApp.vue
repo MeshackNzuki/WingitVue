@@ -106,9 +106,14 @@ watch(text, (newValue) => {
 // Initialize `apilink` on component creation
 onMounted(() => {
     updateApiLink("Hello!");
-    setInterval(() => {
+    const intervalId = setInterval(() => {
         menu.value = true;
     }, 6000);
+
+    setTimeout(() => {
+        menu.value = false;
+        clearInterval(intervalId);
+    }, 12000);
 });
 
 // Helper function to update the WhatsApp link
