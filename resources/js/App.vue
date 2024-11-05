@@ -10,6 +10,7 @@ import GuestTopBar from "./components/TopBar/GuestTopBar.vue";
 import Footer from "./components/Footer.vue";
 import { authStore } from "./stores/authStore";
 import { useMainStore } from "./stores";
+import WhatsApp from "./components/WhatsApp.vue";
 
 const route = useRoute();
 
@@ -48,6 +49,7 @@ onMounted(() => {
                 </div>
             </router-view>
             <Footer v-if="!isProtectedRoute" />
+            <WhatsApp />
         </div>
     </div>
 </template>
