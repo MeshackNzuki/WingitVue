@@ -19,6 +19,15 @@ export const authStore = defineStore("authStore", {
                 toast.error("Login failed. Please check your credentials.");
             }
         },
+        updateUserData(newUserdata) {
+            Object.assign(this.user, {
+                name: newUserdata.name || newUserdata.company_name,
+                email: newUserdata.email,
+                avatar: newUserdata.avatar,
+                phone: newUserdata.phone,
+                nationality: newUserdata.nationality,
+            });
+        },
         goToUserArea() {
             if (this.user) {
                 const userData = this.user;

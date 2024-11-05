@@ -32,7 +32,20 @@
                 <!-- User -->
                 <ul class="items-center flex flex-wrap list-none">
                     <li class="inline-block relative">
-                        <user-dropdown />
+                        <div class="avatar">
+                            <div
+                                class="ring-base ring-offset-base w-14 rounded-full ring ring-offset-2"
+                            >
+                                <img
+                                    class="flex-1"
+                                    :src="
+                                        user?.avatar != null
+                                            ? `https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user?.avatar}`
+                                            : `https://cdn.vectorstock.com/i/2000v/95/56/user-profile-icon-avatar-or-person-vector-45089556.avif`
+                                    "
+                                />
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>

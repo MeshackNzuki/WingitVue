@@ -31,12 +31,18 @@
                 >
                     <form @submit.prevent="handleSubmit" class="space-y-4">
                         <span class="w-full flex justify-center">
-                            <div
-                                class="avatar w-24 rounded-full ring ring-base ring-offset-base-100 ring-offset-2"
-                            >
-                                <img
-                                    :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${formData.avatar}`"
-                                />
+                            <div class="avatar">
+                                <div
+                                    class="ring-base ring-offset-base w-24 rounded-full ring ring-offset-2"
+                                >
+                                    <img
+                                        :src="
+                                            user?.avatar != null
+                                                ? `https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user?.avatar}`
+                                                : `https://cdn.vectorstock.com/i/2000v/95/56/user-profile-icon-avatar-or-person-vector-45089556.avif`
+                                        "
+                                    />
+                                </div>
                             </div>
                         </span>
                         <div>
@@ -100,12 +106,13 @@ import { toast } from "vue3-toastify";
 import { authStore } from "../../stores/authStore";
 
 const router = useRouter();
-const auth = authStore;
+
+const { user, updateUserData } = authStore();
 
 const formData = ref({
-    email: auth.user?.email || "",
-    phone: auth.user?.phone || "",
-    avatar: auth.user?.avatar || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
+    avatar: user?.avatar || "",
     password: "",
 });
 
@@ -115,6 +122,16 @@ const navigateToClient = () => {
 
 const handleFileChange = (e) => {
     formData.value.avatar = e.target.files[0];
+};
+
+const fetchUserData = async () => {
+    try {
+        const response = await axios.get("/settings/profile-airop");
+        console.log("user data from server", response.data);
+        updateUserData(response.data);
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+    }
 };
 
 const handleSubmit = async () => {
@@ -129,7 +146,7 @@ const handleSubmit = async () => {
             headers: { "Content-Type": "multipart/form-data" },
         });
         toast.info("Information updated");
-        fetchUserData(); // Reload the data
+        fetchUserData();
     } catch (error) {
         console.error("Error updating profile:", error);
     }

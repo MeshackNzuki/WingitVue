@@ -11,12 +11,18 @@
                             <span
                                 class="w-full flex justify-center text-center"
                             >
-                                <div
-                                    class="avatar w-24 h-24 rounded-full ring ring-base ring-offset-base-100 ring-offset-2"
-                                >
-                                    <img
-                                        :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${formData.avatar}`"
-                                    />
+                                <div class="avatar">
+                                    <div
+                                        class="ring-base ring-offset-base w-24 rounded-full ring ring-offset-2"
+                                    >
+                                        <img
+                                            :src="
+                                                user?.avatar != null
+                                                    ? `https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user?.avatar}`
+                                                    : `https://cdn.vectorstock.com/i/2000v/95/56/user-profile-icon-avatar-or-person-vector-45089556.avif`
+                                            "
+                                        />
+                                    </div>
                                 </div>
                             </span>
                             <div>
@@ -27,7 +33,7 @@
                                 />
                             </div>
                             <div>
-                                {{ JSON.stringify(auth.user?.user) }}
+                                {{ JSON.stringify(user?.user) }}
                                 <label class="block mb-1 font-medium"
                                     >Name</label
                                 >
@@ -110,29 +116,28 @@ import { toast } from "vue3-toastify";
 import { authStore } from "../../stores/authStore";
 
 const router = useRouter();
-const auth = authStore;
+const { user, updateUserData } = authStore();
 const reload = ref(false);
 const formData = ref({
-    email: auth.user?.email || "",
-    phone: auth.user?.phone || "",
-    passport_no: auth.user?.passport_no || "",
-    avatar: auth.user?.avatar || "",
-    id_number: auth.user?.id_number || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
+    passport_no: user?.passport_no || "",
+    avatar: user?.avatar || "",
+    id_number: user?.id_number || "",
     password: null,
-    nationality: auth.user?.nationality || "",
-    name: auth.user?.name || "",
+    nationality: user?.nationality || "",
+    name: user?.name || "",
 });
 
 const fetchUserData = async () => {
     try {
         const response = await axios.get("/settings/profile-customer");
-        Object.assign(formData.value, response.data);
+        console.log("user data from server", response.data);
+        updateUserData(response.data);
     } catch (error) {
         console.error("Error fetching user data:", error);
     }
 };
-
-onMounted(fetchUserData);
 
 const navigateToClient = () => {
     router.push("/client");

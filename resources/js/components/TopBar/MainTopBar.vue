@@ -24,8 +24,11 @@
             </span>
         </div>
 
-        <div class="flex px-4 space-x-2">
-            <RouterLink to="/chat/messages" class="p-1 mt-1.5">
+        <div class="flex justify-center items-center px-2 gap-2">
+            <RouterLink to="/" class="">
+                <i class="pi pi-arrow-left text-sm"></i> <span>Home</span>
+            </RouterLink>
+            <RouterLink to="/chat/messages" class="">
                 <div class="indicator">
                     <i class="pi pi-comments"></i>
                     <span
@@ -33,7 +36,7 @@
                     ></span>
                 </div>
             </RouterLink>
-            <button class="p-1">
+            <button class="">
                 <div class="indicator">
                     <i class="pi pi-bell"></i>
                     <span
@@ -89,7 +92,7 @@
                     class="avatar pointer"
                     @click="goToUserArea()"
                 >
-                    <div class="size-8 rounded-full ring ring-third">
+                    <div class="size-8 rounded-full ring ring-base mt-1">
                         <img
                             :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
                             alt="User Avatar"

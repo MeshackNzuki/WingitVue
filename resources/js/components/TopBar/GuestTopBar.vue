@@ -61,7 +61,7 @@
                     </div>
 
                     <div v-if="user?.avatar" class="avatar pointer">
-                        <div class="size-8 rounded-full ring ring-third">
+                        <div class="size-8 rounded-full ring ring-gold ms-1">
                             <img
                                 :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
                                 alt="User Avatar"

@@ -3,7 +3,7 @@
         class="bg-gray-200 min-h-screen bg-[url('../assets/pill3.jpg')] bg-cover bg-center no-repeat"
     >
         <div
-            className="w-full flex flex-col lg:flex-row  justify-center align-center p-2 md:p-8 bg-gray-800 bg-opacity-25  "
+            className="w-full flex flex-col lg:flex-row  justify-center align-center md:p-8 bg-gray-800 bg-opacity-25  "
         >
             <div className="lg:mt-24 ">
                 <div
@@ -340,7 +340,7 @@
                 <hr class="border-gray-700" />
             </div>
         </div>
-        <div className="w-full flex  justify-center align-center p-2 md:p-8 ">
+        <div className="w-full flex  justify-center align-center  md:p-8 ">
             <div
                 class="card card-compact w-96 mx-3 bg-white bg-opacity-95 shadow-lg mb-4"
             >
