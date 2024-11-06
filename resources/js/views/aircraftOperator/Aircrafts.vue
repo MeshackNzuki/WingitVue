@@ -382,7 +382,6 @@
                             v-model="aircraftVals.coa_expiry"
                             :min="currentDate"
                         />
-                        
                     </div>
                     <div>
                         <label
@@ -480,7 +479,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted,watch } from "vue";
+import { ref, onMounted, watch } from "vue";
 import axios from "axios";
 import { format } from "date-fns";
 import Table from "../../components/Tables/MainTable.vue";
@@ -488,26 +487,25 @@ import { toast } from "vue3-toastify";
 import { authStore } from "../../stores/authStore";
 import SmallButton from "../../components/Buttons/Small.vue";
 
-const auth = authStore()
+const auth = authStore();
 const aircraftVals = ref({
-      cor: '',
-      crs: '',
-      coa: '',
-      insurance_expiry: '',
-      insurance: '',
-      capacity: '',
-      registration: '',
-      speed: '',
-      age: '',
-      aircraftoperator: '',
-      aircraft_type: '',
-      cor_expiry: '',
-      crs_expiry: '',
-      coa_expiry: '',
-    });
+    cor: "",
+    crs: "",
+    coa: "",
+    insurance_expiry: "",
+    insurance: "",
+    capacity: "",
+    registration: "",
+    speed: "",
+    age: "",
+    aircraftoperator: "",
+    aircraft_type: "",
+    cor_expiry: "",
+    crs_expiry: "",
+    coa_expiry: "",
+});
 const reload = ref(false);
 const errorMessage = ref(false);
-
 
 const currentDate = new Date().toISOString().split("T")[0];
 const aircrafts = ref([]);
@@ -530,53 +528,50 @@ const handleFileChange = (e) => {
 };
 
 const validateFields = () => {
-      for (const key in aircraftVals.value) {
+    for (const key in aircraftVals.value) {
         if (!aircraftVals.value[key]) {
-          errorMessage.value = 'Please fill all fields.';
-          return false; 
+            errorMessage.value = "Please fill all fields.";
+            return false;
         }
-      }
-      errorMessage.value = ''; 
-      return true;
-    };
+    }
+    errorMessage.value = "";
+    return true;
+};
 
 // Handle form submission
 const handleSubmit = async () => {
-    validateFields()
+    validateFields();
     const payload = new FormData();
-      payload.append("cor", aircraftVals.value.cor);
-      payload.append("crs", aircraftVals.value.crs);
-      payload.append("coa", aircraftVals.value.coa);
-      payload.append("insurance_expiry", aircraftVals.value.insurance_expiry);
-      payload.append("insurance", aircraftVals.value.insurance);
-      payload.append("capacity", aircraftVals.value.capacity);
-      payload.append("registration", aircraftVals.value.registration);
-      payload.append("speed", aircraftVals.value.speed);
-      payload.append("age", aircraftVals.value.age);
-      payload.append("aircraftoperator", auth.user.id);
-      payload.append("aircraft_type", aircraftVals.value.aircraft_type);
-      payload.append("cor_expiry", aircraftVals.value.cor_expiry);
-      payload.append("crs_expiry", aircraftVals.value.crs_expiry);
-      payload.append("coa_expiry", aircraftVals.value.coa_expiry);
+    payload.append("cor", aircraftVals.value.cor);
+    payload.append("crs", aircraftVals.value.crs);
+    payload.append("coa", aircraftVals.value.coa);
+    payload.append("insurance_expiry", aircraftVals.value.insurance_expiry);
+    payload.append("insurance", aircraftVals.value.insurance);
+    payload.append("capacity", aircraftVals.value.capacity);
+    payload.append("registration", aircraftVals.value.registration);
+    payload.append("speed", aircraftVals.value.speed);
+    payload.append("age", aircraftVals.value.age);
+    payload.append("aircraftoperator", auth.user.id);
+    payload.append("aircraft_type", aircraftVals.value.aircraft_type);
+    payload.append("cor_expiry", aircraftVals.value.cor_expiry);
+    payload.append("crs_expiry", aircraftVals.value.crs_expiry);
+    payload.append("coa_expiry", aircraftVals.value.coa_expiry);
 
     for (let [key, value] of payload.entries()) {
         console.log(`${key}: ${value}`);
     }
 
-
-
     try {
-        const res  = await axios.post("aircrafts", payload, {
+        const res = await axios.post("aircrafts", payload, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },
         });
-      
+
         toast.success("Aircraft has been added");
         reload.value = !reload.value;
-
     } catch (error) {
-        console.log(error)
+        console.log(error);
         toast.error("An error occurred");
     }
 };
@@ -619,7 +614,7 @@ const handleDelete = (id) => {
 onMounted(getAircrafts);
 
 watch(reload, () => {
-  getAircrafts();
+    getAircrafts();
 });
 
 const showModal = (modalId) => {

@@ -1,7 +1,7 @@
 <template>
     <div
         :class="[
-            'flex flex-row justify-between items-center mb-2 rounded-lg p-1 mt-1 h-10 dark:text-slate-300 px-4',
+            'flex flex-row justify-between items-center mb-2 rounded-sm md:rounded-lg p-1 mt-1 h-10 dark:text-slate-300 px-4',
             isDark
                 ? ' bg-gradient-to-r from-slate-800 via-sky-950 to-blue-950'
                 : 'bg-slate-100',

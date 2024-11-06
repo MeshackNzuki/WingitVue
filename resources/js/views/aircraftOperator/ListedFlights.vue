@@ -15,6 +15,7 @@
                     ]"
                     title="Listed Flights (Available in the Booking Window)"
                     v-model:query="query"
+                    :rows="filteredFlights.length"
                 >
                     <template v-slot:search>
                         <input

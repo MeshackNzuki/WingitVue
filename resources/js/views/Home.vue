@@ -52,16 +52,12 @@
                                                     />
                                                 </div>
                                             </div>
-                                            <div
-                                                v-else
-                                                class="relative overflow-hidden bg-gold rounded-full gray-600"
-                                            >
+                                            <div v-else class="avatar">
                                                 <div
-                                                    class="size-10 rounded-full ring ring-third"
+                                                    class="ring-gold ring-[2px] ring-offset-base-100 w-7 mt-1 rounded-full"
                                                 >
                                                     <img
                                                         src="../assets/logo.png"
-                                                        alt="User Avatar"
                                                     />
                                                 </div>
                                             </div>

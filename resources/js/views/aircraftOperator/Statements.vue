@@ -12,6 +12,7 @@
                     ]"
                     title="Statements"
                     v-model:query="query"
+                    :rows="filteredFlights.length"
                 >
                     <template v-slot:search>
                         <input
@@ -30,16 +31,7 @@
                             >
                                 {{ flight.origin_airport.name }}
                             </td>
-                            <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
-                                {{ flight.destination_airport.name }}
-                            </td>
-                            <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
-                                {{ flight.price }}
-                            </td>
+
                             <td
                                 class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
                             >
@@ -49,6 +41,11 @@
                                 class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
                             >
                                 {{ formatFlightTime(flight.arrival_time) }}
+                            </td>
+                            <td
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
+                            >
+                                {{ flight.price }}
                             </td>
                             <td
                                 class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
