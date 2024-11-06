@@ -22,7 +22,7 @@
                         <div>
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
-                                    Full Name <sup class="text-red-500">*</sup>
+                                    Full Name
                                 </span>
                                 <input
                                     v-model="formVals.name"
@@ -39,7 +39,7 @@
                         <div>
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
-                                    Email <sup class="text-red-500">*</sup>
+                                    Email
                                 </span>
                                 <input
                                     v-model="formVals.email"
@@ -56,14 +56,14 @@
                         <div>
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
-                                    ID /Passport no.
-                                    <sup class="text-red-500">*</sup>
+                                    ID /Passport 
+                                   
                                 </span>
                                 <input
                                     v-model="formVals.id_number"
                                     type="email"
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4"
-                                    placeholder="Enter Your Full Name"
+                                    placeholder="Enter Passport no."
                                     required
                                 />
                             </label>
@@ -75,18 +75,19 @@
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Nationality
-                                    <sup class="text-red-500">*</sup>
+                                   
                                 </span>
-                                <CountryDropdown
+                                <CountryDropdown v-if="!auth.is_authenticated"
                                     v-model="formVals.nationality"
                                 />
+                                <span v-else>{{ formVals.nationality }}</span>
                             </label>
                         </div>
                         <div>
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Phone no.
-                                    <sup class="text-red-500">*</sup>
+                                   
                                 </span>
                                 <input
                                     v-model="formVals.phone"
@@ -117,7 +118,7 @@
                             </span>
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
-                                    Full Name <sup class="text-red-500">*</sup>
+                                    Full Name
                                 </span>
                                 <input
                                     :id="`namePass${index}`"
@@ -133,7 +134,7 @@
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Passport/ID
-                                    <sup class="text-red-500">*</sup>
+                                   
                                 </span>
                                 <input
                                     :id="`idNumber${index}`"
@@ -149,17 +150,14 @@
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Nationality
-                                    <sup class="text-red-500">*</sup>
+                                   
                                 </span>
                                 <span
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4 text-left"
                                 >
-                                    <CountryDropdown
-                                        :id="`nationality${index}`"
-                                        :name="`nationality${index}`"
-                                        v-model="
-                                            passengerData[index].nationality
-                                        "
+                                <!-- issue here -->
+                                <CountryDropdown
+                                    v-model="passengerData[index].nationality"
                                     />
                                 </span>
                             </label>
@@ -408,9 +406,7 @@
                         </label>
                         <input
                             type="text"
-                            @input="handleFormChange"
-                            name="phone"
-                            :value="session?.session?.user?.phone"
+                            v-model="formVals.mpesa_phone"
                             placeholder="Type here"
                             class="input input-bordered input-sm input-base-100 w-full w-xs"
                         />
@@ -445,6 +441,7 @@ const formVals = ref({
     id_number: auth.user?.id_number || "",
     nationality: auth.user?.nationality || "Kenya",
     phone: auth.user?.phone || "",
+    mpesa_phone: auth.user?.phone || "",
 });
 
 const passengerData = ref([]);
@@ -478,17 +475,17 @@ const pay = async () => {
 
     // Check for errors and process payment
 
-    if (totalAmount === 0) {
+    if (totalAmount.value === 0) {
         toast.info("No seats selected...");
         return;
     }
 
     try {
         const paymentResponse = await axios.post("initiate-mpesa", {
-            phone: formVals.value.phone,
-            amount: totalAmount,
+            phone: formVals.value.mpesa_phone,
+            amount: totalAmount.value,
             email: formVals.value.email,
-        });
+        }, {showLoader:true});
 
         if (paymentResponse.data.code === "success") {
             // Proceed with booking
@@ -520,6 +517,7 @@ const pay = async () => {
         }
     } catch (error) {
         toast.error("An error occurred. Please try again.");
+        console.log(error)
     }
 };
 

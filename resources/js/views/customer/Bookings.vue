@@ -1,13 +1,6 @@
 <template>
-    <div class="h-full">
-        <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4"></div>
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-4 text-black white"
-        >
-            <div
-                class="md:col-span-2 xl:col-span-3 mt-4 bg-white p-4 rounded-lg min-h-96"
-            >
-                <Table
+
+                <MainTable
                     :headers="[
                         'BOOKING DATE',
                         'FLIGHT NO.',
@@ -96,39 +89,29 @@
                             </td>
                         </tr>
                     </template>
-                </Table>
-            </div>
-        </div>
-    </div>
+                </MainTable>
+   
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from "vue";
 import { format } from "date-fns";
 import axios from "axios";
-import Table from "../../components/Tables/MainTable.vue";
+import MainTable from "../../components/Tables/MainTable.vue";
 
-export default {
-    setup() {
-        const booking = ref([]);
-        const searchQuery = ref("");
+    const booking = ref([]);
+    const searchQuery = ref("");
 
-        const getBookings = async () => {
-            const res = await axios.get("/client-booking");
-            booking.value = res.data;
-        };
+    const getBookings = async () => {
+        const res = await axios.get("/client-booking");
+        booking.value = res.data;
+    };
 
-        onMounted(() => {
-            getBookings();
-        });
+    onMounted(() => {
+        getBookings();
+    });
 
-        return {
-            booking,
-            searchQuery,
-            format,
-        };
-    },
-};
+   
 </script>
 
 <style scoped>

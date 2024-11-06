@@ -1,34 +1,12 @@
 <template>
     <div class="h-full">
-        <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
-            <!-- Recent Activities Placeholder -->
-        </div>
         <div class="w-full flex justify-center items-center">
-            <div class="min-h-screen mt-20 md:mt-40 md:w-1/2 max-w-screen-2xl">
-                <div class="w-full flex justify-end">
-                    <span
-                        @click="navigateToClient"
-                        class="bg-white p-1 rounded-full"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-6 h-6"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
-                    </span>
-                </div>
+            <div class="min-h-screen">
+                <div class="w-full flex justify-end"></div>
                 <div
-                    class="bg-white p-6 rounded-3xl flex flex-col justify-center items-center shadow-md w-full text-center"
+                    class="p-6 rounded-3xl flex flex-col justify-center items-center w-full text-center"
                 >
+                    <div class="flex items-center mb-6">
                     <form @submit.prevent="handleSubmit" class="space-y-4">
                         <span class="w-full flex justify-center">
                             <div class="avatar">
@@ -92,6 +70,7 @@
                             Save Changes
                         </button>
                     </form>
+                </div>
                 </div>
             </div>
         </div>

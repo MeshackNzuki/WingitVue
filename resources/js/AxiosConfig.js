@@ -13,10 +13,10 @@ axios.interceptors.request.use(
         const token = user?.token;
 
         // Show loader only if config.showLoader is not explicitly set to false
-        if (config.showLoader !== false) {
+      
             var loader = document.getElementById("loader");
             if (loader) loader.classList.remove("hidden");
-        }
+      
 
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
@@ -36,18 +36,16 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
     function (response) {
         // Hide loader only if config.showLoader is not explicitly set to false
-        if (response.config.showLoader !== false) {
+       
             var loader = document.getElementById("loader");
             if (loader) loader.classList.add("hidden");
-        }
+       
         return response;
     },
     function (error) {
-        // Hide loader in case of response error
-        if (error.config.showLoader !== false) {
+        // Hide loader in case of response error       
             var loader = document.getElementById("loader");
-            if (loader) loader.classList.add("hidden");
-        }
+            if (loader) loader.classList.add("hidden");       
         return Promise.reject(error);
     },
 );

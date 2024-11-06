@@ -3,7 +3,7 @@
         v-if="!login"
         ref="sidebar_id"
         :class="
-            'rounded-xl absolute left-1 top-1 bottom-1 dark:text-slate-300 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-lg  flex-wrap items-center justify-between z-10 py-4 w-64 px-6 ' +
+            'rounded-xl absolute left-1 top-1 overflow-scroll bottom-1 dark:text-slate-300 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-lg  flex-wrap items-center justify-between z-10 py-4 w-64 px-6 ' +
             (isDark
                 ? ' bg-gradient-to-r from-slate-800 via-sky-950 to-sky-950 '
                 : ' bg-gradient-to-r from-white via-slate-50 to-sky-50 ') +
@@ -87,7 +87,7 @@
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-user"></i>
+                                    <i class="pi pi-list"></i>
                                 </div>
                                 Listed Flights
                             </div>
@@ -100,7 +100,7 @@
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-reload"></i>
                                 </div>
                                 Trips
                             </div>
@@ -112,7 +112,7 @@
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-file"></i>
                                 </div>
                                 Statements
                             </div>
@@ -124,7 +124,7 @@
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-user"></i>
                                 </div>
                                 pilots
                             </div>
@@ -136,7 +136,7 @@
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-send"></i>
                                 </div>
                                 Aircrafts
                             </div>
@@ -148,7 +148,7 @@
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-inbox"></i>
                                 </div>
                                 Messages
                             </div>
@@ -160,7 +160,7 @@
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-bell"></i>
                                 </div>
                                 Notifications
                             </div>
@@ -172,7 +172,7 @@
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
                             >
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-user"></i>
                                 </div>
                                 Account
                             </div>
