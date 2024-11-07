@@ -108,12 +108,12 @@ onMounted(() => {
     updateApiLink("Hello!");
     const intervalId = setInterval(() => {
         menu.value = true;
-    }, 3000);
+    }, 30000);
 
-    // setTimeout(() => {
-    //     menu.value = false;
-    //     clearInterval(intervalId);
-    // }, 40000);
+    setTimeout(() => {
+        menu.value = false;
+        clearInterval(intervalId);
+    }, 40000);
 });
 
 // Helper function to update the WhatsApp link
