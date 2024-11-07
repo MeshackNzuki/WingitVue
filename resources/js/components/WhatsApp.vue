@@ -52,12 +52,12 @@
                             type="text"
                             v-model="text"
                             placeholder="Reply to this message..."
-                            class="flex-grow border border-gray-300 rounded-full py-1 px-2 focus:outline-none focus:ring focus:ring-green-300"
+                            class="flex-1 border border-gray-300 rounded-full py-1 px-2 focus:outline-none focus:ring focus:ring-teal-700"
                         />
                         <a
                             :href="apilink"
                             target="_blank"
-                            class="ml-2 flex items-center justify-center w-12 h-12 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-200"
+                            class="ml-1 flex items-center justify-center w-12 h-12 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-200"
                         >
                             <i class="pi pi-send"></i>
                         </a>
@@ -108,12 +108,12 @@ onMounted(() => {
     updateApiLink("Hello!");
     const intervalId = setInterval(() => {
         menu.value = true;
-    }, 6000);
+    }, 3000);
 
-    setTimeout(() => {
-        menu.value = false;
-        clearInterval(intervalId);
-    }, 18000);
+    // setTimeout(() => {
+    //     menu.value = false;
+    //     clearInterval(intervalId);
+    // }, 40000);
 });
 
 // Helper function to update the WhatsApp link
