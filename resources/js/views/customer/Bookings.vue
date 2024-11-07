@@ -118,7 +118,12 @@
                                 {{
                                     bookingItem.flight.price * bookingItem.seats
                                 }}
-                                on flight {{ bookingItem.flight.flight_no }}
+                                on flight {{ bookingItem.flight.flight_no }} {
+                                {{ bookingItem.flight.origin_airport?.name }} -
+                                {{
+                                    bookingItem.flight.destination_airport
+                                        ?.name
+                                }}}
                             </div>
                             <div class="flex flex-col md:flex-row md:gap-4">
                                 <div></div>
@@ -128,12 +133,25 @@
                         <div
                             class="modal-action flex justify-center items-center"
                         >
-                            <button
-                                type="submit"
-                                class="btn bg-emerald-400 text-white"
-                            >
-                                Pay via Mpesa
-                            </button>
+                            <form method="dialog">
+                                <input
+                                    type="mobile"
+                                    class="input"
+                                    v-model="mpesa_phone"
+                                />
+                                <button
+                                    type="submit"
+                                    @click="
+                                        repayment(
+                                            bookingItem.flight.price *
+                                                bookingItem.seats,
+                                        )
+                                    "
+                                    class="btn bg-emerald-400 text-white"
+                                >
+                                    Pay via Mpesa
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </dialog>
@@ -148,8 +166,11 @@ import { format, isBefore, subHours } from "date-fns";
 import axios from "axios";
 
 import MainTable from "../../components/Tables/MainTable.vue";
+import { authStore } from "../../stores/authStore";
 
+const { user } = authStore();
 const booking = ref([]);
+const mpesa_phone = ref(user.phone);
 const searchQuery = ref("");
 
 const getBookings = async () => {
@@ -159,6 +180,27 @@ const getBookings = async () => {
 const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
 };
+
+const repayment = async (amount) => {
+    const res = await axios.post(
+        "initiate-mpesa",
+        {
+            phone: mpesa_phone.value,
+            amount: amount,
+        },
+        { showLoader: true },
+    );
+    if (paymentResponse.data.code === "success") {
+        // Proceed with booking
+        Swal.fire({
+            text: "Once your payment is processed, you'll receive an email with your ticket details. Thank you for choosing Wingit!",
+            icon: "success",
+        });
+    } else {
+        toast.error("Please confirm Mpesa number before retrying.");
+    }
+};
+
 onMounted(() => {
     getBookings();
 });

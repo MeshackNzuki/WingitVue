@@ -99,10 +99,12 @@
             <!-- Sidebar Navigation -->
             <transition name="fade">
                 <div
+                    ref="sidebar_id"
                     v-if="sidebarOpen"
-                    class="absolute bg-white bg-opacity-80 h-screen w-full p-4 mt-14 shadow-lg flex flex-col justify-start text-md z-20"
+                    class="absolute bg-white bg-opacity-90 h-screen w-70 rounded-md p-4 mt-14 shadow-lg flex flex-col justify-start text-md z-20"
                 >
                     <div
+                        @click="() => toggleSidebar()"
                         class="border-third ml-5 flex flex-col justify-start pl-1"
                     >
                         <router-link
@@ -129,6 +131,7 @@ import { useRoute, useRouter } from "vue-router";
 import Logo from "../../assets/logo.svg";
 import Logo2 from "../../assets/logo.png";
 import { authStore } from "../../stores/authStore"; // Adjust import according to your project structure
+import { onClickOutside } from "@vueuse/core";
 
 const route = useRoute();
 const router = useRouter();
@@ -168,6 +171,13 @@ const logout = async () => {
 // Handle sidebar toggle
 const toggleSidebar = () => {
     sidebarOpen.value = !sidebarOpen.value;
+
+    if (sidebarOpen.value === true) {
+        onClickOutside("sidebar_id", (event) => {
+            console.log("clicked out");
+            toggleSidebar();
+        });
+    }
 };
 
 // Handle scroll event

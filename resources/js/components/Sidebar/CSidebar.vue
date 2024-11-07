@@ -10,7 +10,6 @@
             (mainStore.sidebarOpen ? ' flex ' : '   hidden ')
         "
     >
-        {{ sidebarOpen }}
         <div
             class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center space-y-4 w-full mx-auto"
         >
@@ -523,7 +522,7 @@ onMounted(() => {
     );
 
     if (isMobile.value) {
-        onClickOutside(sidebar_id, (event) => {
+        onClickOutside("sidebar_id", (event) => {
             mainStore.closeSidebar();
         });
     }
