@@ -74,7 +74,7 @@
                 <div class="w-full mt-8 flex justify-center">
                     <div
                         v-if="mainStore.flights.length > 0"
-                        class="flex flex-col grid grid-cols-3 gap-4"
+                        class="flex flex-col md:grid grid-cols-3 gap-4"
                     >
                         <div v-for="(flight, index) in mainStore.flights">
                             <div
@@ -421,7 +421,10 @@ import { ref, onMounted } from "vue";
 import "vue-select/dist/vue-select.css";
 import Select from "vue-select";
 import axios from "axios";
+import { useMainStore } from "../stores";
+import { format } from "date-fns";
 
+const mainStore = useMainStore();
 const seats = ref(1);
 const startDate = ref(null);
 const airportOptions = ref([]);
@@ -451,6 +454,7 @@ const getOptions = async () => {
     }));
     airportOptions.value = options;
 };
+const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
 onMounted(() => {
     getOptions();
 });

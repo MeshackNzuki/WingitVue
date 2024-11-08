@@ -24,7 +24,7 @@
                         />
                     </label>
                     <router-link
-                        to="/search-flight"
+                        to="/flight-search"
                         class="mt-2.5 flex flex-row"
                     >
                         <i class="pi pi-search text-gray-700 text-2xl"></i>
