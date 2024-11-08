@@ -78,7 +78,11 @@
                     </div>
                 </div>
 
-                <button @click="toggleSidebar" class="lg:hidden ml-2">
+                <button
+                    v-if="!sidebarOpen"
+                    @click="toggleSidebar"
+                    class="lg:hidden ml-2"
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -94,17 +98,33 @@
                         />
                     </svg>
                 </button>
+                <button v-else @click="toggleSidebar" class="lg:hidden ml-2">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-7 h-7"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18 18 6M6 6l12 12"
+                        />
+                    </svg>
+                </button>
             </div>
 
             <!-- Sidebar Navigation -->
             <transition name="fade">
                 <div
+                    @click="() => toggleSidebar()"
                     ref="sidebar_id"
                     v-if="sidebarOpen"
                     class="absolute bg-white bg-opacity-90 h-screen w-70 rounded-md p-4 mt-14 shadow-lg flex flex-col justify-start text-md z-20"
                 >
                     <div
-                        @click="() => toggleSidebar()"
                         class="border-third ml-5 flex flex-col justify-start pl-1"
                     >
                         <router-link
@@ -171,13 +191,6 @@ const logout = async () => {
 // Handle sidebar toggle
 const toggleSidebar = () => {
     sidebarOpen.value = !sidebarOpen.value;
-
-    if (sidebarOpen.value === true) {
-        onClickOutside("sidebar_id", (event) => {
-            console.log("clicked out");
-            toggleSidebar();
-        });
-    }
 };
 
 // Handle scroll event

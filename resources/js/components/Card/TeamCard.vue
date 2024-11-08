@@ -1,28 +1,37 @@
 <template>
     <div
-        class="w-full bg-gray-50 rounded-2xl p-2 md-p-12 flex flex-col justify-center items-center"
+        class="w-full bg-gray-50 rounded-2xl p-6 md:p-12 flex flex-col justify-center items-center shadow-md"
     >
         <div class="mb-4 relative">
+            <!-- Rounded image -->
             <img
                 width="100"
                 height="100"
-                class="object-center object-cover rounded-full h-36 w-36"
                 :src="imageSrc"
                 :alt="name"
+                class="object-cover rounded-full h-36 w-36"
             />
         </div>
         <div class="text-center">
             <p class="text-xl text-gray-800 mb-1">{{ name }}</p>
             <p class="text-base text-gray-400 font-normal">{{ title }}</p>
         </div>
-        <div>
-            {{ description }}
+        <!-- Toggle description with "Read More" -->
+        <div class="text-gray-700 mt-2">
+            {{ showFullDescription ? description : truncatedDescription }}
+            <span
+                v-if="description.length > 70"
+                class="text-blue-500 cursor-pointer ml-2"
+                @click="toggleDescription"
+            >
+                {{ showFullDescription ? "Read Less" : "Read More" }}
+            </span>
         </div>
     </div>
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, ref, computed } from "vue";
 
 const props = defineProps({
     name: String,
@@ -30,8 +39,29 @@ const props = defineProps({
     imageSrc: String,
     description: String,
 });
+
+// Truncated description
+const truncatedDescription = computed(() =>
+    props.description.length > 70
+        ? props.description.slice(0, 70) + "..."
+        : props.description,
+);
+
+// Show full description toggle
+const showFullDescription = ref(false);
+
+const toggleDescription = () => {
+    showFullDescription.value = !showFullDescription.value;
+};
 </script>
 
 <style scoped>
-/* Add any specific styles for the TeamMember component here */
+/* Additional styling for the card */
+.rounded-2xl {
+    overflow: hidden;
+}
+
+.shadow-md {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
 </style>

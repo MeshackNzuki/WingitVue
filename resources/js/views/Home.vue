@@ -211,7 +211,7 @@
                                                                     >
                                                                         <g
                                                                             id="ic_fluent_airplane_24_regular"
-                                                                            fill="#ffffff"
+                                                                            fill="#FBD0A0"
                                                                             fill-rule="nonzero"
                                                                         >
                                                                             <path
@@ -338,7 +338,7 @@
                                                         </button>
                                                         <label
                                                             for="Category"
-                                                            class="block mb-2 text-md text-gray-800"
+                                                            class="block mb-2 text-md text-gray-800 mt-1"
                                                         >
                                                             Seats
                                                         </label>
@@ -719,7 +719,7 @@
             </section>
         </main>
         <section class="py-6 bg-[url('../assets/bg.jpg')]">
-            <h2 class="font-semibold my-12">Why Wingit</h2>
+            <h2 class="font-semibold my-6 text-2xl">Why Wingit</h2>
 
             <div
                 class="grid md:grid-cols-3 max-w-screen-lg mx-auto gap-10 mt-16 px-5"
@@ -856,7 +856,7 @@
         </section>
 
         <section class="my-6">
-            <h2 class="font-semibold my-12">Popular Destinations</h2>
+            <h2 class="font-semibold my-4 text-3xl">Popular Destinations</h2>
             <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
                 <div class="-m-1 flex flex-wrap md:-m-2">
                     <div class="flex w-1/2 flex-wrap">
@@ -920,6 +920,47 @@
                 </div>
             </div>
         </section>
+        <section class="mx-2 shadow-md rounded-lg overflow-hidden">
+            <div
+                class="items-center justify-between py-10 px-5 backdrop-blur shadow-2xl glass rounded-lg mx-auto text-gray-50 text-center"
+            >
+                <div class="px-2 -mt-6">
+                    <div class="text-center">
+                        <h1
+                            class="font-normal text-3xl text-gray-800 leading-loose my-3 w-full"
+                        >
+                            <span>Comfort and convenience on the fly</span>
+                        </h1>
+                        <div class="w-full text-center">
+                            <p class="text-gray-700">
+                                By registering an account, you will be the first
+                                to receive news of our special fares and
+                                promotions.
+                            </p>
+                            <form
+                                @submit.prevent="handleSubscription"
+                                class="my-12"
+                            >
+                                <div
+                                    class="max-w-sm mx-auto p-1 pr-0 flex items-center"
+                                >
+                                    <input
+                                        type="email"
+                                        v-model="subscriptionMail"
+                                        placeholder="Email address"
+                                        class="flex-1 appearance-none rounded-full text-center shadow border p-1 text-gray-700 mr-2 focus:outline-none"
+                                    />
+                                    <BaseButton
+                                        :action="handleSubscription"
+                                        label="Subscribe"
+                                    />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </section>
 </template>
 
@@ -932,14 +973,24 @@ import { VueMarqueeSlider } from "vue3-marquee-slider";
 import Carousel from "primevue/carousel";
 import SplitButton from "../components/Buttons/SplitButton.vue";
 import CallToAction from "../components/Buttons/CallToAction.vue";
+import BaseButton from "../components/Buttons/BaseButton.vue";
+import { toast } from "vue3-toastify";
 
 const mainStore = useMainStore();
+const subscriptionMail = ref("");
 
 const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
 
 const exo2 = {
     className: "your-exo-class-name",
 };
+
+const handleSubscription = (e) => {
+    // Add subscription logic here, such as sending subscriptionMail to an API
+    console.log("Subscribed with:", subscriptionMail.value);
+    toast.info("Thank you");
+};
+
 const responsiveOptions = ref([
     {
         breakpoint: "1400px",

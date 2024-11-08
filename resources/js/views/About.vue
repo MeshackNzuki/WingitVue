@@ -113,37 +113,37 @@
       <TeamCard
         name="Ryan Outram"
         title="Founder"
-        imageSrc="../assets/team/ryan.png"
+        imageSrc="https://wingit.co.ke/resources/js/assets/team/ryan.png"
         description="Ryan has a keen sense of adventure and especially enjoys the challenges of flying off the beaten track to remote locations around Kenya and the rest of East Africa. Having spent his childhood on a farm on the slopes of Mt. Kenya, staring skyward at aircraft flying to and fro, he followed his dream of flying, and now runs his own private charter company, Rift Valley Aviation, which has partnered with Wingit to fly you on your next adventure. Ryan is a passionate outdoors adventurist, active conservationist, water skier, kite surfer and an enthusiastic pilot who loves to see the excited reaction of his passengers traveling by air across Kenya's magnificent landscapes."
       />
       <TeamCard
         name="Ngugi Kiuna"
         title="Founder"
-        imageSrc="../assets/team/ngugi.png"
+        imageSrc="https://wingit.co.ke/resources/js/assets/team/ngugi.png"
         description="Ngugi is a passionate aviator, investor, explorer and lover of all things (fast) and outdoors. Ngugi studied a degree in Chemical Engineering and holds a PhD in composite structures for aerospace applications. After completing his PhD he went into the world of Investment Banking and worked for several global investment banks for 17 yrs before finally deciding to come back to his roots in Kenya and pursue more entrepreneurial opportunities. Keen to satisfy his passion for aviation and exploring new places, he started learning how to fly in 2007 and now holds a Commercial Pilots license and enjoys flying his family and friends in his “time capsule” to beautiful places all around the continent. Ngugi is keen to “democratise access to personal aviation”!"
       />
       <TeamCard
         name="Kui Mbugua"
         title="Partner"
-        imageSrc="../assets/team/kui.png"
+        imageSrc="https://wingit.co.ke/resources/js/assets/team/kui.png"
         description="Born in Kenya, Kui is passionate about disruptive business innovation and growth that provides access to economic opportunities that propel the African continent forward. A keen traveler, she believes that opening up the interior of the continent through aviation aligns perfectly with increasing the economic exposure and materialising economic benefit to so many regions. Kui was recently recognised as one of the Top 25 Women in Digital in Kenya and with a background in international business and commercial law, she has been with Uber since September 2019 where she was Strategy and Planning Lead for Sub-Saharan Africa for 2 years before stepping into her current role as General Manager. She also sits on the global board of the Women@Uber global ERG where she promotes the advancement of Women@Uber through the development of strong networks, access to leadership, creation of development and learning opportunities and facilitation of leadership events and peer mentoring. Prior to that, Kui worked at McKinsey &Co. as a management consultant where she served clients across Africa (with exposure to Asian and European markets) in multiple industries (consumer, airlines, energy, telco, agriculture and logistics) with a focus on growth and operations strategy and execution and has broad industry experience in customer experience and support strategy."
       />
       <TeamCard
         name="Nzuki Meshack"
         title="Partner"
-        imageSrc="../assets/team/mesh.png"
+        imageSrc="https://wingit.co.ke/resources/js/assets/team/mesh.png"
         description="Meshack is a passionate and skilled software developer with over six years of experience in the industry. From an early age, Meshack's curiosity and love for technology sparked a lifelong interest in coding and problem-solving. With a solid foundation in computer science, Meshack embarked on a journey to turn this passion into a successful career. Throughout his professional journey, Meshack has had the opportunity to work on a wide range of projects, spanning from web applications to mobile apps and everything in between. He has honed his expertise in various programming languages, including Python, JavaScript, and Java, and have a solid understanding of modern development frameworks and tools. Meshack is constantly exploring new technologies and currently working full time at Wingit."
       />
       <TeamCard
         name="Ian Butich"
         title="Partner"
-        imageSrc="../assets/team/ian.png"
+        imageSrc="https://wingit.co.ke/resources/js/assets/team/ian.png"
         description="Ian is a passionate software developer specialising in web development. With over 6 years of experience, he has excelled in front-end development. His expertise extends to back-end technologies."
       />
       <TeamCard
         name="Caroline Kagendo"
         title="Partner"
-        imageSrc="../assets/team/carol.png"
+        imageSrc="https://wingit.co.ke/resources/js/assets/team/carol.png"
         description="Caroline is an independent consultant at Nkemi Consulting, a Strategic Brand, Marketing and Communication advisory firm she set up in 2014. She’s worked with companies at different stages from startup to multinational, in product development, brand management and marketing strategy focusing on commercial outcomes; plus driving communication strategies, plans and campaign development. Her consulting career comes with a backdrop of 20 years’ experience in both agency leadership positions and mainstream marketing roles, the most recent of which were as General Manager of New Business at Squad Digital, Agency Lead at Grey Group South East Africa in charge of the Procter & Gamble portfolio of brands ensuring marketing delivery across Kenya, Uganda, Tanzania, Ethiopia, Zimbabwe and Angola plus Strategy & Business Development Director at Ogilvy & Mather. Caroline has a degree in Communications from Daystar University."
       />
       
