@@ -56,8 +56,7 @@
                         <div>
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
-                                    ID /Passport 
-                                   
+                                    ID /Passport
                                 </span>
                                 <input
                                     v-model="formVals.id_number"
@@ -75,9 +74,9 @@
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Nationality
-                                   
                                 </span>
-                                <CountryDropdown v-if="!auth.is_authenticated"
+                                <CountryDropdown
+                                    v-if="!auth.is_authenticated"
                                     v-model="formVals.nationality"
                                 />
                                 <span v-else>{{ formVals.nationality }}</span>
@@ -87,7 +86,6 @@
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Phone no.
-                                   
                                 </span>
                                 <input
                                     v-model="formVals.phone"
@@ -134,7 +132,6 @@
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Passport/ID
-                                   
                                 </span>
                                 <input
                                     :id="`idNumber${index}`"
@@ -150,14 +147,15 @@
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Nationality
-                                   
                                 </span>
                                 <span
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4 text-left"
                                 >
-                                <!-- issue here -->
-                                <CountryDropdown
-                                    v-model="passengerData[index].nationality"
+                                    <!-- issue here -->
+                                    <CountryDropdown
+                                        v-model="
+                                            passengerData[index].nationality
+                                        "
                                     />
                                 </span>
                             </label>
@@ -480,44 +478,43 @@ const pay = async () => {
         return;
     }
 
-    try {
-        const paymentResponse = await axios.post("initiate-mpesa", {
+    const paymentResponse = await axios.post(
+        "initiate-mpesa",
+        {
             phone: formVals.value.mpesa_phone,
             amount: totalAmount.value,
             email: formVals.value.email,
-        }, {showLoader:true});
+        },
+        { showLoader: true },
+    );
 
-        if (paymentResponse.data.code === "success") {
-            // Proceed with booking
-            const bookingResponse = await axios.post("/booking", {
-                flight_id: mainStore.selectedFlight.id,
-                seats: mainStore.totalSeats,
-                guest_name: formVals.value.name,
-                guest_email: formVals.value.email,
-                guest_phone: formVals.value.phone,
-                id_number: formVals.value.id_number,
-                nationality: formVals.value.nationality,
-            });
+    if (paymentResponse.data.code === "success") {
+        // Proceed with booking
+        const bookingResponse = await axios.post("/booking", {
+            flight_id: mainStore.selectedFlight.id,
+            seats: mainStore.totalSeats,
+            guest_name: formVals.value.name,
+            guest_email: formVals.value.email,
+            guest_phone: formVals.value.phone,
+            id_number: formVals.value.id_number,
+            nationality: formVals.value.nationality,
+        });
 
-            await axios.post(
-                `/passengers/${bookingResponse.data.booking.id}`,
-                passengerData.value,
-            );
+        await axios.post(
+            `/passengers/${bookingResponse.data.booking.id}`,
+            passengerData.value,
+        );
 
-            Swal.fire({
-                text: "Once your payment is processed, you'll receive an email with your ticket details. Thank you for choosing Wingit!",
-                icon: "success",
-            });
+        Swal.fire({
+            text: "Once your payment is processed, you'll receive an email with your ticket details. Thank you for choosing Wingit!",
+            icon: "success",
+        });
 
-            setTimeout(() => {
-                router.push("/");
-            }, 19000);
-        } else {
-            toast.error("Please confirm Mpesa number before retrying.");
-        }
-    } catch (error) {
-        toast.error("An error occurred. Please try again.");
-        console.log(error)
+        setTimeout(() => {
+            router.push("/");
+        }, 19000);
+    } else {
+        toast.error("Please confirm Mpesa number before retrying.");
     }
 };
 
