@@ -3,7 +3,7 @@
         v-if="!login"
         ref="sidebar_id"
         :class="
-            'rounded-xl absolute left-1 top-1 overflow-scroll bottom-1 dark:text-slate-300 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-lg  flex-wrap items-center justify-between z-10 py-4 w-64 px-6 ' +
+            'rounded-xl absolute left-1 top-1 overflow-scroll bottom-1 dark:text-slate-300 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-lg  flex-wrap items-center justify-between z-10 py-4 w-64 px-6 transition-all ease-in-out duration-300 ' +
             (isDark
                 ? ' bg-gradient-to-r from-slate-800 via-sky-950 to-sky-950 '
                 : ' bg-gradient-to-r from-white via-slate-50 to-sky-50 ') +
