@@ -4,6 +4,7 @@
     >
         <div class="mb-4 relative">
             <!-- Rounded image -->
+
             <img
                 width="100"
                 height="100"
@@ -21,7 +22,7 @@
             {{ showFullDescription ? description : truncatedDescription }}
             <span
                 v-if="description.length > 70"
-                class="text-blue-500 cursor-pointer ml-2"
+                class="text-sky-500 cursor-pointer ml-2"
                 @click="toggleDescription"
             >
                 {{ showFullDescription ? "Read Less" : "Read More" }}
@@ -54,14 +55,3 @@ const toggleDescription = () => {
     showFullDescription.value = !showFullDescription.value;
 };
 </script>
-
-<style scoped>
-/* Additional styling for the card */
-.rounded-2xl {
-    overflow: hidden;
-}
-
-.shadow-md {
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-</style>

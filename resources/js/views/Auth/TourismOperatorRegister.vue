@@ -1,7 +1,7 @@
 <template>
     <div>
         <div
-            className="min-h-screen flex flex-col items-center justify-ceter bg-base p-2"
+            className="min-h-screen flex flex-col items-center justify-ceter bg-[url('../assets/searchpg.jpg')] p-2"
         >
             <div
                 className="w-full flex justify-center mt-24 mb-6  md:mt-32 text-gray-50 font-medium text-lg md:mb-10 uppercase"
@@ -9,7 +9,7 @@
                 Tourism operator
             </div>
             <div
-                className="relative flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-4 lg:px-4 py-2 md:py-4 rounded-md w-full  max-w-[400px]"
+                className="relative flex flex-col bg-white bg-opacity-85 shadow-md px-4 sm:px-6 md:px-4 lg:px-4 py-2 md:py-4 rounded-md w-full  max-w-[400px]"
             >
                 <div
                     className="font-bold self-center text-xl sm:text-2xl uppercase text-basemt-5"

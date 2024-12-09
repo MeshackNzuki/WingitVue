@@ -518,7 +518,9 @@
                     <div
                         className="w-full h-full fixed top-0 left-0 z-[-1] "
                     ></div>
-                    Your amazing experience powers us
+                    <h2 class="font-semibold font-sans my-6 text-2xl">
+                        Your amazing experience powers us
+                    </h2>
                 </span>
                 <div class="grid grid-flow-row auto-rows-max">
                     <div>
@@ -719,7 +721,7 @@
             </section>
         </main>
         <section class="py-6 bg-[url('../assets/bg.jpg')]">
-            <h2 class="font-semibold my-6 text-2xl">Why Wingit</h2>
+            <h2 class="font-semibold font-sans my-6 text-2xl">Why Wingit</h2>
 
             <div
                 class="grid md:grid-cols-3 max-w-screen-lg mx-auto gap-10 mt-16 px-5"
@@ -856,9 +858,40 @@
         </section>
 
         <section class="my-6">
-            <h2 class="font-semibold my-4 text-3xl">Popular Destinations</h2>
+            <h2 class="font-semibold my-4 text-3xl font-sans">
+                Popular Destinations
+            </h2>
             <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
-                <div class="-m-1 flex flex-wrap md:-m-2">
+                <div class="flex">
+                    <vue-marquee-slider
+                        id="marquee-slider-space"
+                        numVisible="3"
+                        :space="60"
+                        :speed="19000"
+                        :loop="true"
+                        pauseOnHover
+                    >
+                        <div
+                            v-for="destination in destinations"
+                            :key="destination.name"
+                            class="relative mb-14"
+                        >
+                            <router-link to="listed-flights" class="">
+                                <img
+                                    :src="getImagePath(destination.image)"
+                                    :alt="destination.name"
+                                    class="h-32 rounded-full w-32 object-cover mix-blend-overlay"
+                                />
+                                <span
+                                    class="text-center mt-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-50 hover:text-black hover:bg-gold px-4 py-1 rounded-full underline underline-offset-4 hover:shadow-lg transition duration-350 hover:scale-110"
+                                >
+                                    {{ destination.name }}
+                                </span>
+                            </router-link>
+                        </div>
+                    </vue-marquee-slider>
+                </div>
+                <div class="-m-1 flex flex-wrap md:-m-2 mt-24">
                     <div class="flex w-1/2 flex-wrap">
                         <div
                             class="w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200"

@@ -4,10 +4,10 @@
             <Header />
         </section>
         <div
-            class="min-h-screen flex flex-col items-center justify-center bg-base p-2"
+            class="min-h-screen flex flex-col items-center justify-center bg-[url('../assets/searchpg.jpg')] p-2"
         >
             <div
-                class="relative flex flex-col bg-white shadow-md px-4 lg:px-8 py-2 mt-16 w-full lg:max-w-[420px] rounded-lg"
+                class="relative flex flex-col bg-white bg-opacity-85 shadow-md px-4 lg:px-8 py-2 mt-16 w-full lg:max-w-[420px] rounded-lg"
             >
                 <div
                     class="font-bold self-center text-xl sm:text-l uppercase text-base mt-3"

@@ -33,7 +33,7 @@ onMounted(() => {
     </div>
 
     <div
-        class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden"
+        class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden font-"
         :class="mainStore.sidebarOpen && isProtectedRoute ? 'ms-64 p-4' : ''"
     >
         <div>

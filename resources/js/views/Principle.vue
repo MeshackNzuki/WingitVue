@@ -1,6 +1,5 @@
 <template>
-    <div class="">
- 
+    <div class=""> 
       <div class="bg-[url('../assets/hiwr.jpg')] h-[350px] md:h-[600px] lg:h-[750px] bg-fixed bg-cover bg-no-repeat md:bg-cover bg-center relative z-[]">
         <div class="h-[350px] md:h-[600px] lg:h-[750px] flex justify-start relative bg-slate-900 bg-opacity-25 z-[-1]">
           <div class="bg-blck p-1 rounded-lg md:m-10 ml-2 mb-5 text-2xl md:text-4xl text-gray-800 lg:text-gray-50 font-semibold absolute bottom-28 z-10 left-5"></div>
@@ -11,7 +10,7 @@
           <div class="md:mx-16 mt-8 flex justify-center">
             <div class="p-2 py-6 max-w-[70rem] text-left w-full">
               <h1>
-                <span class="text-second uppercase text-2xl">{{ exo2 }}</span>
+                <span class="text-second uppercase text-2xl">How Wingit Works</span>
               </h1>
               <p class="mb-2 mt-4">
                 <span>Wingit</span> aims to capitalise on a significant percentage of charter flights in Kenya that remain unutilised either because the aircraft is heading back to base empty or to do a pick-up empty. We call these empty legs “dead legs”. Wingit now offers the platform where our users can book seats at a significantly reduced rate on empty aircraft depending on their desired routing. Wingit does not own or operate any of the aircraft directly; instead, it has a network of aircraft registered to the platform by various aviation operators.
@@ -30,7 +29,7 @@
       <section class="text-center snap-center relative">
         <main class="flex flex-col items-center justify-center">
           <section class="flex flex-col w-full bg-cover bg-fixed bg-center flex justify-center items-center bg-[url('/about.jpg')]">
-            <div class="relative flex flex-col w-full flex justify-center items-center bg-slate-900 bg-opacity-25">
+            <div class="relative flex flex-col w-full flex justify-center items-center bg-slate-300 bg-opacity-25">
               <div class="text-left px-4 bg-transparent max-w-screen-2xl">
                 <div class="my-4 md:grid md:grid-cols-2 md:gap-4 items-center md:p-20">
                   <div class="rounded-md m-2 mr-2 py-3 px-4 bg-white bg-opacity-90 md:rounded-bl-3xl md:rounded-tl-3xl md:rounded-tr-xl text-gray-800 shadow-md">
@@ -88,23 +87,4 @@
 
     </div>
   </template>
-  
-  <script>
-  import { ref } from 'vue';
-  
-  export default {
-    components: {
-      Header,
-      Footer,
-    },
-    setup() {
-      const exo2 = ref('How Wingit works');
-      return { exo2 };
-    },
-  };
-  </script>
-  
-  <style scoped>
-  /* Add any necessary styles here */
-  </style>
   

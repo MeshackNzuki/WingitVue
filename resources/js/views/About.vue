@@ -75,7 +75,7 @@
                                 class="text-left bg-transparent max-w-screen-2xl px-4"
                             >
                                 <span
-                                    class="text-gray-50 md:text-5xl font-semibold mb-4"
+                                    class="text-gray-50 md:text-5xl font-semibold mb-4 font-serif"
                                 >
                                     <div>Local Travel Reimagined</div>
                                 </span>
@@ -156,7 +156,7 @@
       <div class="flex justify-center items-center py-5">
         <div>
           <p>
-            <span class="exo2">{{ 'Discover Kenya, Your Way' }}</span>
+            <span class="font-serif font-bold">{{ 'Discover Kenya, Your Way' }}</span>
             <p class="my-4">
               Embark on a journey through the scenic landscapes of Kenya. From the savannas to the coast, redefine your travel experience with us and explore the beauty of Kenya like never before.
             </p>

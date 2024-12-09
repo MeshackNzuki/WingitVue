@@ -1,10 +1,10 @@
 <template>
     <div>
         <div
-            class="min-h-screen flex flex-col items-center justify-center bg-base p-2"
+            class="min-h-screen flex flex-col items-center justify-center bg-[url('../assets/searchpg.jpg')] p-2"
         >
             <div
-                class="relative flex flex-col bg-slate-50 shadow-md px-4 mb-6 mt-24 sm:px-6 md:px-32 lg:px-8 py-2 md:py-4 rounded-lg w-full max-w-[500px]"
+                class="relative flex flex-col bg-slate-50 bg-opacity-85 shadow-md px-4 mb-6 mt-24 sm:px-6 md:px-32 lg:px-8 py-2 md:py-4 rounded-lg w-full max-w-[500px]"
             >
                 <div
                     class="font-bold self-center text-xl sm:text-2xl uppercase text-base"

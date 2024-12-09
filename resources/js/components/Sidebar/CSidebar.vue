@@ -49,7 +49,7 @@
                 </ul>
             </div>
             <!-- Admin -->
-            <div v-if="route.path.includes('/tourism-operator')" class="mt-0">
+            <div v-if="route.path.startsWith('/tourism-operator')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
@@ -192,7 +192,7 @@
                     </nav>
                 </div>
             </div>
-            <div v-if="route.path.includes('/customer')" class="mt-0">
+            <div v-if="route.path.startsWith('/customer')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
@@ -276,7 +276,10 @@
                     </nav>
                 </div>
             </div>
-            <div v-if="route.path.includes('/aircraft-operator')" class="mt-0">
+            <div
+                v-if="route.path.startsWith('/aircraft-operator')"
+                class="mt-0"
+            >
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav
                         class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
@@ -447,7 +450,7 @@
                     </nav>
                 </div>
             </div>
-            <div v-if="route.path.includes('/user/profile')">
+            <div v-if="route.path.startsWith('/user/profile')">
                 <router-link to="/">
                     <div
                         role="button"
