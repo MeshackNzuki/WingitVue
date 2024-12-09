@@ -49,7 +49,7 @@ onMounted(() => {
                 </div>
             </router-view>
             <Footer v-if="!isProtectedRoute" />
-            <WhatsApp />
+            <WhatsApp v-if="route.path == '/'" />
         </div>
     </div>
 </template>
