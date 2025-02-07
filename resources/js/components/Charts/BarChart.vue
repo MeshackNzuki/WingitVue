@@ -1,9 +1,5 @@
 <template>
-    <Bar
-        class="bg-white rounded-lg shadow-lg m-2 dark:bg-slate-300 text-white"
-        :data="data"
-        :options="options"
-    />
+    <Bar class="bg-white rounded-lg shadow-lg m-2 dark:bg-slate-300 text-white" :data="data" :options="options" />
 </template>
 
 <script lang="ts">
@@ -51,7 +47,7 @@ export default {
                 ],
                 datasets: [
                     {
-                        label: "Students",
+                        label: "Anual analysis",
                         backgroundColor: "#0ea5e9",
                         data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
                     },

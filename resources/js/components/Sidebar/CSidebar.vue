@@ -1,50 +1,36 @@
 <template>
-    <nav
-        v-if="!login"
-        ref="sidebar_id"
-        :class="
-            'rounded-xl absolute left-1 top-1 overflow-scroll bottom-1 dark:text-slate-300 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-lg  flex-wrap items-center justify-between z-10 py-4 w-64 px-6 transition-all ease-in-out duration-300 ' +
-            (isDark
-                ? ' bg-gradient-to-r from-slate-800 via-sky-950 to-sky-950 '
-                : ' bg-gradient-to-r from-white via-slate-50 to-sky-50 ') +
-            (mainStore.sidebarOpen ? ' flex ' : '   hidden ')
-        "
-    >
+    <nav v-if="!login" ref="sidebar_id" :class="'rounded-xl absolute left-1 top-1 overflow-scroll bottom-1 dark:text-slate-300 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-lg  flex-wrap items-center justify-between z-10 py-4 w-64 px-6 transition-all ease-in-out duration-300 ' +
+        (isDark
+            ? ' bg-gradient-to-r from-slate-800 via-sky-950 to-sky-950 '
+            : ' bg-gradient-to-r from-white via-slate-50 to-sky-50 ') +
+        (mainStore.sidebarOpen ? ' flex ' : '   hidden ')
+        ">
         <div
-            class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center space-y-4 w-full mx-auto"
-        >
+            class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center space-y-4 w-full mx-auto">
             <!-- Toggler -->
             <button
                 class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
-                type="button"
-                v-on:click="toggleCollapseShow('bg-white m-2 py-3 px-6')"
-            ></button>
+                type="button" v-on:click="toggleCollapseShow('bg-white m-2 py-3 px-6')"></button>
             <!-- Brand -->
             <div class="flex flex-col justify-center items-center w-full">
-                <router-link
-                    class="md:block text-left md:pb-2 text-blueGray-600 text-sm uppercase font-bold p-4 px-0"
-                    to="/"
-                >
+                <router-link class="md:block text-left md:pb-2 text-blueGray-600 text-sm uppercase font-bold p-4 px-0"
+                    to="/">
                     WINGIT
                 </router-link>
 
                 <!-- User -->
                 <ul class="items-center flex flex-wrap list-none">
                     <li class="inline-block relative">
-                        <div class="avatar">
-                            <div
-                                class="ring-base ring-offset-base w-14 rounded-full ring ring-offset-2"
-                            >
-                                <img
-                                    class="flex-1"
-                                    :src="
-                                        user?.avatar != null
-                                            ? `https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user?.avatar}`
-                                            : `../assets/logo.png`
-                                    "
-                                />
+                        <router-link :to="'/' + (user?.role).replace(/_/g, '-') + '/account'">
+                            <div class=" avatar">
+                                <div class="ring-base ring-offset-base w-14 rounded-full ring ring-offset-2">
+                                    <img class="flex-1" :src="user?.avatar != null
+                                        ? `https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user?.avatar}`
+                                        : `../assets/logo.png`
+                                        " />
+                                </div>
                             </div>
-                        </div>
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -52,14 +38,10 @@
             <div v-if="route.path.startsWith('/tourism-operator')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav
-                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
-                    >
+                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300">
                         <router-link to="/transport/">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-compass"></i>
                                 </div>
@@ -67,11 +49,8 @@
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/all-flights">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-users"></i>
                                 </div>
@@ -80,11 +59,8 @@
                         </router-link>
 
                         <router-link to="/tourism-operator/listed-flights">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-list"></i>
                                 </div>
@@ -93,11 +69,8 @@
                         </router-link>
 
                         <router-link to="/tourism-operator/trips">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-reload"></i>
                                 </div>
@@ -105,11 +78,8 @@
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/trips">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-file"></i>
                                 </div>
@@ -117,11 +87,8 @@
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/pilots">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-user"></i>
                                 </div>
@@ -129,11 +96,8 @@
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/aircrafts">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-send"></i>
                                 </div>
@@ -141,11 +105,8 @@
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/messages">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-inbox"></i>
                                 </div>
@@ -153,11 +114,8 @@
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/notifications">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-bell"></i>
                                 </div>
@@ -165,11 +123,8 @@
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/account">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-user"></i>
                                 </div>
@@ -177,11 +132,8 @@
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/settings">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
@@ -195,14 +147,10 @@
             <div v-if="route.path.startsWith('/customer')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav
-                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
-                    >
+                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300">
                         <router-link to="/customer/">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-compass"></i>
                                 </div>
@@ -210,11 +158,8 @@
                             </div>
                         </router-link>
                         <router-link to="/customer/bookings">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-calendar-clock"></i>
                                 </div>
@@ -222,11 +167,8 @@
                             </div>
                         </router-link>
                         <router-link to="/customer/previous-bookings">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-history"></i>
                                 </div>
@@ -235,11 +177,8 @@
                         </router-link>
 
                         <router-link to="/customer/packing-lists">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-briefcase"></i>
                                 </div>
@@ -248,11 +187,8 @@
                         </router-link>
 
                         <router-link to="/customer/account">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-user"></i>
                                 </div>
@@ -261,11 +197,8 @@
                         </router-link>
 
                         <router-link to="/customer/settings">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
@@ -276,20 +209,13 @@
                     </nav>
                 </div>
             </div>
-            <div
-                v-if="route.path.startsWith('/aircraft-operator')"
-                class="mt-0"
-            >
+            <div v-if="route.path.startsWith('/aircraft-operator')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav
-                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300"
-                    >
+                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300">
                         <router-link to="/aircraft-operator">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-compass"></i>
                                 </div>
@@ -297,65 +223,48 @@
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/all-flights">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-users"></i>
                                 </div>
                                 All flights
                                 <span
-                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs"
-                                    >{{
+                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs">{{
                                         mainStore.airOpData.all_flights_count
-                                    }}</span
-                                >
+                                    }}</span>
                             </div>
                         </router-link>
 
                         <router-link to="/aircraft-operator/listed-flights">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-user"></i>
                                 </div>
                                 Listed Flights
                                 <span
-                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs"
-                                    >{{
+                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs">{{
                                         mainStore.airOpData.listed_flights_count
-                                    }}</span
-                                >
+                                    }}</span>
                             </div>
                         </router-link>
 
                         <router-link to="/aircraft-operator/trips">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
                                 Trips
                                 <span
-                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs"
-                                    >{{ mainStore.airOpData.trips_count }}</span
-                                >
+                                    class="size-5 p-1 rounded-full text-white bg-emerald-500 flex items-center justify-center shadow-md mb-4 text-xs">{{
+                                        mainStore.airOpData.trips_count }}</span>
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/statements">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
@@ -363,11 +272,8 @@
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/pilots">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
@@ -375,11 +281,8 @@
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/aircrafts">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
@@ -387,47 +290,34 @@
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/messages">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
                                 Messages
                                 <span
-                                    class="size-5 p-1 rounded-full text-white bg-rose-500 flex items-center justify-center shadow-md mb-4"
-                                    >{{
+                                    class="size-5 p-1 rounded-full text-white bg-rose-500 flex items-center justify-center shadow-md mb-4">{{
                                         mainStore.airOpData.messages_count
-                                    }}</span
-                                >
+                                    }}</span>
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/notifications">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
                                 Notifications
                                 <span
-                                    class="size-5 p-1 rounded-full text-white bg-rose-500 flex items-center justify-center shadow-md mb-4"
-                                    >{{
+                                    class="size-5 p-1 rounded-full text-white bg-rose-500 flex items-center justify-center shadow-md mb-4">{{
                                         mainStore.airOpData.notification_count
-                                    }}</span
-                                >
+                                    }}</span>
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/account">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
@@ -435,11 +325,8 @@
                             </div>
                         </router-link>
                         <router-link to="/aircraft-operator/settings">
-                            <div
-                                role="button"
-                                tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                            >
+                            <div role="button" tabindex="0"
+                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-cog"></i>
                                 </div>
@@ -452,11 +339,8 @@
             </div>
             <div v-if="route.path.startsWith('/user/profile')">
                 <router-link to="/">
-                    <div
-                        role="button"
-                        tabindex="0"
-                        class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                    >
+                    <div role="button" tabindex="0"
+                        class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                         <div class="grid place-items-center mr-4">
                             <i class="pi pi-arrow-circle-left"></i>
                         </div>
@@ -466,24 +350,14 @@
             </div>
 
             <span @click="logout()">
-                <div
-                    role="button"
-                    tabindex="0"
-                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-                >
+                <div role="button" tabindex="0"
+                    class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                     <div class="grid place-items-center mr-4">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            aria-hidden="true"
-                            class="h-5 w-5"
-                        >
-                            <path
-                                fill-rule="evenodd"
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true" class="h-5 w-5">
+                            <path fill-rule="evenodd"
                                 d="M12 2.25a.75.75 0 01.75.75v9a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM6.166 5.106a.75.75 0 010 1.06 8.25 8.25 0 1011.668 0 .75.75 0 111.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 011.06 0z"
-                                clip-rule="evenodd"
-                            ></path>
+                                clip-rule="evenodd"></path>
                         </svg>
                     </div>
                     Log Out

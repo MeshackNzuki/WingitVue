@@ -110,20 +110,20 @@
 /* Style the scrollbar track */
 ::-webkit-scrollbar {
     width: 8px; /* Set the thickness of the track */
-    height: 50px
+ 
   }
   
   /* Style the scrollbar thumb (handle) */
 ::-webkit-scrollbar-thumb {
     background-color: rgb(171, 189, 179); /* Customize thumb color */
     border-radius: 6px; /* Add rounded corners to the thumb */
-    height: 50px
+    
   }
   
   /* Style the scrollbar thumb on hover */
   ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(60, 58, 58, 0.7); /* Change color on hover */
-    height: 50px
+
   }
    * {
     @apply transition-colors duration-500;

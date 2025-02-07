@@ -28,6 +28,27 @@ export const authStore = defineStore("authStore", {
                 nationality: newUserdata.nationality,
             });
         },
+         logout() {
+            // Perform logout operation here...
+            this.user = null;
+            this.is_authenticated = false;
+            // Reset the store's state
+            axios
+                .post("/logout")
+                .then(() => {
+                    this.user = null;
+                    this.is_authenticated = false;
+                    router.push("/login");
+                })
+                .catch((error) => {
+                    console.error("Logout failed:", error);
+                    //still remove user data
+                    this.user = null;
+                    this.is_authenticated = false;
+                    router.push("/login");
+                });
+            router.push("/login");
+        },
         goToUserArea() {
             if (this.user) {
                 const userData = this.user;
@@ -39,7 +60,7 @@ export const authStore = defineStore("authStore", {
                 } else if (userData.role === "customer") {
                     router.push("/customer");
                 } else {
-                    toast.info("please log out to login in again.");
+                    this.logout()
                 }
             }
         },

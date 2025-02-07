@@ -1,28 +1,20 @@
 <template>
-    <Table
-        :headers="[
-            'ORIGIN',
-            'DESTINATION',
-            'SEATS',
-            'PRICE',
-            'DEPART TIME',
-            'ARRIVAL TIME',
-            'STATUS',
-            'ACTION',
-        ]"
-        title="All Flights"
-        v-model:query="searchQuery"
-        :rows="flights?.length"
-    >
+    <Table :headers="[
+        'ORIGIN',
+        'DESTINATION',
+        'SEATS',
+        'PRICE',
+        'DEPART TIME',
+        'ARRIVAL TIME',
+        'STATUS',
+        'ACTION',
+    ]" title="All Flights" v-model:query="searchQuery" :rows="flights?.length">
         <template v-slot:actions>
-            <SmallButton
-                icon="pi pi-plus"
-                :action="() => showModal('addflight')"
-            ></SmallButton>
+            <SmallButton icon="pi pi-plus" :action="() => showModal('addflight')"></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
-            <Button icon="pi pi-upload" severity="secondary"
-        /></template>
+            <Button icon="pi pi-upload" severity="secondary" />
+        </template>
         <template v-slot:content>
             <tr v-for="(flight, index) in flights" :key="index">
                 <td class="p-2 whitespace-nowrap">
@@ -75,17 +67,19 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-center">
-                        <span v-if="flight.is_listed == 1"> LISTED </span>
-                        <pan v-else> UNLISTED </pan>
+
+                        <SmallButton v-if="flight.is_listed == 1"
+                            classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500"
+                            button-text="Listed" />
+                        <SmallButton v-else classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
+                            button-text="List" :action="() => handleList(flight.id)" />
+
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-center">
-                        <SmallButton
-                            classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
-                            button-text="Edit"
-                            :action="() => showModal(flight.id)"
-                        />
+                        <SmallButton classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
+                            button-text="Edit" :action="() => showModal(flight.id)" />
                     </div>
                 </td>
                 <dialog :id="flight.id" class="modal">
@@ -93,172 +87,82 @@
                         <h3 class="font-bold">Edit Flight Info</h3>
                         <p class="py-4 text-xs">Press ESC key to close</p>
                         <form method="dialog" class="flex flex-col gap-2">
-                            <button
-                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                            >
+                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                                 ✕
                             </button>
                             <div class="md:grid grid-cols-2 space-x-4">
                                 <div>
-                                    <span class="w-full text-center font-bold"
-                                        >Flight Info</span
-                                    >
-                                    <label
-                                        for="origin"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <span class="w-full text-center font-bold">Flight Info</span>
+                                    <label for="origin"
+                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Origin
                                     </label>
-                                    <Select
-                                        class="text-sm"
-                                        makeAnimated
-                                        cacheOptions
-                                        :options="selectOptions"
-                                        id="origin"
-                                        isSearchable
-                                        placeholder="Search Origin Airport"
-                                        :noOptionsMessage="() => 'No data'"
-                                        v-model="origin"
-                                    />
-                                    <label
-                                        for="destination"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <Select class="text-sm" makeAnimated cacheOptions :options="selectOptions"
+                                        id="origin" isSearchable placeholder="Search Origin Airport"
+                                        :noOptionsMessage="() => 'No data'" v-model="origin" />
+                                    <label for="destination"
+                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Destination
                                     </label>
-                                    <Select
-                                        class="text-sm"
-                                        makeAnimated
-                                        cacheOptions
-                                        :options="selectOptions"
-                                        id="destination"
-                                        isSearchable
-                                        placeholder="Search Destination Airport"
-                                        :noOptionsMessage="() => 'No Data'"
-                                        v-model="destination"
-                                    />
-                                    <label
-                                        for="available_seats"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <Select class="text-sm" makeAnimated cacheOptions :options="selectOptions"
+                                        id="destination" isSearchable placeholder="Search Destination Airport"
+                                        :noOptionsMessage="() => 'No Data'" v-model="destination" />
+                                    <label for="available_seats"
+                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Seats Available
                                     </label>
-                                    <input
-                                        id="available_seats"
-                                        type="number"
+                                    <input id="available_seats" type="number"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="availableSeats"
-                                    />
-                                    <label
-                                        for="price"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                        v-model="availableSeats" />
+                                    <label for="price" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Price Per Seat
                                         <p class="font-bold text-lg">
                                             KES {{ flightVals.price }}
                                         </p>
                                     </label>
-                                    <input
-                                        type="range"
-                                        min="0"
-                                        max="20000"
-                                        id="price"
-                                        step="100"
-                                        v-model="flightVals.price"
-                                        class="range range-xs my-2 range-info"
-                                    />
-                                    <label
-                                        for="departure_time"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <input type="range" min="0" max="20000" id="price" step="100"
+                                        v-model="flightVals.price" class="range range-xs my-2 range-info" />
+                                    <label for="departure_time"
+                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Departure Time
                                     </label>
-                                    <Datepicker
-                                        v-model="startDate"
-                                        showTimeSelect
-                                        showIcon
-                                        timeIntervals="15"
-                                        isClearable
-                                        dateFormat="Pp"
-                                    />
-                                    <label
-                                        for="arrival_time"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <Datepicker v-model="startDate" showTimeSelect showIcon timeIntervals="15"
+                                        isClearable dateFormat="Pp" />
+                                    <label for="arrival_time"
+                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Arrival Time
                                     </label>
-                                    <Datepicker
-                                        v-model="endDate"
-                                        showTimeSelect
-                                        showIcon
-                                        timeIntervals="15"
-                                        isClearable
-                                        dateFormat="Pp"
-                                    />
+                                    <Datepicker v-model="endDate" showTimeSelect showIcon timeIntervals="15" isClearable
+                                        dateFormat="Pp" />
                                 </div>
                                 <div>
-                                    <span class="w-full text-center font-bold"
-                                        >Aircraft Info</span
-                                    >
-                                    <label
-                                        for="aircraft"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <span class="w-full text-center font-bold">Aircraft Info</span>
+                                    <label for="aircraft"
+                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Aircraft
                                     </label>
-                                    <Select
-                                        class="text-sm"
-                                        makeAnimated
-                                        cacheOptions
-                                        :options="selectOptionsAircrafts"
-                                        id="aircraft"
-                                        isSearchable
-                                        placeholder="Select Aircraft"
-                                        :noOptionsMessage="() => 'No Data'"
-                                        v-model="aircraft"
-                                    />
-                                    <label
-                                        for="pilot"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <Select class="text-sm" makeAnimated cacheOptions :options="selectOptionsAircrafts"
+                                        id="aircraft" isSearchable placeholder="Select Aircraft"
+                                        :noOptionsMessage="() => 'No Data'" v-model="aircraft" />
+                                    <label for="pilot" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Pilot
                                     </label>
-                                    <Select
-                                        class="text-sm"
-                                        makeAnimated
-                                        cacheOptions
-                                        :options="selectOptionsPilots"
-                                        id="pilot"
-                                        isSearchable
-                                        placeholder="Select Pilot"
-                                        :noOptionsMessage="() => 'No Data'"
-                                        v-model="pilot"
-                                    />
-                                    <label
-                                        for="tour_operator"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <Select class="text-sm" makeAnimated cacheOptions :options="selectOptionsPilots"
+                                        id="pilot" isSearchable placeholder="Select Pilot"
+                                        :noOptionsMessage="() => 'No Data'" v-model="pilot" />
+                                    <label for="tour_operator"
+                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                                         Tourism Operator
                                     </label>
-                                    <Select
-                                        class="text-sm"
-                                        makeAnimated
-                                        cacheOptions
-                                        :options="selectOptionsTourOperators"
-                                        id="tour_operator"
-                                        isSearchable
-                                        placeholder="Select Tour Operator"
-                                        :noOptionsMessage="() => 'No Data'"
-                                        v-model="tourOperator"
-                                    />
+                                    <Select class="text-sm" makeAnimated cacheOptions
+                                        :options="selectOptionsTourOperators" id="tour_operator" isSearchable
+                                        placeholder="Select Tour Operator" :noOptionsMessage="() => 'No Data'"
+                                        v-model="tourOperator" />
                                 </div>
                             </div>
                             <div class="modal-action">
                                 <button class="btn">Close</button>
-                                <button
-                                    class="btn"
-                                    @click.prevent="handleEditSubmit"
-                                >
+                                <button class="btn" @click.prevent="handleEditSubmit">
                                     Update
                                 </button>
                             </div>
@@ -274,164 +178,72 @@
             <h3 class="font-bold">Flight Info</h3>
             <p class="py-4 text-xs">Press ESC key to close</p>
             <form method="dialog" class="flex flex-col gap-2">
-                <button
-                    class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                >
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                     ✕
                 </button>
                 <div class="md:grid grid-cols-2 space-x-4">
                     <div>
-                        <span class="w-full text-center font-bold"
-                            >Flight Info</span
-                        >
-                        <label
-                            for="origin"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <span class="w-full text-center font-bold">Flight Info</span>
+                        <label for="origin" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Origin
                         </label>
-                        <Select
-                            class="text-sm"
-                            makeAnimated
-                            cacheOptions
-                            :options="selectOptions"
-                            id="origin"
-                            isSearchable
-                            placeholder="Search Origin Airport"
-                            :noOptionsMessage="() => 'No data'"
-                            v-model="origin"
-                        />
-                        <label
-                            for="destination"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <Select class="text-sm" makeAnimated cacheOptions :options="selectOptions" id="origin"
+                            isSearchable placeholder="Search Origin Airport" :noOptionsMessage="() => 'No data'"
+                            v-model="origin" />
+                        <label for="destination" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Destination
                         </label>
-                        <Select
-                            class="text-sm"
-                            makeAnimated
-                            cacheOptions
-                            :options="selectOptions"
-                            id="destination"
-                            isSearchable
-                            placeholder="Search Destination Airport"
-                            :noOptionsMessage="() => 'No Data'"
-                            v-model="destination"
-                        />
-                        <label
-                            for="available_seats"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <Select class="text-sm" makeAnimated cacheOptions :options="selectOptions" id="destination"
+                            isSearchable placeholder="Search Destination Airport" :noOptionsMessage="() => 'No Data'"
+                            v-model="destination" />
+                        <label for="available_seats" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Seats Available
                         </label>
-                        <input
-                            id="available_seats"
-                            type="number"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="flightVals.available_seats"
-                        />
-                        <label
-                            for="price"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <input id="available_seats" type="number" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="flightVals.available_seats" />
+                        <label for="price" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Price Per Seat
                             <p class="font-bold text-lg">
                                 KES {{ flightVals.price }}
                             </p>
                         </label>
-                        <input
-                            type="range"
-                            min="0"
-                            max="20000"
-                            id="price"
-                            step="100"
-                            v-model="flightVals.price"
-                            class="range range-xs my-2 range-info"
-                        />
-                        <label
-                            for="departure_time"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <input type="range" min="0" max="20000" id="price" step="100" v-model="flightVals.price"
+                            class="range range-xs my-2 range-info" />
+                        <label for="departure_time" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Departure Time
                         </label>
-                        <Datepicker
-                            v-model="startDate"
-                            showTimeSelect
-                            showIcon
-                            timeIntervals="15"
-                            isClearable
-                            dateFormat="Pp"
-                        />
-                        <label
-                            for="arrival_time"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <Datepicker v-model="startDate" showTimeSelect showIcon timeIntervals="15" isClearable
+                            dateFormat="Pp" />
+                        <label for="arrival_time" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Arrival Time
                         </label>
-                        <Datepicker
-                            v-model="endDate"
-                            showTimeSelect
-                            showIcon
-                            timeIntervals="15"
-                            isClearable
-                            dateFormat="Pp"
-                        />
+                        <Datepicker v-model="endDate" showTimeSelect showIcon timeIntervals="15" isClearable
+                            dateFormat="Pp" />
                     </div>
                     <div>
-                        <span class="w-full text-center font-bold"
-                            >Aircraft Info</span
-                        >
-                        <label
-                            for="aircraft"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <span class="w-full text-center font-bold">Aircraft Info</span>
+                        <label for="aircraft" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Aircraft
                         </label>
 
-                        <Select
-                            :options="selectOptionsAircrafts"
-                            id="aircraft"
-                            isSearchable
-                            placeholder="Start typing..."
-                            noOptionsMessage="No Match"
-                            v-model="aircraft"
-                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px] text-gray-800 text-sm"
-                        />
+                        <Select :options="selectOptionsAircrafts" id="aircraft" isSearchable
+                            placeholder="Start typing..." noOptionsMessage="No Match" v-model="aircraft"
+                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px] text-gray-800 text-sm" />
 
-                        <label
-                            for="pilot"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="pilot" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Pilot
                         </label>
-                        <Select
-                            makeAnimated
-                            cacheOptions
-                            :options="selectOptionsPilots"
-                            id="pilot"
-                            isSearchable
-                            placeholder="Start typing..."
-                            :noOptionsMessage="() => 'No Data'"
-                            v-model="pilot"
-                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px] text-gray-800 text-sm"
-                        />
-                        <label
-                            for="tour_operator"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <Select makeAnimated cacheOptions :options="selectOptionsPilots" id="pilot" isSearchable
+                            placeholder="Start typing..." :noOptionsMessage="() => 'No Data'" v-model="pilot"
+                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px] text-gray-800 text-sm" />
+                        <label for="tour_operator" class="block mt-2 text-xs font-semibold text-gray-800 uppercase">
                             Tourism Operator
                         </label>
                         <Select
                             class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px] text-gray-800 text-sm"
-                            makeAnimated
-                            cacheOptions
-                            :options="selectOptionsTourOperators"
-                            id="tour_operator"
-                            isSearchable
-                            placeholder="Start typing..."
-                            :noOptionsMessage="() => 'No Data'"
-                            v-model="tourOperator"
-                        />
+                            makeAnimated cacheOptions :options="selectOptionsTourOperators" id="tour_operator"
+                            isSearchable placeholder="Start typing..." :noOptionsMessage="() => 'No Data'"
+                            v-model="tourOperator" />
                     </div>
                 </div>
                 <div class="modal-action">
@@ -453,6 +265,10 @@ import Table from "../../components/Tables/MainTable.vue";
 import Datepicker from "vuejs3-datepicker";
 import Select from "vue-select";
 import { format } from "date-fns";
+import { useMainStore } from "../../stores";
+
+
+const mainStore = useMainStore();
 
 const CreateFlightInit = {
     origin_airport_id: "",
@@ -626,7 +442,13 @@ const showModal = (modalId) => {
 
 watch([searchQuery, reload], () => {
     getflights();
+    fetchDashData();
+    mainStore.startStoreServices()
 });
+const fetchDashData = async () => {
+    const response = await axios.get("/dashdata-airop");
+    mainStore.setDashDataAirOp(response.data);
+};
 
 onMounted(() => {
     getOptions();
@@ -634,5 +456,7 @@ onMounted(() => {
     getPilots();
     getTourOperators();
     getAircrafts();
+    fetchDashData();
+    mainStore.startStoreServices();
 });
 </script>
