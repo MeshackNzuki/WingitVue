@@ -1,18 +1,11 @@
 <template>
-    <div
-        class="bg-gray-200 min-h-screen bg-[url('../assets/pill3.jpg')] bg-cover bg-center no-repeat"
-    >
+    <div class="bg-gray-200 min-h-screen bg-[url('../assets/pill3.jpg')] bg-cover bg-center no-repeat">
         <div
-            className="w-full flex flex-col lg:flex-row  justify-center align-center md:p-8 bg-gray-800 bg-opacity-25  "
-        >
+            className="w-full flex flex-col lg:flex-row  justify-center align-center md:p-8 bg-gray-800 bg-opacity-25  ">
             <div className="lg:mt-24 ">
-                <div
-                    className="card card-compact max-w-md bg-white bg-opacity-95 mx-3 shadow-lg mb-4"
-                >
+                <div className="card card-compact max-w-md bg-white bg-opacity-95 mx-3 shadow-lg mb-4">
                     <span className="w-full flex justify-center">
-                        <h2
-                            className="uppercase text-l font-bold text-gray-700 mt-2"
-                        >
+                        <h2 className="uppercase text-l font-bold text-gray-700 mt-2">
                             <span className="{exo2.className}">
                                 Your Booking information
                             </span>
@@ -24,13 +17,9 @@
                                 <span class="text-left px-2 w-1/3">
                                     Full Name
                                 </span>
-                                <input
-                                    v-model="formVals.name"
-                                    type="text"
+                                <input v-model="formVals.name" type="text"
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4"
-                                    placeholder="Enter Your Full Name"
-                                    required
-                                />
+                                    placeholder="Enter Your Full Name" required />
                             </label>
                         </div>
                         <div v-if="errors.name" class="text-red-500">
@@ -41,13 +30,9 @@
                                 <span class="text-left px-2 w-1/3">
                                     Email
                                 </span>
-                                <input
-                                    v-model="formVals.email"
-                                    type="email"
+                                <input v-model="formVals.email" type="email"
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4"
-                                    placeholder="Enter Your Full Name"
-                                    required
-                                />
+                                    placeholder="Enter Your Full Name" required />
                             </label>
                         </div>
                         <div v-if="errors.email" class="text-red-500">
@@ -58,13 +43,9 @@
                                 <span class="text-left px-2 w-1/3">
                                     ID /Passport
                                 </span>
-                                <input
-                                    v-model="formVals.id_number"
-                                    type="email"
+                                <input v-model="formVals.id_number" type="email"
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4"
-                                    placeholder="Enter Passport no."
-                                    required
-                                />
+                                    placeholder="Enter Passport no." required />
                             </label>
                         </div>
                         <div v-if="errors.id_number" class="text-red-500">
@@ -75,10 +56,7 @@
                                 <span class="text-left px-2 w-1/3">
                                     Nationality
                                 </span>
-                                <CountryDropdown
-                                    v-if="!auth.is_authenticated"
-                                    v-model="formVals.nationality"
-                                />
+                                <CountryDropdown v-if="!auth.is_authenticated" v-model="formVals.nationality" />
                                 <span v-else>{{ formVals.nationality }}</span>
                             </label>
                         </div>
@@ -87,92 +65,64 @@
                                 <span class="text-left px-2 w-1/3">
                                     Phone no.
                                 </span>
-                                <input
-                                    v-model="formVals.phone"
-                                    type="email"
+                                <input v-model="formVals.phone" type="email"
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4"
-                                    placeholder="Enter Your Full Name"
-                                    required
-                                />
+                                    placeholder="Enter Your Full Name" required />
                             </label>
                         </div>
                         <div v-if="errors.phone" class="text-red-500">
                             {{ errors.phone }}
                         </div>
 
-                        <div
-                            v-for="(passenger, index) in passengers"
-                            :key="index"
-                            class="passenger-form"
-                        >
-                            <span className="w-full flex justify-center">
-                                <h2
-                                    className="uppercase text-l font-bold text-gray-700 mt-2"
-                                >
-                                    <span className="{exo2.className}">
-                                        Other Passengers' Infomation
-                                    </span>
-                                </h2>
-                            </span>
+                        <span v-if="passengers?.length > 0" className="w-full flex justify-center">
+                            <h2 className="uppercase text-l font-bold text-gray-700 mt-2">
+                                <span className="{exo2.className}">
+                                    Other Passengers' Infomation
+                                </span>
+                            </h2>
+                        </span>
+
+                        <div v-for="(passenger, index) in passengers" :key="index" class="passenger-form">
+
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Full Name
                                 </span>
-                                <input
-                                    :id="`namePass${index}`"
-                                    :name="`namePass${index}`"
-                                    type="text"
+                                <input :id="`namePass${index}`" :name="`namePass${index}`" type="text"
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4"
-                                    placeholder="Enter Your Full Name"
-                                    required
-                                    v-model="passengerData[index].name"
-                                />
+                                    placeholder="Enter Your Full Name" required v-model="passengerData[index].name" />
                             </label>
 
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Passport/ID
                                 </span>
-                                <input
-                                    :id="`idNumber${index}`"
-                                    :name="`idNumber${index}`"
-                                    type="text"
+                                <input :id="`idNumber${index}`" :name="`idNumber${index}`" type="text"
                                     class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4"
-                                    placeholder="Enter ID/Passport Number"
-                                    required
-                                    v-model="passengerData[index].idNumber"
-                                />
+                                    placeholder="Enter ID/Passport Number" required
+                                    v-model="passengerData[index].idNumber" />
                             </label>
 
                             <label class="flex h-12 py-1 md:py-3 items-center">
                                 <span class="text-left px-2 w-1/3">
                                     Nationality
                                 </span>
-                                <span
-                                    class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4 text-left"
-                                >
+                                <span class="focus:outline-none m-1 rounded-lg px-3 py-1 text-sm w-2/3 me-4 text-left">
                                     <!-- issue here -->
-                                    <CountryDropdown
-                                        v-model="
-                                            passengerData[index].nationality
-                                        "
-                                    />
+                                    <CountryDropdown v-model="passengerData[index].nationality
+                                        " />
                                 </span>
                             </label>
-                            <hr
-                                v-if="
-                                    mainStore.totalSeats > 2 &&
-                                    mainStore.totalSeats - 1
-                                "
-                                class="bg-gray-600 h-0.5"
-                            />
+                            <hr v-if="
+                                mainStore.totalSeats > 2 &&
+                                mainStore.totalSeats - 1
+                            " class="bg-gray-600 h-0.5" />
                         </div>
                     </form>
                 </div>
             </div>
             <div
-                class="col-span-3 lg:col-span-1 m-3 order-first card card-compact max-w-md max-h-100 bg-white bg-opacity-95 shadow-lg mb-4 mt-24"
-            >
+                class="col-span-3 lg:col-span-1 m-3 order-first card card-compact max-w-md max-h-100 bg-white bg-opacity-95 shadow-lg mb-4 mt-24">
                 <span class="w-full flex justify-center">
                     <h2 class="uppercase text-l font-bold text-gray-700 mt-2">
                         <span>Flight summary</span>
@@ -182,34 +132,24 @@
                     <ul class="py-6 border-b space-y-3 md:space-y-4">
                         <li class="grid grid-cols-3 gap-1">
                             <div class="flex flex-col col-span-1 pt-3">
-                                <span
-                                    class="text-gray-600 font-semi-bold cursor-pointer"
-                                >
-                                    <i
-                                        @click="
-                                            mainStore.decreaseSeats(
-                                                mainStore.selectedFlight?.id,
-                                            )
-                                        "
-                                        class="pi pi-minus text-base animate-pulse"
-                                    ></i>
+                                <span class="text-gray-600 font-semi-bold cursor-pointer">
+                                    <i @click="
+                                        mainStore.decreaseSeats(
+                                            mainStore.selectedFlight?.id,
+                                        )
+                                        " class="pi pi-minus text-base animate-pulse"></i>
                                     Seats
-                                    <i
-                                        @click="
-                                            mainStore.increaseSeats(
-                                                mainStore.selectedFlight.id,
-                                                mainStore.selectedFlight
-                                                    ?.available_seats,
-                                            )
-                                        "
-                                        class="pi pi-plus text-base animate-pulse"
-                                    ></i>
+                                    <i @click="
+                                        mainStore.increaseSeats(
+                                            mainStore.selectedFlight.id,
+                                            mainStore.selectedFlight
+                                                ?.available_seats,
+                                        )
+                                        " class="pi pi-plus text-base animate-pulse"></i>
                                 </span>
                             </div>
                             <div class="col-span-2 pt-3 md:pt-3">
-                                <div
-                                    class="flex items-center font-light justify-between"
-                                >
+                                <div class="flex items-center font-light justify-between">
                                     {{ mainStore.totalSeats }} x KES
                                     {{
                                         Number(
@@ -218,8 +158,7 @@
                                     }}
                                     =
                                     <span
-                                        class="text-gray-700 font-semibold text-right ml-1 rounded-md bg-emerald-500 bg-opacity-35"
-                                    >
+                                        class="text-gray-700 font-semibold text-right ml-1 rounded-md bg-emerald-500 bg-opacity-35">
                                         KES
                                         {{
                                             Number(totalAmount).toLocaleString()
@@ -233,9 +172,7 @@
                                 <span class="text-gray-600">Routing</span>
                             </div>
                             <div class="col-span-2 pt-1 md:pt-3">
-                                <div
-                                    class="flex items-center space-x-2 text-sm justify-between"
-                                >
+                                <div class="flex items-center space-x-2 text-sm justify-between">
                                     <span class="text-gray-700 font-light">{{
                                         mainStore.selectedFlight?.origin_airport
                                             .name
@@ -250,9 +187,7 @@
                         </li>
                         <li class="grid grid-cols-6 gap-2">
                             <div class="flex flex-col col-span-3 pt-3">
-                                <span class="text-gray-600"
-                                    >Departure date</span
-                                >
+                                <span class="text-gray-600">Departure date</span>
                             </div>
                             <div class="col-span-3 pt-3">
                                 <span class="text-gray-700 font-light">
@@ -289,9 +224,7 @@
                                 <span class="text-gray-600">Aircraft</span>
                             </div>
                             <div class="col-span-3 pt-3">
-                                <span
-                                    class="text-gray-700 font-light text-right"
-                                >
+                                <span class="text-gray-700 font-light text-right">
                                     {{
                                         mainStore.selectedFlight.aircraft
                                             ?.aircraft_type
@@ -304,9 +237,7 @@
                                 <span class="text-gray-600">Operator</span>
                             </div>
                             <div class="col-span-3 pt-1">
-                                <span
-                                    class="text-gray-700 font-light text-right"
-                                >
+                                <span class="text-gray-700 font-light text-right">
                                     {{
                                         mainStore.selectedFlight
                                             ?.aircraft_operator?.company_name
@@ -318,13 +249,9 @@
                 </div>
                 <hr class="border-gray-700" />
                 <ul>
-                    <li
-                        class="flex justify-between bg-emerald-500 bg-opacity-35 px-2 py-2 md:px-10"
-                    >
+                    <li class="flex justify-between bg-emerald-500 bg-opacity-35 px-2 py-2 md:px-10">
                         <div class="flex flex-col col-span-3 pt-1 md:pt-3">
-                            <span class="text-gray-600 text-lg font-bold"
-                                >Total</span
-                            >
+                            <span class="text-gray-600 text-lg font-bold">Total</span>
                         </div>
                         <div class="col-span-3 pt-1 md:pt-3">
                             <span class="text-gray-700 text-end font-bold">
@@ -337,63 +264,35 @@
             </div>
         </div>
         <div className="w-full flex  justify-center align-center  md:p-8 ">
-            <div
-                class="card card-compact w-96 mx-3 bg-white bg-opacity-95 shadow-lg mb-4"
-            >
+            <div class="card card-compact w-96 mx-3 bg-white bg-opacity-95 shadow-lg mb-4">
                 <span class="w-full flex justify-center">
                     <h2 class="uppercase text-l font-bold text-gray-700 mt-2">
                         <span>Payment options</span>
                     </h2>
                 </span>
                 <span className="w-full flex justify-center">
-                    <h2
-                        className="uppercase text-l font-bold text-gray-700 mt-2"
-                    >
+                    <h2 className="uppercase text-l font-bold text-gray-700 mt-2">
                         <span className="{exo2.className}">
                             Ticket Total : KES
                             {{ Number(totalAmount).toLocaleString() }}
                         </span>
                     </h2>
                 </span>
-                <div
-                    class="w-full p-3 border-b border-gray-200 flex flex-row gap-2"
-                >
+                <div class="w-full p-3 border-b border-gray-200 flex flex-row gap-2">
                     <div class="w-full mt-4">
-                        <label
-                            for="type1"
-                            class="flex items-center cursor-pointer"
-                        >
-                            <input
-                                type="radio"
-                                class="form-radio h-5 w-5 text-indigo-500"
-                                name="type"
-                                id="type1"
-                                disabled
-                            />
-                            <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                                width="80"
-                                class="ml-3"
-                            />
+                        <label for="type1" class="flex items-center cursor-pointer">
+                            <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type1"
+                                disabled />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="80"
+                                class="ml-3" />
                         </label>
                     </div>
                     <div class="w-full flex flex-col">
-                        <label
-                            for="type2"
-                            class="flex items-center cursor-pointer"
-                        >
-                            <input
-                                type="radio"
-                                class="form-radio h-5 w-5 text-indigo-500"
-                                name="type"
-                                id="type2"
-                                checked
-                            />
-                            <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg"
-                                width="80"
-                                class="ml-3"
-                            />
+                        <label for="type2" class="flex items-center cursor-pointer">
+                            <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type2"
+                                checked />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" width="80"
+                                class="ml-3" />
                         </label>
                     </div>
                 </div>
@@ -402,12 +301,8 @@
                         <label class="label">
                             <span class="label-text">Enter Mpesa number</span>
                         </label>
-                        <input
-                            type="text"
-                            v-model="formVals.mpesa_phone"
-                            placeholder="Type here"
-                            class="input input-bordered input-sm input-base-100 w-full w-xs"
-                        />
+                        <input type="text" v-model="formVals.mpesa_phone" placeholder="Type here"
+                            class="input input-bordered input-sm input-base-100 w-full w-xs" />
                     </div>
                     <BaseButton @click="pay" label="Proceed to pay" />
                 </div>
