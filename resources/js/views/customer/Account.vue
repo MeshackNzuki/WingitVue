@@ -102,14 +102,10 @@ const navigateToClient = () => {
 
 const handleFileChange = (e) => {
     formData.value.avatar = e.target.files[0];
-    const handleFileChange = (e) => {
-        formData.value.avatar = e.target.files[0];
-        if (formData.value.avatar) {
-            fileUrl.value = URL.createObjectURL(formData.value.avatar);
-            console.log('fileurl', fileUrl.value);
-        }
-    };
-
+    if (formData.value.avatar) {
+        fileUrl.value = URL.createObjectURL(formData.value.avatar);
+        console.log('fileurl on customer', fileUrl.value);
+    }
 };
 
 const handleSubmit = async () => {

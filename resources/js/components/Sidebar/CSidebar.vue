@@ -26,7 +26,7 @@
                                 <div class="ring-base ring-offset-base w-14 rounded-full ring ring-offset-2">
                                     <img class="flex-1" :src="user?.avatar != null
                                         ? `https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user?.avatar}`
-                                        : `../assets/logo.png`
+                                        : Logo
                                         " />
                                 </div>
                             </div>
@@ -369,6 +369,7 @@
 <script setup>
 import { ref, onMounted, watch } from "vue";
 import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
+import Logo from "../../assets/logo.png";
 import { useRoute } from "vue-router";
 import { useDark } from "@vueuse/core";
 import CommonButton from "../../components/Buttons/CommonButton.vue";

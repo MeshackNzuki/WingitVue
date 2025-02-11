@@ -49,7 +49,7 @@
                 <div
                   class="rounded-md m-2 mr-2 py-3 px-4 bg-white bg-opacity-90 md:rounded-bl-3xl md:rounded-tl-3xl md:rounded-tr-xl text-gray-800 shadow-md">
                   <p class="font-bold">Account Creation</p>
-                  <a href="/auth/client-register" class="underline">Create an account</a> with Wingit, and enjoy the
+                  <a href="/client-register" class="underline">Create an account</a> with Wingit, and enjoy the
                   flexibility and efficiency of being able to travel by air on your next adventure!
                 </div>
                 <div>
