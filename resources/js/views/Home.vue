@@ -13,7 +13,7 @@
                             containerClass="w-[350px] md:w-full " circular :autoplayInterval="4000">
                             <template #item="slotProps" class="flex-1">
                                 <div
-                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-200">
+                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in">
                                     <div
                                         class="flex items-center justify-between bg-transparent text-gray-700 px-6 py-0.5">
                                         <div class="text-lg font-semibold">
@@ -281,7 +281,7 @@
                                                     slotProps.data.id,
                                                 )
                                                 "
-                                                class="flex-no-shrink bg-gradient-to-tr from-teal-600 via-base to-base hover:scale-110 px-5 ml-4 py-2 mb-2 text-sm shadow-sm hover:shadow-lg tracking-wider text-gray-50 font-light rounded-full transition ease-in duration-200">
+                                                class="flex-no-shrink bg-gradient-to-tr from-teal-600 via-base to-base hover:scale-110 px-5 ml-4 py-2 mb-2 text-sm shadow-sm hover:shadow-lg tracking-wider text-gray-50 font-light rounded-full transition ease-in duration-300 ease-in">
                                                 {{
                                                     mainStore.loading
                                                         ? "Please wait..."
@@ -293,7 +293,7 @@
                                 </div>
 
                                 <div
-                                    class="relative hover:scale-105 transition-all duration-300 rounded-lg shadow-md m-2 bg-gradient-to-tl from-cyan-50 via-purple-50 to-rose-100 bg-cover backdrop-blur-md bg-opacity-25 max-w-md">
+                                    class="relative hover:scale-105 transition-all duration-300 ease-in rounded-lg shadow-md m-2 bg-gradient-to-tl from-cyan-50 via-purple-50 to-rose-100 bg-cover backdrop-blur-md bg-opacity-25 max-w-md">
                                 </div>
                             </template>
                         </Carousel>
@@ -329,7 +329,7 @@
                             <router-link to="/listed-flights" className="my-6">
                                 <span className="text-md font-normal mt-6 mb-5 md:mb-0 text-gray-50">
                                     <span
-                                        className="flex flex-row hover:translate-x-0.5 trasition duration-300 font-semibold">
+                                        className="flex flex-row hover:translate-x-0.5 trasition duration-300 ease-in font-semibold">
                                         <span className="-m-1 ml-1 me-1">
                                             <SplitButton link1="/listed-flights" label1="All Flights" icon1=""
                                                 link2="/flight-search" label2="Search Flight" icon2="pi pi-search" />
@@ -423,7 +423,7 @@
 
             <div class="hidden lg:mt-0 lg:col-span-6 lg:flex w-full justify-end relative p-4">
                 <div class="bg-slate-500 mt-5">
-                    <img class="w-full h-full rounded-md hover:scale-105 transition-all duration-200" :src="Top"
+                    <img class="w-full h-full rounded-md hover:scale-105 transition-all duration-300 ease-in" :src="Top"
                         alt="mockup" />
                 </div>
             </div>
@@ -482,7 +482,7 @@
                     </li>
                 </ul>
                 <router-link to="/about"
-                    class="bg-transparent hover:bg-gold text-gold hover:text-black rounded shadow hover:shadow-lg py-2 mt-4 px-4 border border-gold hover:border-transparent transition duration-300">
+                    class="bg-transparent hover:bg-gold text-gold hover:text-black rounded shadow hover:shadow-lg py-2 mt-4 px-4 border border-gold hover:border-transparent transition duration-300 ease-in">
                     Read More
                 </router-link>
             </div>
@@ -637,10 +637,11 @@
                 </div>
                 <div class="-m-1 flex flex-wrap md:-m-2 mt-24">
                     <div class="flex w-1/2 flex-wrap">
-                        <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200">
+                        <div
+                            class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
 
                             <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-200">
+                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -650,9 +651,10 @@
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Kisumu.jpg" />
                         </div>
-                        <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200">
+                        <div
+                            class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
                             <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-200">
+                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -660,9 +662,10 @@
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Malindi.jpg" />
                         </div>
-                        <div class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-200">
+                        <div
+                            class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
                             <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-200">
+                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -672,9 +675,10 @@
                         </div>
                     </div>
                     <div class=" flex w-1/2 flex-wrap">
-                        <div class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-200">
+                        <div
+                            class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
                             <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-200">
+                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -682,9 +686,10 @@
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Nanyuki.jpg" />
                         </div>
-                        <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200">
+                        <div
+                            class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
                             <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-200">
+                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -692,9 +697,10 @@
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Masaimara.jpg" />
                         </div>
-                        <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-200">
+                        <div
+                            class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
                             <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-200">
+                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>

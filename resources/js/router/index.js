@@ -270,7 +270,6 @@ router.beforeEach((to, from, next) => {
 
     // If the route is public, allow access
     if (!to.meta.role) {
-        console.log("public");
         return next();
     }
 
@@ -284,7 +283,6 @@ router.beforeEach((to, from, next) => {
         console.log("401");
         return next({ path: "/unauthorized" });
     }
-    console.log("ok");
     next();
 });
 

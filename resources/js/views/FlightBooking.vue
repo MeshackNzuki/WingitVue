@@ -73,7 +73,6 @@
                         <div v-if="errors.phone" class="text-red-500">
                             {{ errors.phone }}
                         </div>
-
                         <span v-if="passengers?.length > 0" className="w-full flex justify-center">
                             <h2 className="uppercase text-l font-bold text-gray-700 mt-2">
                                 <span className="{exo2.className}">
