@@ -2,7 +2,7 @@
     <div class="bg-gray-200 min-h-screen bg-[url('../assets/pill3.jpg')] bg-cover bg-center no-repeat">
         <div
             className="w-full flex flex-col lg:flex-row  justify-center align-center md:p-8 bg-gray-800 bg-opacity-25  ">
-            <div className="lg:mt-24 ">
+            <div className="lg:mt-24  " v-motion="motionPresets.fadeDown(Math.random() * 150)">
                 <div className="card card-compact max-w-md bg-white bg-opacity-95 mx-3 shadow-lg mb-4">
                     <span className="w-full flex justify-center">
                         <h2 className="uppercase text-l font-bold text-gray-700 mt-2">
@@ -120,8 +120,8 @@
                     </form>
                 </div>
             </div>
-            <div
-                class="col-span-3 lg:col-span-1 m-3 order-first card card-compact max-w-md max-h-100 bg-white bg-opacity-95 shadow-lg mb-4 mt-24">
+            <div v-motion="motionPresets.fadeDown(Math.random() * 150)" class=" col-span-3 lg:col-span-1 m-3 order-first card card-compact max-w-md max-h-100 bg-white
+                bg-opacity-95 shadow-lg mb-4 mt-24">
                 <span class="w-full flex justify-center">
                     <h2 class="uppercase text-l font-bold text-gray-700 mt-2">
                         <span>Flight summary</span>
@@ -262,7 +262,8 @@
                 <hr class="border-gray-700" />
             </div>
         </div>
-        <div className="w-full flex  justify-center align-center  md:p-8 ">
+        <div className="w-full flex  justify-center align-center  md:p-8 "
+            v-motion="motionPresets.fadeUp(Math.random() * 150)">
             <div class="card card-compact w-96 mx-3 bg-white bg-opacity-95 shadow-lg mb-4">
                 <span class="w-full flex justify-center">
                     <h2 class="uppercase text-l font-bold text-gray-700 mt-2">
@@ -311,7 +312,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, inject } from "vue";
 import { useMainStore } from "../stores"; // Import your flight store
 import { authStore } from "../stores/authStore";
 import BaseButton from "../components/Buttons/BaseButton.vue";
@@ -326,6 +327,8 @@ const mainStore = useMainStore();
 const auth = authStore();
 
 const router = useRouter();
+
+const motionPresets = inject("motionPresets");
 
 const formVals = ref({
     name: auth.user?.name || "",

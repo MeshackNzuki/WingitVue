@@ -12,7 +12,7 @@
                             :showNavigators="false" :responsiveOptions="responsiveOptions"
                             containerClass="w-[350px] md:w-full " circular :autoplayInterval="4000">
                             <template #item="slotProps" class="flex-1">
-                                <div
+                                <div v-motion="motionPresets.fadeRight()"
                                     class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in">
                                     <div
                                         class="flex items-center justify-between bg-transparent text-gray-700 px-6 py-0.5">
@@ -314,19 +314,20 @@
                     </div>
                     <div className="w-full flex mt-0  justify-center mb-32 ">
                         <div className="flex flex-col  text-gray-50 w-full px-2 lg:px-12 py-4 max-w-screen-xl">
-                            <h1
+                            <h1 v-motion="motionPresets.fadeUp()"
                                 className="text-2xl md:text-4xl text-left font- font-serif  lg:ml-0 mt-5 text-gray-50 md:mt-5">
 
                                 Charter Flight Booking Service In Kenya
 
                             </h1>
-                            <span className="mt-2 md:m-0 lg:mt-2 text-gray-50 lg:text-md font-light mb-4 ">
+                            <span v-motion="motionPresets.fadeDown()"
+                                className="mt-2 md:m-0 lg:mt-2 text-gray-50 lg:text-md font-light mb-4 ">
                                 <h2>
                                     Explore Kenyan cities , towns , and parks
                                     with our exceptional flight services
                                 </h2>
                             </span>
-                            <router-link to="/listed-flights" className="my-6">
+                            <router-link to="/listed-flights" className="my-6" v-motion="motionPresets.fadeUp(300)">
                                 <span className="text-md font-normal mt-6 mb-5 md:mb-0 text-gray-50">
                                     <span
                                         className="flex flex-row hover:translate-x-0.5 trasition duration-300 ease-in font-semibold">
@@ -363,7 +364,7 @@
         </div>
         <div
             class="grid max-w-screen-xl px-2 lg:px-12 py-4 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 relative">
-            <div class="mr-auto place-sel-center lg:col-span-6">
+            <div class="mr-auto place-sel-center lg:col-span-6" v-motion="motionPresets.fadeLeft()">
                 <span :class="`uppercase text-second text-lg ${exo2.className}`">
                     <div className="w-full h-full fixed top-0 left-0 z-[-1] "></div>
                     <h2 class="font-semibold font-serif my-6 text-lg">
@@ -397,7 +398,7 @@
                         </router-link>
                     </div>
 
-                    <div class="bottom-0">
+                    <div class="bottom-0" v-motion="motionPresets.fadeDown()">
                         <div class="collapse rounded-sm collapse-arrow collapse-white text-base bg-gold">
                             <input type="radio" name="my-accordion-2" />
                             <div class="collapse-title text-lg font-light">
@@ -421,7 +422,8 @@
                 </div>
             </div>
 
-            <div class="hidden lg:mt-0 lg:col-span-6 lg:flex w-full justify-end relative p-4">
+            <div class="hidden lg:mt-0 lg:col-span-6 lg:flex w-full justify-end relative p-4"
+                v-motion="motionPresets.fadeRight()">
                 <div class="bg-slate-500 mt-5">
                     <img class="w-full h-full rounded-md hover:scale-105 transition-all duration-300 ease-in" :src="Top"
                         alt="mockup" />
@@ -430,8 +432,9 @@
         </div>
     </section>
     <section class="bg-base">
-        <div class="mx-auto flex flex-col md:flex-row items-center px-2 lg:px-12 max-w-screen-xl">
-            <div class="flex flex-col w-full lg:w-1/3 justify-center items-start px-2 py-8">
+        <div class=" mx-auto flex flex-col md:flex-row items-center px-2 lg:px-12 max-w-screen-xl">
+            <div v-motion="motionPresets.fadeRight()"
+                class="flex flex-col w-full lg:w-1/3 justify-center items-start px-2 py-8">
                 <p class="font-light text-gray-50 lg:mb-8">
                     We are committed to providing our passengers with an
                     exceptional travel experience, from the moment they book
@@ -488,15 +491,17 @@
             </div>
             <div class="p-2 mt-0 mb-3 md:mb-0 md:mt-0 ml-0 lg:w-2/3 justify-center">
                 <div class="flex flex-wrap justify-center items-center space-x-4">
-                    <div
-                        class="xl:block w-40 h-60 bg-[url('../assets/p1.jpg')] bg-cover rounded-t-full bg-contain bg-center rounded-b-full transform -rotate-12 flex justify-center items-center">
+                    <div v-motion="motionPresets.fadeDown()">
+                        <div
+                            class="xl:block w-40 h-60 bg-[url('../assets/p1.jpg')] bg-cover rounded-t-full bg-contain bg-center rounded-b-full transform -rotate-12 flex justify-center items-center">
+                        </div>
                     </div>
-                    <div>
+                    <div v-motion="motionPresets.fadeRight()">
                         <div
                             class="w-60 h-96 bg-[url('../assets/p2.jpg')] rounded-t-full bg-opacity-25 bg-cover rounded-b-full bg-contin bg-center transform -rotate-12 flex justify-center items-center">
                         </div>
                     </div>
-                    <div>
+                    <div v-motion="motionPresets.fadeUp()">
                         <div
                             class="xl:block w-40 h-60 bg-[url('../assets/pill4.jpg')] rounded-t-full bg-contain bg-center bg-cover rounded-b-full transform -rotate-12 flex justify-center items-center">
                         </div>
@@ -512,7 +517,7 @@
                 <div class="relative flex-col w-full h-[350px] max-w-screen-xl my-24 px-2 lg:px-12 flex justify-start">
                     <div class="text-left px-4 bg-transparent">
                         <span class="text-gray-50 md:text-5xl font-semibold mb-4">
-                            <div class="text-3xl mb-12">
+                            <div class="text-3xl mb-12" v-motion="motionPresets.fadeUp()">
                                 <span class="text-3xl font-semibold font-serif">Experience the thrill of travel with
                                     Wingit</span>
                             </div>
@@ -522,7 +527,7 @@
                                 <p></p>
                             </span>
                         </div>
-                        <span class="m-auto mt-12 mb-4 lg:mb-0 lg:m-0 lg:mt-10">
+                        <span class="m-auto mt-12 mb-4 lg:mb-0 lg:m-0 lg:mt-10" v-motion="motionPresets.fadeDown()">
                             <router-link to="/listed-flights">
                                 <CallToAction label="Explore" />
                             </router-link>
@@ -532,7 +537,8 @@
             </section>
         </main>
         <section class="py-6 bg-[url('../assets/bg.jpg')]">
-            <h2 class="font-semibold font-serif my-6 text-lg uppercase">Why Wingit</h2>
+            <h2 class="font-semibold font-serif my-6 text-lg uppercase" v-motion="motionPresets.fadeDown()">Why Wingit
+            </h2>
 
             <div class="grid md:grid-cols-3 max-w-screen-lg mx-auto gap-10 mt-16 px-5">
                 <div class="flex gap-4 items-start flex-col">
@@ -553,13 +559,13 @@
                         </svg>
                     </span>
                     <div>
-                        <h3 class="font-semibold text-xl">
+                        <h3 class="font-semibold text-xl" v-motion="motionPresets.fadeUp()">
                             Flight charter booking service
                         </h3>
                         <figure>
                             <img src="../assets/common.jpg" alt="Wingit - flight booking" />
                         </figure>
-                        <p class="mt-1 text-gray-700">
+                        <p class="mt-1 text-gray-700" v-motion="motionPresets.fadeDown()">
                             Experience private charter flight at a fraction of
                             the cost with all the freedom and flexibility that
                             comes with it. We update availability of routes
@@ -577,13 +583,13 @@
                                 fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
                         </svg></span>
                     <div>
-                        <h3 class="font-semibold text-xl">
+                        <h3 class="font-semibold text-xl" v-motion="motionPresets.fadeDown()">
                             Wide selection of destinations
                         </h3>
                         <figure>
                             <img src="../assets/common2.jpg" alt="Wingit - flight booking" />
                         </figure>
-                        <p class="mt-1 text-white md:text-gray-700">
+                        <p class="mt-1 text-white md:text-gray-700" v-motion="motionPresets.fadeUp()">
                             Whether you are dreaming of a beach holiday, safari
                             escape, reunion with family or a business trip, we
                             will take you there in comfort, safety and style.
@@ -599,13 +605,13 @@
                                 fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
                         </svg></span>
                     <div>
-                        <h3 class="font-semibold text-xl">
+                        <h3 class="font-semibold text-xl" v-motion="motionPresets.fadeDown()">
                             Flexible booking options
                         </h3>
                         <figure>
                             <img src="../assets/common3.jpg" alt="Wingit - flight booking" />
                         </figure>
-                        <p class="mt-1 text-white md:text-gray-700">
+                        <p class="mt-1 text-white md:text-gray-700" v-motion="motionPresets.fadeUp()">
                             Life is unpredictable - Change your plans without
                             any hassle and enjoy the freedom to travel on your
                             terms with Wingit.
@@ -616,10 +622,10 @@
         </section>
 
         <section class="my-6">
-            <h2 class="font-semibold my-4 text-lg font-serif uppercase">
+            <h2 class="font-semibold my-4 text-lg font-serif uppercase" v-motion="motionPresets.fadeDown()">
                 Popular Destinations
             </h2>
-            <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
+            <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24" v-motion="motionPresets.fadeUp()">
                 <div class="flex">
                     <vue-marquee-slider id="marquee-slider-space" numVisible="3" :space="60" :speed="19000" :loop="true"
                         pauseOnHover>
@@ -637,22 +643,19 @@
                 </div>
                 <div class="-m-1 flex flex-wrap md:-m-2 mt-24">
                     <div class="flex w-1/2 flex-wrap">
-                        <div
-                            class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
-
+                        <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
+                            v-motion="getRandomMotionPreset()">
                             <span
                                 class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
                             </span>
-
-
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Kisumu.jpg" />
                         </div>
-                        <div
-                            class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
+                        <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
+                            v-motion="getRandomMotionPreset()">
                             <span
                                 class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
@@ -662,8 +665,8 @@
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Malindi.jpg" />
                         </div>
-                        <div
-                            class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
+                        <div class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
+                            v-motion="getRandomMotionPreset()">
                             <span
                                 class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
@@ -675,8 +678,8 @@
                         </div>
                     </div>
                     <div class=" flex w-1/2 flex-wrap">
-                        <div
-                            class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
+                        <div class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
+                            v-motion="getRandomMotionPreset()">
                             <span
                                 class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
@@ -686,8 +689,8 @@
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Nanyuki.jpg" />
                         </div>
-                        <div
-                            class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
+                        <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
+                            v-motion="getRandomMotionPreset()">
                             <span
                                 class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
@@ -697,8 +700,8 @@
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="../assets/Masaimara.jpg" />
                         </div>
-                        <div
-                            class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in">
+                        <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
+                            v-motion="getRandomMotionPreset()">
                             <span
                                 class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
                                 <router-link to="/listed-flights">
@@ -717,10 +720,11 @@
                 class="items-center justify-between py-10 px-5 backdrop-blur shadow-2xl glass rounded-lg mx-auto text-gray-50 text-center">
                 <div class="px-2 -mt-6">
                     <div class="text-center">
-                        <h1 class="font-semibold text-lg text-gray-800 leading-loose font-serif my-3 w-full">
+                        <h1 v-motion="motionPresets.fadeDown()"
+                            class="font-semibold text-lg text-gray-800 leading-loose font-serif my-3 w-full">
                             <span>Comfort and convenience on the fly</span>
                         </h1>
-                        <div class="w-full text-center">
+                        <div class="w-full text-center" v-motion="motionPresets.fadeUp()">
                             <p class="text-gray-700">
                                 By registering an account, you will be the first
                                 to receive news of our special fares and
@@ -752,7 +756,9 @@ import SplitButton from "../components/Buttons/SplitButton.vue";
 import CallToAction from "../components/Buttons/CallToAction.vue";
 import BaseButton from "../components/Buttons/BaseButton.vue";
 import { toast } from "vue3-toastify";
+import { inject } from "vue";
 
+const motionPresets = inject("motionPresets");
 const mainStore = useMainStore();
 const subscriptionMail = ref("");
 
@@ -811,5 +817,16 @@ const destinations = ref([
 
 function getImagePath(image) {
     return new URL(image, import.meta.url).href;
+}
+
+function getRandomMotionPreset() {
+    const presets = [
+        motionPresets.fadeUp(Math.random() * 300),
+        motionPresets.fadeIn(Math.random() * 300),
+        motionPresets.fadeLeft(Math.random() * 300),
+        motionPresets.fadeRight(Math.random() * 300),
+        motionPresets.fadeDown(Math.random() * 300),
+    ];
+    return presets[Math.floor(Math.random() * presets.length)];
 }
 </script>

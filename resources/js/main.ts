@@ -10,9 +10,13 @@ import "primeicons/primeicons.css";
 import "vue-final-modal/style.css";
 import "./AxiosConfig";
 import "primevue/resources/themes/aura-light-green/theme.css";
-
 import App from "./App.vue";
 import router from "./router/index";
+import { MotionPlugin } from "@vueuse/motion";
+import motionPresets from "./utils/motionPresets.js";
+
+
+
 
 const app = createApp(App);
 
@@ -20,8 +24,11 @@ app.use(Vue3Toastify, {
     autoClose: 2000,
     multiple: false,
 });
+
 app.use(createPinia().use(piniaPluginPersistedstate));
 app.use(router);
 app.use(PrimeVue);
 app.use(ToastService);
+app.use(MotionPlugin);
+app.provide("motionPresets", motionPresets);
 app.mount("#app");

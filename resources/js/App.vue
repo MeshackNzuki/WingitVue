@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, inject, onMounted, ref, watch } from "vue";
 import { RouterView, useRoute } from "vue-router";
 import Toast from "primevue/toast";
 import "../../node_modules/vue3-marquee-slider/dist/style.css";
@@ -11,6 +11,8 @@ import Footer from "./components/Footer.vue";
 import { authStore } from "./stores/authStore";
 import { useMainStore } from "./stores";
 import WhatsApp from "./components/WhatsApp.vue";
+
+const motionPresets = inject("motionPresets");
 
 const route = useRoute();
 const mainStore = useMainStore();

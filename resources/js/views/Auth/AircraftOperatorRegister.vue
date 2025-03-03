@@ -1,139 +1,81 @@
 <template>
     <div>
         <div
-            className="min-h-screen flex flex-col items-center justify-ceter bg-base bg-[url('../assets/searchpg.jpg')] p-2"
-        >
-            <div
-                className="w-full flex justify-center mt-24 mb-6 md:mt-32 text-gray-50 font-medium text-lg md:mb-10 uppercase"
-            >
+            className="min-h-screen flex flex-col items-center justify-ceter bg-base bg-[url('../assets/searchpg.jpg')] p-2">
+            <div v-motion="motionPresets.fadeDown()"
+                className="w-full flex justify-center mt-24 mb-6 md:mt-32 text-gray-50 font-medium text-lg md:mb-10 uppercase">
                 AIRCRAFT OPERATOR
             </div>
-            <div
-                className="relative flex flex-col bg-white bg-opacity-85 shadow-md px-4 sm:px-6 md:px-4 lg:px-4 py-2 md:py-4 rounded-md w-full  max-w-[400px]"
-            >
-                <div
-                    className="font-bold self-center text-xl sm:text-2xl uppercase text-base"
-                >
+            <div v-motion="motionPresets.fadeUp()"
+                className="relative flex flex-col bg-white bg-opacity-85 shadow-md px-4 sm:px-6 md:px-4 lg:px-4 py-2 md:py-4 rounded-md w-full  max-w-[400px]">
+                <div className="font-bold self-center text-xl sm:text-2xl uppercase text-base">
                     signup
                 </div>
                 <div>
                     <div v-if="currentStep === 1">
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="name"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                            >
+                            <label for="name" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                 Full Company Name
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
-                                    <i
-                                        class="pi pi-building"
-                                        style="font-size: 1.5em"
-                                    ></i>
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                    <i class="pi pi-building" style="font-size: 1.5em"></i>
                                 </div>
-                                <input
-                                    id="name"
-                                    type="text"
-                                    name="name"
-                                    v-model="formVals.name"
+                                <input id="name" type="text" name="name" v-model="formVals.name"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="Registered Company Name"
-                                />
+                                    placeholder="Registered Company Name" />
                             </div>
-                            <Error
-                                v-if="errors.step1.name"
-                                :message="errors.step1.name"
-                            />
+                            <Error v-if="errors.step1.name" :message="errors.step1.name" />
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="email"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                            >
+                            <label for="email"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                 E-Mail Address:
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
-                                    <i
-                                        class="pi pi-envelope"
-                                        style="font-size: 1.5em"
-                                    ></i>
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                    <i class="pi pi-envelope" style="font-size: 1.5em"></i>
                                 </div>
-                                <input
-                                    id="email"
-                                    type="email"
-                                    name="email"
-                                    v-model="formVals.email"
+                                <input id="email" type="email" name="email" v-model="formVals.email"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="E-Mail Address"
-                                />
+                                    placeholder="E-Mail Address" />
                             </div>
-                            <Error
-                                v-if="errors.step1.email"
-                                :message="errors.step1.email"
-                            />
+                            <Error v-if="errors.step1.email" :message="errors.step1.email" />
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="contact_number"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                            >
+                            <label for="contact_number"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                 Contact number
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
-                                    <i
-                                        class="pi pi-phone"
-                                        style="font-size: 1.5em"
-                                    ></i>
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                    <i class="pi pi-phone" style="font-size: 1.5em"></i>
                                 </div>
-                                <div
-                                    class="flex flex-row items-center relative"
-                                >
+                                <div class="flex flex-row items-center relative">
                                     <div class="absolute left-8 text-gray-400">
-                                        <CountryCode
-                                            v-model="formVals.country_code"
-                                        />
+                                        <CountryCode v-model="formVals.country_code" />
                                     </div>
-                                    <input
-                                        id="contact_number"
-                                        type="tel"
-                                        name="contact_number"
+                                    <input id="contact_number" type="tel" name="contact_number"
                                         v-model="formVals.contact_number"
-                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800 ml-36"
-                                    />
+                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800 ml-36" />
                                 </div>
                             </div>
-                            <Error
-                                v-if="errors.step1.contact_number"
-                                :message="errors.step1.contact_number"
-                            />
+                            <Error v-if="errors.step1.contact_number" :message="errors.step1.contact_number" />
                         </div>
 
                         <div class="flex justify-between space-x-4 w-full">
-                            <BaseButton
-                                label="Next"
-                                class="p-8"
-                                :action="() => handleNext()"
-                            />
+                            <BaseButton label="Next" class="p-8" :action="() => handleNext()" />
                         </div>
                     </div>
 
                     <div v-if="currentStep === 2">
                         <ul class="steps w-full">
-                            <li
-                                data-content="✓"
-                                class="step step-success text-gray-50"
-                            ></li>
+                            <li data-content="✓" class="step step-success text-gray-50"></li>
                             <li data-content="✓" class="step"></li>
                             <li data-content="✓" class="step"></li>
                             <li data-content="✓" class="step"></li>
@@ -143,78 +85,44 @@
                         <div class="flex flex-col mb-3 md:mb-6"></div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="password"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                            >
+                            <label for="password"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                 Password:
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
-                                    <i
-                                        class="pi pi-lock"
-                                        style="font-size: 1.5em"
-                                    ></i>
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                    <i class="pi pi-lock" style="font-size: 1.5em"></i>
                                 </div>
-                                <input
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    v-model="formVals.password"
+                                <input id="password" type="password" name="password" v-model="formVals.password"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="Password"
-                                />
+                                    placeholder="Password" />
                             </div>
-                            <Error
-                                v-if="errors.step2.password"
-                                :message="errors.step2.password"
-                            />
+                            <Error v-if="errors.step2.password" :message="errors.step2.password" />
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="password_confirmation"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                            >
+                            <label for="password_confirmation"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                 Confirm Password:
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
-                                    <i
-                                        class="pi pi-check-circle text-xl"
-                                        style="font-size: 1.5em"
-                                    ></i>
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                    <i class="pi pi-check-circle text-xl" style="font-size: 1.5em"></i>
                                 </div>
-                                <input
-                                    id="password_confirmation"
-                                    type="password"
-                                    name="password_confirmation"
+                                <input id="password_confirmation" type="password" name="password_confirmation"
                                     v-model="formVals.password_confirmation"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="Confirm Password"
-                                />
+                                    placeholder="Confirm Password" />
                             </div>
-                            <Error
-                                v-if="errors.step2.password_confirmation"
-                                :message="errors.step2.password_confirmation"
-                            />
+                            <Error v-if="errors.step2.password_confirmation"
+                                :message="errors.step2.password_confirmation" />
                         </div>
 
                         <div class="flex justify-between space-x-4 w-full">
-                            <BaseButton
-                                label="Previous"
-                                class="p-8"
-                                :action="() => handlePrev()"
-                            />
-                            <BaseButton
-                                label="next"
-                                class="p-8"
-                                :action="() => handleNext()"
-                            />
+                            <BaseButton label="Previous" class="p-8" :action="() => handlePrev()" />
+                            <BaseButton label="next" class="p-8" :action="() => handleNext()" />
                         </div>
                     </div>
 
@@ -222,55 +130,31 @@
                         <!-- Step 3 Fields -->
                         <div>
                             <ul class="steps w-full">
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
                                 <li data-content="✓" class="step"></li>
                                 <li data-content="✓" class="step"></li>
                             </ul>
 
                             <div class="mb-6 pt-4">
-                                <label
-                                    class="mb-5 block text-xl font-semibold text-gray-800"
-                                >
+                                <label class="mb-5 block text-xl font-semibold text-gray-800">
                                     Certificate of incorporation (Upload a pdf
                                     copy)
                                 </label>
 
                                 <div class="mb-8">
-                                    <input
-                                        type="file"
-                                        name="coi_doc"
-                                        id="file1"
-                                        class="sr-only"
-                                        @change="handleFileChange"
-                                    />
-                                    <label
-                                        for="file1"
-                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
-                                    >
+                                    <input type="file" name="coi_doc" id="file1" class="sr-only"
+                                        @change="handleFileChange" />
+                                    <label for="file1"
+                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center">
                                         <div>
-                                            <span
-                                                class="mb-2 block text-gray-800"
-                                            >
-                                                <i
-                                                    class="pi pi-paperclip"
-                                                    style="font-size: 1.5em"
-                                                ></i>
+                                            <span class="mb-2 block text-gray-800">
+                                                <i class="pi pi-paperclip" style="font-size: 1.5em"></i>
                                                 Drop files here
                                             </span>
+                                            <span class="mb-2 block text-base font-medium text-[#6B7280]">Or</span>
                                             <span
-                                                class="mb-2 block text-base font-medium text-[#6B7280]"
-                                                >Or</span
-                                            >
-                                            <span
-                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
-                                            >
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800">
                                                 Browse
                                             </span>
                                             <p v-if="formVals.coi_doc">
@@ -279,26 +163,13 @@
                                             </p>
                                         </div>
                                     </label>
-                                    <Error
-                                        v-if="errors.step3.coi_doc"
-                                        :message="errors.step3.coi_doc"
-                                    />
+                                    <Error v-if="errors.step3.coi_doc" :message="errors.step3.coi_doc" />
                                 </div>
                             </div>
 
-                            <div
-                                class="flex justify-between space-x-4 w-full mt-4"
-                            >
-                                <BaseButton
-                                    label="Previous"
-                                    class="p-8"
-                                    :action="() => handlePrev()"
-                                />
-                                <BaseButton
-                                    label="next"
-                                    class="p-8"
-                                    :action="() => handleNext()"
-                                />
+                            <div class="flex justify-between space-x-4 w-full mt-4">
+                                <BaseButton label="Previous" class="p-8" :action="() => handlePrev()" />
+                                <BaseButton label="next" class="p-8" :action="() => handleNext()" />
                             </div>
                         </div>
                     </div>
@@ -306,56 +177,33 @@
                     <div v-if="currentStep === 4">
                         <div>
                             <ul class="steps w-full">
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
                                 <li data-content="✓" class="step"></li>
                             </ul>
 
                             <div class="mb-6 pt-4">
-                                <label
-                                    class="mb-5 block text-xl font-semibold text-gray-800"
-                                >
+                                <label class="mb-5 block text-xl font-semibold text-gray-800">
                                     AOC document (Upload a pdf copy, and provide
                                     expiry date)
                                 </label>
 
                                 <div class="mb-8">
-                                    <input
-                                        type="file"
-                                        name="AOC_doc"
-                                        id="file2"
-                                        class="sr-only"
-                                        @change="handleFileChange"
-                                    />
-                                    <label
-                                        for="file2"
-                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
-                                    >
+                                    <input type="file" name="AOC_doc" id="file2" class="sr-only"
+                                        @change="handleFileChange" />
+                                    <label for="file2"
+                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center">
                                         <div>
-                                            <span
-                                                class="mb-2 block text-gray-800"
-                                            >
+                                            <span class="mb-2 block text-gray-800">
                                                 <i class="pi pi-paperclip"></i>
                                                 Drop files here
                                             </span>
-                                            <span
-                                                class="mb-2 block text-base font-medium text-[#6B7280]"
-                                            >
+                                            <span class="mb-2 block text-base font-medium text-[#6B7280]">
                                                 Or
                                             </span>
                                             <span
-                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
-                                            >
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800">
                                                 Browse
                                             </span>
                                             <p v-if="formVals.AOC_doc">
@@ -364,54 +212,31 @@
                                             </p>
                                         </div>
                                     </label>
-                                    <Error
-                                        v-if="errors.step4.AOC_doc"
-                                        :message="errors.step4.AOC_doc"
-                                    />
+                                    <Error v-if="errors.step4.AOC_doc" :message="errors.step4.AOC_doc" />
                                 </div>
                             </div>
 
                             <div class="flex flex-col mb-3 md:mb-6">
-                                <label
-                                    for="AOC_expiry_date"
-                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                >
+                                <label for="AOC_expiry_date"
+                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                     AOC Expiry date
                                 </label>
                                 <div class="relative">
                                     <div
-                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                    >
+                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                         <i class="pi pi-clock"></i>
                                     </div>
 
-                                    <input
-                                        id="AOC_expiry_date"
-                                        type="date"
-                                        name="AOC_expiry_date"
+                                    <input id="AOC_expiry_date" type="date" name="AOC_expiry_date"
                                         class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                        v-model="formVals.AOC_expiry_date"
-                                    />
+                                        v-model="formVals.AOC_expiry_date" />
                                 </div>
-                                <Error
-                                    v-if="errors.step4.AOC_expiry_date"
-                                    :message="errors.step4.AOC_expiry_date"
-                                />
+                                <Error v-if="errors.step4.AOC_expiry_date" :message="errors.step4.AOC_expiry_date" />
                             </div>
 
-                            <div
-                                class="flex justify-between space-x-4 w-full mt-4"
-                            >
-                                <BaseButton
-                                    label="Previous"
-                                    class="p-8"
-                                    :action="() => handlePrev()"
-                                />
-                                <BaseButton
-                                    label="Next"
-                                    class="p-8"
-                                    :action="() => handleNext()"
-                                />
+                            <div class="flex justify-between space-x-4 w-full mt-4">
+                                <BaseButton label="Previous" class="p-8" :action="() => handlePrev()" />
+                                <BaseButton label="Next" class="p-8" :action="() => handleNext()" />
                             </div>
                         </div>
                     </div>
@@ -419,58 +244,32 @@
                     <div v-if="currentStep === 5">
                         <div>
                             <ul class="steps w-full">
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
                             </ul>
 
                             <div class="mb-6 pt-4">
-                                <label
-                                    class="mb-5 block text-xl font-semibold text-gray-800"
-                                >
+                                <label class="mb-5 block text-xl font-semibold text-gray-800">
                                     Company PIN certificate (Upload a pdf copy)
                                 </label>
 
                                 <div class="mb-8">
-                                    <input
-                                        type="file"
-                                        name="company_pin"
-                                        id="file3"
-                                        class="sr-only"
-                                        @change="handleFileChange"
-                                    />
-                                    <label
-                                        for="file3"
-                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center"
-                                    >
+                                    <input type="file" name="company_pin" id="file3" class="sr-only"
+                                        @change="handleFileChange" />
+                                    <label for="file3"
+                                        class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center">
                                         <div>
-                                            <span
-                                                class="mb-2 block text-gray-800"
-                                            >
+                                            <span class="mb-2 block text-gray-800">
                                                 <i class="pi pi-paperclip"></i>
                                                 Drop files here
                                             </span>
-                                            <span
-                                                class="mb-2 block text-base font-medium text-[#6B7280]"
-                                            >
+                                            <span class="mb-2 block text-base font-medium text-[#6B7280]">
                                                 Or
                                             </span>
                                             <span
-                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
-                                            >
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800">
                                                 Browse
                                             </span>
                                             <p v-if="formVals.company_pin">
@@ -479,36 +278,20 @@
                                             </p>
                                         </div>
                                     </label>
-                                    <Error
-                                        v-if="errors.step5.company_pin"
-                                        :message="errors.step5.company_pin"
-                                    />
+                                    <Error v-if="errors.step5.company_pin" :message="errors.step5.company_pin" />
                                 </div>
                             </div>
 
-                            <div
-                                class="flex justify-between space-x-4 w-full mt-4"
-                            >
-                                <BaseButton
-                                    label="Previous"
-                                    class="p-8"
-                                    :action="() => handlePrev()"
-                                />
-                                <BaseButton
-                                    label="Submit"
-                                    class="p-8"
-                                    :action="() => handleNext()"
-                                />
+                            <div class="flex justify-between space-x-4 w-full mt-4">
+                                <BaseButton label="Previous" class="p-8" :action="() => handlePrev()" />
+                                <BaseButton label="Submit" class="p-8" :action="() => handleNext()" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="flex justify-center items-center mt-2">
-                    <a
-                        href="/tourism-operator/auth/login"
-                        target="_blank"
-                        className="inline-flex items-center font-bold text-gray-700 hover:text-[#EF434A] text-xs text-center"
-                    >
+                    <a href="/tourism-operator/auth/login" target="_blank"
+                        className="inline-flex items-center font-bold text-gray-700 hover:text-[#EF434A] text-xs text-center">
                     </a>
                 </div>
             </div>
@@ -517,12 +300,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Error from "../../components/Errors/Error.vue";
 import CountryCode from "../../components/countries/CountryCodes.vue";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
+const motionPresets = inject("motionPresets")
 
 const formValInit = {
     name: "",

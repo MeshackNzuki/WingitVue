@@ -19,7 +19,8 @@
 
                 <div class="w-full mt-8 flex justify-center">
                     <div v-if="mainStore.flights.length > 0" class="flex flex-col md:grid grid-cols-3 gap-4">
-                        <div v-for="(flight, index) in mainStore.flights">
+                        <div v-for="(flight, index) in mainStore.flights"
+                            v-motion="motionPresets.fadeUp(Math.random() * 150)">
                             <div
                                 class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative">
                                 <div class="flex items-center justify-between text-gray-700 px-6 py-0.5">
@@ -81,7 +82,7 @@
                                                 class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
                                                 <span class="me-1">{{
                                                     flight.available_seats
-                                                }}</span>
+                                                    }}</span>
                                                 <span>{{
                                                     flight.available_seats > 1
                                                         ? "seats"
@@ -301,12 +302,14 @@
     </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, inject } from "vue";
 import { useRouter } from "vue-router";
 import { useMainStore } from "../stores";
 import { toast } from "vue3-toastify";
 import BaseButton from "../components/Buttons/BaseButton.vue";
 import { format } from "date-fns";
+
+const motionPresets = inject("motionPresets");
 
 // Local state
 

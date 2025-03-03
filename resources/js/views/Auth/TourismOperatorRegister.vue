@@ -1,113 +1,71 @@
 <template>
     <div>
-        <div
-            className="min-h-screen flex flex-col items-center justify-ceter bg-[url('../assets/searchpg.jpg')] p-2"
-        >
-            <div
-                className="w-full flex justify-center mt-24 mb-6  md:mt-32 text-gray-50 font-medium text-lg md:mb-10 uppercase"
-            >
+        <div className="min-h-screen flex flex-col items-center justify-ceter bg-[url('../assets/searchpg.jpg')] p-2">
+            <div v-motion="motionPresets.fadeDown()"
+                className="w-full flex justify-center mt-24 mb-6  md:mt-32 text-gray-50 font-medium text-lg md:mb-10 uppercase">
                 Tourism operator
             </div>
-            <div
-                className="relative flex flex-col bg-white bg-opacity-85 shadow-md px-4 sm:px-6 md:px-4 lg:px-4 py-2 md:py-4 rounded-md w-full  max-w-[400px]"
-            >
-                <div
-                    className="font-bold self-center text-xl sm:text-2xl uppercase text-basemt-5"
-                >
+            <div v-motion="motionPresets.fadeUp()"
+                className="relative flex flex-col bg-white bg-opacity-85 shadow-md px-4 sm:px-6 md:px-4 lg:px-4 py-2 md:py-4 rounded-md w-full  max-w-[400px]">
+                <div className="font-bold self-center text-xl sm:text-2xl uppercase text-basemt-5">
                     signup
                 </div>
                 <div>
                     <div v-if="currentStep === 1">
                         <form action="#" @submit.prevent="">
                             <div class="flex flex-col mb-3 md:mb-6">
-                                <label
-                                    for="name"
-                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                >
+                                <label for="name"
+                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                     Full Company Name
                                 </label>
                                 <div class="relative">
                                     <div
-                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                    >
+                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                         <i class="pi pi-users text-xl"></i>
                                     </div>
-                                    <input
-                                        id="name"
-                                        type="text"
-                                        v-model="formVals.name"
+                                    <input id="name" type="text" v-model="formVals.name"
                                         class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                        placeholder="Registered Company Name"
-                                    />
+                                        placeholder="Registered Company Name" />
                                 </div>
-                                <Error
-                                    v-if="errors.step1.name"
-                                    :message="errors.step1.name"
-                                />
+                                <Error v-if="errors.step1.name" :message="errors.step1.name" />
                             </div>
 
                             <div class="flex flex-col mb-3 md:mb-6">
-                                <label
-                                    for="email"
-                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                >
+                                <label for="email"
+                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                     E-Mail Address
                                 </label>
                                 <div class="relative">
                                     <div
-                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                    >
+                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                         <i class="pi pi-envelope text-xl"></i>
                                     </div>
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        v-model="formVals.email"
+                                    <input id="email" type="email" v-model="formVals.email"
                                         class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                        placeholder="E-Mail Address"
-                                    />
+                                        placeholder="E-Mail Address" />
                                 </div>
-                                <Error
-                                    v-if="errors.step1.email"
-                                    :message="errors.step1.email"
-                                />
+                                <Error v-if="errors.step1.email" :message="errors.step1.email" />
                             </div>
 
                             <div class="flex flex-col mb-3 md:mb-6">
-                                <label
-                                    for="contact_number"
-                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                                >
+                                <label for="contact_number"
+                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                     Contact Number
                                 </label>
                                 <div class="relative">
                                     <div
-                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                    >
+                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                         <i class="pi pi-phone text-xl"></i>
                                     </div>
-                                    <input
-                                        id="contact_number"
-                                        type="tel"
-                                        v-model="formVals.contact_number"
+                                    <input id="contact_number" type="tel" v-model="formVals.contact_number"
                                         class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                        placeholder="Contact Number"
-                                    />
+                                        placeholder="Contact Number" />
                                 </div>
-                                <Error
-                                    v-if="errors.step1.contact_number"
-                                    :message="errors.step1.contact_number"
-                                />
+                                <Error v-if="errors.step1.contact_number" :message="errors.step1.contact_number" />
                             </div>
 
-                            <div
-                                class="flex justify-between space-x-4 w-full mt-4"
-                            >
-                                <BaseButton
-                                    label="Next"
-                                    class="p-8"
-                                    :action="() => handleNext()"
-                                />
+                            <div class="flex justify-between space-x-4 w-full mt-4">
+                                <BaseButton label="Next" class="p-8" :action="() => handleNext()" />
                             </div>
                         </form>
                     </div>
@@ -121,72 +79,46 @@
 
                         <!-- Password Field -->
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="password"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                            >
+                            <label for="password"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                 Password:
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                     <i class="pi pi-lock text-xl"></i>
                                 </div>
-                                <input
-                                    id="password"
-                                    type="password"
-                                    v-model="formVals.password"
+                                <input id="password" type="password" v-model="formVals.password"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="Password"
-                                />
+                                    placeholder="Password" />
                             </div>
-                            <Error
-                                v-if="errors.step2.password"
-                                :message="errors.step2.password"
-                            />
+                            <Error v-if="errors.step2.password" :message="errors.step2.password" />
                         </div>
 
                         <!-- Confirm Password Field -->
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="password_confirmation"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold"
-                            >
+                            <label for="password_confirmation"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
                                 Confirm Password:
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                     <i class="pi pi-check-circle text-xl"></i>
                                 </div>
-                                <input
-                                    id="password_confirmation"
-                                    type="password"
+                                <input id="password_confirmation" type="password"
                                     v-model="formVals.password_confirmation"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="Confirm Password"
-                                />
+                                    placeholder="Confirm Password" />
                             </div>
-                            <Error
-                                v-if="errors.step2.password_confirmation"
-                                :message="errors.step2.password_confirmation"
-                            />
+                            <Error v-if="errors.step2.password_confirmation"
+                                :message="errors.step2.password_confirmation" />
                         </div>
 
                         <!-- Navigation BaseButtons -->
                         <div class="flex justify-between space-x-4 w-full mt-4">
-                            <BaseButton
-                                label="Previous"
-                                class="p-8"
-                                :action="() => handlePrev()"
-                            />
-                            <BaseButton
-                                label="Next"
-                                class="p-8"
-                                :action="() => handleNext()"
-                            />
+                            <BaseButton label="Previous" class="p-8" :action="() => handlePrev()" />
+                            <BaseButton label="Next" class="p-8" :action="() => handleNext()" />
                         </div>
                     </div>
 
@@ -194,51 +126,31 @@
                         <div>
                             <!-- Step Indicator -->
                             <ul class="steps w-full">
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
                                 <li data-content="✓" class="step"></li>
                             </ul>
 
                             <!-- File Upload Section -->
                             <div class="mb-6 pt-4">
-                                <label
-                                    class="mb-5 block text-xl font-semibold text-gray-800"
-                                >
+                                <label class="mb-5 block text-xl font-semibold text-gray-800">
                                     Certificate of incorporation (upload copy)
                                 </label>
                                 <div class="mb-8">
-                                    <input
-                                        type="file"
-                                        name="coi_doc"
-                                        id="file1"
-                                        class="sr-only"
-                                        @change="handleFileChange"
-                                    />
-                                    <label
-                                        for="file1"
-                                        class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
-                                    >
+                                    <input type="file" name="coi_doc" id="file1" class="sr-only"
+                                        @change="handleFileChange" />
+                                    <label for="file1"
+                                        class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                         <div>
-                                            <span
-                                                class="mb-2 block text-gray-800"
-                                            >
+                                            <span class="mb-2 block text-gray-800">
                                                 <i class="pi pi-paperclip"></i>
                                                 Drop files here
                                             </span>
-                                            <span
-                                                class="mb-2 block text-base font-medium text-[#6B7280]"
-                                            >
+                                            <span class="mb-2 block text-base font-medium text-[#6B7280]">
                                                 Or
                                             </span>
                                             <span
-                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
-                                            >
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800">
                                                 Browse
                                             </span>
                                             <p v-if="formVals.coi_doc">
@@ -247,27 +159,14 @@
                                             </p>
                                         </div>
                                     </label>
-                                    <Error
-                                        v-if="errors.step3.coi_doc"
-                                        :message="errors.step3.coi_doc"
-                                    />
+                                    <Error v-if="errors.step3.coi_doc" :message="errors.step3.coi_doc" />
                                 </div>
                             </div>
 
                             <!-- Navigation BaseButtons -->
-                            <div
-                                class="flex justify-between space-x-4 w-full mt-4"
-                            >
-                                <BaseButton
-                                    label="Previous"
-                                    class="p-8"
-                                    :action="() => handlePrev()"
-                                />
-                                <BaseButton
-                                    label="Next"
-                                    class="p-8"
-                                    :action="() => handleNext()"
-                                />
+                            <div class="flex justify-between space-x-4 w-full mt-4">
+                                <BaseButton label="Previous" class="p-8" :action="() => handlePrev()" />
+                                <BaseButton label="Next" class="p-8" :action="() => handleNext()" />
                             </div>
                         </div>
                     </div>
@@ -276,54 +175,31 @@
                         <div>
                             <!-- Step Indicator -->
                             <ul class="steps w-full">
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
-                                <li
-                                    data-content="✓"
-                                    class="step step-success"
-                                ></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
+                                <li data-content="✓" class="step step-success"></li>
                             </ul>
 
                             <!-- File Upload Section -->
                             <div class="mb-6 pt-4">
-                                <label
-                                    class="mb-5 block text-xl font-semibold text-gray-800"
-                                >
+                                <label class="mb-5 block text-xl font-semibold text-gray-800">
                                     Company PIN certificate (upload copy)
                                 </label>
                                 <div class="mb-8">
-                                    <input
-                                        type="file"
-                                        name="company_pin"
-                                        id="file3"
-                                        class="sr-only"
-                                        @change="handleFileChange"
-                                    />
-                                    <label
-                                        for="file3"
-                                        class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
-                                    >
+                                    <input type="file" name="company_pin" id="file3" class="sr-only"
+                                        @change="handleFileChange" />
+                                    <label for="file3"
+                                        class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                         <div>
-                                            <span
-                                                class="mb-2 block text-gray-800"
-                                            >
+                                            <span class="mb-2 block text-gray-800">
                                                 <i class="pi pi-paperclip"></i>
                                                 Drop files here
                                             </span>
-                                            <span
-                                                class="mb-2 block text-base font-medium text-[#6B7280]"
-                                            >
+                                            <span class="mb-2 block text-base font-medium text-[#6B7280]">
                                                 Or
                                             </span>
                                             <span
-                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800"
-                                            >
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800">
                                                 Browse
                                             </span>
                                             <p v-if="formVals.company_pin">
@@ -332,37 +208,22 @@
                                             </p>
                                         </div>
                                     </label>
-                                    <Error
-                                        v-if="errors.step4.company_pin"
-                                        :message="errors.step4.company_pin"
-                                    />
+                                    <Error v-if="errors.step4.company_pin" :message="errors.step4.company_pin" />
                                 </div>
                             </div>
 
                             <!-- Navigation BaseButtons -->
-                            <div
-                                class="flex justify-between space-x-4 w-full mt-4"
-                            >
-                                <BaseButton
-                                    label="Previous"
-                                    class="p-8"
-                                    :action="() => handlePrev()"
-                                />
-                                <BaseButton
-                                    label="Next"
-                                    class="p-8"
-                                    :action="() => handleNext()"
-                                />
+                            <div class="flex justify-between space-x-4 w-full mt-4">
+                                <BaseButton label="Previous" class="p-8" :action="() => handlePrev()" />
+                                <BaseButton label="Next" class="p-8" :action="() => handleNext()" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="flex justify-center items-center mt-6">
-                    <Link
-                        href="/tourism-operator/auth/login"
-                        target="_blank"
-                        className="inline-flex items-center font-bold text-gray-700 hover:text-[#EF434A] text-xs text-center"
-                    ></Link>
+                    <Link href="/tourism-operator/auth/login" target="_blank"
+                        className="inline-flex items-center font-bold text-gray-700 hover:text-[#EF434A] text-xs text-center">
+                    </Link>
                 </div>
             </div>
         </div>
@@ -370,7 +231,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
@@ -378,6 +239,7 @@ import Swal from "sweetalert2";
 
 import Error from "../../components/Errors/Error.vue";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
+const motionPresets = inject("motionPresets")
 
 const router = useRouter();
 const formValInit = {

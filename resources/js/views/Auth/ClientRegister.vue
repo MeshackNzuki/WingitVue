@@ -1,177 +1,111 @@
 <template>
     <div>
-        <div
-            class="min-h-screen flex flex-col items-center justify-center bg-[url('../assets/searchpg.jpg')] p-2"
-        >
-            <div
-                class="relative flex flex-col bg-slate-50 bg-opacity-85 shadow-md px-4 mb-6 mt-24 sm:px-6 md:px-32 lg:px-8 py-2 md:py-4 rounded-lg w-full max-w-[500px]"
-            >
-                <div
-                    class="font-bold self-center text-xl sm:text-2xl uppercase text-base"
-                >
+        <div class="min-h-screen flex flex-col items-center justify-center bg-[url('../assets/searchpg.jpg')] p-2">
+            <div v-motion="motionPresets.fadeDown()"
+                class="relative flex flex-col bg-slate-50 bg-opacity-85 shadow-md px-4 mb-6 mt-24 sm:px-6 md:px-32 lg:px-8 py-2 md:py-4 rounded-lg w-full max-w-[500px]">
+                <div class="font-bold self-center text-xl sm:text-2xl uppercase text-base">
                     Create an account
                 </div>
-
                 <div class="mt-10">
                     <form @submit.prevent="submit">
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="name"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800"
-                            >
+                            <label for="name" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
                                 Full Name
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                     <i class="pi pi-user"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
-                                <input
-                                    id="name"
-                                    v-model="formVals.name"
-                                    type="text"
+                                <input id="name" v-model="formVals.name" type="text"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="Your full name"
-                                />
+                                    placeholder="Your full name" />
                             </div>
                             <Error v-if="errors.name" :message="errors.name" />
                         </div>
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="email"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800"
-                            >
+                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
                                 Phone Number
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
-                                    <i
-                                        class="pi pi-phone"
-                                        style="font-size: 1.5em"
-                                    ></i>
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                    <i class="pi pi-phone" style="font-size: 1.5em"></i>
                                 </div>
-                                <div
-                                    class="flex flex-row items-center relative"
-                                >
+                                <div class="flex flex-row items-center relative">
                                     <div class="absolute left-8 text-gray-400">
-                                        <CountryCode
-                                            v-model="formVals.country_code"
-                                        />
+                                        <CountryCode v-model="formVals.country_code" />
                                     </div>
-                                    <input
-                                        id="contact_number"
-                                        type="tel"
-                                        name="contact_number"
+                                    <input id="contact_number" type="tel" name="contact_number"
                                         v-model="formVals.contact_number"
-                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800 ml-36"
-                                    />
+                                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800 ml-36" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="email"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800"
-                            >
+                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
                                 E-Mail Address
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                     <i class="pi pi-envelope"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
-                                <input
-                                    id="email"
-                                    v-model="formVals.email"
-                                    type="email"
+                                <input id="email" v-model="formVals.email" type="email"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="E-Mail Address"
-                                />
+                                    placeholder="E-Mail Address" />
                             </div>
-                            <Error
-                                v-if="errors.email"
-                                :message="errors.email"
-                            />
+                            <Error v-if="errors.email" :message="errors.email" />
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="password"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800"
-                            >
+                            <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
                                 Password
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                     <i class="pi pi-lock"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
-                                <input
-                                    id="password"
-                                    v-model="formVals.password"
-                                    type="password"
+                                <input id="password" v-model="formVals.password" type="password"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="Password"
-                                />
+                                    placeholder="Password" />
                             </div>
-                            <Error
-                                v-if="errors.password"
-                                :message="errors.password"
-                            />
+                            <Error v-if="errors.password" :message="errors.password" />
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label
-                                for="password_confirmation"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800"
-                            >
+                            <label for="password_confirmation"
+                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
                                 Confirm Password
                             </label>
                             <div class="relative">
                                 <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400"
-                                >
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
                                     <i class="pi pi-lock"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
-                                <input
-                                    id="password_confirmation"
-                                    v-model="formVals.password_confirmation"
+                                <input id="password_confirmation" v-model="formVals.password_confirmation"
                                     type="password"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
-                                    placeholder="Confirm Password"
-                                />
+                                    placeholder="Confirm Password" />
                             </div>
-                            <Error
-                                v-if="errors.password_confirmation"
-                                :message="errors.password_confirmation"
-                            />
+                            <Error v-if="errors.password_confirmation" :message="errors.password_confirmation" />
                         </div>
 
                         <div class="flex justify-center items-center">
-                            <BaseButton
-                                label="Submit"
-                                class="p-8"
-                                @click="submit"
-                            />
+                            <BaseButton label="Submit" class="p-8" @click="submit" />
                         </div>
                     </form>
                 </div>
 
                 <div class="flex justify-center items-center mt-6">
-                    <router-link
-                        to="/login"
-                        class="inline-flex items-center font-bold text-gray-700 hover:text-[#EF434A] text-xs text-center"
-                    >
+                    <router-link to="/login"
+                        class="inline-flex items-center font-bold text-gray-700 hover:text-[#EF434A] text-xs text-center">
                         <span class="ml-2">Have an account? Sign in</span>
                     </router-link>
                 </div>
@@ -181,7 +115,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, inject } from "vue";
 import { useRouter } from "vue-router";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
 import Error from "../../components/Errors/Error.vue";
@@ -189,6 +123,9 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { authStore } from "../../stores/authStore";
 import CountryCode from "../../components/countries/CountryCodes.vue";
+
+
+const motionPresets = inject("motionPresets")
 
 const { user, login, is_authenticated } = authStore();
 

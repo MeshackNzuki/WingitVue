@@ -4,7 +4,7 @@
             <Header />
         </section>
         <div class="min-h-screen flex flex-col items-center justify-center bg-[url('../assets/searchpg.jpg')] p-2">
-            <div
+            <div v-motion="motionPresets.fadeDown()"
                 class="relative flex flex-col bg-white bg-opacity-85 shadow-md px-4 lg:px-8 py-2 mt-16 w-full lg:max-w-[420px] rounded-lg">
                 <div class="font-bold self-center text-xl sm:text-l uppercase text-base mt-3">
                     Login
@@ -42,8 +42,8 @@
                                 <div class="inline-flex items-center justify-center absolute right-0 top-0 h-full w-10 text-gray-400"
                                     @click="togglePasswordVisibility">
                                     <i :class="isText
-                                            ? 'pi pi-eye'
-                                            : 'pi pi-eye-slash'
+                                        ? 'pi pi-eye'
+                                        : 'pi pi-eye-slash'
                                         "></i>
                                     <!-- PrimeVue eye icon -->
                                 </div>
@@ -78,15 +78,15 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive, onMounted, inject } from "vue";
 import { useRouter } from "vue-router";
 import { toast } from "vue3-toastify";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
 import Error from "../../components/Errors/Error.vue";
 import { authStore } from "../../stores/authStore";
 import axios from "axios";
-
 const formValInit = { email: "", password: "" };
+const motionPresets = inject("motionPresets")
 const formVals = reactive({ ...formValInit });
 const isText = ref(false);
 const errors = reactive({});

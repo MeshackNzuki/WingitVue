@@ -3,11 +3,12 @@
         <div
             class="w-full p-2 bg-[url('../assets/searchpg.jpg')] bg-cover object-cover min-h-screen flex justify-center">
             <div class="md:mx-16 flex flex-col justify-center max-w-screen-xl">
-                <div class="rounded text-gray-50 text-3xl font-bold mb-16">
-                    <span class="font-exo2">Search for a flight</span>
+                <div class="rounded text-gray-50 text-3xl font-bold mb-16" v-motion="motionPresets.fadeDown()">
+                    <span class="font-exo2">Search for a
+                        flight</span>
                 </div>
 
-                <div
+                <div v-motion="motionPresets.fadeUp()"
                     class="flex flex-col md:flex-row justify-center space-x-0 lg:space-x-2 space-y-2 lg:space-y-0 w-full text-gray-50">
                     <div class="rounded text-sm flex flex-col justify-start">
                         <label for="passengers">Passengers </label>
@@ -33,7 +34,7 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center mt-8 space-x-4">
+                <div class="flex justify-center mt-8 space-x-4" v-motion="motionPresets.fadeDown()">
                     <button
                         class="btn btn-sm bg-base shadow-gray-900 shadow-md text-gray-50 font-light border-0 hover:text-black"
                         @click="searchFlights">
@@ -49,11 +50,12 @@
 
                 <div class="w-full mt-8 flex justify-center">
                     <div v-if="mainStore.flights.length > 0" class="flex flex-col md:grid grid-cols-3 gap-4">
-                        <div v-for="(flight, index) in mainStore.flights">
+                        <div v-for="(flight, index) in mainStore.flights"
+                            v-motion="motionPresets.fadeUp(Math.random() * 150)">
                             <div
                                 class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative">
                                 <div class="flex items-center justify-between  text-white px-6 py-0.5">
-                                    <div class="text-lg font-bold">
+                                    <div class="text-lg  text-gray-900">
                                         {{
                                             flight.aircraft_operator
                                                 ?.company_name
@@ -303,12 +305,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, inject } from "vue";
 import "vue-select/dist/vue-select.css";
 import Select from "vue-select";
 import axios from "axios";
 import { useMainStore } from "../stores";
 import { format } from "date-fns";
+
+
+const motionPresets = inject("motionPresets")
 
 const mainStore = useMainStore();
 const seats = ref(1);
