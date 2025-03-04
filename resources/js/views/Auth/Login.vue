@@ -9,7 +9,9 @@
                 <div class="font-bold self-center text-xl sm:text-l uppercase text-base mt-3">
                     Login
                 </div>
-
+                <div>
+                    <Error :msg="error_message" />
+                </div>
                 <div class="mt-10">
                     <form @submit.prevent="submit">
                         <div class="flex flex-col mb-6">
@@ -80,14 +82,17 @@ import { ref, reactive, onMounted, inject } from "vue";
 import { useRouter } from "vue-router";
 import { toast } from "vue3-toastify";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
-import Error from "../../components/Errors/Error.vue";
 import { authStore } from "../../stores/authStore";
 import axios from "axios";
+import Error from "../../components/Flash/Error.vue"
+
+
 const formValInit = { email: "", password: "" };
 const motionPresets = inject("motionPresets")
 const formVals = reactive({ ...formValInit });
 const isText = ref(false);
 const errors = reactive({});
+const error_message = ref()
 
 const router = useRouter();
 
@@ -119,7 +124,10 @@ const submit = async () => {
             login(res.data.user);
         } catch (error) {
             if (error.message) {
-                toast.error('Wrong  credentials');
+                error_message.value = 'Wrong  credentials'
+                setTimeout(() => {
+                    error_message.value = ''
+                }, 4000)
             }
             else {
                 oast.error('An error occured')

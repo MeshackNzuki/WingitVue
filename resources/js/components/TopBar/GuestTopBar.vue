@@ -23,7 +23,8 @@
                 </nav>
             </div>
             <!-- Right Side: User Avatar -->
-            <div class="flex items-center h-12 ml-5 text-gray-600 ">
+            <div class="flex items-center h-12 ml-5 text-gray-600 
+            ">
                 <router-link to="/client-register" class="text-white font-semibold rounded-full px-3"
                     v-if="!is_authenticated">
                     Sign Up
@@ -176,9 +177,20 @@ onMounted(async () => {
     position: absolute;
     left: 0;
     bottom: -2px;
-    width: 100%;
+    width: 0;
     height: 2px;
     background-color: #FBD0A0;
     transition: width 0.3s ease-in-out;
+    animation: underline-grow 1s forwards;
+}
+
+@keyframes underline-grow {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
 }
 </style>

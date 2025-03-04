@@ -29,9 +29,9 @@
                             </label>
                             <div class="relative">
                                 <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
-                                    <i class="pi pi-phone" style="font-size: 1.5em"></i>
+                                    <i class="pi pi-phone  me-2"></i>
                                 </div>
-                                <div class="flex flex-row items-center relative">
+                                <div class=" flex flex-row items-center relative">
                                     <div class="absolute left-8 ">
                                         <CountryCode v-model="formVals.country_code" />
                                     </div>

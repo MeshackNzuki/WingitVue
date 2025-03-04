@@ -1,11 +1,7 @@
 <template>
     <span
-        class="errors w-full text-xs flex justify-start text-red-500 rounded border-0 p-1 transition-duration-230ms"
-    >
-        <FontAwesomeIcon
-            icon="fa-solid fa-circle-exclamation"
-            class="h-5 w-5 mr-2"
-        />
+        class="errors w-full text-xs flex justify-start text-red-500  bg-red-50 rounded-full my-1 border-0 p-1 transition-duration-230ms">
+        <i class="pi pi-exclamation-circle animate animate-pulse me-2"></i>
         {{ message }}
     </span>
 </template>
@@ -22,7 +18,3 @@ const props = defineProps({
     },
 });
 </script>
-
-<style scoped>
-/* Add scoped styles here */
-</style>
