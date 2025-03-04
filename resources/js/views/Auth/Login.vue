@@ -13,12 +13,11 @@
                 <div class="mt-10">
                     <form @submit.prevent="submit">
                         <div class="flex flex-col mb-6">
-                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-bold">
+                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide  font-bold">
                                 E-Mail Address:
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-envelope"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
@@ -30,16 +29,15 @@
                             <Error v-if="errors.email" :message="errors.email" />
                         </div>
                         <div class="flex flex-col mb-6">
-                            <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-bold">
+                            <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide  font-bold">
                                 Password:
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-lock"></i>
                                     <!-- PrimeVue lock icon -->
                                 </div>
-                                <div class="inline-flex items-center justify-center absolute right-0 top-0 h-full w-10 text-gray-400"
+                                <div class="inline-flex items-center justify-center absolute right-0 top-0 h-full w-10 "
                                     @click="togglePasswordVisibility">
                                     <i :class="isText
                                         ? 'pi pi-eye'
@@ -58,7 +56,7 @@
                         <div class="flex items-center mb-6 -mt-4">
                             <div class="flex ml-auto">
                                 <router-link to="/password-reset"
-                                    class="inline-flex text-sm text-gray-700 hover:text-[#EF434A] font-light underline">Forgot
+                                    class="inline-flex text-sm  hover:text-[#EF434A] font-light underline">Forgot
                                     Password?</router-link>
                             </div>
                         </div>
@@ -67,7 +65,7 @@
                             <BaseButton label="Submit" class="p-8" @click="submit" />
                         </div>
 
-                        <div class="text-gray-700 text-sm px-4 my-4 rounded-md">
+                        <div class=" text-sm px-4 my-4 rounded-md">
                             <RouterLink to="/client-register" class="underline">No account?</RouterLink>
                         </div>
                     </form>

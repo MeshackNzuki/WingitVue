@@ -1,31 +1,20 @@
 <template>
-    <Table
-        :headers="['NAME', 'ADM', 'CLASS', 'GUARDIAN', 'ACTION']"
-        title="All Students"
-        v-model:query="searchQuery"
-        :rows="studentData?.length"
-    >
+    <Table :headers="['NAME', 'ADM', 'CLASS', 'GUARDIAN', 'ACTION']" title="All Students" v-model:query="searchQuery"
+        :rows="studentData?.length">
         <template v-slot:actions>
-            <SmallButton
-                icon="pi pi-plus"
-                :action="() => showModal('addstudent')"
-            ></SmallButton>
+            <SmallButton icon="pi pi-plus" :action="() => showModal('addstudent')"></SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
-            <Button icon="pi pi-upload" severity="secondary"
-        /></template>
+            <Button icon="pi pi-upload" severity="secondary" />
+        </template>
         <template v-slot:content>
             <tr v-for="(student, index) in studentData" :key="index">
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
                         <div class="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                            <img
-                                class="rounded-full"
+                            <img class="rounded-full"
                                 src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-05.jpg"
-                                width="40"
-                                height="40"
-                                alt="Alex Shatov"
-                            />
+                                width="40" height="40" alt="Alex Shatov" />
                         </div>
                         <div class="text-start">
                             {{ student.first_name }}
@@ -48,150 +37,75 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-center">
-                        <SmallButton
-                            classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
-                            button-text="Edit"
-                            :action="() => showModal(student.id)"
-                        />
+                        <SmallButton classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
+                            button-text="Edit" :action="() => showModal(student.id)" />
                     </div>
                 </td>
-                <dialog
-                    :id="student.id"
-                    class="modal modal-bottom sm:modal-middle"
-                >
+                <dialog :id="student.id" class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                         <h3 class="font-bold">Edit Student Information</h3>
                         <p class="py-4">
-                            <button
-                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-gray-800"
-                            >
+                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ">
                                 ✕
                             </button>
                             Press ESC key to close
                         </p>
                         <div class="modal-action">
-                            <form
-                                @submit.prevent="submitForm(student.id)"
-                                class="flex flex-col gap-2"
-                            >
+                            <form @submit.prevent="submitForm(student.id)" class="flex flex-col gap-2">
                                 <span>Basic Student Information</span>
                                 <div class="flex flex-col w-full lg:flex-row">
-                                    <div
-                                        class="grid flex-grow card rounded-sm p-1 place-items-center"
-                                    >
+                                    <div class="grid flex-grow card rounded-sm p-1 place-items-center">
                                         <div>
                                             <div class="col-span-2">
-                                                <label
-                                                    for="first_name"
-                                                    class="block text-smtext-left"
-                                                    >First Name</label
-                                                >
-                                                <input
-                                                    v-model="student.first_name"
-                                                    type="text"
-                                                    id="first_name"
-                                                    name="first_name"
-                                                    required
+                                                <label for="first_name" class="block text-smtext-left">First
+                                                    Name</label>
+                                                <input v-model="student.first_name" type="text" id="first_name"
+                                                    name="first_name" required
                                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                    placeholder="Enter first name"
-                                                />
-                                                <span
-                                                    v-if="errors.first_name"
-                                                    class="text-red-500 text-sm"
-                                                    >{{
-                                                        errors.first_name
-                                                    }}</span
-                                                >
+                                                    placeholder="Enter first name" />
+                                                <span v-if="errors.first_name" class="text-red-500 text-sm">{{
+                                                    errors.first_name
+                                                }}</span>
                                             </div>
                                             <div class="col-span-2">
-                                                <label
-                                                    for="second_name"
-                                                    class="block text-smtext-left"
-                                                    >Second Name</label
-                                                >
-                                                <input
-                                                    v-model="
-                                                        student.second_name
-                                                    "
-                                                    type="text"
-                                                    id="second_name"
-                                                    name="second_name"
-                                                    required
+                                                <label for="second_name" class="block text-smtext-left">Second
+                                                    Name</label>
+                                                <input v-model="student.second_name
+                                                    " type="text" id="second_name" name="second_name" required
                                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                    placeholder="Enter second name"
-                                                />
-                                                <span
-                                                    v-if="errors.second_name"
-                                                    class="text-red-500 text-sm"
-                                                    >{{
-                                                        errors.second_name
-                                                    }}</span
-                                                >
+                                                    placeholder="Enter second name" />
+                                                <span v-if="errors.second_name" class="text-red-500 text-sm">{{
+                                                    errors.second_name
+                                                }}</span>
                                             </div>
                                             <div class="col-span-2">
-                                                <label
-                                                    for="dob"
-                                                    class="block text-smtext-left"
-                                                    >Date of Birth</label
-                                                >
-                                                <input
-                                                    v-model="student.dob"
-                                                    type="date"
-                                                    id="dob"
-                                                    name="dob"
-                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                />
-                                                <span
-                                                    v-if="errors.dob"
-                                                    class="text-red-500 text-sm"
-                                                    >{{ errors.dob }}</span
-                                                >
+                                                <label for="dob" class="block text-smtext-left">Date of Birth</label>
+                                                <input v-model="student.dob" type="date" id="dob" name="dob"
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm" />
+                                                <span v-if="errors.dob" class="text-red-500 text-sm">{{ errors.dob
+                                                    }}</span>
                                             </div>
                                             <div class="col-span-2">
-                                                <label
-                                                    for="admission"
-                                                    class="block text-smtext-left"
-                                                    >Admission Number</label
-                                                >
-                                                <input
-                                                    v-model="student.admission"
-                                                    type="text"
-                                                    id="admission"
-                                                    name="admission"
-                                                    required
+                                                <label for="admission" class="block text-smtext-left">Admission
+                                                    Number</label>
+                                                <input v-model="student.admission" type="text" id="admission"
+                                                    name="admission" required
                                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                    placeholder="Enter admission number"
-                                                />
-                                                <span
-                                                    v-if="errors.admission"
-                                                    class="text-red-500 text-sm"
-                                                    >{{
-                                                        errors.admission
-                                                    }}</span
-                                                >
+                                                    placeholder="Enter admission number" />
+                                                <span v-if="errors.admission" class="text-red-500 text-sm">{{
+                                                    errors.admission
+                                                }}</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div
-                                        class="divider lg:divider-horizontal divider-info"
-                                    ></div>
-                                    <div
-                                        class="grid flex-grow card p-1 rounded-sm place-items-center"
-                                    >
+                                    <div class="divider lg:divider-horizontal divider-info"></div>
+                                    <div class="grid flex-grow card p-1 rounded-sm place-items-center">
                                         <div>
                                             <!-- Gender -->
                                             <div class="col-span-2">
-                                                <label
-                                                    for="gender"
-                                                    class="block text-smtext-left"
-                                                    >Gender</label
-                                                >
-                                                <select
-                                                    v-model="student.gender"
-                                                    id="gender"
-                                                    name="gender"
-                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                >
+                                                <label for="gender" class="block text-smtext-left">Gender</label>
+                                                <select v-model="student.gender" id="gender" name="gender"
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm">
                                                     <option value="">
                                                         Select Gender
                                                     </option>
@@ -205,137 +119,65 @@
                                                         Other
                                                     </option>
                                                 </select>
-                                                <span
-                                                    v-if="errors.gender"
-                                                    class="text-red-500 text-sm"
-                                                    >{{ errors.gender }}</span
-                                                >
+                                                <span v-if="errors.gender" class="text-red-500 text-sm">{{ errors.gender
+                                                    }}</span>
                                             </div>
                                             <div class="col-span-2">
-                                                <label
-                                                    for="class"
-                                                    class="block text-smtext-left"
-                                                    >Class</label
-                                                >
-                                                <select
-                                                    v-model="student.class_id"
-                                                    id="class"
-                                                    name="class"
-                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                >
-                                                    <option
-                                                        v-for="classOption in classOptions"
-                                                        :key="classOption.id"
-                                                        :value="
-                                                            classOption.value
-                                                        "
-                                                    >
+                                                <label for="class" class="block text-smtext-left">Class</label>
+                                                <select v-model="student.class_id" id="class" name="class"
+                                                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm">
+                                                    <option v-for="classOption in classOptions" :key="classOption.id"
+                                                        :value="classOption.value
+                                                            ">
                                                         {{ classOption.level }}
                                                     </option>
                                                 </select>
-                                                <span
-                                                    v-if="errors.class_id"
-                                                    class="text-red-500 text-sm"
-                                                    >{{ errors.class_id }}</span
-                                                >
+                                                <span v-if="errors.class_id" class="text-red-500 text-sm">{{
+                                                    errors.class_id }}</span>
                                             </div>
                                             <div class="col-span-2">
-                                                <label
-                                                    for="guardian_email"
-                                                    class="block text-smtext-left"
-                                                    >Guardian Email</label
-                                                >
-                                                <input
-                                                    v-model="
-                                                        student.guardian_email
-                                                    "
-                                                    type="email"
-                                                    id="guardian_email"
-                                                    name="guardian_email"
-                                                    required
+                                                <label for="guardian_email" class="block text-smtext-left">Guardian
+                                                    Email</label>
+                                                <input v-model="student.guardian_email
+                                                    " type="email" id="guardian_email" name="guardian_email" required
                                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                    placeholder="Enter guardian's email"
-                                                />
-                                                <span
-                                                    v-if="errors.guardian_email"
-                                                    class="text-red-500 text-sm"
-                                                    >{{
-                                                        errors.guardian_email
-                                                    }}</span
-                                                >
+                                                    placeholder="Enter guardian's email" />
+                                                <span v-if="errors.guardian_email" class="text-red-500 text-sm">{{
+                                                    errors.guardian_email
+                                                }}</span>
                                             </div>
                                             <div class="col-span-2">
-                                                <label
-                                                    for="phone"
-                                                    class="block text-smtext-left"
-                                                    >Phone Number</label
-                                                >
-                                                <input
-                                                    v-model="student.phone"
-                                                    type="tel"
-                                                    id="phone"
-                                                    name="phone"
+                                                <label for="phone" class="block text-smtext-left">Phone Number</label>
+                                                <input v-model="student.phone" type="tel" id="phone" name="phone"
                                                     required
                                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                    placeholder="Enter phone number"
-                                                />
-                                                <span
-                                                    v-if="errors.phone"
-                                                    class="text-red-500 text-sm"
-                                                    >{{ errors.phone }}</span
-                                                >
+                                                    placeholder="Enter phone number" />
+                                                <span v-if="errors.phone" class="text-red-500 text-sm">{{ errors.phone
+                                                    }}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="w-full">
-                                    <label
-                                        for="dormitory"
-                                        class="block text-smtext-left"
-                                        >Select Hostel/Dormitory</label
-                                    >
-                                    <input
-                                        v-model="student.dormitory"
-                                        type="text"
-                                        id="dormitory"
-                                        name="dormitory"
+                                    <label for="dormitory" class="block text-smtext-left">Select
+                                        Hostel/Dormitory</label>
+                                    <input v-model="student.dormitory" type="text" id="dormitory" name="dormitory"
                                         required
                                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                        placeholder="Enter dormitory/hostel name"
-                                    />
-                                    <span
-                                        v-if="errors.dormitory"
-                                        class="text-red-500 text-sm"
-                                        >{{ errors.dormitory }}</span
-                                    >
+                                        placeholder="Enter dormitory/hostel name" />
+                                    <span v-if="errors.dormitory" class="text-red-500 text-sm">{{ errors.dormitory
+                                        }}</span>
                                 </div>
                                 <div class="w-full">
-                                    <label
-                                        for="photo"
-                                        class="block text-smtext-left"
-                                        >Student Photo (Drag drop)</label
-                                    >
-                                    <input
-                                        ref="photoInput"
-                                        type="file"
-                                        id="photo"
-                                        name="photo"
-                                        accept="image/*"
+                                    <label for="photo" class="block text-smtext-left">Student Photo (Drag drop)</label>
+                                    <input ref="photoInput" type="file" id="photo" name="photo" accept="image/*"
                                         @change="onFileChange"
-                                        class="mt-1 block w-full px-6 py-6 border border-dashed border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                    />
-                                    <span
-                                        v-if="errors.photo"
-                                        class="text-red-500 text-sm"
-                                        >{{ errors.photo }}</span
-                                    >
+                                        class="mt-1 block w-full px-6 py-6 border border-dashed border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm" />
+                                    <span v-if="errors.photo" class="text-red-500 text-sm">{{ errors.photo }}</span>
                                 </div>
                                 <div class="col-span-2 flex justify-end">
-                                    <CommonButton
-                                        button-text="Submit"
-                                        :action="() => submitForm(student.id)"
-                                    />
+                                    <CommonButton button-text="Submit" :action="() => submitForm(student.id)" />
                                 </div>
                             </form>
                         </div>
@@ -351,121 +193,57 @@
                     <p class="py-4 text-xs">Press ESC key to close</p>
                     <div class="modal-action">
                         <form method="dialog" class="flex flex-col gap-2">
-                            <button
-                                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                            >
+                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                                 ✕
                             </button>
                             <span>Basic Student Information</span>
                             <div class="flex flex-col w-full lg:flex-row">
-                                <div
-                                    class="grid flex-grow card rounded-sm p-1 place-items-center"
-                                >
+                                <div class="grid flex-grow card rounded-sm p-1 place-items-center">
                                     <div>
                                         <div class="col-span-2">
-                                            <label
-                                                for="first_name"
-                                                class="block text-smtext-left"
-                                                >First Name</label
-                                            >
-                                            <input
-                                                v-model="student.first_name"
-                                                type="text"
-                                                id="first_name"
-                                                name="first_name"
-                                                required
+                                            <label for="first_name" class="block text-smtext-left">First Name</label>
+                                            <input v-model="student.first_name" type="text" id="first_name"
+                                                name="first_name" required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                placeholder="Enter first name"
-                                            />
-                                            <span
-                                                v-if="errors.first_name"
-                                                class="text-red-500 text-sm"
-                                                >{{ errors.first_name }}</span
-                                            >
+                                                placeholder="Enter first name" />
+                                            <span v-if="errors.first_name" class="text-red-500 text-sm">{{
+                                                errors.first_name }}</span>
                                         </div>
                                         <div class="col-span-2">
-                                            <label
-                                                for="second_name"
-                                                class="block text-smtext-left"
-                                                >Second Name</label
-                                            >
-                                            <input
-                                                v-model="student.second_name"
-                                                type="text"
-                                                id="second_name"
-                                                name="second_name"
-                                                required
+                                            <label for="second_name" class="block text-smtext-left">Second Name</label>
+                                            <input v-model="student.second_name" type="text" id="second_name"
+                                                name="second_name" required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                placeholder="Enter second name"
-                                            />
-                                            <span
-                                                v-if="errors.second_name"
-                                                class="text-red-500 text-sm"
-                                                >{{ errors.second_name }}</span
-                                            >
+                                                placeholder="Enter second name" />
+                                            <span v-if="errors.second_name" class="text-red-500 text-sm">{{
+                                                errors.second_name }}</span>
                                         </div>
                                         <div class="col-span-2">
-                                            <label
-                                                for="dob"
-                                                class="block text-smtext-left"
-                                                >Date of Birth</label
-                                            >
-                                            <input
-                                                v-model="student.dob"
-                                                type="date"
-                                                id="dob"
-                                                name="dob"
-                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                            />
-                                            <span
-                                                v-if="errors.dob"
-                                                class="text-red-500 text-sm"
-                                                >{{ errors.dob }}</span
-                                            >
+                                            <label for="dob" class="block text-smtext-left">Date of Birth</label>
+                                            <input v-model="student.dob" type="date" id="dob" name="dob"
+                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm" />
+                                            <span v-if="errors.dob" class="text-red-500 text-sm">{{ errors.dob }}</span>
                                         </div>
                                         <div class="col-span-2">
-                                            <label
-                                                for="admission"
-                                                class="block text-smtext-left"
-                                                >Admission Number</label
-                                            >
-                                            <input
-                                                v-model="student.admission"
-                                                type="text"
-                                                id="admission"
-                                                name="admission"
-                                                required
+                                            <label for="admission" class="block text-smtext-left">Admission
+                                                Number</label>
+                                            <input v-model="student.admission" type="text" id="admission"
+                                                name="admission" required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                placeholder="Enter admission number"
-                                            />
-                                            <span
-                                                v-if="errors.admission"
-                                                class="text-red-500 text-sm"
-                                                >{{ errors.admission }}</span
-                                            >
+                                                placeholder="Enter admission number" />
+                                            <span v-if="errors.admission" class="text-red-500 text-sm">{{
+                                                errors.admission }}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="divider lg:divider-horizontal divider-info"
-                                ></div>
-                                <div
-                                    class="grid flex-grow card p-1 rounded-sm place-items-center"
-                                >
+                                <div class="divider lg:divider-horizontal divider-info"></div>
+                                <div class="grid flex-grow card p-1 rounded-sm place-items-center">
                                     <div>
                                         <!-- Gender -->
                                         <div class="col-span-2">
-                                            <label
-                                                for="gender"
-                                                class="block text-smtext-left"
-                                                >Gender</label
-                                            >
-                                            <select
-                                                v-model="student.gender"
-                                                id="gender"
-                                                name="gender"
-                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                            >
+                                            <label for="gender" class="block text-smtext-left">Gender</label>
+                                            <select v-model="student.gender" id="gender" name="gender"
+                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm">
                                                 <option value="">
                                                     Select Gender
                                                 </option>
@@ -479,133 +257,60 @@
                                                     Other
                                                 </option>
                                             </select>
-                                            <span
-                                                v-if="errors.gender"
-                                                class="text-red-500 text-sm"
-                                                >{{ errors.gender }}</span
-                                            >
+                                            <span v-if="errors.gender" class="text-red-500 text-sm">{{ errors.gender
+                                                }}</span>
                                         </div>
                                         <div class="col-span-2">
-                                            <label
-                                                for="class"
-                                                class="block text-smtext-left"
-                                                >Class</label
-                                            >
-                                            <select
-                                                v-model="student.class_id"
-                                                id="class"
-                                                name="class"
-                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                            >
-                                                <option
-                                                    v-for="classOption in classOptions"
-                                                    :key="classOption.id"
-                                                    :value="classOption.value"
-                                                >
+                                            <label for="class" class="block text-smtext-left">Class</label>
+                                            <select v-model="student.class_id" id="class" name="class"
+                                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm">
+                                                <option v-for="classOption in classOptions" :key="classOption.id"
+                                                    :value="classOption.value">
                                                     {{ classOption.level }}
                                                 </option>
                                             </select>
-                                            <span
-                                                v-if="errors.class_id"
-                                                class="text-red-500 text-sm"
-                                                >{{ errors.class_id }}</span
-                                            >
+                                            <span v-if="errors.class_id" class="text-red-500 text-sm">{{ errors.class_id
+                                                }}</span>
                                         </div>
                                         <div class="col-span-2">
-                                            <label
-                                                for="guardian_email"
-                                                class="block text-smtext-left"
-                                                >Guardian Email</label
-                                            >
-                                            <input
-                                                v-model="student.guardian_email"
-                                                type="email"
-                                                id="guardian_email"
-                                                name="guardian_email"
-                                                required
+                                            <label for="guardian_email" class="block text-smtext-left">Guardian
+                                                Email</label>
+                                            <input v-model="student.guardian_email" type="email" id="guardian_email"
+                                                name="guardian_email" required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                placeholder="Enter guardian's email"
-                                            />
-                                            <span
-                                                v-if="errors.guardian_email"
-                                                class="text-red-500 text-sm"
-                                                >{{
-                                                    errors.guardian_email
-                                                }}</span
-                                            >
+                                                placeholder="Enter guardian's email" />
+                                            <span v-if="errors.guardian_email" class="text-red-500 text-sm">{{
+                                                errors.guardian_email
+                                            }}</span>
                                         </div>
                                         <div class="col-span-2">
-                                            <label
-                                                for="phone"
-                                                class="block text-smtext-left"
-                                                >Phone Number</label
-                                            >
-                                            <input
-                                                v-model="student.phone"
-                                                type="tel"
-                                                id="phone"
-                                                name="phone"
-                                                required
+                                            <label for="phone" class="block text-smtext-left">Phone Number</label>
+                                            <input v-model="student.phone" type="tel" id="phone" name="phone" required
                                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                                placeholder="Enter phone number"
-                                            />
-                                            <span
-                                                v-if="errors.phone"
-                                                class="text-red-500 text-sm"
-                                                >{{ errors.phone }}</span
-                                            >
+                                                placeholder="Enter phone number" />
+                                            <span v-if="errors.phone" class="text-red-500 text-sm">{{ errors.phone
+                                                }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="w-full">
-                                <label
-                                    for="dormitory"
-                                    class="block text-smtext-left"
-                                    >Select Hostel/Dormitory</label
-                                >
-                                <input
-                                    v-model="student.dormitory"
-                                    type="text"
-                                    id="dormitory"
-                                    name="dormitory"
-                                    required
+                                <label for="dormitory" class="block text-smtext-left">Select Hostel/Dormitory</label>
+                                <input v-model="student.dormitory" type="text" id="dormitory" name="dormitory" required
                                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                    placeholder="Enter dormitory/hostel name"
-                                />
-                                <span
-                                    v-if="errors.dormitory"
-                                    class="text-red-500 text-sm"
-                                    >{{ errors.dormitory }}</span
-                                >
+                                    placeholder="Enter dormitory/hostel name" />
+                                <span v-if="errors.dormitory" class="text-red-500 text-sm">{{ errors.dormitory }}</span>
                             </div>
                             <div class="w-full">
-                                <label
-                                    for="photo"
-                                    class="block text-smtext-left"
-                                    >Student Photo (Drag drop)</label
-                                >
-                                <input
-                                    ref="photoInput"
-                                    type="file"
-                                    id="photo"
-                                    name="photo"
-                                    accept="image/*"
+                                <label for="photo" class="block text-smtext-left">Student Photo (Drag drop)</label>
+                                <input ref="photoInput" type="file" id="photo" name="photo" accept="image/*"
                                     @change="onFileChange"
-                                    class="mt-1 block w-full px-6 py-6 border border-dashed border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm"
-                                />
-                                <span
-                                    v-if="errors.photo"
-                                    class="text-red-500 text-sm"
-                                    >{{ errors.photo }}</span
-                                >
+                                    class="mt-1 block w-full px-6 py-6 border border-dashed border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-500 sm:text-sm" />
+                                <span v-if="errors.photo" class="text-red-500 text-sm">{{ errors.photo }}</span>
                             </div>
                             <div class="col-span-2 flex justify-end">
-                                <CommonButton
-                                    button-text="Submit"
-                                    :action="() => submitForm()"
-                                />
+                                <CommonButton button-text="Submit" :action="() => submitForm()" />
                             </div>
                         </form>
                     </div>

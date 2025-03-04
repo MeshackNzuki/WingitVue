@@ -5,7 +5,7 @@
             <div className="lg:mt-24  " v-motion="motionPresets.fadeDown(Math.random() * 150)">
                 <div className="card card-compact max-w-md bg-white bg-opacity-95 mx-3 shadow-lg mb-4">
                     <span className="w-full flex justify-center">
-                        <h2 className="uppercase text-l font-bold text-gray-700 mt-2">
+                        <h2 className="uppercase text-l font-bold  mt-2">
                             <span className="{exo2.className}">
                                 Your Booking information
                             </span>
@@ -74,7 +74,7 @@
                             {{ errors.phone }}
                         </div>
                         <span v-if="passengers?.length > 0" className="w-full flex justify-center">
-                            <h2 className="uppercase text-l font-bold text-gray-700 mt-2">
+                            <h2 className="uppercase text-l font-bold  mt-2">
                                 <span className="{exo2.className}">
                                     Other Passengers' Infomation
                                 </span>
@@ -123,7 +123,7 @@
             <div v-motion="motionPresets.fadeDown(Math.random() * 150)" class=" col-span-3 lg:col-span-1 m-3 order-first card card-compact max-w-md max-h-100 bg-white
                 bg-opacity-95 shadow-lg mb-4 mt-24">
                 <span class="w-full flex justify-center">
-                    <h2 class="uppercase text-l font-bold text-gray-700 mt-2">
+                    <h2 class="uppercase text-l font-bold  mt-2">
                         <span>Flight summary</span>
                     </h2>
                 </span>
@@ -157,7 +157,7 @@
                                     }}
                                     =
                                     <span
-                                        class="text-gray-700 font-semibold text-right ml-1 rounded-md bg-emerald-500 bg-opacity-35">
+                                        class=" font-semibold text-right ml-1 rounded-md bg-emerald-500 bg-opacity-35">
                                         KES
                                         {{
                                             Number(totalAmount).toLocaleString()
@@ -172,12 +172,12 @@
                             </div>
                             <div class="col-span-2 pt-1 md:pt-3">
                                 <div class="flex items-center space-x-2 text-sm justify-between">
-                                    <span class="text-gray-700 font-light">{{
+                                    <span class=" font-light">{{
                                         mainStore.selectedFlight?.origin_airport
                                             .name
                                     }}</span>
                                     -
-                                    <span class="text-gray-700 font-light">{{
+                                    <span class=" font-light">{{
                                         mainStore.selectedFlight
                                             ?.destination_airport.name
                                     }}</span>
@@ -189,7 +189,7 @@
                                 <span class="text-gray-600">Departure date</span>
                             </div>
                             <div class="col-span-3 pt-3">
-                                <span class="text-gray-700 font-light">
+                                <span class=" font-light">
                                     {{
                                         format(
                                             new Date(
@@ -206,7 +206,7 @@
                                 <span class="text-gray-600">Arrival date</span>
                             </div>
                             <div class="col-span-3 pt-3">
-                                <span class="text-gray-700 font-light">
+                                <span class=" font-light">
                                     {{
                                         format(
                                             new Date(
@@ -223,7 +223,7 @@
                                 <span class="text-gray-600">Aircraft</span>
                             </div>
                             <div class="col-span-3 pt-3">
-                                <span class="text-gray-700 font-light text-right">
+                                <span class=" font-light text-right">
                                     {{
                                         mainStore.selectedFlight.aircraft
                                             ?.aircraft_type
@@ -236,7 +236,7 @@
                                 <span class="text-gray-600">Operator</span>
                             </div>
                             <div class="col-span-3 pt-1">
-                                <span class="text-gray-700 font-light text-right">
+                                <span class=" font-light text-right">
                                     {{
                                         mainStore.selectedFlight
                                             ?.aircraft_operator?.company_name
@@ -253,7 +253,7 @@
                             <span class="text-gray-600 text-lg font-bold">Total</span>
                         </div>
                         <div class="col-span-3 pt-1 md:pt-3">
-                            <span class="text-gray-700 text-end font-bold">
+                            <span class=" text-end font-bold">
                                 KES {{ Number(totalAmount).toLocaleString() }}
                             </span>
                         </div>
@@ -266,12 +266,12 @@
             v-motion="motionPresets.fadeUp(Math.random() * 150)">
             <div class="card card-compact w-96 mx-3 bg-white bg-opacity-95 shadow-lg mb-4">
                 <span class="w-full flex justify-center">
-                    <h2 class="uppercase text-l font-bold text-gray-700 mt-2">
+                    <h2 class="uppercase text-l font-bold  mt-2">
                         <span>Payment options</span>
                     </h2>
                 </span>
                 <span className="w-full flex justify-center">
-                    <h2 className="uppercase text-l font-bold text-gray-700 mt-2">
+                    <h2 className="uppercase text-l font-bold  mt-2">
                         <span className="{exo2.className}">
                             Ticket Total : KES
                             {{ Number(totalAmount).toLocaleString() }}

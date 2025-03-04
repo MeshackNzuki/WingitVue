@@ -35,36 +35,18 @@
 }
 
 /** Page transition **/
-.page-enter-active {
-    transition: all 0.3s ease-out;
-}
-
-.page-leave-active {
-    transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
+.page-enter-active, .page-leave-active {
+    transition: transform 0.7s ease-out, opacity 0.3s ease-out;
 }
 
 .page-enter-from {
-    transform: scale(0.8);
-    filter: blur(10px);
-    opacity: 0;
+    transform: translateY(-1%);
+   
 }
 
 .page-enter-to {
-    transform: scale(1);
-    filter: blur(0);
+    transform: translateY(0);
     opacity: 1;
-}
-
-.page-leave-from {
-    transform: scale(1);
-    filter: blur(0);
-    opacity: 1;
-}
-
-.page-leave-to {
-    transform: scale(1.2);
-    filter: blur(10px);
-    opacity: 0;
 }
 
 /** Modal transition **/

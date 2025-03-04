@@ -1,142 +1,80 @@
 <template>
-    <div
-        class="flex w-full fixed justify-center bg-base h-14 transition-all z-40"
-        :class="scrolling ? 'bg-base shadow-lg' : 'bg-transparent'"
-    >
+    <div class="flex w-full fixed justify-center bg-base h-14 transition-all z-40"
+        :class="scrolling ? 'bg-base shadow-lg' : 'bg-transparent'">
         <div
-            class="max-w-screen-xl p-2 w-full flex justify-between bg-transparent h-14 top-0 fixed bg-base text-gray-50 z-10 transition duration-400"
-        >
+            class="max-w-screen-xl p-2 w-full flex justify-between bg-transparent h-14 top-0 fixed bg-base text-gray-50 z-10 transition duration-400">
             <!-- Left Side: Logo -->
             <div class="flex items-center h-12">
                 <router-link to="/">
-                    <img
-                        :src="Logo"
-                        class="w-[60px] lg:w-[80px] mt-1.5 lg:mt-1"
-                        alt="Wigit"
-                    />
+                    <img :src="Logo" class="w-[60px] lg:w-[80px] mt-1.5 lg:mt-1" alt="Wigit" />
                 </router-link>
             </div>
 
             <!-- Middle: Navigation Links -->
             <div class="flex items-center h-12 ml-5">
                 <nav class="hidden lg:flex space-x-8">
-                    <router-link
-                        v-for="link in navLinks"
-                        :key="link.name"
-                        :to="link.path"
-                        class="group relative rounded-lg text-lg font-light"
-                    >
+                    <router-link v-for="link in navLinks" :key="link.name" :to="link.path"
+                        class="group relative rounded-lg text-lg font-light" exact-active-class="underline-active">
                         {{ link.name }}
                         <div
-                            class="inset-0 w-0 h-0.5 bg-third transition-all duration-[300ms] ease-out group-hover:w-full"
-                        ></div>
+                            class="inset-0 w-0 h-0.5 bg-third transition-all duration-[300ms] ease-out group-hover:w-full">
+                        </div>
                     </router-link>
                 </nav>
             </div>
             <!-- Right Side: User Avatar -->
-            <div class="flex items-center h-12 ml-5">
-                <router-link
-                    to="/client-register"
-                    class="text-white font-semibold rounded-full px-3"
-                    v-if="!is_authenticated"
-                >
+            <div class="flex items-center h-12 ml-5 text-gray-600 ">
+                <router-link to="/client-register" class="text-white font-semibold rounded-full px-3"
+                    v-if="!is_authenticated">
                     Sign Up
                 </router-link>
-                <router-link
-                    to="/login"
-                    class="bg-gold text-gray-800 shadow-sm rounded-full py-1 px-4"
-                    v-if="!is_authenticated"
-                >
+                <router-link to="/login" class="bg-gold  shadow-sm rounded-full py-1 px-4" v-if="!is_authenticated">
                     Login
                 </router-link>
-                <div
-                    v-if="is_authenticated"
-                    @click="goToUserArea()"
-                    class="flex flex-row gap-1"
-                >
-                    <div
-                        class="bg-gold text-gray-800 shadow-sm rounded-full px-2 pt-1 text-center my-1 cursor-pointer"
-                    >
+                <div v-if="is_authenticated" @click="goToUserArea()" class="flex flex-row gap-1">
+                    <div class="bg-gold  shadow-sm rounded-full px-2 pt-1 text-center my-1 cursor-pointer">
                         Dashboard
                     </div>
 
                     <div v-if="user?.avatar" class="avatar pointer">
                         <div class="size-8 rounded-full ring ring-gold ms-1">
-                            <img
-                                :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
-                                alt="User Avatar"
-                            />
+                            <img :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${user.avatar}`"
+                                alt="User Avatar" />
                         </div>
                     </div>
-                    <div
-                        v-else
-                        class="relative overflow-hidden bg-gold rounded-full gray-600"
-                    >
+                    <div v-else class="relative overflow-hidden bg-gold rounded-full gray-600">
                         <div class="size-10 rounded-full ring ring-third">
                             <img :src="`${Logo2}`" alt="User Avatar" />
                         </div>
                     </div>
                 </div>
 
-                <button
-                    v-if="!sidebarOpen"
-                    @click="toggleSidebar"
-                    class="lg:hidden ml-2"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-7 h-7"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
-                        />
+                <button v-if="!sidebarOpen" @click="toggleSidebar" class="lg:hidden ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-7 h-7">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
                     </svg>
                 </button>
                 <button v-else @click="toggleSidebar" class="lg:hidden ml-2">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-7 h-7"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18 18 6M6 6l12 12"
-                        />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-7 h-7">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
 
             <!-- Sidebar Navigation -->
             <transition name="fade">
-                <div
-                    @click="() => toggleSidebar()"
-                    ref="sidebar_id"
-                    v-if="sidebarOpen"
-                    class="absolute bg-white bg-opacity-90 h-screen w-70 rounded-md p-4 mt-14 shadow-lg flex flex-col justify-start text-md z-20"
-                >
-                    <div
-                        class="border-third ml-5 flex flex-col justify-start pl-1"
-                    >
-                        <router-link
-                            v-for="link in navLinks"
-                            :key="link.name"
-                            :to="link.path"
-                            class="group relative rounded-lg text-gray-700 mt-4"
-                        >
+                <div @click="() => toggleSidebar()" ref="sidebar_id" v-if="sidebarOpen"
+                    class="absolute bg-white bg-opacity-90 h-screen w-70 rounded-md p-4 mt-14 shadow-lg flex flex-col justify-start text-md z-20">
+                    <div class="border-third ml-5 flex flex-col justify-start pl-1">
+                        <router-link v-for="link in navLinks" :key="link.name" :to="link.path"
+                            class="group relative rounded-lg  mt-4" exact-active-class="underline-active">
                             {{ link.name }}
                             <div
-                                class="inset-0 w-0 h-0.5 bg-third transition-all duration-[300ms] ease-out group-hover:w-full"
-                            ></div>
+                                class="inset-0 w-0 h-0.5 bg-third transition-all duration-[300ms] ease-out group-hover:w-full">
+                            </div>
                         </router-link>
                     </div>
                 </div>
@@ -212,6 +150,7 @@ const checkRoute = async () => {
         fullnavpage.value = false;
         scrolling.value = false;
     }
+    { }
 };
 
 watch(
@@ -228,5 +167,18 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* Add any scoped styles here if necessary */
+.underline-active {
+    position: relative;
+}
+
+.underline-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #FBD0A0;
+    transition: width 0.3s ease-in-out;
+}
 </style>

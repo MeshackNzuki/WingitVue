@@ -2,25 +2,17 @@
     <div class="h-full">
         <div class="relative flex flex-wrap">
             <div class="w-full mb-12 px-4">
-                <Table
-                    :headers="[
-                        'NAME',
-                        'HOURS',
-                        'LICENSE',
-                        'LICENSE EXP',
-                        'MEDICAL',
-                        'MED EXPIRY',
-                        'ACTION',
-                    ]"
-                    title="Pilots"
-                    v-model:query="query"
-                    :rows="pilots"
-                >
+                <Table :headers="[
+                    'NAME',
+                    'HOURS',
+                    'LICENSE',
+                    'LICENSE EXP',
+                    'MEDICAL',
+                    'MED EXPIRY',
+                    'ACTION',
+                ]" title="Pilots" v-model:query="query" :rows="pilots">
                     <template v-slot:actions>
-                        <SmallButton
-                            icon="pi pi-plus"
-                            :action="() => showModal('addPilot')"
-                        ></SmallButton>
+                        <SmallButton icon="pi pi-plus" :action="() => showModal('addPilot')"></SmallButton>
                     </template>
                     <template v-slot:content>
                         <tr v-for="(pilot, index) in pilots" :key="pilot.id">
@@ -43,127 +35,73 @@
                                 {{ pilot.medical_expiry }}
                             </td>
                             <td class="p-2 whitespace-nowrap flex justify-end">
-                                <SmallButton
-                                    icon="pi pi-pencil"
-                                    @click="showModal(pilot.id)"
-                                />
-                                <SmallButton
-                                    icon="pi pi-trash"
-                                    @click="handleDelete(pilot.id)"
-                                    class="text-red-500"
-                                />
+                                <SmallButton icon="pi pi-pencil" @click="showModal(pilot.id)" />
+                                <SmallButton icon="pi pi-trash" @click="handleDelete(pilot.id)" class="text-red-500" />
                             </td>
                             <dialog :id="pilot.id" class="modal">
                                 <form method="dialog" class="modal-box">
-                                    <button
-                                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                                    >
+                                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                                         ✕
                                     </button>
                                     <div>
-                                        <div
-                                            class="w-full flex justify-center items-center"
-                                        >
+                                        <div class="w-full flex justify-center items-center">
                                             <div>
-                                                <span
-                                                    class="w-full text-center font-bold"
-                                                    >Edit Pilot info</span
-                                                >
+                                                <span class="w-full text-center font-bold">Edit Pilot info</span>
 
-                                                <label
-                                                    for="Category_id"
-                                                    class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                                >
+                                                <label for="Category_id"
+                                                    class="block mt-2 text-xs font-semibold  uppercase">
                                                     Name
                                                 </label>
-                                                <input
-                                                    id="name"
-                                                    name="name"
-                                                    placeholder=""
-                                                    autocomplete="name"
+                                                <input id="name" name="name" placeholder="" autocomplete="name"
                                                     class="input input-bordered input-sm w-full max-w-xs"
-                                                    v-model="pilotVals.name"
-                                                />
+                                                    v-model="pilotVals.name" />
 
-                                                <label
-                                                    for="author_id"
-                                                    class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                                >
+                                                <label for="author_id"
+                                                    class="block mt-2 text-xs font-semibold  uppercase">
                                                     Total Hours
                                                 </label>
-                                                <input
-                                                    id="hours"
-                                                    name="hours"
-                                                    type="number"
-                                                    placeholder=""
+                                                <input id="hours" name="hours" type="number" placeholder=""
                                                     autocomplete="pilotname"
                                                     class="input input-bordered input-sm w-full max-w-xs"
-                                                    v-model="pilotVals.hours"
-                                                />
+                                                    v-model="pilotVals.hours" />
 
-                                                <label
-                                                    for="license"
-                                                    class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                                >
+                                                <label for="license"
+                                                    class="block mt-2 text-xs font-semibold  uppercase">
                                                     License
                                                 </label>
-                                                <input
-                                                    type="file"
-                                                    name="license"
+                                                <input type="file" name="license"
                                                     class="file-input file-input-info file-input-sm file-input-bordered w-full max-w-xs"
                                                     @change="
                                                         handleFileChange
-                                                    "
-                                                />
+                                                    " />
 
-                                                <label
-                                                    for="license_expiry"
-                                                    class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                                >
+                                                <label for="license_expiry"
+                                                    class="block mt-2 text-xs font-semibold  uppercase">
                                                     License expiry
                                                 </label>
-                                                <input
-                                                    id="license_expiry"
-                                                    name="license_expiry"
-                                                    type="date"
+                                                <input id="license_expiry" name="license_expiry" type="date"
                                                     :min="currentDate"
-                                                    class="input input-bordered input-sm w-full max-w-xs"
-                                                    v-model="
-                                                        pilotVals.license_expiry
-                                                    "
-                                                />
+                                                    class="input input-bordered input-sm w-full max-w-xs" v-model="pilotVals.license_expiry
+                                                        " />
 
-                                                <label
-                                                    for="medical"
-                                                    class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                                >
+                                                <label for="medical"
+                                                    class="block mt-2 text-xs font-semibold  uppercase">
                                                     Medical
                                                 </label>
-                                                <input
-                                                    type="file"
-                                                    name="medical"
+                                                <input type="file" name="medical"
                                                     class="file-input file-input-info file-input-sm file-input-bordered w-full max-w-xs"
                                                     @change="
                                                         handleFileChange()
-                                                    "
-                                                />
+                                                        " />
 
-                                                <label
-                                                    for="medical_expiry"
-                                                    class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                                >
+                                                <label for="medical_expiry"
+                                                    class="block mt-2 text-xs font-semibold  uppercase">
                                                     Medical expiry
                                                 </label>
-                                                <input
-                                                    id="medical_expiry"
-                                                    name="medical_expiry"
-                                                    type="date"
+                                                <input id="medical_expiry" name="medical_expiry" type="date"
                                                     :min="currentDate"
-                                                    class="input input-bordered input-sm w-full max-w-xs"
-                                                    v-model="
-                                                        pilotVals.medical_expiry
-                                                    "
-                                                />
+                                                    class="input input-bordered input-sm w-full max-w-xs" v-model="pilotVals.medical_expiry
+                                                        " />
                                             </div>
                                         </div>
                                     </div>
@@ -171,11 +109,7 @@
                                         <button class="btn" type="button">
                                             Close
                                         </button>
-                                        <button
-                                            class="btn"
-                                            type="button"
-                                            @click="handleSubmit()"
-                                        >
+                                        <button class="btn" type="button" @click="handleSubmit()">
                                             Save
                                         </button>
                                     </div>
@@ -191,102 +125,53 @@
 
         <dialog id="addPilot" class="modal">
             <form method="dialog" class="modal-box">
-                <button
-                    class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                >
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                     ✕
                 </button>
                 <div>
                     <div class="w-full flex justify-center items-center">
                         <div>
-                            <span class="w-full text-center font-bold"
-                                >Pilot info</span
-                            >
+                            <span class="w-full text-center font-bold">Pilot info</span>
 
-                            <label
-                                for="Category_id"
-                                class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                            >
+                            <label for="Category_id" class="block mt-2 text-xs font-semibold  uppercase">
                                 Name
                             </label>
-                            <input
-                                id="name"                              
-                                placeholder=""
-                                autocomplete="name"
-                                class="input input-bordered input-sm w-full max-w-xs"
-                                v-model="pilotVals.name"
-                            />
+                            <input id="name" placeholder="" autocomplete="name"
+                                class="input input-bordered input-sm w-full max-w-xs" v-model="pilotVals.name" />
 
-                            <label
-                                for="author_id"
-                                class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                            >
+                            <label for="author_id" class="block mt-2 text-xs font-semibold  uppercase">
                                 Total Hours
                             </label>
-                            <input
-                                id="hours"                              
-                                type="number"
-                                placeholder=""
-                                autocomplete="pilotname"
-                                class="input input-bordered input-sm w-full max-w-xs"
-                                v-model="pilotVals.hours"
-                            />
+                            <input id="hours" type="number" placeholder="" autocomplete="pilotname"
+                                class="input input-bordered input-sm w-full max-w-xs" v-model="pilotVals.hours" />
 
-                            <label
-                                for="license"
-                                class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                            >
+                            <label for="license" class="block mt-2 text-xs font-semibold  uppercase">
                                 License
                             </label>
-                            <input
-                                type="file"
-                                name="licence"
+                            <input type="file" name="licence"
                                 class="file-input file-input-info file-input-sm file-input-bordered w-full max-w-xs"
-                                @change="handleFileChange"
-                            />
+                                @change="handleFileChange" />
 
-                            <label
-                                for="license_expiry"
-                                class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                            >
+                            <label for="license_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                                 License expiry
                             </label>
-                            <input
-                                id="license_expiry"
-                                name="license_expiry"
-                                type="date"
-                                :min="currentDate"
+                            <input id="license_expiry" name="license_expiry" type="date" :min="currentDate"
                                 class="input input-bordered input-sm w-full max-w-xs"
-                                v-model="pilotVals.license_expiry"
-                            />
+                                v-model="pilotVals.license_expiry" />
 
-                            <label
-                                for="medical"
-                                class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                            >
+                            <label for="medical" class="block mt-2 text-xs font-semibold  uppercase">
                                 Medical
                             </label>
-                            <input
-                                type="file"
-                                name="medical"
+                            <input type="file" name="medical"
                                 class="file-input file-input-info file-input-sm file-input-bordered w-full max-w-xs"
-                                @change="handleFileChange"
-                            />
+                                @change="handleFileChange" />
 
-                            <label
-                                for="medical_expiry"
-                                class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                            >
+                            <label for="medical_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                                 Medical expiry
                             </label>
-                            <input
-                                id="medical_expiry"
-                                name="medical_expiry"
-                                type="date"
-                                :min="currentDate"
+                            <input id="medical_expiry" name="medical_expiry" type="date" :min="currentDate"
                                 class="input input-bordered input-sm w-full max-w-xs"
-                                v-model="pilotVals.medical_expiry"
-                            />
+                                v-model="pilotVals.medical_expiry" />
                         </div>
                     </div>
                 </div>
@@ -302,7 +187,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted ,watch } from "vue";
+import { ref, onMounted, watch } from "vue";
 import axios from "axios";
 import SmallButton from "../../components/Buttons/Small.vue";
 import Swal from "sweetalert2";
@@ -360,11 +245,11 @@ const handleSubmit = async () => {
         console.log(`${key}: ${value}`);
     }
     try {
-        await axios.post("/pilots", formData).then(()=>{
+        await axios.post("/pilots", formData).then(() => {
             reload.value = !reload.value
         });
         Swal.fire("Success", "Pilot added successfully", "success");
- 
+
         getPilots();
     } catch (error) {
         console.error(error);
@@ -402,6 +287,6 @@ onMounted(() => {
 });
 
 watch(reload, () => {
-  getPilots();
+    getPilots();
 });
 </script>

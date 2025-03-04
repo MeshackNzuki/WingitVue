@@ -9,28 +9,26 @@
                 </div>
 
                 <div v-motion="motionPresets.fadeUp()"
-                    class="flex flex-col md:flex-row justify-center space-x-0 lg:space-x-2 space-y-2 lg:space-y-0 w-full text-gray-50">
-                    <div class="rounded text-sm flex flex-col justify-start">
+                    class="flex text-gray-600 flex-col md:flex-row justify-center space-x-0 lg:space-x-2 space-y-2 lg:space-y-0 w-full text-gray-50">
+                    <div class="rounded text-sm flex flex-col justify-start ">
                         <label for="passengers">Passengers </label>
-                        <input type="number" v-model="seats" placeholder="Type here..."
-                            class="input input-sm p-5 text-gray-700" />
+                        <input type="number" v-model="seats" placeholder="Type here..." class="input input-sm p-5 " />
                     </div>
                     <div class="rounded text-sm flex flex-col justify-start">
                         <label for="startDate">Date </label>
-                        <input type="date" v-model="startDate" @change="setStartDate"
-                            class="input input-sm p-5 text-gray-700" />
+                        <input type="date" v-model="startDate" @change="setStartDate" class="input input-sm p-5 " />
                     </div>
                     <div class="flex rounded text-sm flex-col justify-start">
                         <label for="origin">Origin </label>
                         <Select :options="airportOptions" id="origin" isSearchable placeholder="Start typing..."
                             noOptionsMessage="No Match" @change="setOrigin"
-                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px] text-gray-800 text-sm" />
+                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px]  text-sm" />
                     </div>
                     <div class="flex rounded text-sm flex-col justify-start">
                         <label for="destination">Destination </label>
                         <Select :options="airportOptions" id="destination" isSearchable placeholder="Start typing..."
                             noOptionsMessage="No Match" @change="setDestination"
-                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px] text-gray-800 text-sm" />
+                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px]  text-sm" />
                     </div>
                 </div>
 
@@ -260,8 +258,7 @@
                                                                 class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1">
                                                                 <i class="pi pi-plus"></i>
                                                             </button>
-                                                            <label for="Category"
-                                                                class="block mb-2 text-md text-gray-800">
+                                                            <label for="Category" class="block mb-2 text-md ">
                                                                 Seats
                                                             </label>
                                                 </div>

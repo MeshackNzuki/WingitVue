@@ -9,12 +9,11 @@
                 <div class="mt-10">
                     <form @submit.prevent="submit">
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="name" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
+                            <label for="name" class="mb-1 text-xs sm:text-sm tracking-wide ">
                                 Full Name
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-user"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
@@ -25,16 +24,15 @@
                             <Error v-if="errors.name" :message="errors.name" />
                         </div>
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
+                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide ">
                                 Phone Number
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-phone" style="font-size: 1.5em"></i>
                                 </div>
                                 <div class="flex flex-row items-center relative">
-                                    <div class="absolute left-8 text-gray-400">
+                                    <div class="absolute left-8 ">
                                         <CountryCode v-model="formVals.country_code" />
                                     </div>
                                     <input id="contact_number" type="tel" name="contact_number"
@@ -45,12 +43,11 @@
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
+                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide ">
                                 E-Mail Address
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-envelope"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
@@ -62,12 +59,11 @@
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
+                            <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide ">
                                 Password
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-lock"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
@@ -79,13 +75,11 @@
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="password_confirmation"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800">
+                            <label for="password_confirmation" class="mb-1 text-xs sm:text-sm tracking-wide ">
                                 Confirm Password
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-lock"></i>
                                     <!-- PrimeVue email icon -->
                                 </div>
@@ -105,7 +99,7 @@
 
                 <div class="flex justify-center items-center mt-6">
                     <router-link to="/login"
-                        class="inline-flex items-center font-bold text-gray-700 hover:text-[#EF434A] text-xs text-center">
+                        class="inline-flex items-center font-bold  hover:text-[#EF434A] text-xs text-center">
                         <span class="ml-2">Have an account? Sign in</span>
                     </router-link>
                 </div>

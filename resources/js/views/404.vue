@@ -3,18 +3,13 @@
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div class="mx-auto max-w-screen-sm text-center">
                 <h1
-                    class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 dark:text-slate-500"
-                >
+                    class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 dark:text-slate-500">
                     404
                 </h1>
-                <p
-                    class="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white"
-                >
-                  <h2>NOT FOUND</h2>
+                <p class="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white">
+                <h2>NOT FOUND</h2>
                 </p>
-                <p
-                    class="mb-4 text-lg font-light text-gray-500 dark:text-slate-400"
-                >
+                <p class="mb-4 text-lg font-light  dark:text-slate-400">
                     Sorry, it seems there is no such destination here.
                 </p>
                 <cbutton buttonText="Take Me Back" :action="router.back"></cbutton>
@@ -24,9 +19,9 @@
 </template>
 <script setup>
 import commonButton from '../components/Buttons/CommonButton.vue';
-import {useRouter} from 'vue-router'
+import { useRouter } from 'vue-router'
 
-const cbutton  = commonButton;
+const cbutton = commonButton;
 
 const router = useRouter()
 

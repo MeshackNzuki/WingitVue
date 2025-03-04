@@ -47,21 +47,10 @@ onMounted(fetchCountryCodes);
 </script>
 
 <template>
-    <select
-        id="countryCode"
-        class="w-24 text-gray-700 rounded-md p-1"
-        :name="name"
-        :value="modelValue?.code"
-        @input="updateValue"
-    >
+    <select id="countryCode" class="w-24  rounded-md p-1" :name="name" :value="modelValue?.code" @input="updateValue">
         <option v-if="countryCodes.length === 0">Loading...</option>
 
-        <option
-            v-else
-            v-for="country in countryCodes"
-            :key="country.code"
-            :value="country.code"
-        >
+        <option v-else v-for="country in countryCodes" :key="country.code" :value="country.code">
             {{ country.name }} ({{ country.code }})
         </option>
     </select>

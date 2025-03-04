@@ -14,8 +14,7 @@
                             <template #item="slotProps" class="flex-1">
                                 <div v-motion="motionPresets.fadeRight()"
                                     class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in">
-                                    <div
-                                        class="flex items-center justify-between bg-transparent text-gray-700 px-6 py-0.5">
+                                    <div class="flex items-center justify-between bg-transparent  px-6 py-0.5">
                                         <div class="text-lg font-semibold">
                                             {{
                                                 slotProps.data.aircraft_operator
@@ -246,8 +245,7 @@
                                                                     class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1">
                                                                     <i class="pi pi-plus"></i>
                                                                 </button>
-                                                                <label for="Category"
-                                                                    class="block mb-2 text-md text-gray-800 mt-1">
+                                                                <label for="Category" class="block mb-2 text-md  mt-1">
                                                                     Seats
                                                                 </label>
                                                     </div>
@@ -315,7 +313,7 @@
                     <div className="w-full flex mt-0  justify-center mb-32 ">
                         <div className="flex flex-col  text-gray-50 w-full px-2 lg:px-12 py-4 max-w-screen-xl">
                             <h1 v-motion="motionPresets.fadeUp()"
-                                className="text-2xl md:text-4xl text-left font- font-serif  lg:ml-0 mt-5 text-gray-50 md:mt-5">
+                                className="text-2xl md:text-4xl text-left font- font-exo-2  lg:ml-0 mt-5 text-gray-50 md:mt-5">
 
                                 Charter Flight Booking Service In Kenya
 
@@ -367,13 +365,13 @@
             <div class="mr-auto place-sel-center lg:col-span-6" v-motion="motionPresets.fadeLeft()">
                 <span :class="`uppercase text-second text-lg ${exo2.className}`">
                     <div className="w-full h-full fixed top-0 left-0 z-[-1] "></div>
-                    <h2 class="font-semibold font-serif my-6 text-lg">
+                    <h2 class="font-semibold font-exo-2 my-6 text-lg">
                         Your amazing experience powers us
                     </h2>
                 </span>
                 <div class="grid grid-flow-row auto-rows-max">
                     <div>
-                        <p class="max-w-2xl mb-2 mt-5 font-light text-gray-800">
+                        <p class="max-w-2xl mb-2 mt-5 font-light ">
                             We are dedicated to providing our passengers with
                             exceptional travel experiences. Whether you're
                             planning a business trip, a family vacation, a
@@ -518,7 +516,7 @@
                     <div class="text-left px-4 bg-transparent">
                         <span class="text-gray-50 md:text-5xl font-semibold mb-4">
                             <div class="text-3xl mb-12" v-motion="motionPresets.fadeUp()">
-                                <span class="text-3xl font-semibold font-serif">Experience the thrill of travel with
+                                <span class="text-3xl font-semibold font-exo-2">Experience the thrill of travel with
                                     Wingit</span>
                             </div>
                         </span>
@@ -537,7 +535,7 @@
             </section>
         </main>
         <section class="py-6 bg-[url('../assets/bg.jpg')]">
-            <h2 class="font-semibold font-serif my-6 text-lg uppercase" v-motion="motionPresets.fadeDown()">Why Wingit
+            <h2 class="font-semibold font-exo-2 my-6 text-lg uppercase" v-motion="motionPresets.fadeDown()">Why Wingit
             </h2>
 
             <div class="grid md:grid-cols-3 max-w-screen-lg mx-auto gap-10 mt-16 px-5">
@@ -565,7 +563,7 @@
                         <figure>
                             <img src="../assets/common.jpg" alt="Wingit - flight booking" />
                         </figure>
-                        <p class="mt-1 text-gray-700" v-motion="motionPresets.fadeDown()">
+                        <p class="mt-1 " v-motion="motionPresets.fadeDown()">
                             Experience private charter flight at a fraction of
                             the cost with all the freedom and flexibility that
                             comes with it. We update availability of routes
@@ -583,13 +581,13 @@
                                 fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
                         </svg></span>
                     <div>
-                        <h3 class="font-semibold text-xl" v-motion="motionPresets.fadeDown()">
+                        <h3 class="font-semibold text-xl " v-motion="motionPresets.fadeDown()">
                             Wide selection of destinations
                         </h3>
                         <figure>
                             <img src="../assets/common2.jpg" alt="Wingit - flight booking" />
                         </figure>
-                        <p class="mt-1 text-white md:text-gray-700" v-motion="motionPresets.fadeUp()">
+                        <p class="mt-1  text-white md:text-gray-600" v-motion="motionPresets.fadeUp()">
                             Whether you are dreaming of a beach holiday, safari
                             escape, reunion with family or a business trip, we
                             will take you there in comfort, safety and style.
@@ -605,13 +603,14 @@
                                 fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
                         </svg></span>
                     <div>
-                        <h3 class="font-semibold text-xl" v-motion="motionPresets.fadeDown()">
+                        <h3 class="font-semibold text-xl text-white md:text-gray-600"
+                            v-motion="motionPresets.fadeDown()">
                             Flexible booking options
                         </h3>
                         <figure>
                             <img src="../assets/common3.jpg" alt="Wingit - flight booking" />
                         </figure>
-                        <p class="mt-1 text-white md:text-gray-700" v-motion="motionPresets.fadeUp()">
+                        <p class="mt-1  text-white md:text-gray-600" v-motion="motionPresets.fadeUp()">
                             Life is unpredictable - Change your plans without
                             any hassle and enjoy the freedom to travel on your
                             terms with Wingit.
@@ -622,7 +621,7 @@
         </section>
 
         <section class="my-6">
-            <h2 class="font-semibold my-4 text-lg font-serif uppercase" v-motion="motionPresets.fadeDown()">
+            <h2 class="font-semibold my-4 text-lg font-exo-2 uppercase" v-motion="motionPresets.fadeDown()">
                 Popular Destinations
             </h2>
             <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24" v-motion="motionPresets.fadeUp()">
@@ -645,8 +644,7 @@
                     <div class="flex w-1/2 flex-wrap">
                         <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
                             v-motion="getRandomMotionPreset()">
-                            <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
+                            <span class="absolute top-2 right-4 hidden group-hover:block ">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -656,8 +654,7 @@
                         </div>
                         <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
                             v-motion="getRandomMotionPreset()">
-                            <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
+                            <span class="absolute top-2 right-4 hidden group-hover:block ">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -667,8 +664,7 @@
                         </div>
                         <div class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
                             v-motion="getRandomMotionPreset()">
-                            <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
+                            <span class="absolute top-2 right-4 hidden group-hover:block ">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -680,8 +676,7 @@
                     <div class=" flex w-1/2 flex-wrap">
                         <div class="relative group w-full p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
                             v-motion="getRandomMotionPreset()">
-                            <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
+                            <span class="absolute top-2 right-4 hidden group-hover:block ">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -691,8 +686,7 @@
                         </div>
                         <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
                             v-motion="getRandomMotionPreset()">
-                            <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
+                            <span class="absolute top-2 right-4 hidden group-hover:block ">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -702,8 +696,7 @@
                         </div>
                         <div class="relative group w-1/2 p-1 md:p-2 hover:scale-105 transition-all duration-300 ease-in"
                             v-motion="getRandomMotionPreset()">
-                            <span
-                                class="absolute bg-base opacity-80 text-white  top-2 right-4 hidden group-hover:block p-2 rounded-2xl px-4 transition-all duration-300 ease-in">
+                            <span class="absolute top-2 right-4 hidden group-hover:block ">
                                 <router-link to="/listed-flights">
                                     <CallToAction label="Explore" />
                                 </router-link>
@@ -717,15 +710,15 @@
         </section>
         <section class="mx-2 shadow-md rounded-lg overflow-hidden">
             <div
-                class="items-center justify-between py-10 px-5 backdrop-blur shadow-2xl glass rounded-lg mx-auto text-gray-50 text-center">
+                class="items-center justify-between py-10 px-5 backdrop-blur shadow-2xl glass rounded-lg mx-auto  text-center">
                 <div class="px-2 -mt-6">
                     <div class="text-center">
                         <h1 v-motion="motionPresets.fadeDown()"
-                            class="font-semibold text-lg text-gray-800 leading-loose font-serif my-3 w-full">
+                            class="font-semibold text-lg  leading-loose font-exo-2 my-3 w-full">
                             <span>Comfort and convenience on the fly</span>
                         </h1>
                         <div class="w-full text-center" v-motion="motionPresets.fadeUp()">
-                            <p class="text-gray-700">
+                            <p class="">
                                 By registering an account, you will be the first
                                 to receive news of our special fares and
                                 promotions.
@@ -733,7 +726,7 @@
                             <form @submit.prevent="handleSubscription" class="my-12">
                                 <div class="max-w-sm mx-auto p-1 pr-0 flex items-center">
                                     <input type="email" v-model="subscriptionMail" placeholder="Email address"
-                                        class="flex-1 appearance-none rounded-full text-center shadow border p-1 text-gray-700 mr-2 focus:outline-none" />
+                                        class="flex-1 appearance-none rounded-full text-center shadow border p-1  mr-2 focus:outline-none" />
                                     <BaseButton :action="handleSubscription" label="Subscribe" />
                                 </div>
                             </form>

@@ -8,43 +8,29 @@
         <div class="p-4 w-full lg:w-2/3 2xl:w-1/2 bg-white">
             <ul class="">
                 <li v-for="message in messages" :key="message.id">
-                    <div
-                        class=""
-                        :class="
-                            message.sender === 'Mesh'
-                                ? 'chat chat-end'
-                                : 'chat chat-start'
-                        "
-                    >
+                    <div class="" :class="message.sender === 'Mesh'
+                            ? 'chat chat-end'
+                            : 'chat chat-start'
+                        ">
                         <div class="chat-image avatar">
                             <div class="w-10 rounded-full">
-                                <img
-                                    alt="Tailwind CSS chat bubble component"
-                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                />
+                                <img alt="Tailwind CSS chat bubble component"
+                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                             </div>
                         </div>
-                        <div
-                            :class="
-                                message.sender === 'Mesh'
-                                    ? 'chat-bubble bg-lime-300 text-gray-700'
-                                    : 'chat-bubble bg-sky-100  text-gray-700'
-                            "
-                        >
+                        <div :class="message.sender === 'Mesh'
+                                ? 'chat-bubble bg-lime-300 '
+                                : 'chat-bubble bg-sky-100  '
+                            ">
                             {{ message.text }}
                         </div>
                     </div>
                 </li>
             </ul>
             <div class="flex justify-center mt-5">
-                <textarea
-                    type="textarea"
-                    placeholder="Message"
-                    class="rounded-lg border bg-gray-50 focus:outline-none focus:ring-0 focus:border-transparent w-full p-2"
-                ></textarea>
-                <span
-                    class="flex justify-center items-center bg-emerald-500 rounded-full size-8 ms-2"
-                >
+                <textarea type="textarea" placeholder="Message"
+                    class="rounded-lg border bg-gray-50 focus:outline-none focus:ring-0 focus:border-transparent w-full p-2"></textarea>
+                <span class="flex justify-center items-center bg-emerald-500 rounded-full size-8 ms-2">
                     <i class="pi pi-send text-white"></i>
                 </span>
             </div>

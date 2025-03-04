@@ -37,8 +37,7 @@
             <!-- Admin -->
             <div v-if="route.path.startsWith('/tourism-operator')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
-                    <nav
-                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300">
+                    <nav class="flex flex-col gap-1 p-2 font-sans text-base font-normal  dark:text-slate-300">
                         <router-link to="/transport/">
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
@@ -146,8 +145,7 @@
             </div>
             <div v-if="route.path.startsWith('/customer')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
-                    <nav
-                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300">
+                    <nav class="flex flex-col gap-1 p-2 font-sans text-base font-normal  dark:text-slate-300">
                         <router-link to="/customer/">
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
@@ -211,8 +209,7 @@
             </div>
             <div v-if="route.path.startsWith('/aircraft-operator')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
-                    <nav
-                        class="flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700 dark:text-slate-300">
+                    <nav class="flex flex-col gap-1 p-2 font-sans text-base font-normal  dark:text-slate-300">
                         <router-link to="/aircraft-operator">
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">

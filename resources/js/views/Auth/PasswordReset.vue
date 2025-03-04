@@ -3,86 +3,50 @@
         <div class="bg-white shadow-lg rounded-lg p-6 max-w-md mx-auto mt-">
             <div class="pb-4 text-left">
                 <h4 class="text-2xl font-bold">Reset Password</h4>
-                <p class="text-sm text-gray-500">Enter your email</p>
+                <p class="text-sm ">Enter your email</p>
             </div>
             <div>
                 <div class="mb-4">
-                    <input
-                        type="email"
-                        v-model="email"
-                        name="email"
-                        placeholder="Email Address"
+                    <input type="email" v-model="email" name="email" placeholder="Email Address"
                         class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
-                        :disabled="isEmailTrue"
-                        required
-                    />
+                        :disabled="isEmailTrue" required />
                 </div>
 
                 <div v-if="isEmailTrue">
                     <p v-if="successMessage" class="text-emerald-600 mb-4">
                         {{ successMessage }}
                     </p>
-                    <input
-                        type="number"
-                        v-model="token"
-                        name="token"
-                        placeholder="Token"
-                        required
-                        class="w-full px-4 py-2 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    />
-                    <input
-                        type="password"
-                        v-model="password"
-                        name="password"
-                        placeholder="New Password"
-                        required
-                        class="w-full px-4 py-2 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    />
-                    <input
-                        type="password"
-                        v-model="confirm_password"
-                        placeholder="Confirm New Password"
-                        required
-                        class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
-                    />
+                    <input type="number" v-model="token" name="token" placeholder="Token" required
+                        class="w-full px-4 py-2 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                    <input type="password" v-model="password" name="password" placeholder="New Password" required
+                        class="w-full px-4 py-2 border rounded mb-3 focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                    <input type="password" v-model="confirm_password" placeholder="Confirm New Password" required
+                        class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-teal-500" />
                 </div>
                 <p v-if="hasError" class="text-red-500 mt-2">
                     {{ errorMessage }}
                 </p>
 
                 <div class="text-center mt-6">
-                    <button
-                        v-if="!isEmailTrue"
-                        @click.prevent="checkEmailExists"
-                        class="w-full bg-teal-500 text-white py-2 rounded hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
-                    >
+                    <button v-if="!isEmailTrue" @click.prevent="checkEmailExists"
+                        class="w-full bg-teal-500 text-white py-2 rounded hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600">
                         Verify Email
-                        <span
-                            v-if="showSpinner"
-                            class="ml-2 inline-block animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                        ></span>
+                        <span v-if="showSpinner"
+                            class="ml-2 inline-block animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>
                     </button>
-                    <button
-                        v-else
-                        @click="resetPasswordHandler"
-                        class="w-full bg-teal-500 text-white py-2 rounded hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600"
-                    >
+                    <button v-else @click="resetPasswordHandler"
+                        class="w-full bg-teal-500 text-white py-2 rounded hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600">
                         Reset Password
-                        <span
-                            v-if="showSpinner"
-                            class="ml-2 inline-block animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                        ></span>
+                        <span v-if="showSpinner"
+                            class="ml-2 inline-block animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></span>
                     </button>
                 </div>
             </div>
             <div class="text-center mt-6">
                 <p class="text-sm">
                     Don't have an account?
-                    <router-link
-                        to="/client-register"
-                        class="text-teal-500 font-semibold hover:underline"
-                        >Sign up</router-link
-                    >
+                    <router-link to="/client-register" class="text-teal-500 font-semibold hover:underline">Sign
+                        up</router-link>
                 </p>
             </div>
         </div>

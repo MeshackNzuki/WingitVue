@@ -12,7 +12,7 @@
                         <input type="checkbox" class="ml-2 toggle toggle-base" @change="sortFlightsPrice" />
                     </label>
                     <router-link to="/flight-search" class="mt-2.5 flex flex-row">
-                        <i class="pi pi-search text-gray-700 text-2xl"></i>
+                        <i class="pi pi-search  text-2xl"></i>
                         <span class="w-4 ml-1 label-text hidden lg:block">Search</span>
                     </router-link>
                 </div>
@@ -23,7 +23,7 @@
                             v-motion="motionPresets.fadeUp(Math.random() * 150)">
                             <div
                                 class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative">
-                                <div class="flex items-center justify-between text-gray-700 px-6 py-0.5">
+                                <div class="flex items-center justify-between  px-6 py-0.5">
                                     <div class="text-lg font-bold">
                                         {{
                                             flight.aircraft_operator
@@ -229,8 +229,7 @@
                                                                 class="mb-2 text-gray-900 hover:scale-105 p-2 h-6 w-6 flex justify-center items-center transition duration-250 rounded-full bg-gray-300 shadow-md mt-1">
                                                                 <i class="pi pi-plus"></i>
                                                             </button>
-                                                            <label for="Category"
-                                                                class="block mb-2 text-md text-gray-800">
+                                                            <label for="Category" class="block mb-2 text-md ">
                                                                 Seats
                                                             </label>
                                                 </div>

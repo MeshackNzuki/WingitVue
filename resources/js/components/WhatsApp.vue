@@ -1,27 +1,21 @@
 <!-- ChatMenu.vue -->
 <template>
     <div class="relative">
-        <button
-            @click="toggleFabAndMenu"
-            class="fixed bottom-5 right-5 p-3 size-14 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition duration-200"
-        >
+        <button @click="toggleFabAndMenu"
+            class="fixed bottom-5 right-5 p-3 size-14 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition duration-200">
             <i :class="fab ? 'pi pi-times ' : 'pi pi-comments text-3xl'"></i>
         </button>
 
         <transition name="fade">
-            <div
-                v-if="menu"
-                class="fixed bottom-20 right-2 md:right-6 w-80 bg-[#ece5dd] rounded-lg shadow-lg"
-            >
-                <div
-                    class="flex items-center justify-between bg-teal-600 text-white p-3 rounded-t-lg"
-                >
-                    <span class="font-semibold"
-                        ><div class="avatar online">
+            <div v-if="menu" class="fixed bottom-20 right-2 md:right-6 w-80 bg-[#ece5dd] rounded-lg shadow-lg">
+                <div class="flex items-center justify-between bg-teal-600 text-white p-3 rounded-t-lg">
+                    <span class="font-semibold">
+                        <div class="avatar online">
                             <div class="w-12 rounded-full">
                                 <img :src="Ryan" />
-                            </div></div
-                    ></span>
+                            </div>
+                        </div>
+                    </span>
                     <button @click="closeMenu" class="text-white">
                         <i class="pi pi-times"></i>
                     </button>
@@ -30,35 +24,23 @@
                     <div class="chat chat-end">
                         <div class="chat-image avatar">
                             <div class="w-10 rounded-full">
-                                <img
-                                    alt="Tailwind CSS chat bubble component"
-                                    :src="Ryan"
-                                />
+                                <img alt="Tailwind CSS chat bubble component" :src="Ryan" />
                             </div>
                         </div>
                         <div class="chat-header">
                             Wingit
                             <time class="text-xs opacity-50">Just now</time>
                         </div>
-                        <div
-                            class="chat-bubble px-2 py-1 text-sm bg-lime-200 text-gray-800"
-                        >
+                        <div class="chat-bubble px-2 py-1 text-sm bg-lime-200 ">
                             Hello, how can we help you?
                         </div>
                         <div class="chat-footer opacity-50">delivered</div>
                     </div>
                     <div class="flex">
-                        <input
-                            type="text"
-                            v-model="text"
-                            placeholder="Reply to this message..."
-                            class="flex-1 border border-gray-300 rounded-full py-1 px-2 focus:outline-none focus:ring focus:ring-teal-700"
-                        />
-                        <a
-                            :href="apilink"
-                            target="_blank"
-                            class="ml-1 flex items-center justify-center w-12 h-12 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-200"
-                        >
+                        <input type="text" v-model="text" placeholder="Reply to this message..."
+                            class="flex-1 border border-gray-300 rounded-full py-1 px-2 focus:outline-none focus:ring focus:ring-teal-700" />
+                        <a :href="apilink" target="_blank"
+                            class="ml-1 flex items-center justify-center w-12 h-12 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-200">
                             <i class="pi pi-send"></i>
                         </a>
                     </div>
@@ -127,6 +109,7 @@ const updateApiLink = (message) => {
 .fade-leave-active {
     transition: opacity 0.5s;
 }
+
 .fade-enter,
 .fade-leave-to {
     opacity: 0;

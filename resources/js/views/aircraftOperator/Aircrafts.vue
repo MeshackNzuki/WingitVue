@@ -1,23 +1,15 @@
 <template>
-    <Table
-        :headers="[
-            'TYPE',
-            'REG',
-            'CAPACITY',
-            'YOM',
-            'INSURANCE EXPIRY',
-            'SPEED',
-            'ACTION',
-        ]"
-        title="Aircrafts"
-        v-model:query="searchQuery"
-        :rows="aircrafts.length"
-    >
+    <Table :headers="[
+        'TYPE',
+        'REG',
+        'CAPACITY',
+        'YOM',
+        'INSURANCE EXPIRY',
+        'SPEED',
+        'ACTION',
+    ]" title="Aircrafts" v-model:query="searchQuery" :rows="aircrafts.length">
         <template v-slot:actions>
-            <SmallButton
-                icon="pi pi-plus"
-                :action="() => showModal('addAircraft')"
-            ></SmallButton>
+            <SmallButton icon="pi pi-plus" :action="() => showModal('addAircraft')"></SmallButton>
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
             <Button icon="pi pi-upload" severity="secondary" />
         </template>
@@ -73,197 +65,102 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
-                        <SmallButton
-                            icon="pi pi-pencil"
-                            :action="() => editAircraft(aircraft.id)"
-                        ></SmallButton>
-                        <SmallButton
-                            icon="pi pi-trash"
-                            :action="() => handleDelete(aircraft.id)"
-                            severity="danger"
-                        ></SmallButton>
+                        <SmallButton icon="pi pi-pencil" :action="() => editAircraft(aircraft.id)"></SmallButton>
+                        <SmallButton icon="pi pi-trash" :action="() => handleDelete(aircraft.id)" severity="danger">
+                        </SmallButton>
                     </div>
                 </td>
                 <dialog :id="aircraft.id" class="modal">
-                    <form
-                        method="dialog"
-                        class="modal-box"
-                        @submit.prevent="handleSubmit"
-                    >
-                        <button
-                            type="button"
-                            class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                            @click="closeModal"
-                        >
+                    <form method="dialog" class="modal-box" @submit.prevent="handleSubmit">
+                        <button type="button" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                            @click="closeModal">
                             ✕
                         </button>
-                        <span class="w-full text-center font-bold"
-                            >Edit Aircraft info</span
-                        >
+                        <span class="w-full text-center font-bold">Edit Aircraft info</span>
                         <div class="flex justify-center items-center">
                             <div class="flex flex-col md:flex-row md:gap-4">
                                 <div>
-                                    <label
-                                        for="aircraft_type"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="aircraft_type" class="block mt-2 text-xs font-semibold  uppercase">
                                         Aircraft type
                                     </label>
-                                    <input
-                                        name="aircraft_type"
-                                        class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.aircraft_type"
-                                    />
+                                    <input name="aircraft_type" class="input input-bordered input-sm w-full max-w-xs"
+                                        v-model="aircraftVals.aircraft_type" />
 
-                                    <label
-                                        for="age"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="age" class="block mt-2 text-xs font-semibold  uppercase">
                                         Select YOM
                                     </label>
-                                    <select
-                                        name="age"
-                                        class="select select-bordered w-full select-sm max-w-xs"
-                                        v-model="aircraftVals.age"
-                                    >
-                                        <option
-                                            v-for="year in years"
-                                            :key="year"
-                                            :value="year"
-                                        >
+                                    <select name="age" class="select select-bordered w-full select-sm max-w-xs"
+                                        v-model="aircraftVals.age">
+                                        <option v-for="year in years" :key="year" :value="year">
                                             {{ year }}
                                         </option>
                                     </select>
 
-                                    <label
-                                        for="capacity"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="capacity" class="block mt-2 text-xs font-semibold  uppercase">
                                         Seating capacity
                                     </label>
-                                    <input
-                                        name="capacity"
-                                        type="number"
+                                    <input name="capacity" type="number"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.capacity"
-                                    />
+                                        v-model="aircraftVals.capacity" />
 
-                                    <label
-                                        for="registration"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="registration" class="block mt-2 text-xs font-semibold  uppercase">
                                         Registration
                                     </label>
-                                    <input
-                                        name="registration"
-                                        class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.registration"
-                                    />
+                                    <input name="registration" class="input input-bordered input-sm w-full max-w-xs"
+                                        v-model="aircraftVals.registration" />
 
-                                    <label
-                                        for="speed"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="speed" class="block mt-2 text-xs font-semibold  uppercase">
                                         Aircraft speed
                                     </label>
-                                    <input
-                                        type="number"
-                                        name="speed"
+                                    <input type="number" name="speed"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.speed"
-                                    />
+                                        v-model="aircraftVals.speed" />
                                 </div>
                                 <div>
-                                    <label
-                                        for="cor"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="cor" class="block mt-2 text-xs font-semibold  uppercase">
                                         COR (Certificate of Registration)
                                     </label>
-                                    <input
-                                        type="file"
-                                        name="cor"
-                                        @change="handleFileChange"
-                                        class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs"
-                                    />
+                                    <input type="file" name="cor" @change="handleFileChange"
+                                        class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                                    <label
-                                        for="crs"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="crs" class="block mt-2 text-xs font-semibold  uppercase">
                                         CRS (Certificate of Release to Service)
                                     </label>
-                                    <input
-                                        type="file"
-                                        name="crs"
-                                        @change="handleFileChange"
-                                        class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs"
-                                    />
+                                    <input type="file" name="crs" @change="handleFileChange"
+                                        class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                                    <label
-                                        for="cor_expiry"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="cor_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                                         COR expiry
                                     </label>
-                                    <input
-                                        type="date"
-                                        name="cor_expiry"
+                                    <input type="date" name="cor_expiry"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.cor_expiry"
-                                        :min="currentDate"
-                                    />
+                                        v-model="aircraftVals.cor_expiry" :min="currentDate" />
 
-                                    <label
-                                        for="crs_expiry"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="crs_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                                         CRS expiry
                                     </label>
-                                    <input
-                                        type="date"
-                                        name="crs_expiry"
+                                    <input type="date" name="crs_expiry"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.crs_expiry"
-                                        :min="currentDate"
-                                    />
+                                        v-model="aircraftVals.crs_expiry" :min="currentDate" />
 
-                                    <label
-                                        for="insurance"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="insurance" class="block mt-2 text-xs font-semibold  uppercase">
                                         Insurance
                                     </label>
-                                    <input
-                                        type="file"
-                                        name="insurance"
-                                        @change="handleFileChange"
-                                        class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs"
-                                    />
+                                    <input type="file" name="insurance" @change="handleFileChange"
+                                        class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                                    <label
-                                        for="insurance_expiry"
-                                        class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                                    >
+                                    <label for="insurance_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                                         Insurance expiry
                                     </label>
-                                    <input
-                                        type="date"
-                                        name="insurance_expiry"
+                                    <input type="date" name="insurance_expiry"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.insurance_expiry"
-                                        :min="currentDate"
-                                    />
+                                        v-model="aircraftVals.insurance_expiry" :min="currentDate" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="modal-action">
-                            <button
-                                type="button"
-                                class="btn"
-                                @click="closeModal"
-                            >
+                            <button type="button" class="btn" @click="closeModal">
                                 Close
                             </button>
                             <button type="submit" class="btn">Save</button>
@@ -275,195 +172,95 @@
     </Table>
     <dialog id="addAircraft" class="modal">
         <form method="dialog" class="modal-box" @submit.prevent="handleSubmit">
-            <button
-                type="button"
-                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                @click="closeModal"
-            >
+            <button type="button" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModal">
                 ✕
             </button>
             <span class="w-full text-center font-bold">Aircraft info</span>
             <div class="flex justify-center items-center">
                 <div class="flex flex-col md:flex-row md:gap-4">
                     <div>
-                        <label
-                            for="aircraft_type"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="aircraft_type" class="block mt-2 text-xs font-semibold  uppercase">
                             Aircraft type
                         </label>
-                        <input
-                            name="aircraft_type"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.aircraft_type"
-                        />
+                        <input name="aircraft_type" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="aircraftVals.aircraft_type" />
 
-                        <label
-                            for="age"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="age" class="block mt-2 text-xs font-semibold  uppercase">
                             Select YOM
                         </label>
-                        <select
-                            name="age"
-                            class="select select-bordered w-full select-sm max-w-xs"
-                            v-model="aircraftVals.age"
-                        >
-                            <option
-                                v-for="year in years"
-                                :key="year"
-                                :value="year"
-                            >
+                        <select name="age" class="select select-bordered w-full select-sm max-w-xs"
+                            v-model="aircraftVals.age">
+                            <option v-for="year in years" :key="year" :value="year">
                                 {{ year }}
                             </option>
                         </select>
 
-                        <label
-                            for="capacity"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="capacity" class="block mt-2 text-xs font-semibold  uppercase">
                             Seating capacity
                         </label>
-                        <input
-                            name="capacity"
-                            type="number"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.capacity"
-                        />
+                        <input name="capacity" type="number" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="aircraftVals.capacity" />
 
-                        <label
-                            for="registration"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="registration" class="block mt-2 text-xs font-semibold  uppercase">
                             Registration
                         </label>
-                        <input
-                            name="registration"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.registration"
-                        />
+                        <input name="registration" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="aircraftVals.registration" />
 
-                        <label
-                            for="speed"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="speed" class="block mt-2 text-xs font-semibold  uppercase">
                             Aircraft speed
                         </label>
-                        <input
-                            type="number"
-                            name="speed"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.speed"
-                        />
+                        <input type="number" name="speed" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="aircraftVals.speed" />
 
-                        <label
-                            for="coa"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="coa" class="block mt-2 text-xs font-semibold  uppercase">
                             COA
                         </label>
-                        <input
-                            type="file"
-                            name="coa"
-                            @change="handleFileChange"
-                            class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs"
-                        />
+                        <input type="file" name="coa" @change="handleFileChange"
+                            class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                        <label
-                            for="coa_expiry"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="coa_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                             Coa expiry
                         </label>
-                        <input
-                            type="date"
-                            name="coa_expiry"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.coa_expiry"
-                            :min="currentDate"
-                        />
+                        <input type="date" name="coa_expiry" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="aircraftVals.coa_expiry" :min="currentDate" />
                     </div>
                     <div>
-                        <label
-                            for="cor"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="cor" class="block mt-2 text-xs font-semibold  uppercase">
                             COR (Certificate of Registration)
                         </label>
-                        <input
-                            type="file"
-                            name="cor"
-                            @change="handleFileChange"
-                            class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs"
-                        />
+                        <input type="file" name="cor" @change="handleFileChange"
+                            class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                        <label
-                            for="crs"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="crs" class="block mt-2 text-xs font-semibold  uppercase">
                             CRS (Certificate of Release to Service)
                         </label>
-                        <input
-                            type="file"
-                            name="crs"
-                            @change="handleFileChange"
-                            class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs"
-                        />
+                        <input type="file" name="crs" @change="handleFileChange"
+                            class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                        <label
-                            for="cor_expiry"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="cor_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                             COR expiry
                         </label>
-                        <input
-                            type="date"
-                            name="cor_expiry"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.cor_expiry"
-                            :min="currentDate"
-                        />
+                        <input type="date" name="cor_expiry" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="aircraftVals.cor_expiry" :min="currentDate" />
 
-                        <label
-                            for="crs_expiry"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="crs_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                             CRS expiry
                         </label>
-                        <input
-                            type="date"
-                            name="crs_expiry"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.crs_expiry"
-                            :min="currentDate"
-                        />
+                        <input type="date" name="crs_expiry" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="aircraftVals.crs_expiry" :min="currentDate" />
 
-                        <label
-                            for="insurance"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="insurance" class="block mt-2 text-xs font-semibold  uppercase">
                             Insurance
                         </label>
-                        <input
-                            type="file"
-                            name="insurance"
-                            @change="handleFileChange"
-                            class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs"
-                        />
+                        <input type="file" name="insurance" @change="handleFileChange"
+                            class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                        <label
-                            for="insurance_expiry"
-                            class="block mt-2 text-xs font-semibold text-gray-800 uppercase"
-                        >
+                        <label for="insurance_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                             Insurance expiry
                         </label>
-                        <input
-                            type="date"
-                            name="insurance_expiry"
-                            class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.insurance_expiry"
-                            :min="currentDate"
-                        />
+                        <input type="date" name="insurance_expiry" class="input input-bordered input-sm w-full max-w-xs"
+                            v-model="aircraftVals.insurance_expiry" :min="currentDate" />
                     </div>
                 </div>
             </div>

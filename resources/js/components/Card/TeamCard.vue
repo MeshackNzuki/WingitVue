@@ -1,30 +1,18 @@
 <template>
-    <div
-        class="w-full bg-gray-50 rounded-2xl p-6 md:p-12 flex flex-col justify-center items-center shadow-md"
-    >
+    <div class="w-full bg-gray-50 rounded-2xl p-6 md:p-12 flex flex-col justify-center items-center shadow-md">
         <div class="mb-4 relative">
             <!-- Rounded image -->
 
-            <img
-                width="100"
-                height="100"
-                :src="imageSrc"
-                :alt="name"
-                class="object-cover rounded-full h-36 w-36"
-            />
+            <img width="100" height="100" :src="imageSrc" :alt="name" class="object-cover rounded-full h-36 w-36" />
         </div>
         <div class="text-center">
-            <p class="text-xl text-gray-800 mb-1">{{ name }}</p>
-            <p class="text-base text-gray-400 font-normal">{{ title }}</p>
+            <p class="text-xl  mb-1">{{ name }}</p>
+            <p class="text-base  font-normal">{{ title }}</p>
         </div>
         <!-- Toggle description with "Read More" -->
-        <div class="text-gray-700 mt-2">
+        <div class=" mt-2">
             {{ showFullDescription ? description : truncatedDescription }}
-            <span
-                v-if="description.length > 70"
-                class="text-sky-500 cursor-pointer ml-2"
-                @click="toggleDescription"
-            >
+            <span v-if="description.length > 70" class="text-sky-500 cursor-pointer ml-2" @click="toggleDescription">
                 {{ showFullDescription ? "Read Less" : "Read More" }}
             </span>
         </div>

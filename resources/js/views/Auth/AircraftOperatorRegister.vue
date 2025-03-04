@@ -14,12 +14,11 @@
                 <div>
                     <div v-if="currentStep === 1">
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="name" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
+                            <label for="name" class="mb-1 text-xs sm:text-sm tracking-wide  font-semibold">
                                 Full Company Name
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-building" style="font-size: 1.5em"></i>
                                 </div>
                                 <input id="name" type="text" name="name" v-model="formVals.name"
@@ -30,13 +29,11 @@
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="email"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
+                            <label for="email" class="mb-1 text-xs sm:text-sm tracking-wide  font-semibold">
                                 E-Mail Address:
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-envelope" style="font-size: 1.5em"></i>
                                 </div>
                                 <input id="email" type="email" name="email" v-model="formVals.email"
@@ -47,17 +44,15 @@
                         </div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="contact_number"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
+                            <label for="contact_number" class="mb-1 text-xs sm:text-sm tracking-wide  font-semibold">
                                 Contact number
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-phone" style="font-size: 1.5em"></i>
                                 </div>
                                 <div class="flex flex-row items-center relative">
-                                    <div class="absolute left-8 text-gray-400">
+                                    <div class="absolute left-8 ">
                                         <CountryCode v-model="formVals.country_code" />
                                     </div>
                                     <input id="contact_number" type="tel" name="contact_number"
@@ -85,13 +80,11 @@
                         <div class="flex flex-col mb-3 md:mb-6"></div>
 
                         <div class="flex flex-col mb-3 md:mb-6">
-                            <label for="password"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
+                            <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide  font-semibold">
                                 Password:
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-lock" style="font-size: 1.5em"></i>
                                 </div>
                                 <input id="password" type="password" name="password" v-model="formVals.password"
@@ -103,12 +96,11 @@
 
                         <div class="flex flex-col mb-3 md:mb-6">
                             <label for="password_confirmation"
-                                class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
+                                class="mb-1 text-xs sm:text-sm tracking-wide  font-semibold">
                                 Confirm Password:
                             </label>
                             <div class="relative">
-                                <div
-                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                     <i class="pi pi-check-circle text-xl" style="font-size: 1.5em"></i>
                                 </div>
                                 <input id="password_confirmation" type="password" name="password_confirmation"
@@ -137,7 +129,7 @@
                             </ul>
 
                             <div class="mb-6 pt-4">
-                                <label class="mb-5 block text-xl font-semibold text-gray-800">
+                                <label class="mb-5 block text-xl font-semibold ">
                                     Certificate of incorporation (Upload a pdf
                                     copy)
                                 </label>
@@ -148,13 +140,13 @@
                                     <label for="file1"
                                         class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center">
                                         <div>
-                                            <span class="mb-2 block text-gray-800">
+                                            <span class="mb-2 block ">
                                                 <i class="pi pi-paperclip" style="font-size: 1.5em"></i>
                                                 Drop files here
                                             </span>
                                             <span class="mb-2 block text-base font-medium text-[#6B7280]">Or</span>
                                             <span
-                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800">
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium ">
                                                 Browse
                                             </span>
                                             <p v-if="formVals.coi_doc">
@@ -184,7 +176,7 @@
                             </ul>
 
                             <div class="mb-6 pt-4">
-                                <label class="mb-5 block text-xl font-semibold text-gray-800">
+                                <label class="mb-5 block text-xl font-semibold ">
                                     AOC document (Upload a pdf copy, and provide
                                     expiry date)
                                 </label>
@@ -195,7 +187,7 @@
                                     <label for="file2"
                                         class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center">
                                         <div>
-                                            <span class="mb-2 block text-gray-800">
+                                            <span class="mb-2 block ">
                                                 <i class="pi pi-paperclip"></i>
                                                 Drop files here
                                             </span>
@@ -203,7 +195,7 @@
                                                 Or
                                             </span>
                                             <span
-                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800">
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium ">
                                                 Browse
                                             </span>
                                             <p v-if="formVals.AOC_doc">
@@ -218,12 +210,12 @@
 
                             <div class="flex flex-col mb-3 md:mb-6">
                                 <label for="AOC_expiry_date"
-                                    class="mb-1 text-xs sm:text-sm tracking-wide text-gray-800 font-semibold">
+                                    class="mb-1 text-xs sm:text-sm tracking-wide  font-semibold">
                                     AOC Expiry date
                                 </label>
                                 <div class="relative">
                                     <div
-                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                         <i class="pi pi-clock"></i>
                                     </div>
 
@@ -251,7 +243,7 @@
                             </ul>
 
                             <div class="mb-6 pt-4">
-                                <label class="mb-5 block text-xl font-semibold text-gray-800">
+                                <label class="mb-5 block text-xl font-semibold ">
                                     Company PIN certificate (Upload a pdf copy)
                                 </label>
 
@@ -261,7 +253,7 @@
                                     <label for="file3"
                                         class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center">
                                         <div>
-                                            <span class="mb-2 block text-gray-800">
+                                            <span class="mb-2 block ">
                                                 <i class="pi pi-paperclip"></i>
                                                 Drop files here
                                             </span>
@@ -269,7 +261,7 @@
                                                 Or
                                             </span>
                                             <span
-                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-gray-800">
+                                                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium ">
                                                 Browse
                                             </span>
                                             <p v-if="formVals.company_pin">
@@ -291,7 +283,7 @@
                 </div>
                 <div className="flex justify-center items-center mt-2">
                     <a href="/tourism-operator/auth/login" target="_blank"
-                        className="inline-flex items-center font-bold text-gray-700 hover:text-[#EF434A] text-xs text-center">
+                        className="inline-flex items-center font-bold  hover:text-[#EF434A] text-xs text-center">
                     </a>
                 </div>
             </div>
