@@ -33,11 +33,12 @@ watch(route, (newRoute) => {
 </script>
 
 <template>
-    <div id="loader" class="fixed hidden inset-0 flex justify-center items-center bg-sky-900 bg-opacity-10 z-50">
+    <div id="loader"
+        class="fixed hidden inset-0 flex justify-center items-center bg-sky-900 bg-opacity-10 z-50 select-none">
         <div class="axiosspinner"></div>
     </div>
     <Sidebar v-if="isProtectedRoute" />
-    <div class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden transition-all duration-300 text-gray-600"
+    <div class="min-h-screen bg-slate-50 dark:bg-slate-300 overflow-x-hidden transition-all duration-300 text-gray-600 select-none"
         :class="mainStore.sidebarOpen && isProtectedRoute ? 'ms-64 p-4' : ''">
         <Toast />
         <GuestTopBar v-if="!isProtectedRoute" />

@@ -7,8 +7,8 @@
         </h5>
         <div class="flex flex-col md:flex-row gap-10">
             <div v-motion="motionPresets.fadeLeft()"
-                class="flex flex-col gap-3 shadow-sm rounded p-6 bg-blue-50 bg-opacity-75 hover:scale-105 transition-all duration-300 max-w-[600px]">
-                <h4 class="font-bold mb-4 text-center">Aircraft Operators</h4>
+                class="flex flex-col gap-3 shadow-sm rounded p-6 bg-blue-50 bg-opacity-15 hover:scale-105 transition-all duration-300 max-w-[600px]">
+                <h4 class="font-bold mb-4 text-center text-white">Aircraft Operators</h4>
                 <div class="text-center flex flex-col">
                     <!-- <span class="text-ceter">
                         Create an Aircraft Operator account to manage flight
@@ -23,8 +23,8 @@
                 </div>
             </div>
             <div v-motion="motionPresets.fadeRight()"
-                class="flex flex-col gap-3 shadow-sm rounded p-6 bg-gradient-to-br bg-blue-50 bg-opacity-75 hover:scale-105 transition-all duration-300 max-w-[600px]">
-                <h4 class="font-bold mb-4 text-center">Tourism Operators</h4>
+                class="flex flex-col gap-3 shadow-sm rounded p-6 bg-gradient-to-br bg-blue-50 bg-opacity-15 hover:scale-105 transition-all duration-300 max-w-[600px]">
+                <h4 class="font-bold mb-4 text-center text-white">Tourism Operators</h4>
                 <div class="text-center flex flex-col">
                     <!-- <span>
                         Register as a Tourism Operator to manage tour packages,

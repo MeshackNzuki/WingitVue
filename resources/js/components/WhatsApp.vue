@@ -31,7 +31,7 @@
                             Wingit
                             <time class="text-xs opacity-50">Just now</time>
                         </div>
-                        <div class="chat-bubble px-2 py-1 text-sm bg-lime-200 ">
+                        <div class="chat-bubble px-2 py-1 text-sm bg-lime-200 text-gray-600">
                             Hello, how can we help you?
                         </div>
                         <div class="chat-footer opacity-50">delivered</div>

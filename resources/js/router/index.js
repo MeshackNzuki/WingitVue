@@ -215,6 +215,11 @@ const routes = [
                 name: "CustomerSettings",
                 component: () => import("../views/customer/Settings.vue"),
             },
+            {
+                path: "packing",
+                name: "CustomerPacking",
+                component: () => import("../views/customer/PackingLists.vue"),
+            },
         ],
     },
     {

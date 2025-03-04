@@ -1,5 +1,5 @@
 <template>
-    <nav v-if="!login" ref="sidebar_id" :class="'rounded-xl absolute left-1 top-1 overflow-scroll bottom-1 dark:text-slate-300 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-lg  flex-wrap items-center justify-between z-10 py-4 w-64 px-6 transition-all ease-in-out duration-300 ' +
+    <nav v-if="!login" ref="sidebar_id" :class="'rounded-xl fixed left-1 top-1 overflow-scroll bottom-1 dark:text-slate-300 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-lg  flex-wrap items-center justify-between z-10 py-4 w-64 px-6 transition-all ease-in-out duration-300 ' +
         (isDark
             ? ' bg-gradient-to-r from-slate-800 via-sky-950 to-sky-950 '
             : ' bg-gradient-to-r from-white via-slate-50 to-sky-50 ') +
@@ -174,7 +174,7 @@
                             </div>
                         </router-link>
 
-                        <router-link to="/customer/packing-lists">
+                        <router-link to="/customer/packing">
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
@@ -251,7 +251,7 @@
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-refresh"></i>
                                 </div>
                                 Trips
                                 <span
@@ -263,7 +263,7 @@
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-file"></i>
                                 </div>
                                 Statements
                             </div>
@@ -272,7 +272,7 @@
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-user"></i>
                                 </div>
                                 pilots
                             </div>
@@ -281,7 +281,7 @@
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-send"></i>
                                 </div>
                                 Aircrafts
                             </div>
@@ -290,7 +290,7 @@
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-inbox"></i>
                                 </div>
                                 Messages
                                 <span
@@ -303,7 +303,7 @@
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-bell"></i>
                                 </div>
                                 Notifications
                                 <span
@@ -316,7 +316,7 @@
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-cog"></i>
+                                    <i class="pi pi-user"></i>
                                 </div>
                                 Account
                             </div>
