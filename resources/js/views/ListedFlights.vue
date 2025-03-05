@@ -2,16 +2,23 @@
     <div>
         <div class="w-full p-2 bg-gray-200 min-h-screen bg-[url('../assets/bg.jpg')]">
             <div class="mt-16">
-                <div class="w-full flex justify-center space-x-2 md:space-x-10 px-2">
-                    <label class="cursor-pointer label">
+                <div class="w-full flex justify-center space-x-2 md:space-x-10 px-2 ">
+                    <label class="cursor-pointer label hover:scale-105 transition-all duration-300">
                         <span class="label-text">Shuffle</span>
                         <input type="checkbox" class="ml-2 toggle toggle-base" @change="sortFlights" />
                     </label>
-                    <label class="cursor-pointer label">
-                        <span class="label-text">Sort by price</span>
+                    <label class="cursor-pointer label hover:scale-105 transition-all duration-300">
+                        <span class="label-text">Sort By Price</span>
                         <input type="checkbox" class="ml-2 toggle toggle-base" @change="sortFlightsPrice" />
                     </label>
-                    <router-link to="/flight-search" class="mt-2.5 flex flex-row">
+                    <label class="cursor-pointer label">
+                        <span
+                            class="label-text badge bg-base p-2 text-white hover:scale-105 transition-all duration-300"
+                            @click="resetFlights">Reset</span>
+
+                    </label>
+                    <router-link to="/flight-search"
+                        class="mt-2.5 flex flex-row hover:scale-105 transition-all duration-300">
                         <i class="pi pi-search  text-2xl"></i>
                         <span class="w-4 ml-1 label-text hidden lg:block">Search</span>
                     </router-link>
@@ -19,8 +26,7 @@
 
                 <div class="w-full mt-8 flex justify-center">
                     <div v-if="mainStore.flights.length > 0" class="flex flex-col md:grid grid-cols-3 gap-4">
-                        <div v-for="(flight, index) in mainStore.flights"
-                            v-motion="motionPresets.fadeUp(Math.random() * 150)">
+                        <div v-for="(flight, index) in flights" v-motion="motionPresets.fadeUp(Math.random() * 150)">
                             <div
                                 class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative">
                                 <div class="flex items-center justify-between  px-6 py-0.5">
@@ -82,7 +88,7 @@
                                                 class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
                                                 <span class="me-1">{{
                                                     flight.available_seats
-                                                    }}</span>
+                                                }}</span>
                                                 <span>{{
                                                     flight.available_seats > 1
                                                         ? "seats"
@@ -268,39 +274,34 @@
                     </div>
                 </div>
 
-                <hr class="my-10 bg-base h-0.5" />
-
-                <div class="relative flex flex-col items-center justify-center overflow-hidden p-4 sm:p-4">
-                    <div class="w-full max-w-4xl rounded-md border-2 bg-gray-100 p-2">
-                        <div class="flex flex-col items-center">
-                            <span class="rounded-lg bg-cyan-100 py-px px-2 text-sm text-yellow-800">
-                                Experience seamless convenience from your
-                                comfort
-                            </span>
-                            <h3 class="mt-2 mb-2 max-w-2xl text-center text-md font-light md:leading-tight">
-                                Want to be notified when your route is
-                                available? Then join this newsletter
-                            </h3>
-                            <form class="mx-auto mt-4 flex w-full max-w-md flex-col gap-2 sm:flex-row sm:gap-0"
-                                @submit.prevent="handleSubscribe">
-                                <div class="flex justify-center space-x-2">
-                                    <input type="text" name="destination" id="destination"
-                                        class="grow w-full rounded-lg border border-base px-3 focus:border-emerald-500 focus:outline-none sm:rounded-l-md"
-                                        placeholder="Destination" required />
-                                    <input type="email" name="email" id="email"
-                                        class="grow w-full rounded-lg border border-base px-3 focus:border-emerald-500 focus:outline-none sm:rounded-l-md"
-                                        placeholder="Email Address" required />
-                                </div>
-                                <BaseButton action="handleSubscribe" label="Subscribe" />
-                            </form>
+                <section class="flex justify-center mt-12">
+                    <div class="p-4 w-full max-w-screen-md mb-12 pb-6" v-motion="motionPresets.fadeDown()">
+                        <h2 class="text-lg font-lg mb-6 text-gray-900 text-center">Need assistance in booking?</h2>
+                        <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 justify-center">
+                            <div class="flex items-center">
+                                <i class="pi pi-phone text-xl text-gray-700 mr-4"></i>
+                                <a :href="`tel:${phone}`" class="text-lg text-gray-700 hover:text-blue-500">{{ phone
+                                }}</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="pi pi-whatsapp text-xl text-green-500 mr-4"></i>
+                                <a :href="`https://wa.me/${phone}`"
+                                    class="text-lg text-gray-700 hover:text-green-500">WhatsApp</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="pi pi-instagram text-xl text-pink-500 mr-4"></i>
+                                <a href="https://www.instagram.com/yourprofile"
+                                    class="text-lg text-gray-700 hover:text-pink-500">Instagram</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
     </div>
 </template>
 <script setup>
+
 import { ref, onMounted, inject } from "vue";
 import { useRouter } from "vue-router";
 import { useMainStore } from "../stores";
@@ -309,18 +310,18 @@ import BaseButton from "../components/Buttons/BaseButton.vue";
 import { format } from "date-fns";
 
 const motionPresets = inject("motionPresets");
-
+const phone = "+254725633577";
 // Local state
 
-const searchResults = ref([]);
+const flights = ref([]);
 
 const rerender = ref(false);
 
-const mainStore = useMainStore(); // Pinia store for flight data
+const mainStore = useMainStore();
 
 // Functions
 const sortFlights = () => {
-    const shuffledResults = [...searchResults.value];
+    const shuffledResults = [...flights.value];
     for (let i = shuffledResults.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffledResults[i], shuffledResults[j]] = [
@@ -328,12 +329,12 @@ const sortFlights = () => {
             shuffledResults[i],
         ];
     }
-    searchResults.value = shuffledResults;
+    flights.value = shuffledResults;
     rerender.value = !rerender.value;
 };
 
 const sortFlightsPrice = () => {
-    searchResults.value = [...searchResults.value].sort(
+    flights.value = [...flights.value].sort(
         (a, b) => a.price - b.price,
     );
     rerender.value = !rerender.value;
@@ -352,14 +353,12 @@ const handleSubscribe = (e) => {
 const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
 onMounted(() => {
     mainStore.fetchFlights();
+    flights.value = mainStore.flights;
 });
+const resetFlights = () => {
 
-const getFlights = async () => {
-    const flights = await mainStore.fetchFlights();
-    searchResults.value = flights;
-};
+    mainStore.fetchFlights();
+    flights.value = mainStore.flights;
 
-onMounted(() => {
-    getFlights();
-});
+}
 </script>

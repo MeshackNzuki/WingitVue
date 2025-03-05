@@ -3,31 +3,30 @@
         <div
             class="w-full p-2 bg-[url('../assets/searchpg.jpg')] bg-cover object-cover min-h-screen flex justify-center">
             <div class="md:mx-16 flex flex-col justify-center max-w-screen-xl">
-                <div class="rounded text-gray-50 text-3xl font-bold mb-16" v-motion="motionPresets.fadeDown()">
-                    <span class="font-exo2">Search for a
+                <div class="rounded text-gray-50 text-3xl font-bold my-16 py-4" v-motion="motionPresets.fadeDown()">
+                    <span class="font-exo2 ">Search for a
                         flight</span>
                 </div>
-
                 <div v-motion="motionPresets.fadeUp()"
-                    class="flex text-gray-600 flex-col md:flex-row justify-center space-x-0 lg:space-x-2 space-y-2 lg:space-y-0 w-full text-gray-50">
+                    class="flex text-gray-600 flex-col md:flex-row justify-center space-x-0 lg:space-x-2 space-y-2 lg:space-y-0 w-full ">
                     <div class="rounded text-sm flex flex-col justify-start ">
-                        <label for="passengers">Passengers </label>
+                        <label for="passengers" class="text-gray-50">Passengers </label>
                         <input type="number" v-model="seats" placeholder="Type here..." class="input input-sm p-5 " />
                     </div>
                     <div class="rounded text-sm flex flex-col justify-start">
-                        <label for="startDate">Date </label>
+                        <label for="startDate" class="text-gray-50"> Date </label>
                         <input type="date" v-model="startDate" @change="setStartDate" class="input input-sm p-5 " />
                     </div>
                     <div class="flex rounded text-sm flex-col justify-start">
-                        <label for="origin">Origin </label>
+                        <label for="origin" class="text-gray-50">Origin </label>
                         <Select :options="airportOptions" id="origin" isSearchable placeholder="Start typing..."
-                            noOptionsMessage="No Match" @change="setOrigin"
+                            noOptionsMessage="No Match" v-model="origin"
                             class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px]  text-sm" />
                     </div>
                     <div class="flex rounded text-sm flex-col justify-start">
-                        <label for="destination">Destination </label>
+                        <label for="destination" class="text-gray-50">Destination </label>
                         <Select :options="airportOptions" id="destination" isSearchable placeholder="Start typing..."
-                            noOptionsMessage="No Match" @change="setDestination"
+                            noOptionsMessage="No Match" v-model="destination"
                             class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px]  text-sm" />
                     </div>
                 </div>
@@ -48,7 +47,7 @@
 
                 <div class="w-full mt-8 flex justify-center">
                     <div v-if="mainStore.flights.length > 0" class="flex flex-col md:grid grid-cols-3 gap-4">
-                        <div v-for="(flight, index) in mainStore.flights"
+                        <div v-for="(flight, index) in searchResults"
                             v-motion="motionPresets.fadeUp(Math.random() * 150)">
                             <div
                                 class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative">
@@ -76,19 +75,16 @@
                                     </router-link>
                                 </div>
 
-                                <!-- <div
-                                        class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg"
-                                    >
-                                        <p class="font-bold">
-                                            <i
-                                                class="pi pi-map-marker me-1 text-sm"
-                                            ></i>
-                                            <span class="text-xs">{{
-                                               flight.destination_airport?.city?.toUpperCase()
-                                            }}</span>
-                                            <br />
-                                        </p>
-                                    </div> -->
+                                <div
+                                    class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg">
+                                    <p class="font-bold">
+                                        <i class="pi pi-map-marker me-1 text-sm"></i>
+                                        <span class="text-xs">{{
+                                            flight.destination_airport?.city?.toUpperCase()
+                                        }}</span>
+                                        <br />
+                                    </p>
+                                </div>
 
                                 <div>
                                     <div class="flex w-full justify-between">
@@ -294,6 +290,15 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                </div>
+                <div class="flex justify-center w-full items-center">
+                    <div class=" text-red-500 bg-black rounded-badge p-3" v-if="notFoundMessage"
+                        v-motion="motionPresets.fadeUp()">
+                        <i class="pi pi-info-circle me-1"></i>Sorry, but we could
+                        not find a
+                        matching flight...
                     </div>
                 </div>
             </div>
@@ -315,7 +320,11 @@ const motionPresets = inject("motionPresets")
 const mainStore = useMainStore();
 const seats = ref(1);
 const startDate = ref(null);
+const origin = ref()
+const destination = ref()
 const airportOptions = ref([]);
+const searchResults = ref()
+const notFoundMessage = ref(null)
 
 function setStartDate(event) {
     startDate.value = new Date(event.target.value).getTime();
@@ -329,23 +338,42 @@ function setDestination(option) {
     destination.value = option.value;
 }
 
-function searchFlights() {
-    // Search flights logic here
-}
+const searchFlights = async () => {
+    await mainStore.fetchFlights();
+
+    let updated_flights = mainStore.flights;
+
+    searchResults.value = updated_flights.filter(f =>
+        f.destination_airport?.id == destination.value?.id ||
+        f.origin_airport?.id == origin.value?.id
+    );
+
+    if (searchResults.value.length === 0) {
+        notFoundMessage.value = true;
+        setTimeout(() => {
+            notFoundMessage.value = null;
+
+        }, 7000);
+    }
+
+};
+
 const getOptions = async () => {
     const res = await axios.get("airports");
     const data = res.data;
     const options = data.map((d) => ({
-        value: d.id,
+        id: d.id,
         label: d.name,
         //label: d.name + ", " + d.town + ", " + d.city,
     }));
     airportOptions.value = options;
 };
+
 const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
 onMounted(() => {
     getOptions();
 });
+
 </script>
 
 <style>

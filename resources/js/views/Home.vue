@@ -10,7 +10,7 @@
                     <div v-if="mainStore.flights" class="w-full flex justify-center md:block">
                         <Carousel :value="mainStore.flights" :numVisible="3" :numScroll="3" :showIndicators="true"
                             :showNavigators="false" :responsiveOptions="responsiveOptions"
-                            containerClass="w-[350px] md:w-full " circular :autoplayInterval="4000">
+                            containerClass="w-[350px] md:w-full " circular :autoplayInterval="6000">
                             <template #item="slotProps" class="flex-1">
                                 <div v-motion="motionPresets.fadeRight()"
                                     class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in">
@@ -71,7 +71,7 @@
                                             </div>
                                             <span class="font-semibold text-xs mt-4">FLIGHT:{{
                                                 slotProps.data.flight_no
-                                                }}</span>
+                                            }}</span>
                                             <div class="flex justify-center p-1">
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">

@@ -27,7 +27,7 @@ export const useMainStore = defineStore("mainStore", {
             try {
                 const res = await axios.get("/flights-all");
                 // Add seats property to each flight
-                this.flights = res.data.map((flight) => ({
+                this.flights = res.data.map((flight:any) => ({
                     ...flight,
                     seats: 1,
                 }));

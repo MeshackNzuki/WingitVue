@@ -386,7 +386,13 @@ const pay = async () => {
     );
 
     if (paymentResponse.data.code === "success") {
-        // Proceed with booking
+
+        Swal.fire({
+            text: "Please check your handset and input your Mpesa PIN",
+            icon: "info",
+            confirmButtonColor: "#0f6566",
+        });
+
         const bookingResponse = await axios.post("/booking", {
             flight_id: mainStore.selectedFlight.id,
             seats: mainStore.totalSeats,
@@ -402,10 +408,14 @@ const pay = async () => {
             passengerData.value,
         );
 
-        Swal.fire({
-            text: "Once your payment is processed, you'll receive an email with your ticket details. Thank you for choosing Wingit!",
-            icon: "success",
-        });
+        setTimeout(() => {
+            Swal.fire({
+                text: "Once your payment is processed, you'll receive an email with your ticket details. Thank you for choosing Wingit!",
+                icon: "info",
+                confirmButtonColor: "#0f6566",
+            });
+        }, 10000);
+
 
         setTimeout(() => {
             router.push("/");

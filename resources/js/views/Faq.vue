@@ -23,12 +23,7 @@
                             <div v-for="(faq, index) in faqsLeft" :key="index" class="mb-10"
                                 v-motion="getRandomMotionPreset()">
                                 <h3 class="flex items-center mb-4 text-lg font-medium text-gray-900">
-                                    <svg class="flex-shrink-0 mr-2 w-5 h-5 " fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                                            clip-rule="evenodd" />
-                                    </svg>
+                                    <i class="pi pi-question-circle me-2 text-base"></i>
                                     {{ faq.title }}
                                 </h3>
                                 <p class="">{{ faq.text }}</p>
@@ -39,12 +34,7 @@
                             <div v-for="(faq, index) in faqsRight" :key="index" class="mb-10"
                                 v-motion="getRandomMotionPreset()">
                                 <h3 class="flex items-center mb-4 text-lg font-medium text-gray-900">
-                                    <svg class="flex-shrink-0 mr-2 w-5 h-5 " fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                                            clip-rule="evenodd" />
-                                    </svg>
+                                    <i class="pi pi-question-circle me-2 text-base"></i>
                                     {{ faq.title }}
                                 </h3>
                                 <p class="">{{ faq.text }}</p>
@@ -54,6 +44,27 @@
                 </div>
             </section>
         </div>
+        <section class="flex justify-center">
+            <div class="p-4 w-full max-w-screen-md mb-12 pb-6" v-motion="getRandomMotionPreset()">
+                <h2 class="text-lg font-lg mb-6 text-gray-900 text-center">Got more Questions? Contact Us</h2>
+                <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 justify-center">
+                    <div class="flex items-center">
+                        <i class="pi pi-phone text-xl text-gray-700 mr-4"></i>
+                        <a :href="`tel:${phone}`" class="text-lg text-gray-700 hover:text-blue-500">{{ phone }}</a>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="pi pi-whatsapp text-xl text-green-500 mr-4"></i>
+                        <a :href="`https://wa.me/${phone}`"
+                            class="text-lg text-gray-700 hover:text-green-500">WhatsApp</a>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="pi pi-instagram text-xl text-pink-500 mr-4"></i>
+                        <a href="https://www.instagram.com/yourprofile"
+                            class="text-lg text-gray-700 hover:text-pink-500">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -61,6 +72,8 @@
 import { inject } from 'vue';
 
 const motionPresets = inject("motionPresets");
+
+const phone = "+254725633577";
 
 const faqsLeft = [
     {
