@@ -6,7 +6,7 @@
                 <div className="card card-compact max-w-md bg-white bg-opacity-95 mx-3 shadow-lg mb-4">
                     <span className="w-full flex justify-center">
                         <h2 className="uppercase text-l font-bold  mt-2">
-                            <span className="{exo2.className}">
+                            <span className="font-exo-2">
                                 Your Booking information
                             </span>
                         </h2>
@@ -324,6 +324,7 @@ import Swal from "sweetalert2";
 import { toast } from "vue3-toastify";
 
 const mainStore = useMainStore();
+
 const auth = authStore();
 
 const router = useRouter();
