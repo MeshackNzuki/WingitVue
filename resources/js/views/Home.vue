@@ -12,9 +12,12 @@
                             :showNavigators="false" :responsiveOptions="responsiveOptions"
                             containerClass="w-[350px] md:w-full " circular :autoplayInterval="6000">
                             <template #item="slotProps" class="flex-1">
-                                <div v-motion="motionPresets.fadeRight()"
-                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in">
-                                    <div class="flex items-center justify-between bg-transparent  px-6 py-0.5">
+                                <div v-motion="motionPresets.fadeRight(Math.random() * 500)"
+                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in ">
+                                    <div
+                                        class="absolute inset-0 z-[-1] bg-[url('https://img.freepik.com/free-vector/white-abstract-background_23-2148810246.jpg?t=st=1741239373~exp=1741242973~hmac=950b463911a781d7718c96b0af899940b1546ed7e671875c6c56c0a2a63a021e&w=1060')] bg-no-repeat bg-right bg-cover opacity-15 mix-blend-multiply">
+                                    </div>
+                                    <div class="flex items-center justify-between bg-transparent  z-1 px-6 py-0.5 ">
                                         <div class="text-lg font-semibold">
                                             {{
                                                 slotProps.data.aircraft_operator
@@ -71,7 +74,7 @@
                                             </div>
                                             <span class="font-semibold text-xs mt-4">FLIGHT:{{
                                                 slotProps.data.flight_no
-                                            }}</span>
+                                                }}</span>
                                             <div class="flex justify-center p-1">
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
@@ -230,8 +233,8 @@
                                                             class="bg-base p-2 w-8 flex justify-center items-center h-8 mb-2 text-gray-50 rounded-full font-light">
                                                             {{
                                                                 slotProps.data
-                                                                    .seats <= slotProps.data.available_seats ? slotProps.data
-                                                                    .seats : "Add" }} </span>
+                                                                    .seats <= slotProps.data.available_seats ?
+                                                                    slotProps.data.seats : "Add" }} </span>
                                                                 <button @click="
                                                                     mainStore.increaseSeats(
                                                                         slotProps
@@ -289,6 +292,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <div
                                     class="relative hover:scale-105 transition-all duration-300 ease-in rounded-lg shadow-md m-2 bg-gradient-to-tl from-cyan-50 via-purple-50 to-rose-100 bg-cover backdrop-blur-md bg-opacity-25 max-w-md">

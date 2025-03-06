@@ -19,7 +19,7 @@
                             </label>
                             <div class="relative">
                                 <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
-                                    <i class="pi pi-building" style="font-size: 1.5em"></i>
+                                    <i class="pi pi-building "></i>
                                 </div>
                                 <input id="name" type="text" name="name" v-model="formVals.name"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
@@ -34,7 +34,7 @@
                             </label>
                             <div class="relative">
                                 <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
-                                    <i class="pi pi-envelope" style="font-size: 1.5em"></i>
+                                    <i class="pi pi-envelope"></i>
                                 </div>
                                 <input id="email" type="email" name="email" v-model="formVals.email"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
@@ -49,7 +49,7 @@
                             </label>
                             <div class="relative">
                                 <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
-                                    <i class="pi pi-phone" style="font-size: 1.5em"></i>
+                                    <i class="pi pi-phone"></i>
                                 </div>
                                 <div class="flex flex-row items-center relative">
                                     <div class="absolute left-8 ">
@@ -85,7 +85,7 @@
                             </label>
                             <div class="relative">
                                 <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
-                                    <i class="pi pi-lock" style="font-size: 1.5em"></i>
+                                    <i class="pi pi-lock"></i>
                                 </div>
                                 <input id="password" type="password" name="password" v-model="formVals.password"
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
@@ -101,7 +101,7 @@
                             </label>
                             <div class="relative">
                                 <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
-                                    <i class="pi pi-check-circle text-xl" style="font-size: 1.5em"></i>
+                                    <i class="pi pi-check-circle text-xl"></i>
                                 </div>
                                 <input id="password_confirmation" type="password" name="password_confirmation"
                                     v-model="formVals.password_confirmation"
@@ -141,7 +141,7 @@
                                         class="relative flex h-100 items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-6 text-center">
                                         <div>
                                             <span class="mb-2 block ">
-                                                <i class="pi pi-paperclip" style="font-size: 1.5em"></i>
+                                                <i class="pi pi-paperclip"></i>
                                                 Drop files here
                                             </span>
                                             <span class="mb-2 block text-base font-medium text-[#6B7280]">Or</span>

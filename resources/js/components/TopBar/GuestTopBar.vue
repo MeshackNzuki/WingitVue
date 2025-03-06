@@ -50,16 +50,16 @@
                     </div>
                 </div>
 
-                <button v-if="!sidebarOpen" @click="toggleSidebar" class="lg:hidden ml-2">
+                <button v-if="!sidebarOpen" @click="toggleSidebar" class="lg:hidden ml-2 ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-7 h-7">
+                        stroke="currentColor" class="w-7 h-7 text-white">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
                     </svg>
                 </button>
                 <button v-else @click="toggleSidebar" class="lg:hidden ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-7 h-7">
+                        stroke="currentColor" class="w-7 h-7 text-white">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -68,8 +68,8 @@
             <!-- Sidebar Navigation -->
             <transition name="fade">
                 <div @click="() => toggleSidebar()" ref="sidebar_id" v-if="sidebarOpen"
-                    class="absolute bg-white bg-opacity-90 h-screen w-70 rounded-md p-4 mt-14 shadow-lg flex flex-col justify-start text-md z-20">
-                    <div class="border-third ml-5 flex flex-col justify-start pl-1">
+                    class="absolute bg-white bg-opacity-95 h-screen w-70 rounded-md p-4 mt-14 shadow-lg flex flex-col justify-start text-md z-20">
+                    <div class="border-third ml-5 flex flex-col justify-start pl-1 text-gray-700">
                         <router-link v-for="link in navLinks" :key="link.name" :to="link.path"
                             class="group relative rounded-lg  mt-4" exact-active-class="underline-active">
                             {{ link.name }}

@@ -308,6 +308,25 @@
                 </div>
             </div>
         </div>
+        <dialog id="my-dialog" v-if="transactionStatus"
+            class="fixed top-0 left-0 w-full h-full z-50 overflow-y-auto bg-black bg-opacity-50 flex">
+
+            <div class="flex items-center justify-center h-full w-full">
+                <div class="p-4 w-full max-w-md text-center bg-white shadow-md rounded-md">
+                    <h2 class="text-xl font-semibold">Processing payment...</h2>
+
+                    <p
+                        :class="['mt-4 text-sm text-gray-600 rounded-badge', transactionStatus[1]?.status == 'error' ? 'bg-red-50' : '']">
+                        {{ transactionStatus[0].message }}
+                    </p>
+                    <div class="flex items-center justify-center mt-6 w-ful">
+                        <div class="mpesaloader"></div>
+                    </div>
+
+                </div>
+            </div>
+        </dialog>
+
     </div>
 </template>
 
@@ -328,6 +347,8 @@ const mainStore = useMainStore();
 const auth = authStore();
 
 const router = useRouter();
+
+const transactionStatus = ref(null);
 
 const motionPresets = inject("motionPresets");
 
@@ -362,11 +383,11 @@ const handleFormChange = () => {
 const pay = async () => {
     // Clear error object
     errors.value = {};
-    console.log("passenger data", passengerData.value);
 
     // Implement your validation logic here
     if (!formVals.value.name) {
         errors.value.name = "Name is required";
+        return;
     }
 
     // Check for errors and process payment
@@ -375,7 +396,44 @@ const pay = async () => {
         toast.info("No seats selected...");
         return;
     }
+    var mailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i;
 
+    if (!formVals.value.email) {
+        errors.value.email = "Email is required";
+    } else if (!mailRegex.test(formVals.value.email)) {
+        errors.value.email = "Please enter a valid email";
+    }
+
+    if (!formVals.value.phone) {
+        errors.value.phone = "Phone is required";
+    }
+
+    if (!formVals.value.id_number) {
+        errors.value.id_number = "ID/Passport is required";
+    }
+
+    if (Object.values(errors.value).length != 0) {
+        //console.log("Error messages:", Object.values(errors));
+        return;
+    }
+
+    if (
+        passengerData.value.length >= 2 && // Ensure at least 2 passengers before validation
+        (
+            passengerData.value.some((passenger) =>
+                Object.values(passenger).some((value) => !value.toString().trim())
+            ) ||
+            passengerData.value.length < (mainStore.totalSeats - 1)
+        )
+    ) {
+        toast.info("Please provide information for all passengers");
+        return;
+    }
+
+
+    transactionStatus.value = [{
+        message: "Requesting  for safaricom Mpesa service..."
+    }];
     const paymentResponse = await axios.post(
         "initiate-mpesa",
         {
@@ -386,13 +444,21 @@ const pay = async () => {
         { showLoader: true },
     );
 
+
+
+    transactionStatus.value =
+        [{
+            message: "Waiting for safaricom to repond..."
+        }]
+
+
     if (paymentResponse.data.code === "success") {
 
-        Swal.fire({
-            text: "Please check your handset and input your Mpesa PIN",
-            icon: "info",
-            confirmButtonColor: "#0f6566",
-        });
+        const requestId = paymentResponse.data?.request_id;
+
+        setTimeout(() => {
+            transactionStatus.value = [{ message: "Please check your handset and input your Mpesa PIN" }];
+        }, 2000);
 
         const bookingResponse = await axios.post("/booking", {
             flight_id: mainStore.selectedFlight.id,
@@ -408,21 +474,58 @@ const pay = async () => {
             `/passengers/${bookingResponse.data.booking.id}`,
             passengerData.value,
         );
-
         setTimeout(() => {
-            Swal.fire({
-                text: "Once your payment is processed, you'll receive an email with your ticket details. Thank you for choosing Wingit!",
-                icon: "info",
-                confirmButtonColor: "#0f6566",
-            });
-        }, 10000);
+            transactionStatus.value = [{ message: "Checking transaction status..." }];
+        }, 5000);
+
+        const checkMpesaStatus = async (requestId) => {
+            const interval = setInterval(async () => {
+                try {
+                    const response = await axios.post(`/check-mpesa-status/${requestId}`);
+
+                    if (response.data.status === "success") {
+                        transactionStatus.value = [{ message: "Payment successful!" }, { success: "success" }];
+
+                        setTimeout(() => {
+                            Swal.fire({
+                                text: "Payment processed! you'll receive an email with your ticket details. Thank you for choosing Wingit!",
+                                icon: "success",
+                                confirmButtonColor: "#0f6566",
+                            });
+                        }, 2000);
+
+                        clearInterval(interval); // Stop polling
+
+                    } else if (response.data.status === "failed") {
+                        transactionStatus.value = [{ message: "Payment failed. Please try again." }, { status: "error" }];
+
+                        setTimeout(() => {
+                            transactionStatus.value = null;
+                        }, 5000);
+
+                        clearInterval(interval); // Stop polling
+
+                    }
+                    // If status is "pending", continue polling every 2 seconds.
+
+                } catch (error) {
+                    console.error("Error checking payment status:", error);
+                }
+            }, 2000); // Poll every 2 seconds
+        };
+
+        // Call the function with the requestId
+        checkMpesaStatus(requestId);
 
 
-        setTimeout(() => {
-            router.push("/");
-        }, 19000);
+        // setTimeout(() => {
+        //     router.push("/");
+        // }, 19000);
+
     } else {
-        toast.error("Please confirm Mpesa number before retrying.");
+        transactionStatus.value = [{ message: "Please confirm Mpesa number before retrying" }, { error: "error" }];
+        setTimeout(() => { transactionStatus.value = null }, 3000)
+        return
     }
 };
 
@@ -432,5 +535,27 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Add any necessary styles */
+.mpesaloader {
+    height: 4px;
+    width: 180px;
+    --c: no-repeat linear-gradient(#0e5b5c 0 0);
+    background: var(--c), var(--c), #bbbbbb;
+    background-size: 60% 100%;
+    animation: l16 2s infinite;
+    border-radius: 10px;
+}
+
+@keyframes l16 {
+    0% {
+        background-position: -150% 0, -150% 0
+    }
+
+    66% {
+        background-position: 250% 0, -150% 0
+    }
+
+    100% {
+        background-position: 250% 0, 250% 0
+    }
+}
 </style>
