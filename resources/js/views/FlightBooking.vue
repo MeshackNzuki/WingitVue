@@ -470,10 +470,12 @@ const pay = async () => {
             nationality: formVals.value.nationality,
         });
 
-        await axios.post(
-            `/passengers/${bookingResponse.data.booking.id}`,
-            passengerData.value,
-        );
+        if (passengerData.value.length > 1) {
+            await axios.post(
+                `/passengers/${bookingResponse.data.booking.id}`,
+                passengerData.value,
+            );
+        }
         setTimeout(() => {
             transactionStatus.value = [{ message: "Checking transaction status..." }];
         }, 5000);

@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import axios from "axios";
 import { PrimeIcons } from "primevue/api";
+import CommonButton from "../../components/Buttons/CommonButton.vue";
 
 const items = ref([]);
 const newItem = ref("");
@@ -48,17 +49,26 @@ const handleDeleteItem = async (itemId) => {
     }
 };
 
-onMounted(fetchItems);
+onMounted(() => {
+    fetchItems();
+});
+
+watch(rerender, () => {
+    fetchItems();
+})
 </script>
 
 <template>
-    <div class="card card-compact from-sky-50 to-cyan-50 bg-gradient-to-r w-full block shadow-xl">
+    <div class="card card-compact bg-transparent w-full block">
         <div class="font-semibold text-gray-700 px-4">Packing Checklist</div>
-        <ul class="px-3">
+        <span class="text-center text-sm">
+            <p>Items are marked as unpacked by default, Please when packed, click the green tick to mark as packed.</p>
+        </span>
+        <ul class="px-4 mt-4">
             <template v-if="items.length">
-                <li v-for="item in items" :key="item.id" class="w-full grid grid-cols-3 grid-flow-col gap-4"
+                <li v-for="(item, index) in items" :key="item.id" class="w-full grid grid-cols-3 grid-flow-col gap-4"
                     :style="{ textDecoration: item.is_packed !== 1 ? 'line-through' : 'none' }">
-                    <div class="col-span-10">{{ item.name }}</div>
+                    <div class="col-span-10">{{ index + 1 }}. {{ item.name }}</div>
                     <div>
                         <i :class="['pi', item.is_packed === 1 ? 'pi-check-circle text-success' : 'pi-check-circle text-info']"
                             @click="handleToggleItem(item.id)" class="cursor-pointer"></i>
@@ -72,15 +82,12 @@ onMounted(fetchItems);
                 <span>Add items here</span>
             </template>
         </ul>
-        <div class="px-6 pb-4 text-center">
+        <div class="px-2 pb-4 text-center">
             <p class="my-3">
-                <input type="text" class="border-b input-sm rounded-full" v-model="newItem" />
+                <input type="text" class="border-b  px-1  rounded-full" v-model="newItem"
+                    placeholder="Type item name here" />
             </p>
-            <button @click="handleAddItem"
-                class="mb-2 md:mb-0 flex-no-shrink bg-emerald-500 hover:bg-green-500 px-5 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider border-2 text-gray-50 rounded-full transition ease-in duration-300"
-                type="button" aria-label="like">
-                <i class="pi pi-plus"></i> Add Item
-            </button>
+            <CommonButton :action="handleAddItem" button-text="Add Item" />
         </div>
     </div>
 </template>

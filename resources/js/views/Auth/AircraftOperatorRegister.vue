@@ -70,7 +70,7 @@
 
                     <div v-if="currentStep === 2">
                         <ul class="steps w-full">
-                            <li data-content="✓" class="step step-success text-gray-50"></li>
+                            <li data-content="✓" class="step step-success text-white"></li>
                             <li data-content="✓" class="step"></li>
                             <li data-content="✓" class="step"></li>
                             <li data-content="✓" class="step"></li>
@@ -298,8 +298,9 @@ import Swal from "sweetalert2";
 import Error from "../../components/Errors/Error.vue";
 import CountryCode from "../../components/countries/CountryCodes.vue";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
+import { useRouter } from "vue-router";
 const motionPresets = inject("motionPresets")
-
+const router = useRouter()
 const formValInit = {
     name: "",
     username: "",
@@ -405,7 +406,7 @@ const handleSubmit = () => {
                 icon: "success",
                 confirmButtonColor: "#0f6566",
             });
-            // Redirect after success if needed
+            router.push('/');
         })
         .catch((err) => {
             console.log("err", err);
