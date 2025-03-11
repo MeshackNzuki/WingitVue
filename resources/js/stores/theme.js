@@ -4,7 +4,7 @@ export const useThemeStore = defineStore("theme", {
     persist: true,
     state: () => ({
         // Default theme
-        currentTheme: "Light",
+        currentTheme: "Wingit",
         currentFont: "Exo",
         zoom_counter: 1,
         zoom_levels: ["text-xs", "text-base", "text-lg", "text-xl", "text-2xl"],
