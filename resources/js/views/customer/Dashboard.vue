@@ -1,5 +1,6 @@
 <template>
-    <div class="bg-slate-100 dark:bg-transparent min-h-screen p-2 bg-[url('../assets/hiw.jpg')] bg-cover">
+    <div
+        class="bg-slate-100 dark:bg-transparent min-h-screen p-2 bg-[url('../assets/hiw.jpg')] bg-cover bg-center bg-fixed">
         <span class="font-semibold text-base">
             {{
                 mainStore.greetings +
@@ -65,45 +66,43 @@
         <div class="w-full text-center font-semibold my-6">
             Fun things
         </div>
-        <div class="w-full flex justify-center z-[-1] bg-[url('/bg.jpg')]">
-            <div
-                class="max-w-screen-2xl flex flex-col lg:flex-row justify-center space-y-4 lg:space-y-0 lg:space-x-4 m-4 lg:m-8">
-                <div class="card w-96 glass">
-                    <figure>
-                        <img src="../../assets/byz.jpg" alt="nature" />
+        <div class="w-full flex justify-center bg-cover bg-center bg-no-repeat"
+            style="background-image: url('/bg.jpg');">
+            <div class="max-w-screen-2xl flex flex-wrap justify-center gap-4 m-4 lg:m-8">
+                <div class="card w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-96 glass">
+                    <figure class="w-full h-48 overflow-hidden">
+                        <img class="w-full h-full object-cover" src="../../assets/byz.jpg" alt="nature" />
                     </figure>
                     <div class="card-body">
                         <h2 class="card-title">Business Travel</h2>
                         <p>
-                            Offering a service to help make every business trip less time
-                            consuming and more efficient. When it comes to business, we
-                            know it's important to save time and money.
+                            Offering a service to help make every business trip less time-consuming and more efficient.
+                            When it comes to business, we know it's important to save time and money.
                         </p>
                     </div>
                 </div>
-                <div class="card w-96 glass">
-                    <figure>
-                        <img src="../../assets/wildlife.jpg" alt="hike" />
+                <div class="card w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-96 glass">
+                    <figure class="w-full h-48 overflow-hidden">
+                        <img class="w-full h-full object-cover" src="../../assets/wildlife.jpg" alt="hike" />
                     </figure>
                     <div class="card-body text-gray-50 lg:text-gray-700">
                         <h2 class="card-title">Safari Adventure</h2>
                         <p>
-                            Embark on your next adventure to explore some of Kenya's
-                            most wild and breathtaking destinations while witnessing
-                            incredible wildlife and scenery from the air.
+                            Embark on your next adventure to explore some of Kenya's most wild and breathtaking
+                            destinations while witnessing incredible wildlife and scenery from the air.
                         </p>
                     </div>
                 </div>
-                <div class="card w-96 glass">
-                    <figure>
-                        <img src="../../assets/Recreation.jpg" alt="" />
+                <div class="card w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-96 glass">
+                    <figure class="w-full h-48 overflow-hidden">
+                        <img class="w-full h-full object-cover" src="../../assets/Recreation.jpg" alt="" />
                     </figure>
                     <div class="card-body text-gray-50 lg:text-gray-700">
-                        <h2 class="card-title max-h-48">Recreation</h2>
+                        <h2 class="card-title">Recreation</h2>
                         <p>
-                            Whether you are dreaming of a beach holiday, safari escape or
-                            reunion with family or friends, we will take you there in
-                            comfort, safety and style.
+                            Whether you are dreaming of a beach holiday, safari escape or reunion with family or
+                            friends,
+                            we will take you there in comfort, safety, and style.
                         </p>
                     </div>
                 </div>

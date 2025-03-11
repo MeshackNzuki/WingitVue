@@ -1,10 +1,10 @@
 <template>
     <div class="bg-slate-100 dark:bg-sky-950 min-h-screen rounded-md">
         <div class="flex flex-wrap justify-around my-6 py-12 w-full gap-4">
-            <StatCard label="All flights" description="verified" :quantity="mainStore.airOpData.all_flights_count"
-                icon="pi pi-th-large" />
-            <StatCard label="Listed flights" description="Approved" :quantity="mainStore.airOpData.listed_flights_count"
-                icon="pi pi-list" />
+            <StatCard label="All flights" description="verified"
+                :quantity="mainStore.airOpData.all_flights_count || '0'" icon="pi pi-th-large" />
+            <StatCard label="Listed flights" description="Approved"
+                :quantity="mainStore.airOpData.listed_flights_count || '0'" icon="pi pi-list" />
             <StatCard label="My pilots" description="Approved" :quantity="mainStore.airOpData.pilots_count || '0'"
                 icon="pi pi-user" />
             <StatCard label="Trips" description="32% Increase"

@@ -44,7 +44,7 @@ watch(route, (newRoute) => {
         <GuestTopBar v-if="!isProtectedRoute" />
         <MainTopBar v-if="isProtectedRoute" />
         <router-view v-slot="{ Component }">
-            <div class="min-h-screen">
+            <div class="min-h-screen ">
                 <transition name="page">
                     <component :is="Component" />
                 </transition>

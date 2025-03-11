@@ -1,27 +1,20 @@
 <template>
-    <div
-        :class="
-            'flex flex-row justify-between shadow-lg px-2 py-2 w-48 rounded-3xl gap-2 ' +
-            (isDark
-                ? 'bg-gradient-to-r from-slate-800 via-sky-950 to-sky-900 shadow-sky-700'
-                : 'bg-gradient-to-r from-white via-blue-50 to-sky-50')
-        "
-    >
+    <div :class="'flex flex-row justify-between shadow-lg px-2 py-2 w-48 rounded-3xl gap-2 ' +
+        (isDark
+            ? 'bg-gradient-to-r from-slate-800 via-sky-950 to-sky-900 shadow-sky-700'
+            : 'bg-gradient-to-r from-white via-blue-50 to-sky-50')
+        ">
         <div class="flex justify-end items-center">
             <i class="pi pi-wallet text-2xl dark:text-slate-100"></i>
         </div>
         <div class="space-y-1">
-            <div
-                class="flex items-center space-x- text-smtext-left text-slate-500 dark:text-slate-300"
-            >
+            <div class="flex items-center space-x- text-smtext-left text-slate-500 dark:text-slate-300">
                 <span>{{ label }}</span>
             </div>
             <div class="dark:text-slate-100">{{ quantity }}</div>
         </div>
 
-        <div
-            class="flex items-center space-x-1 text-smtext-left text-emerald-500 dark:text-emerald-300"
-        >
+        <div class="flex items-center space-x-1 text-smtext-left text-emerald-500 dark:text-emerald-300">
             <span class="text-sm font-light">{{ change }}</span>
         </div>
     </div>
@@ -39,7 +32,7 @@ const props = defineProps({
     },
     quantity: {
         type: String,
-        default: "$192.1k",
+        default: "...",
     },
     up: {
         type: String,
