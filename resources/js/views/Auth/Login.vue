@@ -28,7 +28,7 @@
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
                                     placeholder="E-Mail Address" />
                             </div>
-                            <Error v-if="errors.email" :message="errors.email" />
+                            <Error v-if="errors.email" :msg="errors.email" />
                         </div>
                         <div class="flex flex-col mb-6">
                             <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide  font-bold">
@@ -52,7 +52,7 @@
                                     class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
                                     placeholder="Password" />
                             </div>
-                            <Error v-if="errors.password" :message="errors.password" />
+                            <Error v-if="errors.password" :msg="errors.password" />
                         </div>
 
                         <div class="flex items-center mb-6 -mt-4">
@@ -84,56 +84,43 @@ import { toast } from "vue3-toastify";
 import BaseButton from "../../components/Buttons/BaseButton.vue";
 import { authStore } from "../../stores/authStore";
 import axios from "axios";
-import Error from "../../components/Flash/Error.vue"
-
-
-const formValInit = { email: "", password: "" };
-const motionPresets = inject("motionPresets")
-const formVals = reactive({ ...formValInit });
-const isText = ref(false);
-const errors = reactive({});
-const error_message = ref()
+import Error from "../../components/Flash/Error.vue";
 
 const router = useRouter();
-
 const { user, login, is_authenticated } = authStore();
+const motionPresets = inject("motionPresets");
+
+const formVals = reactive({ email: "", password: "" });
+const isText = ref(false);
+const error_message = ref(null)
+const errors = reactive({}); // Single source of truth for errors
 
 const validate = (values) => {
-    return new Promise((resolve) => {
-        const errors = {};
-        if (!values.email) {
-            errors.email = "Email is required";
-        }
-        if (!values.password) {
-            errors.password = "Password is required";
-        }
-        resolve(errors);
-    });
+    // Clear previous errors
+    Object.keys(errors).forEach((key) => delete errors[key]);
+
+    if (!values.email) {
+        errors.email = "Email is required";
+    }
+    if (!values.password) {
+        errors.password = "Password is required";
+    }
+
+    return Object.keys(errors).length === 0; // Return validation status
 };
 
 const submit = async () => {
-    const validationPromise = validate(formVals);
-    validationPromise.then(async (validationErrors) => {
-        Object.assign(errors, validationErrors);
-        const hasValues = Object.values(errors).some((value) => value !== null);
-        if (hasValues) {
-            return;
-        }
-        try {
-            const res = await axios.post("/login", { ...formVals });
-            login(res.data.user);
-        } catch (error) {
-            if (error.message) {
-                error_message.value = 'Wrong  credentials'
-                setTimeout(() => {
-                    error_message.value = ''
-                }, 4000)
-            }
-            else {
-                oast.error('An error occured')
-            }
-        }
-    });
+    if (!validate(formVals)) return; // Stop if validation fails
+
+    try {
+        const res = await axios.post("/login", { ...formVals });
+        login(res.data.user);
+    } catch (error) {
+        error_message.value = "Wrong credentials"; // Store error in errors object
+        setTimeout(() => {
+            error_message.value = '';
+        }, 4000);
+    }
 };
 
 const togglePasswordVisibility = () => {
@@ -146,10 +133,9 @@ const checkAuth = async () => {
     }
 };
 
-onMounted(() => {
-    checkAuth();
-});
+onMounted(checkAuth);
 </script>
+
 
 <style scoped>
 /* Add scoped styles here */

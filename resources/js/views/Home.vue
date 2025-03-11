@@ -305,7 +305,7 @@
                         <vue-marquee-slider id="marquee-slider-reverse" :space="30" :speed="12000" :loop="true"
                             pauseOnHover reverse>
                             <div v-for="destination in destinations" :key="destination.name" class="relative">
-                                <img :src="getImagePath(destination.image)" :alt="destination.name"
+                                <img :src="destination.image" :alt="destination.name"
                                     class="h-24 w-24 object-cover rounded-full mix-blend-overlay" />
                                 <router-link to="listed-flights"
                                     class="text-center mt-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-50 hover:text-black hover:bg-gold px-4 py-1 rounded-full underline underline-offset-4 hover:shadow-lg transition duration-350 hover:scale-110">
@@ -353,7 +353,7 @@
                 <vue-marquee-slider id="marquee-slider-cards" :space="30" :speed="12000" :loop="true" pauseOnHover>
                     <div v-for="destination in destinations" :key="destination.name" class="relative">
                         <router-link to="listed-flights">
-                            <img :src="getImagePath(destination.image)" :alt="destination.name"
+                            <img :src="destination.image" :alt="destination.name"
                                 class="h-24 w-24 rounded-full object-cover mix-blend-overlay" />
                             <span
                                 class="text-center mt-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-50 hover:text-black hover:bg-gold px-4 py-1 rounded-full underline underline-offset-4 hover:shadow-lg transition duration-350 hover:scale-110">
@@ -634,7 +634,7 @@
                         pauseOnHover>
                         <div v-for="destination in destinations" :key="destination.name" class="relative mb-14">
                             <router-link to="listed-flights" class="">
-                                <img :src="getImagePath(destination.image)" :alt="destination.name"
+                                <img :src="destination.image" :alt="destination.name"
                                     class="h-32 rounded-full w-32 object-cover mix-blend-overlay" />
                                 <span
                                     class="text-center mt-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-50 hover:text-black hover:bg-gold px-4 py-1 rounded-full underline underline-offset-4 hover:shadow-lg transition duration-350 hover:scale-110">
@@ -794,28 +794,35 @@ const responsiveOptions = ref([
     },
 ]);
 
+import malindiImage from "@/assets/Malindi.jpg";
+import dianiImage from "@/assets/Diani.jpg";
+import laikipiaImage from "@/assets/Laikipia.jpeg";
+import samburuImage from "@/assets/Samburu.jpg";
+import amboseliImage from "@/assets/Amboseli.jpg";
+import eldoretImage from "@/assets/Eldoret.jpg";
+import nakuruImage from "@/assets/Nakuru.jpg";
+import kisumuImage from "@/assets/Kisumu.jpg";
+import nanyukiImage from "@/assets/Nanyuki.jpg";
+import masaiMaraImage from "@/assets/Masaimara.jpg";
+import nairobiImage from "@/assets/Nairobi.jpg";
+
 const destinations = ref([
-    { name: "Malindi", image: "../assets/Malindi.jpg" },
-    { name: "Diani", image: "../assets/Diani.jpg" },
-    { name: "Laikipia", image: "../assets/Laikipia.jpeg" },
-    { name: "Samburu", image: "../assets/Samburu.jpg" },
-    { name: "Amboseli", image: "../assets/Amboseli.jpg" },
-    { name: "Eldoret", image: "../assets/Eldoret.jpg" },
-    { name: "Nakuru", image: "../assets/Nakuru.jpg" },
-    { name: "Kisumu", image: "../assets/Kisumu.jpg" },
-    { name: "Nanyuki", image: "../assets/Nanyuki.jpg" },
+    { name: "Malindi", image: malindiImage },
+    { name: "Diani", image: dianiImage },
+    { name: "Laikipia", image: laikipiaImage },
+    { name: "Samburu", image: samburuImage },
+    { name: "Amboseli", image: amboseliImage },
+    { name: "Eldoret", image: eldoretImage },
+    { name: "Nakuru", image: nakuruImage },
+    { name: "Kisumu", image: kisumuImage },
+    { name: "Nanyuki", image: nanyukiImage },
     {
         name: "Mombasa",
         image: "https://images.pexels.com/photos/1045113/pexels-photo-1045113.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
-    { name: "Masai Mara", image: "../assets/Masaimara.jpg" },
-    { name: "Nairobi", image: "../assets/Nairobi.jpg" },
+    { name: "Masai Mara", image: masaiMaraImage },
+    { name: "Nairobi", image: nairobiImage },
 ]);
-
-function getImagePath(image) {
-    return new URL(image, import.meta.url).href;
-}
-
 function getRandomMotionPreset() {
     const presets = [
         motionPresets.fadeUp(Math.random() * 300),
