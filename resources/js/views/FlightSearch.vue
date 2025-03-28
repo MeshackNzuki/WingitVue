@@ -17,13 +17,13 @@
                         <label for="startDate" class="text-gray-50"> Date </label>
                         <input type="date" v-model="startDate" @change="setStartDate" class="input input-sm p-5 " />
                     </div>
-                    <div class="flex rounded text-sm flex-col justify-start">
+                    <div class="flex rounded text-sm flex-col justify-start z-[100]">
                         <label for="origin" class="text-gray-50">Origin </label>
                         <Select :options="airportOptions" id="origin" isSearchable placeholder="Start typing..."
                             noOptionsMessage="No Match" v-model="origin"
-                            class="text-base pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px]  text-sm" />
+                            class="text-base  pl-10 pr-4 py-1 bg-white rounded-lg min-w-[250px]  text-sm" />
                     </div>
-                    <div class="flex rounded text-sm flex-col justify-start">
+                    <div class="flex rounded text-sm flex-col justify-start z-[100]">
                         <label for="destination" class="text-gray-50">Destination </label>
                         <Select :options="airportOptions" id="destination" isSearchable placeholder="Start typing..."
                             noOptionsMessage="No Match" v-model="destination"
@@ -31,15 +31,15 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center mt-8 space-x-4" v-motion="motionPresets.fadeDown()">
+                <div class="flex justify-center mt-8 space-x-4 z-0" v-motion="motionPresets.fadeDown()">
                     <button
-                        class="btn btn-sm bg-base shadow-gray-900 shadow-md text-gray-50 font-light border-0 hover:text-black"
+                        class="btn btn-sm bg-base shadow-gray-900 bg-opacity-80 rounded-full  shadow-md text-gray-50 font-light border-0 hover:text-black"
                         @click="searchFlights">
                         Search Now
                     </button>
                     <router-link to="/listed-flights">
                         <button
-                            class="btn btn-sm bg-base shadow-gray-900 shadow-md text-gray-50 font-light border-0 hover:text-black">
+                            class="btn btn-sm bg-base shadow-gray-900  bg-opacity-80 rounded-full shadow-md text-gray-50 font-light border-0 hover:text-black">
                             Go To Flights
                         </button>
                     </router-link>

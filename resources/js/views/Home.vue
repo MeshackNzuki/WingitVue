@@ -74,7 +74,7 @@
                                             </div>
                                             <span class="font-semibold text-xs mt-4">FLIGHT:{{
                                                 slotProps.data.flight_no
-                                                }}</span>
+                                            }}</span>
                                             <div class="flex justify-center p-1">
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
@@ -375,7 +375,7 @@
                 </span>
                 <div class="grid grid-flow-row auto-rows-max">
                     <div>
-                        <p class="max-w-2xl mb-2 mt-5 font-light ">
+                        <p class="max-w-2xl mb-2 mt-5 ">
                             We are dedicated to providing our passengers with
                             exceptional travel experiences. Whether you're
                             planning a business trip, a family vacation, a
@@ -712,7 +712,45 @@
                 </div>
             </div>
         </section>
-        <section class="mx-2 shadow-md rounded-lg overflow-hidden">
+        <section class="mx-2 flex flex-wrap justify-center gap-4 px-4">
+            <h2 class="font-semibold my-4 text-lg font-exo-2 uppercase" v-motion="motionPresets.fadeDown()">
+                Hear from our clients
+            </h2>
+            <div class="mx-2 flex flex-wrap justify-center gap-4 px-4">
+                <div class="w-full  md:w-1/4  flex justify-center" v-motion="getRandomMotionPreset()">
+                    <RateCard :rating="5" name="Kelsy Mageto"
+                        text="I was in a hurry to fly to a meeting in Mombasa, Wingit helped me arrive on time." />
+                </div>
+
+                <div class="w-full  md:w-1/4  flex justify-center" v-motion="getRandomMotionPreset()">
+                    <RateCard :rating="5" name="Brian Okello"
+                        text="Wingit made my business trip seamless. The crew was professional and the jet was top-notch!" />
+                </div>
+
+                <div class="w-full md:w-1/4  flex justify-center" v-motion="getRandomMotionPreset()">
+                    <RateCard :rating="5" name="Angela Njeri"
+                        text="Absolutely incredible experience! From booking to landing, everything was smooth and luxurious." />
+                </div>
+
+                <div class="w-full md:w-1/4  hidden md:flex justify-center" v-motion="getRandomMotionPreset()">
+                    <RateCard :rating="4" name="Mark Odhiambo"
+                        text="The comfort and privacy were unmatched. Perfect for executives who need reliable travel." />
+                </div>
+
+                <div class="w-full  md:w-1/4  hidden md:flex justify-center" v-motion="getRandomMotionPreset()">
+                    <RateCard :rating="5" name="Samantha Koech"
+                        text="Exceptional service! The flight was punctual, and the team was extremely accommodating." />
+                </div>
+
+                <div class="w-full  md:w-1/4 hidden md:flex justify-center  " v-motion="getRandomMotionPreset()">
+                    <RateCard :rating="4" name="James Mwangi"
+                        text="Great experience flying with Wingit. It felt personalized and stress-free. Will book again!" />
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mx-2 overflow-hidden mt-4">
             <div
                 class="items-center justify-between py-10 px-5 backdrop-blur shadow-2xl glass rounded-lg mx-auto  text-center">
                 <div class="px-2 -mt-6">
@@ -754,6 +792,19 @@ import CallToAction from "../components/Buttons/CallToAction.vue";
 import BaseButton from "../components/Buttons/BaseButton.vue";
 import { toast } from "vue3-toastify";
 import { inject } from "vue";
+import malindiImage from "@/assets/Malindi.jpg";
+import dianiImage from "@/assets/Diani.jpg";
+import laikipiaImage from "@/assets/Laikipia.jpeg";
+import samburuImage from "@/assets/Samburu.jpg";
+import amboseliImage from "@/assets/Amboseli.jpg";
+import eldoretImage from "@/assets/Eldoret.jpg";
+import nakuruImage from "@/assets/Nakuru.jpg";
+import kisumuImage from "@/assets/Kisumu.jpg";
+import nanyukiImage from "@/assets/Nanyuki.jpg";
+import masaiMaraImage from "@/assets/Masaimara.jpg";
+import nairobiImage from "@/assets/Nairobi.jpg";
+import RateCard from "../components/Card/RateCard.vue";
+
 
 const motionPresets = inject("motionPresets");
 const mainStore = useMainStore();
@@ -794,17 +845,7 @@ const responsiveOptions = ref([
     },
 ]);
 
-import malindiImage from "@/assets/Malindi.jpg";
-import dianiImage from "@/assets/Diani.jpg";
-import laikipiaImage from "@/assets/Laikipia.jpeg";
-import samburuImage from "@/assets/Samburu.jpg";
-import amboseliImage from "@/assets/Amboseli.jpg";
-import eldoretImage from "@/assets/Eldoret.jpg";
-import nakuruImage from "@/assets/Nakuru.jpg";
-import kisumuImage from "@/assets/Kisumu.jpg";
-import nanyukiImage from "@/assets/Nanyuki.jpg";
-import masaiMaraImage from "@/assets/Masaimara.jpg";
-import nairobiImage from "@/assets/Nairobi.jpg";
+
 
 const destinations = ref([
     { name: "Malindi", image: malindiImage },
