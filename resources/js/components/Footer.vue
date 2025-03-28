@@ -106,12 +106,12 @@
                     <div
                         class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0 justify-center transition-all duration-300">
                         <div class="flex items-center hover:scale-105">
-                            <i class="pi pi-phone text-xl mr-4"></i>
+                            <i class="pi pi-phone text-lg mr-4"></i>
                             <a :href="`tel:${phone}`" class="  hover:text-sky-500">{{ phone
-                            }}</a>
+                                }}</a>
                         </div>
                         <div class="flex items-center hover:scale-105">
-                            <i class="pi pi-whatsapp  text-green-500 mr-4"></i>
+                            <i class="pi pi-whatsapp  text-xl text-green-500 mr-4"></i>
                             <a :href="`https://wa.me/${phone}`" class="  hover:text-green-500">WhatsApp</a>
                         </div>
                         <div class="flex items-center hover:scale-105">
