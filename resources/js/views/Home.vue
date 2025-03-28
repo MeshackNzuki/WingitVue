@@ -712,11 +712,11 @@
                 </div>
             </div>
         </section>
-        <section class="mx-2 flex flex-wrap justify-center gap-4 px-4">
+        <section class="mx-2 flex flex-wrap justify-center gap-4">
             <h2 class="font-semibold my-4 text-lg font-exo-2 uppercase" v-motion="motionPresets.fadeDown()">
                 Hear from our clients
             </h2>
-            <div class="mx-2 flex flex-wrap justify-center gap-4 px-4">
+            <div class="mx-2 flex flex-wrap justify-center gap-4 px-2">
                 <div class="w-full  md:w-1/4  flex justify-center" v-motion="getRandomMotionPreset()">
                     <RateCard :rating="5" name="Kelsy Mageto"
                         text="I was in a hurry to fly to a meeting in Mombasa, Wingit helped me arrive on time." />
@@ -766,7 +766,7 @@
                                 promotions.
                             </p>
                             <form @submit.prevent="handleSubscription" class="my-12">
-                                <div class="max-w-sm mx-auto p-1 pr-0 flex items-center">
+                                <div class="max-w-sm mx-auto p-1 pr-0 flex flex-wrap items-center gap-2">
                                     <input type="email" v-model="subscriptionMail" placeholder="Email address"
                                         class="flex-1 appearance-none rounded-full text-center shadow border p-1  mr-2 focus:outline-none" />
                                     <BaseButton :action="handleSubscription" label="Subscribe" />

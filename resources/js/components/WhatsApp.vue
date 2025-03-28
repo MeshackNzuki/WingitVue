@@ -20,7 +20,7 @@
                         <i class="pi pi-times"></i>
                     </button>
                 </div>
-                <div class="p-4">
+                <div class="p-2">
                     <div class="chat chat-end">
                         <div class="chat-image avatar">
                             <div class="w-10 rounded-full">
@@ -38,9 +38,9 @@
                     </div>
                     <div class="flex">
                         <input type="text" v-model="text" placeholder="Reply to this message..."
-                            class="flex-1 border border-gray-300 rounded-full py-1 px-2 focus:outline-none focus:ring focus:ring-teal-700" />
+                            class="flex-1 border border-gray-300 rounded-full py-1 px-1 text-sm focus:outline-none focus:ring focus:ring-teal-700" />
                         <a :href="apilink" target="_blank"
-                            class="ml-1 flex items-center justify-center w-12 h-12 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-200">
+                            class="ms-0.5 flex items-center justify-center px-2 w-12 h-12 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-200">
                             <i class="pi pi-send"></i>
                         </a>
                     </div>

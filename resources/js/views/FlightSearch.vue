@@ -296,9 +296,12 @@
                 <div class="flex justify-center w-full items-center">
                     <div class=" text-red-500 bg-black rounded-badge p-3" v-if="notFoundMessage"
                         v-motion="motionPresets.fadeUp()">
-                        <i class="pi pi-info-circle me-1"></i>Sorry, but we could
-                        not find a
-                        matching flight...
+                        <p class="text-sm">
+                            <i class="pi pi-info-circle me-1"></i>
+                            Sorry, but we could
+                            not find a
+                            matching flight!
+                        </p>
                     </div>
                 </div>
             </div>
