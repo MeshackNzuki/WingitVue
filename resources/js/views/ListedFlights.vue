@@ -3,17 +3,17 @@
         <div class="w-full p-2 bg-gray-200 min-h-screen bg-[url('../assets/bg.jpg')]">
             <div class="mt-16">
                 <div class="w-full flex justify-center space-x-2 md:space-x-10 px-2 ">
-                    <label class="cursor-pointer label hover:scale-105 transition-all duration-300">
+                    <!-- <label class="cursor-pointer label hover:scale-105 transition-all duration-300">
                         <span class="label-text">Shuffle</span>
                         <input type="checkbox" class="ml-2 toggle toggle-base" @change="sortFlights" />
-                    </label>
+                    </label> -->
                     <label class="cursor-pointer label hover:scale-105 transition-all duration-300">
                         <span class="label-text">Sort By Price</span>
                         <input type="checkbox" class="ml-2 toggle toggle-base" @change="sortFlightsPrice" />
                     </label>
                     <label class="cursor-pointer label">
                         <span
-                            class="label-text badge bg-base p-2 text-white hover:scale-105 transition-all duration-300"
+                            class="label-text badge bg-base p-3 shadow-md text-white hover:scale-105 transition-all duration-300"
                             @click="resetFlights">Reset</span>
 
                     </label>
@@ -89,7 +89,7 @@
                                             class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
                                             <span class="me-1">{{
                                                 flight.available_seats
-                                            }}</span>
+                                                }}</span>
                                             <span>{{
                                                 flight.available_seats > 1
                                                     ? "seats"
@@ -243,7 +243,7 @@
                                 </div>
                                 <div class="flex justify-between w-full items-center">
                                     <div class="text-sm flex justify-between items-center">
-                                        <i class="pi pi-info-circle w-4 mr-2 text-base"></i>
+                                        <i class="pi pi-tags w-4 mr-1 text-red-500"></i>
                                         <small>
                                             <span v-if="flight.has_offer == 1">
                                                 {{

@@ -263,7 +263,7 @@
                                     </div>
                                     <div class="flex justify-between w-full items-center">
                                         <div class="text-sm flex justify-between items-center">
-                                            <i class="pi pi-info-circle w-4 mr-2 text-base"></i>
+                                            <i class="pi pi-tags w-4 mr-1 text-red-500"></i>
                                             <small>
                                                 <span v-if="flight.has_offer == 1">
                                                     {{

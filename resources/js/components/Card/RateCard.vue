@@ -6,7 +6,8 @@
                 <h2 class="text-gray-700 mr-2 font-bold">{{ name }}</h2>
                 <p>{{ text }}</p>
                 <div class="flex flex-row p-2">
-                    <i v-for="(rate, index) in rating" :key="index" class="pi pi-star text-yellow"></i>
+                    <i v-for="(rate, index) in rating" :key="index" class="pi pi-star-fill text-yellow"></i>
+                    <i v-for="(remainder, index) in (5 - rating)" :key="index" class="pi pi-star text-gray-700"></i>
                 </div>
                 <span class="ml-2 text-gray-600">({{ rating }})</span>
             </div>

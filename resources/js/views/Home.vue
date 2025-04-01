@@ -2,8 +2,7 @@
     <section>
         <div
             className=" h-screen bg-fixed bg-[url('../assets/hiw.jpg')] bg-cover bg-no-repeat bg-center grid place-items-center ">
-            <div class="w-full h-full fixed top-0 left-0 z-[-1] "><img
-                    class="object-cover  w-full h-screen bg-blend-overlay mix-bled-overlay" src="../assets/hiw.jpg">
+            <div class="w-full h-full absolute top-0 left-0  bg-sky-950 bg-opacity-30">
             </div>
             <div class="max-w-screen-xl flex justify-center items-center">
                 <div className="w-full  h-96 flex justify-between flex-col md:flex-col ">
@@ -74,7 +73,7 @@
                                             </div>
                                             <span class="font-semibold text-xs mt-4">FLIGHT:{{
                                                 slotProps.data.flight_no
-                                            }}</span>
+                                                }}</span>
                                             <div class="flex justify-center p-1">
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
@@ -257,7 +256,7 @@
                                         </div>
                                         <div class="flex justify-between w-full items-center">
                                             <div class="text-sm flex justify-between items-center">
-                                                <i class="pi pi-info-circle w-4 mr-2 text-base"></i>
+                                                <i class="pi pi-tags w-4 mr-1 text-red-500"></i>
                                                 <small>
                                                     <span v-if="
                                                         slotProps.data
@@ -325,7 +324,7 @@
                             <span v-motion="motionPresets.fadeDown()"
                                 className="mt-2 md:m-0 lg:mt-2 text-gray-50 lg:text-md font-light mb-4 ">
                                 <h2>
-                                    Explore Kenyan cities , towns , and parks
+                                    Explore Kenyan cities ,towns, and parks
                                     with our exceptional flight services
                                 </h2>
                             </span>
