@@ -130,7 +130,7 @@
 
                             <div class="mb-6 pt-4">
                                 <label class="mb-5 block text-xl font-semibold ">
-                                    Certificate of incorporation (Upload a pdf
+                                    Certificate of incorporation (Upload a <span class="text-red-500">pdf</span>
                                     copy)
                                 </label>
 
@@ -177,7 +177,7 @@
 
                             <div class="mb-6 pt-4">
                                 <label class="mb-5 block text-xl font-semibold ">
-                                    AOC document (Upload a pdf copy, and provide
+                                    AOC document (Upload a <span class="text-red-500">pdf</span> copy, and provide
                                     expiry date)
                                 </label>
 
@@ -244,7 +244,7 @@
 
                             <div class="mb-6 pt-4">
                                 <label class="mb-5 block text-xl font-semibold ">
-                                    Company PIN certificate (Upload a pdf copy)
+                                    Company PIN certificate (Upload a <span class="text-red-500">pdf</span> copy)
                                 </label>
 
                                 <div class="mb-8">
@@ -292,7 +292,7 @@
 </template>
 
 <script setup>
-import { ref, inject } from "vue";
+import { ref, inject, watch } from "vue";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Error from "../../components/Errors/Error.vue";
@@ -344,6 +344,7 @@ const validateStep = (step) => {
 
     return stepErrors;
 };
+
 
 const faAngleLeft = `<i class="pi pi-angle-left"></i>`;
 const faAngleRight = `<i class="pi pi-angle-right"></i>`;
@@ -402,14 +403,14 @@ const handleSubmit = () => {
         })
         .then(() => {
             Swal.fire({
-                text: "Your account is under review. You will receive a confirmation email once approved.",
+                text: "Welcome onboard. Your account is now under review to ensure compliance. We will keep in touch via the provided Email/Phone.",
                 icon: "success",
                 confirmButtonColor: "#0f6566",
             });
             router.push('/');
         })
         .catch((err) => {
-            console.log("err", err);
+            console.log("error creating operator account,", err);
             if (err.response?.data?.errors?.email) {
                 Swal.fire({
                     text: err.response.data.message,
@@ -445,7 +446,7 @@ const validateStep1Fields = (values) => {
         step1Errors.contact_number = "Contact number is required";
     } else if (!contact_numberRegex.test(values.contact_number)) {
         step1Errors.contact_number =
-            "Number is invalid, shouldn't start with '0'";
+            "Number is invalid";
     }
 
     return step1Errors;
@@ -474,6 +475,14 @@ const validateStep3Fields = (values) => {
 
     return step3Errors;
 };
+
+watch(() => formVals.value.contact_number, () => {
+    if (formVals.value.contact_number.startsWith("0")) {
+        formVals.value.contact_number = formVals.value.contact_number.slice(1);
+    }
+});
+
+
 
 const validateStep4Fields = (values) => {
     const step4Errors = {};

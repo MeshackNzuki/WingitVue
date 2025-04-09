@@ -30,7 +30,7 @@
               we go above and beyond by installing tracking devices into each aircraft so that Wingit can monitor each
               flight to ensure our customers' safety is always kept at the highest of standards.
             <p class="mt-2" v-motion="getRandomMotionPreset()">
-              <RouterLink to="/auth/client-register" class="font-semibold underline">Join</RouterLink> the Wingit family
+              <RouterLink to="/client-register" class="font-semibold underline">Join</RouterLink> the Wingit family
               today to experience the new era of flight charter in Kenya.
             </p>
             </p>

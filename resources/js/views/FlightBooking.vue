@@ -279,19 +279,20 @@
                     </h2>
                 </span>
                 <div class="w-full p-3 border-b border-gray-200 flex flex-row gap-2">
-                    <div class="w-full mt-4">
-                        <label for="type1" class="flex items-center cursor-pointer">
-                            <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type1"
-                                disabled />
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="80"
-                                class="ml-3" />
-                        </label>
-                    </div>
+
                     <div class="w-full flex flex-col">
                         <label for="type2" class="flex items-center cursor-pointer">
                             <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type2"
                                 checked />
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" width="80"
+                                class="ml-3" />
+                        </label>
+                    </div>
+                    <div class="w-full mt-4">
+                        <label for="type1" class="flex items-center cursor-pointer">
+                            <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type1"
+                                disabled />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="80"
                                 class="ml-3" />
                         </label>
                     </div>

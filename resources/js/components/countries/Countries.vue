@@ -30,21 +30,20 @@ const updateCountry = (event) => {
 };
 
 // Fetch countries on mount
-onMounted(fetchCountries);
+const interval = setInterval(() => {
+  if (country.value.length === 0) {
+    console.warn('Retrying fetchCountries...');
+    fetchCountries();
+  } else {
+    clearInterval(interval); // Stop once data is loaded
+  }
+}, 3000);
 </script>
 
 <template>
-  <select
-    @change="updateCountry"
-    :name="props.name"
-    class="focus:outline-none left-0 text-left px-3 text-sm w-1/2 p-2 rounded-lg"
-    :value="props.modelValue" 
-  >
-    <option
-      v-for="country in countries"
-      :key="country.name.common"
-      :value="country.name.common"
-    >
+  <select @change="updateCountry" :name="props.name"
+    class="focus:outline-none left-0 text-left px-3 text-sm w-1/2 p-2 rounded-lg" :value="props.modelValue">
+    <option v-for="country in countries" :key="country.name.common" :value="country.name.common">
       {{ country.name.common }}
     </option>
   </select>

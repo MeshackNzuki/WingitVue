@@ -41,7 +41,6 @@
                                             </div>
                                         </router-link>
                                     </div>
-
                                     <!-- <div
                                         class="absolute left-0 top-1/3 bg-gold rounded-bl-lg rounded-tr-lg rounded-br-lg px-2 -ml-1 shadow-lg"
                                     >
@@ -55,7 +54,6 @@
                                             <br />
                                         </p>
                                     </div> -->
-
                                     <div>
                                         <div class="flex w-full justify-between">
                                             <div class="flex justify-center p-1">
@@ -73,7 +71,7 @@
                                             </div>
                                             <span class="font-semibold text-xs mt-4">FLIGHT:{{
                                                 slotProps.data.flight_no
-                                                }}</span>
+                                            }}</span>
                                             <div class="flex justify-center p-1">
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">

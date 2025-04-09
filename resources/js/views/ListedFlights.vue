@@ -7,7 +7,7 @@
                         <span class="label-text">Shuffle</span>
                         <input type="checkbox" class="ml-2 toggle toggle-base" @change="sortFlights" />
                     </label> -->
-                    <label class="cursor-pointer label hover:scale-105 transition-all duration-300">
+                    <!-- <label class="cursor-pointer label hover:scale-105 transition-all duration-300">
                         <span class="label-text">Sort By Price</span>
                         <input type="checkbox" class="ml-2 toggle toggle-base" @change="sortFlightsPrice" />
                     </label>
@@ -16,7 +16,7 @@
                             class="label-text badge bg-base p-3 shadow-md text-white hover:scale-105 transition-all duration-300"
                             @click="resetFlights">Reset</span>
 
-                    </label>
+                    </label> -->
                     <router-link to="/flight-search"
                         class="mt-2.5 flex flex-row hover:scale-105 transition-all duration-300">
                         <i class="pi pi-search  text-2xl"></i>
@@ -27,7 +27,8 @@
 
                 <div v-if="mainStore.flights.length > 0"
                     class="flex flex-col md:grid grid-cols-3 gap-4  max-w-screen-2xl mt-16 m-auto">
-                    <div v-for="(flight, index) in flights" v-motion="motionPresets.fadeUp(Math.random() * 150)">
+                    <div v-for="(flight, index) in mainStore.flights"
+                        v-motion="motionPresets.fadeUp(Math.random() * 150)">
                         <div
                             class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative">
                             <div class="flex items-center justify-between  px-6 py-0.5">
@@ -89,7 +90,7 @@
                                             class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
                                             <span class="me-1">{{
                                                 flight.available_seats
-                                                }}</span>
+                                            }}</span>
                                             <span>{{
                                                 flight.available_seats > 1
                                                     ? "seats"
@@ -295,26 +296,26 @@ const rerender = ref(false);
 
 const mainStore = useMainStore();
 
-// Functions
-const sortFlights = () => {
-    const shuffledResults = [...flights.value];
-    for (let i = shuffledResults.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledResults[i], shuffledResults[j]] = [
-            shuffledResults[j],
-            shuffledResults[i],
-        ];
-    }
-    flights.value = shuffledResults;
-    rerender.value = !rerender.value;
-};
+// // Functions
+// const sortFlights = () => {
+//     const shuffledResults = [...flights.value];
+//     for (let i = shuffledResults.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [shuffledResults[i], shuffledResults[j]] = [
+//             shuffledResults[j],
+//             shuffledResults[i],
+//         ];
+//     }
+//     flights.value = shuffledResults;
+//     rerender.value = !rerender.value;
+// };
 
-const sortFlightsPrice = () => {
-    flights.value = [...flights.value].sort(
-        (a, b) => a.price - b.price,
-    );
-    rerender.value = !rerender.value;
-};
+// const sortFlightsPrice = () => {
+//     flights.value = [...flights.value].sort(
+//         (a, b) => a.price - b.price,
+//     );
+//     rerender.value = !rerender.value;
+// };
 
 const handleSubscribe = (e) => {
     e.preventDefault();
@@ -332,7 +333,6 @@ onMounted(() => {
     flights.value = mainStore.flights;
 });
 const resetFlights = () => {
-
     mainStore.fetchFlights();
     flights.value = mainStore.flights;
 
