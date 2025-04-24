@@ -65,15 +65,14 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="flex items-center">
-                        <SmallButton icon="pi pi-pencil" :action="() => editAircraft(aircraft.id)"></SmallButton>
+                        <SmallButton icon="pi pi-pencil" :action="() => showModal(aircraft.id)"></SmallButton>
                         <SmallButton icon="pi pi-trash" :action="() => handleDelete(aircraft.id)" severity="danger">
                         </SmallButton>
                     </div>
                 </td>
                 <dialog :id="aircraft.id" class="modal">
-                    <form method="dialog" class="modal-box" @submit.prevent="handleSubmit">
-                        <button type="button" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                            @click="closeModal">
+                    <form method="dialog" class="modal-box">
+                        <button type="submit" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                             ✕
                         </button>
                         <span class="w-full text-center font-bold">Edit Aircraft info</span>
@@ -84,13 +83,13 @@
                                         Aircraft type
                                     </label>
                                     <input name="aircraft_type" class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.aircraft_type" />
+                                        v-model="aircraftVals.aircraft_type" :placeholder="aircraft.aircraft_type" />
 
                                     <label for="age" class="block mt-2 text-xs font-semibold  uppercase">
                                         Select YOM
                                     </label>
                                     <select name="age" class="select select-bordered w-full select-sm max-w-xs"
-                                        v-model="aircraftVals.age">
+                                        v-model="aircraftVals.age" :placeholder="aircraft.age">
                                         <option v-for="year in years" :key="year" :value="year">
                                             {{ year }}
                                         </option>
@@ -101,20 +100,20 @@
                                     </label>
                                     <input name="capacity" type="number"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.capacity" />
+                                        v-model="aircraftVals.capacity" :placeholder="aircraft.capacity" />
 
                                     <label for="registration" class="block mt-2 text-xs font-semibold  uppercase">
                                         Registration
                                     </label>
                                     <input name="registration" class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.registration" />
+                                        v-model="aircraftVals.registration" :placeholder="aircraft.registration" />
 
                                     <label for="speed" class="block mt-2 text-xs font-semibold  uppercase">
                                         Aircraft speed
                                     </label>
                                     <input type="number" name="speed"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.speed" />
+                                        v-model="aircraftVals.speed" :placeholder="aircraft.speed" />
                                 </div>
                                 <div>
                                     <label for="cor" class="block mt-2 text-xs font-semibold  uppercase">
@@ -129,19 +128,13 @@
                                     <input type="file" name="crs" @change="handleFileChange"
                                         class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                                    <label for="cor_expiry" class="block mt-2 text-xs font-semibold  uppercase">
-                                        COR expiry
-                                    </label>
-                                    <input type="date" name="cor_expiry"
-                                        class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.cor_expiry" :min="currentDate" />
-
                                     <label for="crs_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                                         CRS expiry
                                     </label>
                                     <input type="date" name="crs_expiry"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.crs_expiry" :min="currentDate" />
+                                        v-model="aircraftVals.crs_expiry" :min="currentDate"
+                                        :placeholder="aircraft.crs_expiry" />
 
                                     <label for="insurance" class="block mt-2 text-xs font-semibold  uppercase">
                                         Insurance
@@ -154,16 +147,18 @@
                                     </label>
                                     <input type="date" name="insurance_expiry"
                                         class="input input-bordered input-sm w-full max-w-xs"
-                                        v-model="aircraftVals.insurance_expiry" :min="currentDate" />
+                                        v-model="aircraftVals.insurance_expiry" :min="currentDate"
+                                        :placeholder="aircraft.insurance_expiry" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="modal-action">
-                            <button type="button" class="btn" @click="closeModal">
+                            <button type="submit" class="btn" @click="closeModal">
                                 Close
                             </button>
-                            <button type="submit" class="btn">Save</button>
+                            <button type="submit" class="btn" @click="handleAircraftEdit(aircraft.id)">Save
+                                Edits</button>
                         </div>
                     </form>
                 </dialog>
@@ -171,8 +166,8 @@
         </template>
     </Table>
     <dialog id="addAircraft" class="modal">
-        <form method="dialog" class="modal-box" @submit.prevent="handleSubmit">
-            <button type="button" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModal">
+        <form method="dialog" class="modal-box">
+            <button type="submit" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModal">
                 ✕
             </button>
             <span class="w-full text-center font-bold">Aircraft info</span>
@@ -238,12 +233,6 @@
                         <input type="file" name="crs" @change="handleFileChange"
                             class="file-input file-input-bordered file-input-info file-input-sm w-full max-w-xs" />
 
-                        <label for="cor_expiry" class="block mt-2 text-xs font-semibold  uppercase">
-                            COR expiry
-                        </label>
-                        <input type="date" name="cor_expiry" class="input input-bordered input-sm w-full max-w-xs"
-                            v-model="aircraftVals.cor_expiry" :min="currentDate" />
-
                         <label for="crs_expiry" class="block mt-2 text-xs font-semibold  uppercase">
                             CRS expiry
                         </label>
@@ -264,12 +253,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="modal-action">
-                <button type="button" class="btn" @click="closeModal">
+                <button type="submit" class="btn">
                     Close
                 </button>
-                <button type="submit" class="btn">Save</button>
+                <button type="submit" class="btn" @click="handleSubmit">Save</button>
             </div>
         </form>
     </dialog>
@@ -282,6 +270,7 @@ import { format } from "date-fns";
 import Table from "../../components/Tables/MainTable.vue";
 import { toast } from "vue3-toastify";
 import { authStore } from "../../stores/authStore";
+import Swal from "sweetalert2";
 import SmallButton from "../../components/Buttons/Small.vue";
 
 const auth = authStore();
@@ -297,7 +286,6 @@ const aircraftVals = ref({
     age: "",
     aircraftoperator: "",
     aircraft_type: "",
-    cor_expiry: "",
     crs_expiry: "",
     coa_expiry: "",
 });
@@ -350,7 +338,6 @@ const handleSubmit = async () => {
     payload.append("age", aircraftVals.value.age);
     payload.append("aircraftoperator", auth.user.id);
     payload.append("aircraft_type", aircraftVals.value.aircraft_type);
-    payload.append("cor_expiry", aircraftVals.value.cor_expiry);
     payload.append("crs_expiry", aircraftVals.value.crs_expiry);
     payload.append("coa_expiry", aircraftVals.value.coa_expiry);
 
@@ -381,11 +368,25 @@ const handleAircraftEdit = async (id) => {
             payload.append(key, aircraftVals.value[key]);
         }
     }
-
     try {
         await axios.put(`aircrafts/${id}`, payload);
         toast.success("Aircraft data updated.");
         reload.value = !reload.value;
+        aircraftVals.value = {
+            cor: "",
+            crs: "",
+            coa: "",
+            insurance_expiry: "",
+            insurance: "",
+            capacity: "",
+            registration: "",
+            speed: "",
+            age: "",
+            aircraftoperator: "",
+            aircraft_type: "",
+            crs_expiry: "",
+            coa_expiry: "",
+        };
         closeModal();
     } catch (error) {
         toast.error(error.message);
@@ -394,17 +395,28 @@ const handleAircraftEdit = async (id) => {
 
 // Handle delete confirmation
 const handleDelete = (id) => {
-    if (confirm("Confirm to delete item. Action is irreversible.")) {
-        axios
-            .post(`aircraft/delete/${id}`)
-            .then(() => {
-                toast.success("Deleted successfully");
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            await axios.delete(`aircrafts/${id}`).then(() => {
+                Swal.fire("Deleted!", "Aicraft has been deleted.", "success");
                 reload.value = !reload.value;
-            })
-            .catch(() => {
-                toast.error("Not enough permission");
+            }).catch((error) => {
+                Swal.fire("Error!", "An error occurred while deleting the aircraft.", error.message);
             });
-    }
+
+
+        }
+    });
+
+
 };
 
 // Fetch aircrafts on component mount

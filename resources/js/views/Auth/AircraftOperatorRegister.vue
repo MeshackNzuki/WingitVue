@@ -410,22 +410,12 @@ const handleSubmit = () => {
             router.push('/');
         })
         .catch((err) => {
-            console.log("error creating operator account,", err);
-            if (err.response?.data?.errors?.email) {
-                Swal.fire({
-                    text: err.response.data.message,
-                    icon: "error",
-                    confirmButtonText: "Close",
-                    confirmButtonColor: "#425C59",
-                });
-            } else {
-                Swal.fire({
-                    text: "Error creating account, Please contact support",
-                    icon: "error",
-                    confirmButtonText: "Close",
-                    confirmButtonColor: "#425C59",
-                });
-            }
+            Swal.fire({
+                text: err.response.data.message || "An error occurred, please try later",
+                icon: "error",
+                confirmBaseButtonText: "Close",
+                confirmBaseButtonColor: "#425C59",
+            });
         });
 };
 

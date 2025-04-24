@@ -486,7 +486,7 @@ const pay = async () => {
                 try {
                     const response = await axios.post(`/check-mpesa-status/${requestId}`);
 
-                    if (response.data.status === "success") {
+                    if (response.data.status === "completed") {
                         transactionStatus.value = [{ message: "Payment successful!" }, { success: "success" }];
 
                         setTimeout(() => {
@@ -496,6 +496,8 @@ const pay = async () => {
                                 confirmButtonColor: "#0f6566",
                             });
                         }, 2000);
+
+                        transactionStatus.value = null;
 
                         clearInterval(interval); // Stop polling
 

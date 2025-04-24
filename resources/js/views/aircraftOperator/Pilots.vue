@@ -52,7 +52,8 @@
                                                     class="block mt-2 text-xs font-semibold  uppercase">
                                                     Name
                                                 </label>
-                                                <input id="name" name="name" placeholder="" autocomplete="name"
+                                                <input id="name" name="name" :placeholder="pilot.name"
+                                                    autocomplete="name"
                                                     class="input input-bordered input-sm w-full max-w-xs"
                                                     v-model="pilotVals.name" />
 
@@ -60,7 +61,7 @@
                                                     class="block mt-2 text-xs font-semibold  uppercase">
                                                     Total Hours
                                                 </label>
-                                                <input id="hours" name="hours" type="number" placeholder=""
+                                                <input id="hours" name="hours" type="number" :placeholder="pilot.hours"
                                                     autocomplete="pilotname"
                                                     class="input input-bordered input-sm w-full max-w-xs"
                                                     v-model="pilotVals.hours" />
@@ -80,7 +81,7 @@
                                                     License expiry
                                                 </label>
                                                 <input id="license_expiry" name="license_expiry" type="date"
-                                                    :min="currentDate"
+                                                    :placeholder="pilot.license_expiry" :min="currentDate"
                                                     class="input input-bordered input-sm w-full max-w-xs" v-model="pilotVals.license_expiry
                                                         " />
 
@@ -99,17 +100,17 @@
                                                     Medical expiry
                                                 </label>
                                                 <input id="medical_expiry" name="medical_expiry" type="date"
-                                                    :min="currentDate"
+                                                    :min="currentDate" medical_expiry
                                                     class="input input-bordered input-sm w-full max-w-xs" v-model="pilotVals.medical_expiry
                                                         " />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-action">
-                                        <button class="btn" type="button">
+                                        <button class="btn" type="submit">
                                             Close
                                         </button>
-                                        <button class="btn" type="button" @click="handleSubmit()">
+                                        <button class="btn" type="submit" @click="handleSubmitEdit(pilot.id)">
                                             Save
                                         </button>
                                     </div>
@@ -176,8 +177,8 @@
                     </div>
                 </div>
                 <div class="modal-action">
-                    <button class="btn" type="button">Close</button>
-                    <button class="btn" type="button" @click="handleSubmit">
+                    <button class="btn" type="submit">Close</button>
+                    <button class="btn" type="submit" @click="handleSubmit">
                         Save
                     </button>
                 </div>
@@ -227,8 +228,6 @@ const handleFileChange = (e) => {
 // Open/close modals
 const openAddModal = () => addModal.value.showModal();
 const closeAddModal = () => addModal.value.close();
-
-
 const closeEditModal = () => editModal.value.close();
 
 // Handle submit for new pilot
@@ -249,6 +248,14 @@ const handleSubmit = async () => {
             reload.value = !reload.value
         });
         Swal.fire("Success", "Pilot added successfully", "success");
+        pilotVals.value = {
+            name: "",
+            hours: "",
+            license: "",
+            license_expiry: "",
+            medical: "",
+            medical_expiry: "",
+        };
 
         getPilots();
     } catch (error) {
@@ -259,18 +266,25 @@ const handleSubmit = async () => {
 
 // Handle submit for edit
 const handleSubmitEdit = async (id) => {
+    let pilot = pilots.value.find((pilot) => pilot.id === id);
     const formData = new FormData();
-    formData.append("name", pilotVals.value.name);
-    formData.append("hours", pilotVals.value.hours);
-    formData.append("license", editLicenseFile.value.files[0]);
-    formData.append("license_expiry", pilotVals.value.license_expiry);
-    formData.append("medical", editMedicalFile.value.files[0]);
-    formData.append("medical_expiry", pilotVals.value.medical_expiry);
-
+    formData.append("name", pilotVals.value.name || pilot.name);
+    formData.append("hours", pilotVals.value.hours || pilot.hours);
+    formData.append("license", editLicenseFile.value?.files[0] || '');
+    formData.append("license_expiry", pilotVals.value.license_expiry || pilot.license_expiry);
+    formData.append("medical", editMedicalFile.value?.files[0] || '');
+    formData.append("medical_expiry", pilotVals.value.medical_expiry || pilot.medical_expiry);
     try {
         await axios.put(`/pilots/${id}`, formData);
         Swal.fire("Success", "Pilot updated successfully", "success");
-        closeEditModal();
+        pilotVals.value = {
+            name: "",
+            hours: "",
+            license: "",
+            license_expiry: "",
+            medical: "",
+            medical_expiry: "",
+        };
         getPilots();
     } catch (error) {
         console.error(error);
@@ -279,6 +293,24 @@ const handleSubmitEdit = async (id) => {
 };
 const showModal = (modalId) => {
     document.getElementById(modalId).showModal();
+};
+
+const handleDelete = async (id) => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            await axios.delete(`/pilots/${id}`);
+            Swal.fire("Deleted!", "Pilot has been deleted.", "success");
+            getPilots();
+        }
+    });
 };
 
 // Fetch pilots when component is mounted

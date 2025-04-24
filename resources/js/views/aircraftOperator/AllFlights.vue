@@ -10,7 +10,8 @@
         'ACTION',
     ]" title="All Flights" v-model:query="searchQuery" :rows="flights?.length">
         <template v-slot:actions>
-            <SmallButton icon="pi pi-plus" :action="() => showModal('addflight')"></SmallButton>
+            <SmallButton icon="pi pi-plus" button-text="Add Flight" :action="() => showModal('addflight')">
+            </SmallButton>
 
             <Button icon="pi pi-print" class="mr-2" severity="secondary" />
             <Button icon="pi pi-upload" severity="secondary" />
@@ -67,7 +68,6 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-center">
-
                         <SmallButton v-if="flight.is_listed == 1"
                             classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500"
                             button-text="Listed" />
@@ -122,13 +122,13 @@
                                     <label for="departure_time" class="block mt-2 text-xs font-semibold  uppercase">
                                         Departure Time
                                     </label>
-                                    <Datepicker v-model="startDate" showTimeSelect showIcon timeIntervals="15"
-                                        isClearable dateFormat="Pp" />
+                                    <input type="datetime-local" v-model="startDate"
+                                        class="input input-bordered input-sm w-full max-w-xs" />
                                     <label for="arrival_time" class="block mt-2 text-xs font-semibold  uppercase">
                                         Arrival Time
                                     </label>
-                                    <Datepicker v-model="endDate" showTimeSelect showIcon timeIntervals="15" isClearable
-                                        dateFormat="Pp" />
+                                    <input type="datetime-local" v-model="endDate"
+                                        class="input input-bordered input-sm w-full max-w-xs" />
                                 </div>
                                 <div>
                                     <span class="w-full text-center font-bold">Aircraft Info</span>
@@ -205,13 +205,13 @@
                         <label for="departure_time" class="block mt-2 text-xs font-semibold  uppercase">
                             Departure Time
                         </label>
-                        <Datepicker v-model="startDate" showTimeSelect showIcon timeIntervals="15" isClearable
-                            dateFormat="Pp" />
+                        <input type="datetime-local" v-model="startDate"
+                            class="input input-bordered input-sm w-full max-w-xs" />
                         <label for="arrival_time" class="block mt-2 text-xs font-semibold  uppercase">
                             Arrival Time
                         </label>
-                        <Datepicker v-model="endDate" showTimeSelect showIcon timeIntervals="15" isClearable
-                            dateFormat="Pp" />
+                        <input type="datetime-local" v-model="endDate"
+                            class="input input-bordered input-sm w-full max-w-xs" />
                     </div>
                     <div>
                         <span class="w-full text-center font-bold">Aircraft Info</span>
@@ -256,6 +256,7 @@ import SmallButton from "../../components/Buttons/Small.vue";
 import Table from "../../components/Tables/MainTable.vue";
 import Datepicker from "vuejs3-datepicker";
 import Select from "vue-select";
+import "vue-select/dist/vue-select.css";
 import { format } from "date-fns";
 import { useMainStore } from "../../stores";
 
@@ -424,7 +425,7 @@ const getAircrafts = async () => {
     console.log("aircrafts", res);
     selectOptionsAircrafts.value = res.data.map((d) => ({
         value: d.id,
-        label: d.aircraft_type,
+        label: d.registration,
     }));
 };
 

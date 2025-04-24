@@ -12,7 +12,7 @@
                             containerClass="w-[350px] md:w-full " circular :autoplayInterval="6000">
                             <template #item="slotProps" class="flex-1">
                                 <div v-motion="motionPresets.fadeRight(Math.random() * 500)"
-                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in ">
+                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-blue-50 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in ">
                                     <div
                                         class="absolute inset-0 z-[-1] bg-[url('https://img.freepik.com/free-vector/white-abstract-background_23-2148810246.jpg?t=st=1741239373~exp=1741242973~hmac=950b463911a781d7718c96b0af899940b1546ed7e671875c6c56c0a2a63a021e&w=1060')] bg-no-repeat bg-right bg-cover opacity-15 mix-blend-multiply">
                                     </div>

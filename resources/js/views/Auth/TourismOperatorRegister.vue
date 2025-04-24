@@ -22,11 +22,11 @@
                                         class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 ">
                                         <i class="pi pi-users text-xl"></i>
                                     </div>
-                                    <input id="name" type="text" v-model="formVals.name"
+                                    <input id="name" type="text" v-model="formVals.company_name"
                                         class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-full border border-gray-400 w-full py-2 focus:outline-none focus:border-green-800"
                                         placeholder="Registered Company Name" />
                                 </div>
-                                <Error v-if="errors.step1.name" :message="errors.step1.name" />
+                                <Error v-if="errors.step1.company_name" :message="errors.step1.company_name" />
                             </div>
 
                             <div class="flex flex-col mb-3 md:mb-6">
@@ -132,7 +132,7 @@
                                     Certificate of incorporation (upload copy)
                                 </label>
                                 <div class="mb-8">
-                                    <input type="file" name="coi_doc" id="file1" class="sr-only"
+                                    <input type="file" name="coi" id="file1" class="sr-only"
                                         @change="handleFileChange" />
                                     <label for="file1"
                                         class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
@@ -148,13 +148,13 @@
                                                 class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium ">
                                                 Browse
                                             </span>
-                                            <p v-if="formVals.coi_doc">
+                                            <p v-if="formVals.coi">
                                                 Selected File:
-                                                {{ formVals.coi_doc.name }}
+                                                {{ formVals.coi.name }}
                                             </p>
                                         </div>
                                     </label>
-                                    <Error v-if="errors.step3.coi_doc" :message="errors.step3.coi_doc" />
+                                    <Error v-if="errors.step3.coi" :message="errors.step3.coi" />
                                 </div>
                             </div>
 
@@ -238,12 +238,12 @@ const motionPresets = inject("motionPresets")
 
 const router = useRouter();
 const formValInit = {
-    name: "",
+    company_name: "",
     contact_number: "",
     email: "",
     password: "",
     password_confirmation: "",
-    coi_doc: null,
+    coi: null,
     company_pin: null,
 };
 
@@ -278,7 +278,7 @@ const validateStep = (step, formValues) => {
 
 const handleNext = (e) => {
     if (currentStep.value === 4) {
-        handleSubmit();
+        submit();
         return;
     }
     const currentStepErrors = validateStep(currentStep.value, formVals.value);
@@ -340,8 +340,8 @@ const validateStep1Fields = (values) => {
     const mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const contactNumberRegex = /^\+?[0-9]{1,3}-?[0-9]{3,14}$/;
 
-    if (!values.name) {
-        step1Errors.name = "Company is required";
+    if (!values.company_name) {
+        step1Errors.company_name = "Company is required";
     }
     if (!values.email) {
         step1Errors.email = "Email is required";
@@ -370,8 +370,8 @@ const validateStep2Fields = (values) => {
 
 const validateStep3Fields = (values) => {
     const step3Errors = {};
-    if (!values.coi_doc) {
-        step3Errors.coi_doc = "Please upload COI";
+    if (!values.coi) {
+        step3Errors.coi = "Please upload COI";
     }
     return step3Errors;
 };

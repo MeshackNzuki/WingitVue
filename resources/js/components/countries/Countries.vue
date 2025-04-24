@@ -31,7 +31,7 @@ const updateCountry = (event) => {
 
 // Fetch countries on mount
 const interval = setInterval(() => {
-  if (country.value.length === 0) {
+  if (countries.value.length === 0) {
     console.warn('Retrying fetchCountries...');
     fetchCountries();
   } else {

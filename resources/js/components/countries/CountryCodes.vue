@@ -11,6 +11,7 @@ const emit = defineEmits(["update:modelValue"]); // Emit event for v-model updat
 const countryCodes = ref([]);
 
 const fetchCountryCodes = async () => {
+
     try {
         const response = await axios.get("https://restcountries.com/v3.1/all");
         const codesData = response.data.map((country) => {
@@ -23,8 +24,6 @@ const fetchCountryCodes = async () => {
                 code: code, // Ensure correct dialing code
             };
         });
-
-
 
         countryCodes.value = codesData
             .filter((c) => c.code) // Ensure valid codes

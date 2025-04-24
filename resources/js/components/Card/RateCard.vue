@@ -1,6 +1,6 @@
 <template>
     <div
-        class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl  shadow-md rounded-2xl overflow-hidden">
+        class="max-w-sm mx-auto from-sky-50 via-purple-50 to-blue-50 bg-gradient-to-tl  shadow-md rounded-2xl overflow-hidden">
         <div class="p-6">
             <div class="flex flex-col items-center">
                 <h2 class="text-gray-700 mr-2 font-bold">{{ name }}</h2>
