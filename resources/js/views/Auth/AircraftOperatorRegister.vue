@@ -405,7 +405,7 @@ const handleSubmit = () => {
             Swal.fire({
                 text: "Welcome onboard. Your account is now under review to ensure compliance. We will keep in touch via the provided Email/Phone.",
                 icon: "success",
-                confirmButtonColor: "#0f6566",
+                confirmButtonColor: "#0e5b5c",
             });
             router.push('/');
         })
@@ -414,7 +414,7 @@ const handleSubmit = () => {
                 text: err.response.data.message || "An error occurred, please try later",
                 icon: "error",
                 confirmBaseButtonText: "Close",
-                confirmBaseButtonColor: "#425C59",
+                confirmButtonColor: "#0e5b5c",
             });
         });
 };

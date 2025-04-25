@@ -309,35 +309,76 @@ const handleChange = (event) => {
 };
 
 const handleSubmit = async () => {
-    try {
-        flightVals.value.origin_airport_id = origin.value.value;
-        flightVals.value.destination_airport_id = destination.value.value;
-        flightVals.value.pilot_id = pilot.value.value;
-        flightVals.value.aircraft_id = aircraft.value.value;
-        flightVals.value.depart_time = startDate.value;
-        flightVals.value.arrival_time = endDate.value;
-        flightVals.value.tourism_operator_id = tourOperator.value.value;
 
-        console.log("flightVals", flightVals.value);
-
-        await axios.post("flights", flightVals.value);
-        Swal.fire({
-            text: "Flight has been created",
-            icon: "success",
-            confirmButtonText: "Close",
-            confirmButtonColor: "#425C59",
-        });
-        reload.value = !reload.value;
-    } catch (error) {
-        toast.error("Please fill all form fields");
-        console.error("Flight creation error:", error);
-        Swal.fire({
-            text: "An error occurred",
-            icon: "error",
-            confirmButtonText: "Close",
-            confirmButtonColor: "#425C59",
-        });
+    if (!origin.value) {
+        toast.error("Please select an origin airport");
+        return;
     }
+
+    if (!destination.value) {
+        toast.error("Please select a destination airport");
+        return;
+    }
+
+    if (!startDate.value) {
+        toast.error("Please select a departure time");
+        return;
+    }
+    if (!endDate.value) {
+        toast.error("Please select an arrival time");
+        return;
+    }
+    if (startDate.value >= endDate.value) {
+        toast.error("Departure time must be before arrival time");
+        return;
+    }
+    if (flightVals.value.available_seats <= 0) {
+        toast.error("Available seats must be greater than 0");
+        return;
+    }
+    if (flightVals.value.price <= 0) {
+        toast.error("Price must be greater than 0");
+        return;
+    }
+
+    if (flightVals.value.available_seats > 200) {
+        toast.error("Available seats must be less than 200");
+        return;
+    }
+    if (!aircraft.value) {
+        toast.error("Please select an aircraft");
+        return;
+    }
+    if (!pilot.value) {
+        toast.error("Please select a pilot");
+        return;
+    }
+
+    //optionalise tour operator
+    if (!flightVals.value.tourism_operator_id) {
+        delete flightVals.value.tourism_operator_id;
+    }
+
+
+    // flightVals.value.origin_airport_id = origin.value.value;
+    // flightVals.value.destination_airport_id = destination.value.value;
+    // flightVals.value.pilot_id = pilot.value.value;
+    // flightVals.value.aircraft_id = aircraft.value.value;
+    // flightVals.value.depart_time = startDate.value;
+    // flightVals.value.arrival_time = endDate.value;
+    // flightVals.value.tourism_operator_id = tourOperator.value.value;
+
+    console.log("flightVals", flightVals.value);
+
+    await axios.post("flights", flightVals.value);
+    Swal.fire({
+        text: "Flight has been created",
+        icon: "success",
+        confirmButtonText: "Close",
+        confirmButtonColor: "#0e5b5c",
+    });
+    reload.value = !reload.value;
+
 };
 
 const handleDelete = (id) => {
@@ -346,6 +387,8 @@ const handleDelete = (id) => {
         text: "Action is irreversible",
         icon: "warning",
         showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#0e5b5c",
         confirmButtonText: "Yes",
         cancelButtonText: "No",
     }).then(async (result) => {

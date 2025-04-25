@@ -193,7 +193,7 @@ const submit = async () => {
             text: "Account created - Happy adventure!",
             icon: "success",
             confirmButtonText: "Close",
-            confirmButtonColor: "#0f6566",
+            confirmButtonColor: "#0e5b5c",
         });
         router.push("/customer");
     } catch (error) {
@@ -201,7 +201,7 @@ const submit = async () => {
             text: error.response?.data?.message || "Error creating account",
             icon: "error",
             confirmButtonText: "Close",
-            confirmButtonColor: "#425C59",
+            confirmButtonColor: "#0e5b5c",
         });
     }
 };

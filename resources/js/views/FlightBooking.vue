@@ -493,7 +493,8 @@ const pay = async () => {
                             Swal.fire({
                                 text: "Payment processed! you'll receive an email with your ticket details. Thank you for choosing Wingit!",
                                 icon: "success",
-                                confirmButtonColor: "#0f6566",
+                                confirmButtonColor: "#0e5b5c",
+                                confirmButtonText: "Got it!",
                             });
                         }, 2000);
 

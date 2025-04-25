@@ -29,6 +29,7 @@ const updateCountry = (event) => {
   emit("update:modelValue", event.target.value); // Emit the selected country name
 };
 
+
 // Fetch countries on mount
 const interval = setInterval(() => {
   if (countries.value.length === 0) {

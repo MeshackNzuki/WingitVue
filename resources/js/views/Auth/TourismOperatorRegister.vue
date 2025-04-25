@@ -322,7 +322,7 @@ const submit = async (e) => {
             text: "Your account has been created. You will receive a review update via email.",
             icon: "success",
             confirmBaseButtonText: "Close",
-            confirmBaseButtonColor: "#0f6566",
+            confirmButtonColor: "#0e5b5c",
         });
         router.push("/");
     } catch (error) {
@@ -330,7 +330,7 @@ const submit = async (e) => {
             text: error.response.data.message || "Error creating account",
             icon: "error",
             confirmBaseButtonText: "Close",
-            confirmBaseButtonColor: "#425C59",
+            confirmButtonColor: "#0e5b5c",
         });
     }
 };

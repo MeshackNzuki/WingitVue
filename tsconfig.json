@@ -8,5 +8,8 @@
         "checkJs": false ,
         "outDir": "./public/build",
     },
+     "exclude": [
+    "**/*.mjs" // or narrow it down
+  ]
   
 }
