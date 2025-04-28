@@ -63,12 +63,13 @@
                         </div>
                     </div>
                 </td>
-                <td class="p-2 whitespace-nowrap">
-                    <div class="flex items-center">
-                        <SmallButton icon="pi pi-pencil" :action="() => showModal(aircraft.id)"></SmallButton>
-                        <SmallButton icon="pi pi-trash" :action="() => handleDelete(aircraft.id)" severity="danger">
-                        </SmallButton>
-                    </div>
+                <td class="p-2 whitespace-nowrap flex justify-center gap-2">
+
+                    <SmallButton button-text="Edit" :action="() => showModal(aircraft.id)"></SmallButton>
+                    <SmallButton icon="pi pi-trash" button-text="Delete" classes="bg-red-500 text-white"
+                        :action="() => handleDelete(aircraft.id)">
+                    </SmallButton>
+
                 </td>
                 <dialog :id="aircraft.id" class="modal">
                     <form method="dialog" class="modal-box">

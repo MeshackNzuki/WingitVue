@@ -1,17 +1,21 @@
 <template>
     <button :class="[
+        // Base styles (these should always apply first)
         'py-1 px-2 rounded-full shadow-lg dark:shadow-slate-300 dark:shadow-sm',
         'hover:translate-x-1 hover:scale-110 transition duration-200 ease-out',
-        // Conditionally apply bg-sky-500 if the theme is Light, else use the current theme's background
-        theme?.currentTheme === 'Light'
-            ? 'bg-sky-500'
-            : theme?.themes[theme.currentTheme]?.bg,
-        // Conditionally apply text-gray-50 if the theme is Light, else use the current theme's text color
-        theme?.currentTheme === 'Light'
-            ? 'text-gray-50'
-            : theme?.themes[theme.currentTheme]?.text,
-        buttonText === 'Del' || buttonText === 'Delete' ? 'bg-red-500' : '', // Special condition, overrides theme
-        classes, // User-defined classes override everything else
+
+        // Special condition for buttonText == 'Del' or 'Delete', this will override the theme's background color
+        buttonText == 'Del' || buttonText == 'Delete'
+            ? 'bg-red-500'
+            : '',
+
+        // If classes are provided, remove theme-related classes
+        classes
+            ? ''  // If `classes` prop is set, no need for the theme classes
+            : theme?.currentTheme === 'Light'
+                ? 'bg-sky-500 text-gray-50'  // Light theme background and text color
+                : theme?.themes[theme.currentTheme]?.bg + ' ' + theme?.themes[theme.currentTheme]?.text, classes  // Dark theme or custom theme background and text color
+
     ]" @click="handleClick">
         <i :class="icon"></i>
         <i v-if="!icon && buttonText === 'Edit'" class="pi pi-pencil text-xs"></i>

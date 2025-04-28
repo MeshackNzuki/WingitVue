@@ -31,7 +31,7 @@
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">
-                    <div class="ttext-start text-green-500">
+                    <div class="text-start text-green-500">
                         {{ flight.initial_seats }}
                     </div>
                 </td>
@@ -66,22 +66,21 @@
                         <span v-else>Pending</span>
                     </div>
                 </td>
-                <td class="p-2 whitespace-nowrap">
-                    <div class="text-center">
-                        <SmallButton v-if="flight.is_listed == 1"
-                            classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500"
-                            button-text="Listed" />
-                        <SmallButton v-else classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
-                            button-text="List" :action="() => handleList(flight.id)" />
+                <td class="p-2 flex text-center whitespace-nowrap gap-2 ">
 
-                    </div>
+                    <SmallButton v-if="flight.is_listed == 1"
+                        classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500"
+                        button-text="Listed" />
+                    <SmallButton v-else classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
+                        button-text="List" :action="() => handleList(flight.id)" />
+
+                    <SmallButton classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
+                        button-text="Edit" :action="() => showModal(flight.id)" />
+
+
+
                 </td>
-                <td class="p-2 whitespace-nowrap">
-                    <div class="text-center">
-                        <SmallButton classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
-                            button-text="Edit" :action="() => showModal(flight.id)" />
-                    </div>
-                </td>
+
                 <dialog :id="flight.id" class="modal">
                     <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
                         <h3 class="font-bold">Edit Flight Info</h3>
@@ -360,13 +359,13 @@ const handleSubmit = async () => {
     }
 
 
-    // flightVals.value.origin_airport_id = origin.value.value;
-    // flightVals.value.destination_airport_id = destination.value.value;
-    // flightVals.value.pilot_id = pilot.value.value;
-    // flightVals.value.aircraft_id = aircraft.value.value;
-    // flightVals.value.depart_time = startDate.value;
-    // flightVals.value.arrival_time = endDate.value;
-    // flightVals.value.tourism_operator_id = tourOperator.value.value;
+    flightVals.value.origin_airport_id = origin.value.value;
+    flightVals.value.destination_airport_id = destination.value.value;
+    flightVals.value.pilot_id = pilot.value.value;
+    flightVals.value.aircraft_id = aircraft.value.value;
+    flightVals.value.depart_time = startDate.value;
+    flightVals.value.arrival_time = endDate.value;
+    flightVals.value.tourism_operator_id = tourOperator.value?.value || "";
 
     console.log("flightVals", flightVals.value);
 
@@ -410,6 +409,7 @@ const handleList = (id) => {
         text: "Note that if the flight is approved you won't be able to unlist or edit",
         icon: "warning",
         showCancelButton: true,
+        confirmButtonColor: "#0e5b5c",
         confirmButtonText: "I understand",
         cancelButtonText: "Cancel",
     }).then(async (result) => {

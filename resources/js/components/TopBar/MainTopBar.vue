@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <button class="p-1 flex items-center justify-center" @click="toggleRightPanel()">
-                    <i class="pi pi-cog pi-spin"></i>
+                    <i class="pi pi-cog "></i>
                 </button>
             </div>
         </div>

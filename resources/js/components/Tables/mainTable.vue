@@ -10,8 +10,8 @@
                 theme?.themes[theme.currentTheme]?.text,
             ]">
                 <span class="font-bold">{{ title }}</span>
-                <span class="font-light">
-                    {{ rows > 0 ? "Showing : " + rows + " rows" : "" }}</span>
+                <span class="font-light badge badge-success bg-opacity-75 text-white ">
+                    {{ rows > 0 ? `${rows} records` : "" }}</span>
                 <span class="font-bold"><i @click="theme?.zoomOut"
                         class="pi pi-minus cursor-pointer bg-sky-500 rounded-badge p-1 text-white hover:scale-105"></i><span
                         class="mx-1 font-light">Zoom</span><i @click="theme?.zoomIn"
@@ -33,7 +33,8 @@
                 <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                     <tr>
                         <th v-for="(header, index) in headers" :key="index" class="p-2 whitespace-nowrap">
-                            <div class="font-semibold text-left">
+                            <div
+                                :class="`font-semibold ps-1` + (index === headers.length - 1 && header == 'ACTION' ? ' text-center' : ' text-start')">
                                 {{ header }}
                             </div>
                         </th>

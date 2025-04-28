@@ -5,12 +5,10 @@
                 <Table :headers="[
                     'NAME',
                     'HOURS',
-                    'LICENSE',
                     'LICENSE EXP',
-                    'MEDICAL',
                     'MED EXPIRY',
                     'ACTION',
-                ]" title="Pilots" v-model:query="query" :rows="pilots">
+                ]" title="Pilots" v-model:query="query" :rows="pilots.length">
                     <template v-slot:actions>
                         <SmallButton icon="pi pi-plus" :action="() => showModal('addPilot')"></SmallButton>
                     </template>
@@ -22,21 +20,17 @@
                             <td class="p-2 whitespace-nowrap">
                                 {{ pilot.hours }}
                             </td>
-                            <td class="p-2 whitespace-nowrap">
-                                {{ pilot.license }}
-                            </td>
+
                             <td class="p-2 whitespace-nowrap">
                                 {{ pilot.license_expiry }}
                             </td>
                             <td class="p-2 whitespace-nowrap">
-                                {{ pilot.medical }}
-                            </td>
-                            <td class="p-2 whitespace-nowrap">
                                 {{ pilot.medical_expiry }}
                             </td>
-                            <td class="p-2 whitespace-nowrap flex justify-end">
-                                <SmallButton icon="pi pi-pencil" @click="showModal(pilot.id)" />
-                                <SmallButton icon="pi pi-trash" @click="handleDelete(pilot.id)" class="text-red-500" />
+                            <td class="p-2 whitespace-nowrap flex justify-center gap-2">
+                                <SmallButton icon="pi pi-pencil" button-text="Edit" @click="showModal(pilot.id)" />
+                                <SmallButton icon="pi pi-trash" button-text="Delete" @click="handleDelete(pilot.id)"
+                                    classes="bg-red-500 text-white" />
                             </td>
                             <dialog :id="pilot.id" class="modal">
                                 <form method="dialog" class="modal-box">
