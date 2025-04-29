@@ -6,7 +6,7 @@
         'PRICE',
         'DEPART TIME',
         'ARRIVAL TIME',
-        'STATUS',
+        'LISTING STATUS',
         'ACTION',
     ]" title="All Flights" v-model:query="searchQuery" :rows="flights?.length">
         <template v-slot:actions>
@@ -62,23 +62,23 @@
                 </td>
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-center">
-                        <span v-if="flight.is_approved == 1">Approved</span>
-                        <span v-else>Pending</span>
+
+                        <SmallButton v-if="flight.is_approved == 1"
+                            classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500 text-white w-full"
+                            button-text="Flight listed" />
+                        <span v-else>
+                            <SmallButton v-if="flight.is_listed == 1"
+                                classes="border border-blue-500 border-dotted px-2 text-sm bg-yellow text-white w-full"
+                                button-text="Pending Approval" />
+                            <SmallButton v-else
+                                classes="border border-blue-500 border-dotted px-2 text-sm bg-sky-500 text-white w-full"
+                                button-text="Request listing" :action="() => handleList(flight.id)" />
+                        </span>
                     </div>
                 </td>
                 <td class="p-2 flex text-center whitespace-nowrap gap-2 ">
-
-                    <SmallButton v-if="flight.is_listed == 1"
-                        classes="border border-blue-500 border-dotted px-2 text-sm bg-emerald-500"
-                        button-text="Listed" />
-                    <SmallButton v-else classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
-                        button-text="List" :action="() => handleList(flight.id)" />
-
-                    <SmallButton classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500"
+                    <SmallButton classes="border border-blue-500 border-dotted px-2 text-sm bg-red-500 text-white"
                         button-text="Edit" :action="() => showModal(flight.id)" />
-
-
-
                 </td>
 
                 <dialog :id="flight.id" class="modal">
@@ -406,7 +406,7 @@ const handleDelete = (id) => {
 const handleList = (id) => {
     Swal.fire({
         title: "Confirm to List",
-        text: "Note that if the flight is approved you won't be able to unlist or edit",
+        text: "Note that if the flight is approved, you won't be able to unlist or edit without wingit reviewing the flight",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#0e5b5c",
@@ -416,7 +416,7 @@ const handleList = (id) => {
         if (result.isConfirmed) {
             try {
                 const response = await axios.post(`flight-list/${id}`);
-                toast.success(response.data.message);
+                toast.info(response.data.message);
                 reload.value = !reload.value;
             } catch (err) {
                 reload.value = !reload.value;
