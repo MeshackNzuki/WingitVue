@@ -8,7 +8,7 @@
         'DEPART TIME',
         'SEATS',
         'STATUS',
-    ]" title="Booking" v-model:query="searchQuery" :rows="booking">
+    ]" title="Booking" v-model:query="searchQuery" :rows="booking.length">
         <template v-slot:content>
             <tr v-for="(bookingItem, index) in booking" :key="index">
                 <td class="border-t-0 px-2 align-middle border-l-0 border-r-0  whitespace-nowrap p-4 items-center">
