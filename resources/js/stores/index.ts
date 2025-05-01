@@ -46,7 +46,7 @@ export const useMainStore = defineStore("mainStore", {
             } else {
                 toast.clearAll();
                 toast.info(
-                    `This flight has only ${availableSeats} available seat(s).`,
+                    `This flight has  ${availableSeats} available seat(s).`,
                 );
             }
             this.totalSeats = flight.seats;

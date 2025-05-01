@@ -3,7 +3,7 @@
         <div class="max-w-4xl mx-auto ">
             <div class="md:mx-16 mt-16">
                 <h2 class="font-bold text-dark mt-4 mb-4 text-2xl max-w-lg">
-                    Privacy Policy
+                    Our Privacy Policy
                 </h2>
                 <p>
                     This privacy policy outlines how Wingit collects, uses, and
@@ -73,7 +73,7 @@
                 <p>
                     If you have any questions or concerns about this privacy
                     policy, please contact us at
-                    <a href="mailto:Wingitkenya@gmail.com">Wingitkenya@gmail.com</a>
+                    <a href="mailto:Wingitkenya@gmail.com">wingitkenya@gmail.com</a>
                 </p>
             </div>
         </div>

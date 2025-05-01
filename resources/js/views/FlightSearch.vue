@@ -298,7 +298,7 @@
                         v-motion="motionPresets.fadeUp()">
                         <p class="text-sm">
                             <i class="pi pi-info-circle me-1"></i>
-                            Sorry, but we could
+                            Sorry, we could
                             not find a
                             matching flight!
                         </p>
