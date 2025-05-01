@@ -169,8 +169,7 @@ const router = useRouter();
 const submit = async () => {
     console.log("called...", errors.value);
 
-    // Clear previous errors
-    Object.assign(errors.value, {});
+    errors.value = {}; // Reset errors before validation
 
     // Validate and assign errors if any
     Object.assign(errors.value, validate());

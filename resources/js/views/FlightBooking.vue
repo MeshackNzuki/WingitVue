@@ -408,6 +408,9 @@ const pay = async () => {
     if (!formVals.value.phone) {
         errors.value.phone = "Phone is required";
     }
+    if (!formVals.value.mpesa_phone) {
+        errors.value.phone = "Mpesa phone is required";
+    }
 
     if (!formVals.value.id_number) {
         errors.value.id_number = "ID/Passport is required";

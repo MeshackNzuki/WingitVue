@@ -16,8 +16,8 @@
                                     <div
                                         class="absolute inset-0 z-[-1] bg-[url('https://img.freepik.com/free-vector/white-abstract-background_23-2148810246.jpg?t=st=1741239373~exp=1741242973~hmac=950b463911a781d7718c96b0af899940b1546ed7e671875c6c56c0a2a63a021e&w=1060')] bg-no-repeat bg-right bg-cover opacity-15 mix-blend-multiply">
                                     </div>
-                                    <div class="flex items-center justify-between bg-transparent  z-1 px-6 py-0.5 ">
-                                        <div class="text-lg font-semibold">
+                                    <div class="flex items-center justify-between bg-transparent  z-1 px-2 py-0.5 ">
+                                        <div class="text-lg font-light">
                                             {{
                                                 slotProps.data.aircraft_operator
                                                     ?.company_name
@@ -69,9 +69,9 @@
                                                     }}
                                                 </span>
                                             </div>
-                                            <span class="font-semibold text-xs mt-4">FLIGHT:{{
+                                            <!-- <span class="font-semibold text-xs mt-4">FLIGHT:{{
                                                 slotProps.data.flight_no
-                                                }}</span>
+                                            }}</span> -->
                                             <div class="flex justify-center p-1">
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
@@ -89,41 +89,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="px-6">
+                                    <div class="px-2">
                                         <div>
                                             <table class="w-full">
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <small>
-                                                            {{
-                                                                format(
-                                                                    new Date(
-                                                                        slotProps.data.depart_time,
-                                                                    ),
-                                                                    "h:mm a",
-                                                                )
-                                                            }}</small>
-                                                    </td>
-                                                    <td></td>
-                                                    <td>
-                                                        <small>{{
-                                                            format(
-                                                                new Date(
-                                                                    slotProps.data.arrival_time,
-                                                                ),
-                                                                "h:mm a",
-                                                            )
-                                                        }}</small>
-                                                    </td>
-                                                </tr>
                                                 <tr>
                                                     <td class="text-left">
                                                         <span
                                                             class="font-semibold uppercase text-xs relative overflow-hidden">
                                                             {{
                                                                 slotProps.data.origin_airport?.name.split(
-                                                                    " ",
-                                                                )[0]
+                                                                    " "
+                                                                ).slice(0, 2).join(" ")
                                                             }}
                                                         </span>
                                                     </td>
@@ -173,21 +149,45 @@
                                                             class="font-semibold uppercase text-xs relative overflow-hidden">
                                                             {{
                                                                 slotProps.data.destination_airport?.name.split(
-                                                                    " ",
-                                                                )[0]
+                                                                    " "
+                                                                ).slice(0, 2).join(" ")
                                                             }}
                                                         </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-left">
+                                                        <small>
+                                                            {{
+                                                                format(
+                                                                    new Date(
+                                                                        slotProps.data.depart_time,
+                                                                    ),
+                                                                    "h:mm a",
+                                                                )
+                                                            }}</small>
+                                                    </td>
+                                                    <td></td>
+                                                    <td class="text-right">
+                                                        <small>{{
+                                                            format(
+                                                                new Date(
+                                                                    slotProps.data.arrival_time,
+                                                                ),
+                                                                "h:mm a",
+                                                            )
+                                                        }}</small>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </div>
 
-                                        <div class="w-full text-center">
+                                        <div class="w-full text-center ">
                                             <span v-if="
                                                 slotProps.data.has_offer ==
                                                 1
                                             "
-                                                class="text-sm font-normal text-center line-through text-red-500 bg-red-50 p-1 rounded-full">
+                                                class="text-sm font-normal text-center line-through text-red-500 bg-red-50 p-1  rounded-full">
                                                 KES
                                                 {{
                                                     formatCurrency(
@@ -196,9 +196,9 @@
                                                 }}
                                             </span>
                                         </div>
-                                        <div class="flex justify-between">
+                                        <div class="flex justify-between items-center">
                                             <div
-                                                class="text-sm  text-center m-2 bg-emerald-200 px-2 py-1 h-7 rounded-full">
+                                                class="text-sm  text-center m-2 bg-emerald-500 bg-opacity-45 ms-16 px-4 py-1 h-7 text-gray-900  rounded-full">
                                                 KES
                                                 {{
                                                     slotProps.data.has_offer ==
@@ -211,11 +211,11 @@
                                                             slotProps.data
                                                                 .price,
                                                         )
-                                                }}.
+                                                }}
                                             </div>
                                             <div class="text-right mt-3">
                                                 <div class="flex justify-end mb-1">
-                                                    <div class="text-second flex justify-center space-x-2 px-4">
+                                                    <div class="text-second flex justify-center space-x-2">
                                                         <button @click="
                                                             mainStore.decreaseSeats(
                                                                 slotProps
@@ -781,7 +781,7 @@ const motionPresets = inject("motionPresets");
 const mainStore = useMainStore();
 const subscriptionMail = ref("");
 
-const formatCurrency = (price) => Number(price.split(".")[0]).toLocaleString();
+const formatCurrency = (price) => price.toLocaleString();
 
 const exo2 = {
     className: "your-exo-class-name",

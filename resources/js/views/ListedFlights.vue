@@ -17,10 +17,9 @@
                             @click="resetFlights">Reset</span>
 
                     </label> -->
-                    <router-link to="/flight-search"
-                        class="mt-2.5 flex flex-row hover:scale-105 transition-all duration-300">
-                        <i class="pi pi-search  text-2xl"></i>
-                        <span class="w-4 ml-1 label-text hidden lg:block">Search</span>
+                    <router-link to="/flight-search" class="flex flex-column gap-2 items-center"><input type="text"
+                            placeholder="Click to search" class="rounded-full px-4 w-full max-w-xs">
+                        </input> <i class="pi pi-search  text-2xl"></i>
                     </router-link>
                 </div>
 
@@ -31,8 +30,8 @@
                         v-motion="motionPresets.fadeUp(Math.random() * 150)">
                         <div
                             class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-rose-100 bg-gradient-to-tl shadow-lg rounded-lg relative">
-                            <div class="flex items-center justify-between  px-6 py-0.5">
-                                <div class="text-lg font-bold">
+                            <div class="flex items-center justify-between  px-4 py-0.5">
+                                <div class="text-lg font-light">
                                     {{
                                         flight.aircraft_operator
                                             ?.company_name
@@ -84,13 +83,13 @@
                                             }}
                                         </span>
                                     </div>
-                                    <span class="font-semibold text-xs mt-4">FLIGHT:{{ flight.flight_no }}</span>
+                                    <span class="font-light text-lg mt-4">FLIGHT:{{ flight.flight_no }}</span>
                                     <div class="flex justify-center p-1">
                                         <span
                                             class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
                                             <span class="me-1">{{
                                                 flight.available_seats
-                                            }}</span>
+                                                }}</span>
                                             <span>{{
                                                 flight.available_seats > 1
                                                     ? "seats"
@@ -100,7 +99,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="px-6">
+                            <div class="px-2">
                                 <div>
                                     <table class="w-full">
                                         <tr>
@@ -132,8 +131,8 @@
                                                 <span class="font-semibold uppercase text-xs relative overflow-hidden">
                                                     {{
                                                         flight.origin_airport?.name.split(
-                                                            " ",
-                                                        )[0]
+                                                            " "
+                                                        ).slice(0, 2).join(" ")
                                                     }}
                                                 </span>
                                             </td>
@@ -180,8 +179,8 @@
                                                 <span class="font-semibold uppercase text-xs relative overflow-hidden">
                                                     {{
                                                         flight.destination_airport?.name.split(
-                                                            " ",
-                                                        )[0]
+                                                            " "
+                                                        ).slice(0, 2).join(" ")
                                                     }}
                                                 </span>
                                             </td>
@@ -196,7 +195,7 @@
                                         {{ formatCurrency(flight.price) }}
                                     </span>
                                 </div>
-                                <div class="flex justify-between">
+                                <div class="flex justify-between items-center">
                                     <div
                                         class="text-sm font-bold text-center m-2 bg-emerald-200 px-2 py-1 h-7 rounded-full">
                                         KES
@@ -208,7 +207,7 @@
                                                 : formatCurrency(
                                                     flight.price,
                                                 )
-                                        }}.
+                                        }}
                                     </div>
                                     <div class="text-right mt-3">
                                         <div class="flex justify-end mb-1">
