@@ -366,7 +366,7 @@
             <div class="mr-auto place-sel-center lg:col-span-6" v-motion="motionPresets.fadeLeft()">
                 <span :class="`uppercase text-second text-lg ${exo2.className}`">
                     <div className="w-full h-full fixed top-0 left-0 z-[-1] "></div>
-                    <h2 class="font-semibold font-exo-2 my-6 text-lg">
+                    <h2 class="font-semibold font-exo-2 my-6 text-lg text-gray-900">
                         Your amazing experience powers us
                     </h2>
                 </span>
@@ -401,7 +401,7 @@
                         <div class="collapse rounded-sm collapse-arrow collapse-white text-base bg-gold">
                             <input type="radio" name="my-accordion-2" />
                             <div class="collapse-title text-lg font-light">
-                                <span class="bg-bg-500 text-base font-semibold mb-3">
+                                <span class="bg-bg-500 text-gray-900 font-semibold mb-3">
                                     Book With Us Now
                                 </span>
                             </div>
@@ -517,7 +517,7 @@
                     <div class="text-left px-4 bg-transparent">
                         <span class="text-gray-50 md:text-5xl font-semibold mb-4">
                             <div class="text-3xl mb-12" v-motion="motionPresets.fadeUp()">
-                                <span class="text-3xl font-semibold font-exo-2">Experience the thrill of travel with
+                                <span class="text-3xl font-semibold  font-exo-2">Experience the thrill of travel with
                                     Wingit</span>
                             </div>
                         </span>
@@ -536,33 +536,20 @@
             </section>
         </main>
         <section class="py-6 bg-[url('../assets/bg.jpg')]">
-            <h2 class="font-semibold font-exo-2 my-6 text-lg uppercase" v-motion="motionPresets.fadeDown()">Why Wingit
+            <h2 class="font-semibold font-exo-2 my-6 text-lg uppercase text-gray-900"
+                v-motion="motionPresets.fadeDown()">
+                Why Wingit
             </h2>
 
             <div class="grid md:grid-cols-3 max-w-screen-lg mx-auto gap-10 mt-16 px-5">
                 <div class="flex gap-4 items-start flex-col">
-                    <span class="text-base bg-violet-500/10 p-3 rounded-full"><svg viewBox="0 0 24 24" version="1.1"
-                            class="text-base size-6" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="ic_fluent_airplane_24_regular" fill="currentColor" fill-rule="nonzero">
-                                        <path
-                                            d="M9.46919998,9.64319623 L8.76896994,3.76843084 L8.76710757,3.69483566 C8.76710757,2.80621457 9.48747729,2.08584485 10.3760984,2.08584485 C11.1788794,2.08584485 11.9218023,2.50550659 12.3544416,3.22025731 L12.4407989,3.38093148 L15.385665,9.46995365 L19.3428194,9.35413963 C20.7764517,9.31203281 21.9727746,10.4400871 22.0151239,11.8847274 L22.0160008,11.9499605 C22.0160008,13.3843303 20.8532144,14.5471167 19.3968974,14.5467955 L15.4327301,14.4307421 L12.4408511,20.6189605 C12.0579681,21.4109607 11.2557936,21.9141552 10.3760984,21.9141552 C9.48747729,21.9141552 8.76710757,21.1937854 8.76744131,20.2827924 L8.77394708,20.164845 L9.48082465,14.2565719 L7.3487405,14.1943124 L7.0798372,14.9299926 C6.79932412,15.6973087 6.06934989,16.2076712 5.2523667,16.2076712 C4.37643365,16.2076712 3.66634961,15.4975871 3.6663497,14.6212975 L3.66671081,13.861732 L3.51166584,13.8294555 C2.62167552,13.6436712 1.98399916,12.8591352 1.98399916,11.9499605 C1.98399916,11.0406621 2.62214845,10.2561854 3.51221687,10.0711276 L3.66671101,10.0389641 L3.66634961,9.27826691 C3.66634961,8.47624085 4.26447316,7.80342041 5.10100277,7.70020621 L5.2523667,7.69224982 C5.99730606,7.69224982 6.67523788,8.11741422 7.01683448,8.81928941 L7.07965265,8.96942416 L7.34928097,9.70533179 L9.46919998,9.64319623 Z M10.3760984,3.58584485 C10.3159044,3.58584485 10.2671076,3.6346417 10.2667738,3.67246374 L11.1531665,11.0944828 L6.31272071,11.2363579 L5.68530725,9.52108796 L5.65276359,9.44201959 C5.57839918,9.28972577 5.42297213,9.19224982 5.29886242,9.1908072 L5.24063152,9.19295861 C5.19903584,9.19816414 5.16634961,9.23493241 5.16634953,9.27791055 L5.16729071,11.2587256 L3.81774959,11.5396812 C3.62334837,11.5801 3.48399916,11.7514019 3.48399916,11.9499605 C3.48399916,12.1488457 3.62349315,12.3204658 3.81777809,12.3610227 L5.16729088,12.6419576 L5.16634961,14.6216541 C5.16634961,14.66916 5.20486077,14.7076712 5.2523667,14.7076712 C5.43953173,14.7076712 5.60676364,14.5907508 5.67101347,14.4150016 L6.31126118,12.6633773 L11.165177,12.8051178 L10.2683025,20.276313 L10.2671076,20.3051643 C10.2671076,20.3653583 10.3159044,20.4141552 10.3760984,20.4141552 C10.6804219,20.4141552 10.9579277,20.2400791 11.0903941,19.9660701 L14.5052716,12.9029476 L19.4188447,13.0471167 C20.0247873,13.0471167 20.5160817,12.5559031 20.5160817,11.960971 L20.515528,11.9177565 C20.4977422,11.3121942 19.9924188,10.8357073 19.3867788,10.8534954 L14.4583367,10.997736 L11.1066298,4.06557353 L11.0542344,3.96737821 C10.910871,3.73107325 10.6537746,3.58584485 10.3760984,3.58584485 Z"
-                                            id="🎨-Color"></path>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </span>
+
                     <div>
-                        <h3 class="font-semibold text-xl" v-motion="motionPresets.fadeUp()">
+                        <h3 class="font-semibold text-xl mb-4" v-motion="motionPresets.fadeUp()">
                             Flight charter booking service
                         </h3>
                         <figure>
-                            <img src="../assets/common.jpg" alt="Wingit - flight booking" />
+                            <img src="../assets/common.jpg" class="rounded-t-lg" alt="Wingit - flight booking" />
                         </figure>
                         <p class="mt-1 " v-motion="motionPresets.fadeDown()">
                             Experience private charter flight at a fraction of
@@ -575,18 +562,12 @@
                 </div>
 
                 <div class="flex gap-4 items-start flex-col">
-                    <span class="text-base md:bg-violet-500/10 p-3 rounded-full"><svg width="15" height="15"
-                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <path
-                                d="M0.849976 1.74998C0.849976 1.25292 1.25292 0.849976 1.74998 0.849976H3.24998C3.74703 0.849976 4.14998 1.25292 4.14998 1.74998V2.04998H10.85V1.74998C10.85 1.25292 11.2529 0.849976 11.75 0.849976H13.25C13.747 0.849976 14.15 1.25292 14.15 1.74998V3.24998C14.15 3.74703 13.747 4.14998 13.25 4.14998H12.95V10.85H13.25C13.747 10.85 14.15 11.2529 14.15 11.75V13.25C14.15 13.747 13.747 14.15 13.25 14.15H11.75C11.2529 14.15 10.85 13.747 10.85 13.25V12.95H4.14998V13.25C4.14998 13.747 3.74703 14.15 3.24998 14.15H1.74998C1.25292 14.15 0.849976 13.747 0.849976 13.25V11.75C0.849976 11.2529 1.25292 10.85 1.74998 10.85H2.04998V4.14998H1.74998C1.25292 4.14998 0.849976 3.74703 0.849976 3.24998V1.74998ZM2.94998 4.14998V10.85H3.24998C3.74703 10.85 4.14998 11.2529 4.14998 11.75V12.05H10.85V11.75C10.85 11.2529 11.2529 10.85 11.75 10.85H12.05V4.14998H11.75C11.2529 4.14998 10.85 3.74703 10.85 3.24998V2.94998H4.14998V3.24998C4.14998 3.74703 3.74703 4.14998 3.24998 4.14998H2.94998ZM2.34998 1.74998H1.74998V2.34998V2.64998V3.24998H2.34998H2.64998H3.24998V2.64998V2.34998V1.74998H2.64998H2.34998ZM5.09998 5.99998C5.09998 5.50292 5.50292 5.09998 5.99998 5.09998H6.99998C7.49703 5.09998 7.89998 5.50292 7.89998 5.99998V6.99998C7.89998 7.03591 7.89787 7.07134 7.89378 7.10618C7.92861 7.10208 7.96405 7.09998 7.99998 7.09998H8.99998C9.49703 7.09998 9.89998 7.50292 9.89998 7.99998V8.99998C9.89998 9.49703 9.49703 9.89998 8.99998 9.89998H7.99998C7.50292 9.89998 7.09998 9.49703 7.09998 8.99998V7.99998C7.09998 7.96405 7.10208 7.92861 7.10618 7.89378C7.07134 7.89787 7.03591 7.89998 6.99998 7.89998H5.99998C5.50292 7.89998 5.09998 7.49703 5.09998 6.99998V5.99998ZM6.09998 5.99998H5.99998V6.09998V6.89998V6.99998H6.09998H6.89998H6.99998V6.89998V6.09998V5.99998H6.89998H6.09998ZM7.99998 7.99998H8.09998H8.89998H8.99998V8.09998V8.89998V8.99998H8.89998H8.09998H7.99998V8.89998V8.09998V7.99998ZM2.64998 11.75H2.34998H1.74998V12.35V12.65V13.25H2.34998H2.64998H3.24998V12.65V12.35V11.75H2.64998ZM11.75 1.74998H12.35H12.65H13.25V2.34998V2.64998V3.24998H12.65H12.35H11.75V2.64998V2.34998V1.74998ZM12.65 11.75H12.35H11.75V12.35V12.65V13.25H12.35H12.65H13.25V12.65V12.35V11.75H12.65Z"
-                                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg></span>
                     <div>
-                        <h3 class="font-semibold text-xl " v-motion="motionPresets.fadeDown()">
+                        <h3 class="font-semibold text-xl mb-4" v-motion="motionPresets.fadeDown()">
                             Wide selection of destinations
                         </h3>
-                        <figure>
-                            <img src="../assets/common2.jpg" alt="Wingit - flight booking" />
+                        <figure class="">
+                            <img src="../assets/common2.jpg" class="rounded-t-lg" alt="Wingit - flight booking" />
                         </figure>
                         <p class="mt-1  text-white md:text-gray-600" v-motion="motionPresets.fadeUp()">
                             Whether you are dreaming of a beach holiday, safari
@@ -597,19 +578,13 @@
                 </div>
 
                 <div class="flex gap-4 items-start flex-col">
-                    <span class="text-base bg-white md:bg-violet-500/10 p-3 rounded-full"><svg width="15" height="15"
-                            viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
-                            <path
-                                d="M7.28856 0.796908C7.42258 0.734364 7.57742 0.734364 7.71144 0.796908L13.7114 3.59691C13.8875 3.67906 14 3.85574 14 4.05V10.95C14 11.1443 13.8875 11.3209 13.7114 11.4031L7.71144 14.2031C7.57742 14.2656 7.42258 14.2656 7.28856 14.2031L1.28856 11.4031C1.11252 11.3209 1 11.1443 1 10.95V4.05C1 3.85574 1.11252 3.67906 1.28856 3.59691L7.28856 0.796908ZM2 4.80578L7 6.93078V12.9649L2 10.6316V4.80578ZM8 12.9649L13 10.6316V4.80578L8 6.93078V12.9649ZM7.5 6.05672L12.2719 4.02866L7.5 1.80176L2.72809 4.02866L7.5 6.05672Z"
-                                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg></span>
                     <div>
-                        <h3 class="font-semibold text-xl text-white md:text-gray-600"
+                        <h3 class="font-semibold text-xl text-white md:text-gray-600 mb-4"
                             v-motion="motionPresets.fadeDown()">
                             Flexible booking options
                         </h3>
                         <figure>
-                            <img src="../assets/common3.jpg" alt="Wingit - flight booking" />
+                            <img src="../assets/common3.jpg" class="rounded-t-lg" alt="Wingit - flight booking" />
                         </figure>
                         <p class="mt-1  text-white md:text-gray-600" v-motion="motionPresets.fadeUp()">
                             Life is unpredictable - Change your plans without
