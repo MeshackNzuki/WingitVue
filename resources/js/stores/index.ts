@@ -19,9 +19,13 @@ export const useMainStore = defineStore("mainStore", {
     }),
 
     actions: {
-        startStoreServices() {
+         startStoreServices() {
+             this.resetFlights()
             this.fetchFlights();
             this.startInterval();
+        },
+        resetFlights(){
+            this.flights = null
         },
         async fetchFlights() {
             try {

@@ -71,7 +71,7 @@
                                             </div>
                                             <span class="font-semibold text-xs mt-4">FLIGHT:{{
                                                 slotProps.data.flight_no
-                                            }}</span>
+                                                }}</span>
                                             <div class="flex justify-center p-1">
                                                 <span
                                                     class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
@@ -576,7 +576,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="flex gap-4 items-start flex-col">
                     <div>
                         <h3 class="font-semibold text-xl text-white md:text-gray-600 mb-4"
