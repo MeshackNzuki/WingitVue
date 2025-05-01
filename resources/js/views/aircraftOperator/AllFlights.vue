@@ -83,7 +83,7 @@
 
                 <dialog :id="flight.id" class="modal">
                     <div class="modal-box dark:text-slate-400 dark:bg-sky-950">
-                        <h3 class="font-bold">Edit Flight Info</h3>
+                        <h3 class="font-bold">Edit Flight Information</h3>
                         <p class="py-4 text-xs">Press ESC key to close</p>
                         <form method="dialog" class="flex flex-col gap-2">
                             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -91,7 +91,7 @@
                             </button>
                             <div class="md:grid grid-cols-2 space-x-4">
                                 <div>
-                                    <span class="w-full text-center font-bold">Flight Info</span>
+                                    <span class="w-full text-center font-bold">Flight Information</span>
                                     <label for="origin" class="block mt-2 text-xs font-semibold  uppercase">
                                         Origin
                                     </label>

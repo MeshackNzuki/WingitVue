@@ -5,8 +5,8 @@
                 <Table :headers="[
                     'NAME',
                     'HOURS',
-                    'LICENSE EXP',
-                    'MED EXPIRY',
+                    'LICENSE EXPIRY',
+                    'MEDICAL EXPIRY',
                     'ACTION',
                 ]" title="Pilots" v-model:query="query" :rows="pilots.length">
                     <template v-slot:actions>
@@ -20,7 +20,6 @@
                             <td class="p-2 whitespace-nowrap">
                                 {{ pilot.hours }}
                             </td>
-
                             <td class="p-2 whitespace-nowrap">
                                 {{ pilot.license_expiry }}
                             </td>
@@ -40,7 +39,7 @@
                                     <div>
                                         <div class="w-full flex justify-center items-center">
                                             <div>
-                                                <span class="w-full text-center font-bold">Edit Pilot info</span>
+                                                <span class="w-full text-center font-bold">Edit Pilot Information</span>
 
                                                 <label for="Category_id"
                                                     class="block mt-2 text-xs font-semibold  uppercase">
@@ -126,7 +125,7 @@
                 <div>
                     <div class="w-full flex justify-center items-center">
                         <div>
-                            <span class="w-full text-center font-bold">Pilot info</span>
+                            <span class="w-full text-center font-bold">Pilot Information</span>
 
                             <label for="Category_id" class="block mt-2 text-xs font-semibold  uppercase">
                                 Name

@@ -73,13 +73,13 @@
                                 ✕
                             </button>
                         </form>
-                        <h3 class="text-lg font-bold">Hello!</h3>
-                        <span class="w-full text-center font-bold">Retry payment
+                        <h3 class="text-lg font-bold">Book Repayment</h3>
+                        <span class="w-full text-center font-bold">Retry payment for flight
                             {{ bookingItem.flight.flight_no }}
                         </span>
                         <div class="flex justify-center items-center">
                             <div class="flex flex-col my-4">
-                                Retrying payment of
+                                Retrying to pay
                                 {{
                                     bookingItem.flight.price * bookingItem.seats
                                 }}

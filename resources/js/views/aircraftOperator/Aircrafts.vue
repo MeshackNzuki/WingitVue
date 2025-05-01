@@ -76,7 +76,7 @@
                         <button type="submit" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                             ✕
                         </button>
-                        <span class="w-full text-center font-bold">Edit Aircraft info</span>
+                        <span class="w-full text-center font-bold">Edit Aircraft Information</span>
                         <div class="flex justify-center items-center">
                             <div class="flex flex-col md:flex-row md:gap-4">
                                 <div>
@@ -171,7 +171,7 @@
             <button type="submit" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="closeModal">
                 ✕
             </button>
-            <span class="w-full text-center font-bold">Aircraft info</span>
+            <span class="w-full text-center font-bold">Aircraft Information</span>
             <div class="flex justify-center items-center">
                 <div class="flex flex-col md:flex-row md:gap-4">
                     <div>
