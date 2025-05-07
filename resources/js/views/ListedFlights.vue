@@ -39,10 +39,10 @@
                                 </div>
                                 <router-link>
                                     <div v-if="
-                                        flight.aircraft_operator?.logo
+                                        flight.aircraft_operator?.avatar
                                     " class="avatar pointer">
-                                        <div class="size-8 rounded-full ring ring-third">
-                                            <img :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${flight.aircraft_operator?.logo}`"
+                                        <div class="size-8 rounded-full ring-2 ring-sky-900 mt-1">
+                                            <img :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${flight.aircraft_operator?.avatar}`"
                                                 alt="User Avatar" />
                                         </div>
                                     </div>
@@ -83,13 +83,13 @@
                                             }}
                                         </span>
                                     </div>
-                                    <span class="font-light text-lg mt-4">FLIGHT:{{ flight.flight_no }}</span>
+
                                     <div class="flex justify-center p-1">
                                         <span
                                             class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
                                             <span class="me-1">{{
                                                 flight.available_seats
-                                                }}</span>
+                                            }}</span>
                                             <span>{{
                                                 flight.available_seats > 1
                                                     ? "seats"

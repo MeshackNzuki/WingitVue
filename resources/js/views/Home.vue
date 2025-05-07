@@ -26,10 +26,10 @@
                                         <router-link>
                                             <div v-if="
                                                 slotProps.data
-                                                    .aircraft_operator?.logo
+                                                    .aircraft_operator?.avatar
                                             " class="avatar pointer">
-                                                <div class="size-8 rounded-full ring ring-third">
-                                                    <img :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${slotProps.data.aircraft_operator?.logo}`"
+                                                <div class="size-8 rounded-full ring-2 ring-sky-900 mt-1">
+                                                    <img :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${slotProps.data.aircraft_operator?.avatar}`"
                                                         alt="User Avatar" />
                                                 </div>
                                             </div>
