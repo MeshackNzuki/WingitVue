@@ -14,18 +14,7 @@
                 <RouterLink to="/" class="">
                     <i class="pi pi-arrow-left text-sm"></i> <span>Home</span>
                 </RouterLink>
-                <RouterLink to="/chat/messages" class="p-1 flex items-center justify-center">
-                    <div class="indicator">
-                        <i class="pi pi-comments"></i>
-                        <span class="badge badge-xs bg-red-500 indicator-item animate-pulse"></span>
-                    </div>
-                </RouterLink>
-                <button class="p-1 flex items-center justify-center">
-                    <div class="indicator">
-                        <i class="pi pi-bell"></i>
-                        <span class="badge badge-xs bg-red-500 indicator-item animate-pulse"></span>
-                    </div>
-                </button>
+
                 <label class="cursor-pointer grid place-items-center">
                     <input type="checkbox" value="synthwave"
                         class="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"

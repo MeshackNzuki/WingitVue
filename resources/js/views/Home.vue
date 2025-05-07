@@ -384,7 +384,7 @@
                     <div class="my-12 md:my-24">
                         <p>
                             Escape for a weekend of sunshine in Mombasa or a
-                            safari wilderness tour in the Masai Mara or just
+                            safari wilderness tour in the Maasai Mara or just
                             tour Kenya. Lock in your travel plans and save!
                         </p>
                         <router-link to="/about">
@@ -832,7 +832,7 @@ const destinations = ref([
         name: "Mombasa",
         image: "https://images.pexels.com/photos/1045113/pexels-photo-1045113.jpeg?auto=compress&cs=tinysrgb&w=1600",
     },
-    { name: "Masai Mara", image: masaiMaraImage },
+    { name: "Maasai Mara", image: masaiMaraImage },
     { name: "Nairobi", image: nairobiImage },
 ]);
 function getRandomMotionPreset() {

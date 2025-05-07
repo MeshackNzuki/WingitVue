@@ -1,7 +1,7 @@
 <template>
     <div
         class="bg-slate-100 dark:bg-transparent min-h-screen p-2 bg-[url('../assets/hiw.jpg')] bg-cover bg-center bg-fixed">
-        <span class="font-semibold text-base">
+        <span class="font-semibold text-gray-900 dark:text-gray-50 text-lg">
             {{
                 mainStore.greetings +
                 ", " +
@@ -20,9 +20,9 @@
             <div class="flex h-24 justify-center items-center p-2">
                 <div class="bg-sky-100 shadow-sm rounded-lg p-4 text-base text-center w-full max-w-xs">
                     <router-link to="/customer/bookings">
-                        <div><i class="pi pi-history"></i></div>
+                        <div><i class="pi pi-calendar-clock"></i></div>
                         <div>
-                            Bookings {{ mainStore.customerData.bookings }}
+                            Current Bookings {{ mainStore.customerData.bookings }}
                         </div>
                     </router-link>
                 </div>
@@ -30,7 +30,7 @@
             <div class="flex h-24 justify-center items-center p-2">
                 <div class="bg-sky-100 shadow-sm rounded-lg p-4 text-base text-center w-full max-w-xs">
                     <router-link to="/customer/previous-bookings">
-                        <div><i class="pi pi-calendar-clock"></i></div>
+                        <div> <i class="pi pi-history"></i></div>
                         <div>
                             Previous Bookings
                             {{ mainStore.customerData.previous_bookings }}
@@ -42,7 +42,7 @@
                 <div class="bg-sky-100 shadow-sm rounded-lg p-4 text-base text-center w-full max-w-xs">
                     <router-link to="/customer/trips">
                         <div><i class="pi pi-map-marker"></i></div>
-                        <div>Places {{ mainStore.customerData.bookings }}</div>
+                        <div>Destinations {{ mainStore.customerData.bookings }}</div>
                     </router-link>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 <div class="bg-sky-100 shadow-sm rounded-lg p-4 text-base text-center w-full max-w-xs">
                     <router-link to="/customer/fun-things">
                         <div><i class="pi pi-sparkles"></i></div>
-                        <div>Fun Things</div>
+                        <div>Fun Things To Do</div>
                     </router-link>
                 </div>
             </div>
@@ -58,13 +58,10 @@
                 <div class="bg-sky-100 shadow-sm rounded-lg p-4 text-base text-center w-full max-w-xs">
                     <router-link to="/customer/packing">
                         <div><i class="pi pi-briefcase"></i></div>
-                        <div><i class="pi pi-plus"></i> Parking Lists</div>
+                        <div><i class="pi pi-plus"></i> Packing List</div>
                     </router-link>
                 </div>
             </div>
-        </div>
-        <div class="w-full text-center font-semibold my-6">
-            Fun things
         </div>
         <div class="w-full flex justify-center bg-cover bg-center bg-no-repeat"
             style="background-image: url('/bg.jpg');">
