@@ -129,7 +129,7 @@
                             <!-- File Upload Section -->
                             <div class="mb-6 pt-4">
                                 <label class="mb-5 block text-xl font-semibold ">
-                                    Certificate of incorporation (upload copy)
+                                    Certificate of incorporation (upload PDF copy)
                                 </label>
                                 <div class="mb-8">
                                     <input type="file" name="coi" id="file1" class="sr-only"
@@ -178,7 +178,7 @@
                             <!-- File Upload Section -->
                             <div class="mb-6 pt-4">
                                 <label class="mb-5 block text-xl font-semibold ">
-                                    Company PIN certificate (upload copy)
+                                    Company PIN certificate (upload PDF copy)
                                 </label>
                                 <div class="mb-8">
                                     <input type="file" name="company_pin" id="file3" class="sr-only"
@@ -206,11 +206,10 @@
                                     <Error v-if="errors.step4.company_pin" :message="errors.step4.company_pin" />
                                 </div>
                             </div>
-
                             <!-- Navigation BaseButtons -->
                             <div class="flex justify-between space-x-4 w-full mt-4">
                                 <BaseButton label="Previous" class="p-8" :action="() => handlePrev()" />
-                                <BaseButton label="Next" class="p-8" :action="() => handleNext()" />
+                                <BaseButton label="Submit" class="p-8" :action="() => handleNext()" />
                             </div>
                         </div>
                     </div>

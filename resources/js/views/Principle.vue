@@ -13,7 +13,7 @@
         <div class=" mt-8 flex justify-center">
           <div class="p-2 py-6 max-w-[70rem] text-left w-full">
             <h1 v-motion="getRandomMotionPreset()">
-              <span class="text-second uppercase text-2xl font-exo-2">How Wingit Works</span>
+              <span class="text-second uppercase text-2xl text-secondary font-serif">How Wingit Works</span>
             </h1>
             <p class="mb-2 mt-4" v-motion="getRandomMotionPreset()">
               <span>Wingit</span> aims to capitalise on a significant percentage of charter flights in Kenya that remain
@@ -43,8 +43,8 @@
     <section class="text-center snap-center relative">
       <main class="flex flex-col items-center justify-center">
         <section
-          class="flex flex-col w-full bg-cover bg-fixed bg-center flex justify-center items-center bg-[url('/about.jpg')]">
-          <div class="relative flex flex-col w-full flex justify-center items-center bg-slate-300 bg-opacity-25">
+          class="flex flex-col w-full bg-cover bg-fixed bg-center justify-center items-center bg-[url('../assets/about.jpg')]">
+          <div class="relative flex flex-col w-full  justify-center items-center bg-slate-900 bg-opacity-25">
             <div class="text-left px-4 bg-transparent max-w-screen-2xl">
               <div class="my-4 md:grid md:grid-cols-2 md:gap-4 items-center md:p-20">
                 <div

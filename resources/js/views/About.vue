@@ -5,7 +5,7 @@
             <div class="relative flex flex-col w-full h-[350px] justify-center items-center mt-24 bg-transparent">
                 <div class="max-w-[70em] w-full px-8 py-4">
                     <div v-motion="motionPresets.fadeDown()" class="mt-32">
-                        <span class="text-gray-50 uppercase text-3xl font-exo-2">About
+                        <span class="text-gray-50 uppercase text-3xl font-serif">About
                             Us</span>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                             class="relative flex-col w-full h-[350px] items-center bg-slate-900 bg-opacity-75 flex justify-center">
                             <div class="text-left bg-transparent max-w-screen-2xl px-4">
                                 <span v-motion="motionPresets.fadeDown()"
-                                    class="text-gray-50 md:text-5xl font-semibold mb-4 font-exo-2">
+                                    class="text-gray-50 md:text-5xl  mb-4 font-exo-2">
                                     <div>Local Travel Reimagined</div>
                                 </span>
                                 <div class="my-6" v-motion="motionPresets.fadeLeft()">
@@ -80,9 +80,9 @@
             </section>
 
             <!-- Team Section -->
-            <h2 class="font-semibold text-center p-3 m-auto  text-2xl">
-                <span class="text-second uppercase text-3xl font-exo-2">Our Team</span>
-            </h2>
+            <div class="text-center p-3 m-auto  ">
+                <span class="uppercase text-2xl font-serif text-secondary">Our Team</span>
+            </div>
 
             <section class="max-w-6xl mx-auto px-4 sm:px-2 lg:px-4 py-6">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -106,15 +106,17 @@
                         description="Caroline is an independent consultant at Nkemi Consulting, a Strategic Brand, Marketing and Communication advisory firm she set up in 2014. She’s worked with companies at different stages from startup to multinational, in product development, brand management and marketing strategy focusing on commercial outcomes; plus driving communication strategies, plans and campaign development. Her consulting career comes with a backdrop of 20 years’ experience in both agency leadership positions and mainstream marketing roles, the most recent of which were as General Manager of New Business at Squad Digital, Agency Lead at Grey Group South East Africa in charge of the Procter & Gamble portfolio of brands ensuring marketing delivery across Kenya, Uganda, Tanzania, Ethiopia, Zimbabwe and Angola plus Strategy & Business Development Director at Ogilvy & Mather. Caroline has a degree in Communications from Daystar University." />
 
                 </div>
+                <div class="my-12 border-t border-dashed border-gray-300"></div>
 
-                <section class="grid grid-rows-1 border-top gap-4 md:grid-cols-2 my-6 p-2 md:p-8">
+
+                <section class="grid grid-rows-1 border-top gap-4 md:grid-cols-2 my-6 ">
                     <div>
-                        <img src="../assets/footerabt.jpg" alt="" />
+                        <img class="rounded-lg" src="../assets/footerabt.jpg" alt="" />
                     </div>
                     <div class="flex justify-center items-center py-5">
                         <div v-motion="motionPresets.fadeDown()">
                             <p>
-                                <span class="font-exo-2 font-bold">{{ 'Discover Kenya, Your Way' }}</span>
+                                <span class="text-3xl font-serif text-secondary">{{ 'Discover Kenya, Your Way' }}</span>
                             <p class="my-4">
                                 Embark on a journey through the scenic landscapes of Kenya. From the savannas to the
                                 coast, redefine your travel experience with us and explore the beauty of Kenya like

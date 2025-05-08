@@ -14,7 +14,6 @@
                 <RouterLink to="/" class="">
                     <i class="pi pi-arrow-left text-sm"></i> <span>Home</span>
                 </RouterLink>
-
                 <label class="cursor-pointer grid place-items-center">
                     <input type="checkbox" value="synthwave"
                         class="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
@@ -40,8 +39,8 @@
                                     alt="User Avatar" /></router-link>
                         </div>
                     </div>
-                    <div v-else class="relative overflow-hidden bg-gold rounded-full gray-600 mt-1">
-                        <div class="size-9 rounded-full ring ring-third">
+                    <div v-else class="relative overflow-hidden bg-gold rounded-full gray-600 mt-0.5">
+                        <div class="size-9 rounded-full ring-2 ring-third">
                             <img :src="`${Logo2}`" alt="User Avatar" />
                         </div>
                     </div>
@@ -125,6 +124,7 @@ import { useMainStore } from "../../stores";
 import { authStore } from "../../stores/authStore";
 import commonButton from "../../components/Buttons/CommonButton.vue";
 import { useThemeStore } from "../../stores/theme";
+import Logo2 from "../../assets/logo.png";
 
 const isDark = useDark({ disableTransition: false });
 const toggleDark = useToggle(isDark);

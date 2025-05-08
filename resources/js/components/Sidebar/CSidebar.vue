@@ -38,7 +38,7 @@
             <div v-if="route.path.startsWith('/tourism-operator')" class="mt-0">
                 <div class="relative flex flex-col rounded-x w-full p-2">
                     <nav class="flex flex-col gap-1 p-2 font-sans text-base font-normal  dark:text-slate-300">
-                        <router-link to="/transport/">
+                        <router-link to="/tourism-operator">
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
@@ -47,60 +47,32 @@
                                 Dashboard
                             </div>
                         </router-link>
-                        <router-link to="/tourism-operator/all-flights">
+                        <router-link to="/tourism-operator/listed-flights">
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-users"></i>
+                                    <i class="pi pi-check-circle"></i>
                                 </div>
-                                All flights
+                                Listed flights
                             </div>
                         </router-link>
-
-                        <router-link to="/tourism-operator/listed-flights">
+                        <router-link to="/tourism-operator/previous-flights">
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-list"></i>
+                                    <i class="pi pi-refresh"></i>
                                 </div>
-                                Listed Flights
+                                Previous flights
                             </div>
                         </router-link>
 
-                        <router-link to="/tourism-operator/trips">
-                            <div role="button" tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-reload"></i>
-                                </div>
-                                Trips
-                            </div>
-                        </router-link>
-                        <router-link to="/tourism-operator/trips">
+                        <router-link to="/tourism-operator/statements">
                             <div role="button" tabindex="0"
                                 class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
                                 <div class="grid place-items-center mr-4">
                                     <i class="pi pi-file"></i>
                                 </div>
                                 Statements
-                            </div>
-                        </router-link>
-                        <router-link to="/tourism-operator/pilots">
-                            <div role="button" tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-user"></i>
-                                </div>
-                                pilots
-                            </div>
-                        </router-link>
-                        <router-link to="/tourism-operator/aircrafts">
-                            <div role="button" tabindex="0"
-                                class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
-                                <div class="grid place-items-center mr-4">
-                                    <i class="pi pi-send"></i>
-                                </div>
-                                Aircrafts
                             </div>
                         </router-link>
                         <router-link to="/tourism-operator/messages">

@@ -1,10 +1,10 @@
 <template>
     <div
         class="flex flex-col justify-center items-center min-h-screen pt-24 lg:pt-0 bg-[url('../assets/searchpg.jpg')]">
-        <h5 div v-motion="motionPresets.fadeDown()"
-            class="font-bold text-3xl font-exo-2 mb-10 text-slate-50 p-2 rounded-sm shadow-sm">
-            Operator Accounts
-        </h5>
+        <div div v-motion="motionPresets.fadeDown()"
+            class="font-bold text-2xl  font-serif mb-10 text-slate-50 p-2 rounded-sm shadow-sm">
+            OPERATOR ACCOUNTS
+        </div>
         <div class="flex flex-col md:flex-row gap-10">
             <div v-motion="motionPresets.fadeLeft()"
                 class="flex flex-col gap-3 shadow-sm rounded p-6 bg-blue-50 bg-opacity-15 hover:scale-105 transition-all duration-300 max-w-[600px]">

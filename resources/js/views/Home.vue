@@ -314,7 +314,7 @@
                     <div className="w-full flex mt-0  justify-center mb-32 ">
                         <div className="flex flex-col  text-gray-50 w-full px-2 lg:px-12 py-4 max-w-screen-xl">
                             <h1 v-motion="motionPresets.fadeUp()"
-                                className="text-2xl md:text-4xl text-left font- font-exo-2  lg:ml-0 mt-5 text-gray-50 md:mt-5">
+                                className="text-2xl md:text-4xl text-left font- font-serif  lg:ml-0 mt-5 text-gray-50 md:mt-5">
 
                                 Charter Flight Booking Service In Kenya
 
@@ -366,7 +366,7 @@
             <div class="mr-auto place-sel-center lg:col-span-6" v-motion="motionPresets.fadeLeft()">
                 <span :class="`uppercase text-second text-lg ${exo2.className}`">
                     <div className="w-full h-full fixed top-0 left-0 z-[-1] "></div>
-                    <h2 class="font-semibold font-exo-2 my-6 text-lg text-gray-900">
+                    <h2 class="font-semibold font-serif my-6 text-lg text-secondary">
                         Your amazing experience powers us
                     </h2>
                 </span>
@@ -517,7 +517,7 @@
                     <div class="text-left px-4 bg-transparent">
                         <span class="text-gray-50 md:text-5xl font-semibold mb-4">
                             <div class="text-3xl mb-12" v-motion="motionPresets.fadeUp()">
-                                <span class="text-3xl font-semibold  font-exo-2">Experience the thrill of travel with
+                                <span class="text-3xl  ">Experience the thrill of travel with
                                     Wingit</span>
                             </div>
                         </span>
@@ -536,7 +536,7 @@
             </section>
         </main>
         <section class="py-6 bg-[url('../assets/bg.jpg')]">
-            <h2 class="font-semibold font-exo-2 my-6 text-lg uppercase text-gray-900"
+            <h2 class="font-semibold font-serif my-6 text-lg uppercase text-gray-900"
                 v-motion="motionPresets.fadeDown()">
                 Why Wingit
             </h2>
@@ -596,7 +596,8 @@
         </section>
 
         <section class="my-6">
-            <h2 class="font-semibold my-4 text-lg font-exo-2 uppercase" v-motion="motionPresets.fadeDown()">
+            <h2 class="font-semibold my-4 text-lg font-serif uppercase text-secondary"
+                v-motion="motionPresets.fadeDown()">
                 Popular Destinations
             </h2>
             <div class="container mx-auto px-5 py-2 lg:px-32 lg:pt-24" v-motion="motionPresets.fadeUp()">
@@ -683,8 +684,9 @@
                 </div>
             </div>
         </section>
-        <section class="mx-2 flex flex-wrap justify-center gap-4">
-            <h2 class="font-semibold my-4 text-lg font-exo-2 uppercase" v-motion="motionPresets.fadeDown()">
+        <section class="mx-2 flex flex-wrap justify-center gap-4 my-6 py-4">
+            <h2 class="font-semibold my-4 text-lg font-serif uppercase text-secondary"
+                v-motion="motionPresets.fadeDown()">
                 Hear from our clients
             </h2>
             <div class="mx-2 flex flex-wrap justify-center gap-4 px-2">
@@ -721,33 +723,35 @@
         </section>
 
 
-        <section class="mx-2 overflow-hidden mt-4">
-            <div
-                class="items-center justify-between py-10 px-5 backdrop-blur shadow-2xl glass rounded-lg mx-auto  text-center">
-                <div class="px-2 -mt-6">
-                    <div class="text-center">
-                        <h1 v-motion="motionPresets.fadeDown()"
-                            class="font-semibold text-lg  leading-loose font-exo-2 my-3 w-full">
-                            <span>Comfort and convenience on the fly</span>
-                        </h1>
-                        <div class="w-full text-center" v-motion="motionPresets.fadeUp()">
-                            <p class="">
-                                By registering an account, you will be the first
-                                to receive news of our special fares and
-                                promotions.
-                            </p>
-                            <form @submit.prevent="handleSubscription" class="my-12">
-                                <div class="max-w-sm mx-auto p-1 pr-0 flex flex-wrap items-center gap-2">
-                                    <input type="email" v-model="subscriptionMail" placeholder="Email address"
-                                        class="flex-1 appearance-none rounded-full text-center shadow border p-1  mr-2 focus:outline-none" />
-                                    <BaseButton :action="handleSubscription" label="Subscribe" />
-                                </div>
-                            </form>
-                        </div>
+
+
+    </section>
+    <section class="overflow-hidden bg-fixed bg-[url('../assets/hiw.jpg')] bg-cover bg-no-repeat bg-center">
+        <div
+            class="items-center justify-between py-10 px-5 backdrop-blur shadow-2xl  rounded-lg mx-auto  text-center bg-transparent">
+            <div class="px-2 -mt-6 container mx-auto">
+                <div class="text-center bg-gray-50 bg-opacity-75 w-1/2 mx-auto p-2 rounded-lg">
+                    <h1 v-motion="motionPresets.fadeDown()"
+                        class="font-semibold text-lg  leading-loose  font-serif my-3 w-full">
+                        <span>Comfort and convenience on the fly</span>
+                    </h1>
+                    <div class="w-full text-center" v-motion="motionPresets.fadeUp()">
+                        <p class="">
+                            By registering an account, you will be the first
+                            to receive news of our special fares and
+                            promotions.
+                        </p>
+                        <form @submit.prevent="handleSubscription" class="my-12">
+                            <div class="max-w-sm mx-auto p-1 pr-0 flex flex-wrap items-center gap-2">
+                                <input type="email" v-model="subscriptionMail" placeholder="Email address"
+                                    class="flex-1 appearance-none rounded-full text-center shadow border p-1  mr-2 focus:outline-none" />
+                                <BaseButton :action="handleSubscription" label="Subscribe" />
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </section>
 </template>
 

@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import { toast } from "vue3-toastify";
 import axios from "axios";
 import router from "../router";
+import { set } from "date-fns";
 
 export const useMainStore = defineStore("mainStore", {
     persist: true,
@@ -14,6 +15,7 @@ export const useMainStore = defineStore("mainStore", {
         totalSeats: [],
         sidebarOpen: true,
         airOpData: [],
+        tourOpData: [],
         customerData: [],
         greetings: "Hi",
     }),
@@ -74,6 +76,9 @@ export const useMainStore = defineStore("mainStore", {
 
         setDashDataAirOp(data) {
             this.airOpData = data;
+        },
+        setDashDataTourOp(data) {
+            this.tourOpData = data;
         },
         setDashDataCustomer(data) {
             this.CustomerData = data;

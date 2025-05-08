@@ -5,7 +5,7 @@
             <div class="relative flex flex-col w-full h-[350px] justify-center items-center mt-24 bg-transparent">
                 <div class="max-w-[70em] w-full px-8 py-4">
                     <div class="mt-32">
-                        <span class="text-gray-50 text-2xl lg:text-4xl" v-motion="getRandomMotionPreset()">
+                        <span class="text-gray-50 text-3xl lg:text-4xl font-serif" v-motion="getRandomMotionPreset()">
                             Frequently asked questions
                         </span>
                     </div>

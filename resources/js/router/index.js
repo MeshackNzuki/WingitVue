@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { authStore } from "../stores/authStore";
+import * as path from "path";
 
 const routes = [
     // Public routes
@@ -227,18 +228,16 @@ const routes = [
         name: "TourismOperator",
         component: () => import("../views/tourismOperator/Layout.vue"),
         meta: { role: "tourism_operator" },
-        children: [
-            {
-                path: "incoming-bookings",
-                name: "IncomingBookings",
-                component: () =>
-                    import("../views/tourismOperator/IncomingBookings.vue"),
-            },
+        children: [    
+             {
+                path: "",
+                name: "TourDashboard",
+                component: () => import("../views/tourismOperator/Dashboard.vue"),
+            },       
             {
                 path: "messages",
                 name: "TourismMessages",
-                component: () =>
-                    import("../views/tourismOperator/Messages.vue"),
+                component: () => import("../views/tourismOperator/Messages.vue"),
             },
             {
                 path: "notifications",
@@ -247,10 +246,34 @@ const routes = [
                     import("../views/tourismOperator/Notifications.vue"),
             },
             {
-                path: "all-bookings",
-                name: "AllBookings",
+                path: "settings",
+                name: "TourismSettings",
                 component: () =>
-                    import("../views/tourismOperator/AllBookings.vue"),
+                    import("../views/tourismOperator/Settings.vue"),
+            },
+            {
+                path: "account",
+                name: "TourismAccount",
+                component: () =>
+                    import("../views/tourismOperator/Account.vue"),
+            },
+            {
+                path: "listed-flights",
+                name: "TourismListedFlights",
+                component: () =>
+                    import("../views/tourismOperator/ListedFlights.vue"),
+            },
+            {
+                path: "previous-flights",
+                name: "TourismPreviousFlights",
+                component: () =>
+                    import("../views/tourismOperator/PreviousFlights.vue"),
+            },
+            {
+                path: "statements",
+                name: "TourismStatements",
+                component: () =>
+                    import("../views/tourismOperator/Statements.vue"),
             },
         ],
     },
