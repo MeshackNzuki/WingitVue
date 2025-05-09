@@ -730,7 +730,7 @@
         <div
             class="items-center justify-between py-10 px-5 backdrop-blur shadow-2xl  rounded-lg mx-auto  text-center bg-transparent">
             <div class="px-2 -mt-6 container mx-auto">
-                <div class="text-center bg-gray-50 bg-opacity-75 w-1/2 mx-auto p-2 rounded-lg">
+                <div class="text-center bg-gray-50 bg-opacity-75 w-full md:w-1/2 mx-auto p-2 rounded-lg">
                     <h1 v-motion="motionPresets.fadeDown()"
                         class="font-semibold text-lg  leading-loose  font-serif my-3 w-full text-secondary">
                         <span>Comfort and convenience on the fly</span>
