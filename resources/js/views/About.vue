@@ -122,7 +122,7 @@
                                 coast, redefine your travel experience with us and explore the beauty of Kenya like
                                 never before.
                             </p>
-                            <router-link to="/auth/client-register" v-motion="motionPresets.fadeRight()">
+                            <router-link to="/listed-flights" v-motion="motionPresets.fadeRight()">
                                 <BaseButton label="Get Started"></BaseButton>
                             </router-link>
                             </p>
