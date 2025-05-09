@@ -3,9 +3,10 @@
         <div
             class="w-full p-2 bg-[url('../assets/searchpg.jpg')] bg-cover object-cover min-h-screen flex justify-center">
             <div class="md:mx-16 flex flex-col justify-center max-w-screen-xl">
-                <div class="rounded text-gray-50 text-3xl font-bold my-16 py-4" v-motion="motionPresets.fadeDown()">
-                    <span class="font-exo2 ">Search for a
-                        flight</span>
+                <div class="rounded text-gray-50 uppercase text-3xl font-serif  my-16 py-4"
+                    v-motion="motionPresets.fadeDown()">
+                    Search for a
+                    flight
                 </div>
                 <div v-motion="motionPresets.fadeUp()"
                     class="flex text-gray-600 flex-col md:flex-row justify-center space-x-0 lg:space-x-2 space-y-2 lg:space-y-0 w-full ">
@@ -81,7 +82,7 @@
                                         <i class="pi pi-map-marker me-1 text-sm"></i>
                                         <span class="text-xs">{{
                                             flight.destination_airport?.city?.toUpperCase()
-                                        }}</span>
+                                            }}</span>
                                         <br />
                                     </p>
                                 </div>
@@ -107,7 +108,7 @@
                                                 class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
                                                 <span class="me-1">{{
                                                     flight.available_seats
-                                                }}</span>
+                                                    }}</span>
                                                 <span>{{
                                                     flight.available_seats > 1
                                                         ? "seats"

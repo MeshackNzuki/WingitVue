@@ -8,8 +8,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2">
                                 <!-- Contact Information Section -->
                                 <div class="p-6 mr-2 bg-gray-100 bg-opacity-75 sm:rounded-lg">
-                                    <h1
-                                        class="text-4xl sm:text-3xl text-base white font-extrabold font-exo-2 tracking-tight">
+                                    <h1 class="text-4xl sm:text-3xl text-base white font-serif tracking-tight">
                                         Talk to us
                                     </h1>
                                     <p class="text-normal text-lg sm:text-2xl font-medium mt-2 libre-caslon">

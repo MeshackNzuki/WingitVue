@@ -41,7 +41,7 @@
                                     <div v-if="
                                         flight.aircraft_operator?.avatar
                                     " class="avatar pointer">
-                                        <div class="size-8 rounded-full ring-2 ring-sky-900 mt-1">
+                                        <div class="size-6 rounded-full ring-2 ring-sky-900 mt-0.5">
                                             <img :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${flight.aircraft_operator?.avatar}`"
                                                 alt="User Avatar" />
                                         </div>
@@ -89,7 +89,7 @@
                                             class="bg-cyan-100 text-sm rounded-lg p-1 px-2 flex flex-row text-gray-900">
                                             <span class="me-1">{{
                                                 flight.available_seats
-                                            }}</span>
+                                                }}</span>
                                             <span>{{
                                                 flight.available_seats > 1
                                                     ? "seats"

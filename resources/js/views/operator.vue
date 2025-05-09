@@ -2,7 +2,7 @@
     <div
         class="flex flex-col justify-center items-center min-h-screen pt-24 lg:pt-0 bg-[url('../assets/searchpg.jpg')]">
         <div div v-motion="motionPresets.fadeDown()"
-            class="font-bold text-2xl  font-serif mb-10 text-slate-50 p-2 rounded-sm shadow-sm">
+            class="text-2xl  font-serif mb-10 text-slate-50 p-2 rounded-sm shadow-sm">
             OPERATOR ACCOUNTS
         </div>
         <div class="flex flex-col md:flex-row gap-10">

@@ -422,7 +422,7 @@ const pay = async () => {
     }
 
     if (
-        passengerData.value.length >= 2 && // Ensure at least 2 passengers before validation
+        passengerData.value.length > 0 &&
         (
             passengerData.value.some((passenger) =>
                 Object.values(passenger).some((value) => !value.toString().trim())
@@ -438,6 +438,10 @@ const pay = async () => {
     transactionStatus.value = [{
         message: "Requesting  for safaricom Mpesa service..."
     }];
+
+    // test passengers
+
+    //test passengers
     const paymentResponse = await axios.post(
         "initiate-mpesa",
         {
@@ -474,11 +478,12 @@ const pay = async () => {
             nationality: formVals.value.nationality,
         });
 
-        if (passengerData.value.length > 1) {
+        if (passengerData.value.length > 0) {
             await axios.post(
                 `/passengers/${bookingResponse.data.booking.id}`,
                 passengerData.value,
             );
+
         }
         setTimeout(() => {
             transactionStatus.value = [{ message: "Checking transaction status..." }];

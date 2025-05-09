@@ -10,9 +10,9 @@
                         <Carousel :value="mainStore.flights" :numVisible="3" :numScroll="3" :showIndicators="true"
                             :showNavigators="false" :responsiveOptions="responsiveOptions"
                             containerClass="w-[350px] md:w-full " circular :autoplayInterval="6000">
-                            <template #item="slotProps" class="flex-1">
+                            <template #item="slotProps" class="flex-1 ">
                                 <div v-motion="motionPresets.fadeRight(Math.random() * 500)"
-                                    class="max-w-sm mx-auto from-cyan-50 via-purple-50 to-blue-50 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in ">
+                                    class="max-w-sm mx-2 from-cyan-50 via-purple-50 to-blue-50 bg-gradient-to-tl shadow-lg rounded-lg relative hover:scale-105 transition-all duration-300 ease-in ">
                                     <div
                                         class="absolute inset-0 z-[-1] bg-[url('https://img.freepik.com/free-vector/white-abstract-background_23-2148810246.jpg?t=st=1741239373~exp=1741242973~hmac=950b463911a781d7718c96b0af899940b1546ed7e671875c6c56c0a2a63a021e&w=1060')] bg-no-repeat bg-right bg-cover opacity-15 mix-blend-multiply">
                                     </div>
@@ -28,7 +28,7 @@
                                                 slotProps.data
                                                     .aircraft_operator?.avatar
                                             " class="avatar pointer">
-                                                <div class="size-8 rounded-full ring-2 ring-sky-900 mt-1">
+                                                <div class="size-6 rounded-full ring-2 ring-sky-900 mt-0.5">
                                                     <img :src="`https://api.wingit.co.ke/core/storage/app/public/uploads/avatars/${slotProps.data.aircraft_operator?.avatar}`"
                                                         alt="User Avatar" />
                                                 </div>
@@ -732,7 +732,7 @@
             <div class="px-2 -mt-6 container mx-auto">
                 <div class="text-center bg-gray-50 bg-opacity-75 w-1/2 mx-auto p-2 rounded-lg">
                     <h1 v-motion="motionPresets.fadeDown()"
-                        class="font-semibold text-lg  leading-loose  font-serif my-3 w-full">
+                        class="font-semibold text-lg  leading-loose  font-serif my-3 w-full text-secondary">
                         <span>Comfort and convenience on the fly</span>
                     </h1>
                     <div class="w-full text-center" v-motion="motionPresets.fadeUp()">

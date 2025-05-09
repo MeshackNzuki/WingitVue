@@ -124,7 +124,7 @@ const handleFileChange = (e) => {
 
 const fetchUserData = async () => {
     try {
-        const response = await axios.get("/settings/profile-airop");
+        const response = await axios.get("/settings/profile-tourop");
         console.log("user data from server", response.data);
         updateUserData(response.data);
     } catch (error) {
@@ -147,7 +147,7 @@ const handleSubmit = async () => {
     form.append("postal_code", formData.value.postal_code);
     form.append("about", formData.value.about);
     try {
-        await axios.post("/settings/profile-airop", form, {
+        await axios.post("/settings/profile-tourop", form, {
             headers: { "Content-Type": "multipart/form-data" },
         });
         toast.info("Information updated");
