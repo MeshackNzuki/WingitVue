@@ -16,7 +16,7 @@
                     </div>
                     <div class="rounded text-sm flex flex-col justify-start">
                         <label for="startDate" class="text-gray-50"> Date </label>
-                        <input type="date" v-model="startDate" @change="setStartDate" class="input input-sm p-5 " />
+                        <input type="date" v-model="startDate" class="input input-sm p-5 " />
                     </div>
                     <div class="flex rounded text-sm flex-col justify-start z-[100]">
                         <label for="origin" class="text-gray-50">Origin </label>
@@ -330,17 +330,6 @@ const airportOptions = ref([]);
 const searchResults = ref()
 const notFoundMessage = ref(null)
 
-function setStartDate(event) {
-    startDate.value = new Date(event.target.value).getTime();
-}
-
-function setOrigin(option) {
-    origin.value = option.value;
-}
-
-function setDestination(option) {
-    destination.value = option.value;
-}
 
 const searchFlights = async () => {
     await mainStore.fetchFlights();

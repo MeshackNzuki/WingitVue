@@ -40,9 +40,9 @@
             </div>
             <div class="flex justify-center items-center p-2">
                 <div class="bg-sky-100 shadow-sm rounded-lg p-4 text-base text-center w-full max-w-xs">
-                    <router-link to="/customer/trips">
+                    <router-link to="/flight-search">
                         <div><i class="pi pi-map-marker"></i></div>
-                        <div>Destinations {{ mainStore.customerData.bookings }}</div>
+                        <div>Destinations </div>
                     </router-link>
                 </div>
             </div>
