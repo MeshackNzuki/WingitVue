@@ -5,8 +5,8 @@
         'BOOKING REFERENCE',
         'FROM',
         'TO',
-        'DEPART TIME',
-        'SEATS',
+        'DEPARTURE DATE',
+        'SEATS BOOKED',
         'STATUS',
     ]" title="Booking" v-model:query="searchQuery" :rows="booking.length">
         <template v-slot:content>
@@ -15,7 +15,7 @@
                     {{
                         format(
                             new Date(bookingItem.created_at),
-                            "EE do HH:mm, Y",
+                            "dd/MM/yyyy",
                         )
                     }}
                 </td>
@@ -35,7 +35,7 @@
                     {{
                         format(
                             new Date(bookingItem.flight.depart_time),
-                            "EEEE do HH:mm",
+                            "dd/MM/yyyy HH:mm",
                         )
                     }}
                 </td>
@@ -51,7 +51,7 @@
                         {{
                             bookingItem.booking_status == 1
 
-                                ? "Completed"
+                                ? "Confirmed"
                                 : "Incomplete"
                         }}
                     </span>
