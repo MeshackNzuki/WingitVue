@@ -1,14 +1,15 @@
 <template>
     <div class="bg-slate-100 dark:bg-sky-950 min-h-screen rounded-md">
         <div class="flex flex-wrap justify-around my-6 py-12 w-full gap-4">
-            <StatCard label="All flights" description="verified"
-                :quantity="mainStore.airOpData.all_flights_count || '0'" icon="pi pi-th-large" />
-            <StatCard label="Listed flights" description="Approved"
-                :quantity="mainStore.airOpData.listed_flights_count || '0'" icon="pi pi-list" />
-            <StatCard label="My pilots" description="Approved" :quantity="mainStore.airOpData.pilots_count || '0'"
-                icon="pi pi-user" />
-            <StatCard label="Trips" description="32% Increase"
-                :quantity="mainStore.airOpData.total_revenue_count || '0'" icon="pi pi-sync" />
+            <StatCard label="All flights" description="verified" link="/aircraft-operator/all-flights"
+                :quantity="mainStore.airOpData.all_flights_count || '0'" icon="pi pi-th-large text-orange-500" />
+            <StatCard label="Listed flights" description="Approved" link="/aircraft-operator/listed-flights"
+                :quantity="mainStore.airOpData.listed_flights_count || '0'"
+                icon="pi pi-check-circle text-emerald-500" />
+            <StatCard label="My pilots" description="Approved" link="/aircraft-operator/pilots"
+                :quantity="mainStore.airOpData.pilots_count || '0'" icon=" pi pi-user text-red-500" />
+            <StatCard label="Trips" description="32% Increase" link="/aircraft-operator/trips"
+                :quantity="mainStore.airOpData.total_revenue_count || '0'" icon="pi pi-sync text-lime-500" />
         </div>
         <div class="flex mt-4">
             <div class="w-full flex flex-col md:flex-row justify-evenly items-center">

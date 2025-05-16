@@ -66,11 +66,16 @@ watch(rerender, () => {
         </span>
         <ul class="px-4 mt-4">
             <template v-if="items.length">
-                <li v-for="(item, index) in items" :key="item.id" class="w-full grid grid-cols-3 grid-flow-col gap-4"
-                    :style="{ textDecoration: item.is_packed !== 1 ? 'line-through' : 'none' }">
-                    <div class="col-span-10">{{ index + 1 }}. {{ item.name }}</div>
+                <li v-for="(item, index) in items" :key="item.id" :class="[
+                    'w-full grid grid-cols-3 m-2 badge grid-flow-col gap-4',
+
+                ]">
+                    <div class="col-span-10">{{ index + 1 }}. <span :class="[
+                        'badge text-white',
+                        item.is_packed == 1 ? 'badge-success' : 'badge-error'
+                    ]">{{ item.name }}</span></div>
                     <div>
-                        <i :class="['pi', item.is_packed === 1 ? 'pi-check-circle text-success' : 'pi-check-circle text-info']"
+                        <i :class="['pi', item.is_packed == 1 ? 'pi-check-circle text-success' : 'pi-times-circle text-error']"
                             @click="handleToggleItem(item.id)" class="cursor-pointer"></i>
                     </div>
                     <div>

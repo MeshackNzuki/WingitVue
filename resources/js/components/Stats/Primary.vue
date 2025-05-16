@@ -32,9 +32,10 @@
             </div>
         </div>
         <div class="flex justify-end items-center flex-col">
-            <i :class="'text-2xl dark:text-slate-100 ' + icon"></i> <small :class="' mt-3 text-slate-50  rounded-full px-3 shadow-lg cursor-pointer ' + (isDark
+            <i :class="'text-2xl dark:text-slate-100 ' + icon"></i> <router-link :to="link"><small :class="' mt-3 text-slate-50  shadow-lg cursor-pointer badge ' + (isDark
                 ? 'bg-sky-500'
-                : 'bg-gradient-to-r from-base via-teal-700 to-teal-800')">View All</small>
+                : 'bg-gradient-to-r from-base via-teal-700 to-teal-800')">View All <i
+                        class="pi pi-arrow-right text-xs ms-1"></i></small></router-link>
         </div>
     </div>
 </template>
@@ -61,6 +62,10 @@ const props = defineProps({
     icon: {
         type: String,
         default: "pi pi-dollar",
+    },
+    link: {
+        type: String,
+        default: "#",
     },
 });
 
