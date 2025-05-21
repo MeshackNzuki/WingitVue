@@ -2,74 +2,62 @@
     <div class="h-full">
         <div class="relative flex flex-wrap mt-10 rounded-lg">
             <div class="w-full mb-12 px-4">
-                <Table
-                    :headers="[
-                        'FROM',
-                        'TO',
-                        'PRICE',
-                        'DEPART TIME',
-                        'ARRIVAL TIME',
-                        'ALL SEATS',
-                        'BOOKED SEATS',
-                        'REMAINING SEATS',
-                    ]"
-                    title="Listed Flights (Available in the Booking Window)"
-                    v-model:query="query"
-                    :rows="filteredFlights.length"
-                >
+                <Table :headers="[
+                    'FROM',
+                    'TO',
+                    'FLIGHT NO.',
+                    'PRICE',
+                    'DEPART TIME',
+                    'ARRIVAL TIME',
+                    'ALL SEATS',
+                    'BOOKED SEATS',
+                    'REMAINING SEATS',
+                ]" title="Listed Flights (Available in the Booking Window)" v-model:query="query"
+                    :rows="filteredFlights.length">
                     <template v-slot:search>
                         <input
                             class="h-6 md:block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-60 pl-10"
-                            placeholder="Search flights"
-                            @input="filterFlights"
-                        />
+                            placeholder="Search flights" @input="filterFlights" />
                     </template>
                     <template v-slot:content>
-                        <tr
-                            v-for="(flight, index) in filteredFlights"
-                            :key="index"
-                        >
+                        <tr v-for="(flight, index) in filteredFlights" :key="index">
                             <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
                                 {{ flight.origin_airport.name }}
                             </td>
                             <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
                                 {{ flight.destination_airport.name }}
                             </td>
                             <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
+                                {{ flight.flight_no }}
+                            </td>
+                            <td
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
                                 {{ flight.price }}
                             </td>
                             <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
                                 {{ formatFlightTime(flight.depart_time) }}
                             </td>
                             <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
                                 {{ formatFlightTime(flight.arrival_time) }}
                             </td>
                             <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
                                 {{ flight.initial_seats }}
                             </td>
                             <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
                                 {{
                                     flight.initial_seats -
                                     flight.available_seats
                                 }}
                             </td>
                             <td
-                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center"
-                            >
+                                class="border-t-0 px-2 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 items-center">
                                 {{ flight.available_seats }}
                             </td>
                         </tr>

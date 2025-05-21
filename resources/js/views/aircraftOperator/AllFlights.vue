@@ -2,6 +2,7 @@
     <Table :headers="[
         'ORIGIN',
         'DESTINATION',
+        'FLIGHT NO.',
         'SEATS',
         'PRICE',
         'DEPART TIME',
@@ -28,6 +29,11 @@
                 <td class="p-2 whitespace-nowrap">
                     <div class="text-left">
                         {{ flight.destination_airport.name }}
+                    </div>
+                </td>
+                <td class="p-2 whitespace-nowrap">
+                    <div class="text-left">
+                        {{ flight.flight_no }}
                     </div>
                 </td>
                 <td class="p-2 whitespace-nowrap">

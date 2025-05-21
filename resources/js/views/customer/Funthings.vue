@@ -56,7 +56,7 @@ watch(rerender, () => {
                     <div class="col-span-3">
                         <b>{{ index + 1 }}.</b>
                         <span class="text-emerald-700 font-semibold ms-1">{{ thing.name }}</span>
-                        — {{ thing.time }} at <b>{{ thing.venue }}</b> (Budget: ${{ thing.budget }})
+                        — {{ thing.time }} at <b>{{ thing.venue }}</b> (Budget: KES {{ thing.budget }})
                     </div>
                     <div>
                         <i class="pi pi-trash text-red-500 cursor-pointer" @click="handleDeleteFunThing(thing.id)"></i>
